@@ -159,10 +159,21 @@
     const system = getFrameworkSystem();
     const airTreatmentSelected = system?.id === "airTreatment";
     const reviewOnly = workflowMode === "review";
-    const workflowVisible = Boolean(system) && (airTreatmentStarted || reviewOnly);
+    const workflowVisible = reviewOnly || (Boolean(system) && airTreatmentStarted);
+    byId("systemPicker").classList.toggle("hidden", reviewOnly);
+    byId("systemSelectionTitle").textContent = reviewOnly ? "Granska tagglista" : "Välj system";
+    byId("systemSelectionDescription").textContent = reviewOnly
+      ? "Tagglistan jämförs mot ramverket."
+      : "Välj vilket system som ska granskas.";
     byId("workflow").classList.toggle("hidden", !workflowVisible);
     byId("airTreatmentSetup").classList.toggle("hidden", reviewOnly || !airTreatmentSelected || airTreatmentStarted);
     byId("step2Button").classList.toggle("hidden", reviewOnly);
+    byId("selectedSystemTitle").classList.toggle("hidden", reviewOnly);
+    byId("systemProfilesPanel").classList.toggle("hidden", reviewOnly || !reviewedRows.length || !airTreatmentSelected);
+    byId("workflowDescription").classList.toggle("hidden", reviewOnly);
+    byId("workflowDescription").innerHTML = reviewOnly
+      ? 'Ladda upp en tagglista som Excel-fil för granskning mot ramverket. <b>"Name"</b> korrigeras där en matchning finns och <b>"Description"</b> bevaras.'
+      : 'Ladda upp tagglistan som Excelfil. Programmet använder valda scenarier för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.';
     if (reviewOnly) showStep(1);
     document.querySelectorAll(".system-choice").forEach((choice) => {
       const selected = choice.dataset.systemId === system?.id;
@@ -823,7 +834,7 @@
   }
 
   function updateQuestionGate() {
-    const incomplete = !selectedFrameworkSystemId ||
+    const incomplete = (workflowMode !== "review" && !selectedFrameworkSystemId) ||
       (workflowMode !== "review" && selectedFrameworkSystemId === "airTreatment" && reviewedRows.length > 0 && !areSystemProfilesComplete()) ||
       getQuestionsForSystem().some((question) => {
       if (questionAnswers[question.id] === undefined || questionAnswers[question.id] === "") return true;
@@ -927,7 +938,9 @@
     const seen = new Set();
     const originalAnswers = { ...questionAnswers };
     const originalGroups = selectedTagGroups;
-    const profiles = selectedFrameworkSystemId === "airTreatment" ? getSystemProfileSelections() : [null];
+    const profiles = workflowMode === "review"
+      ? [null]
+      : selectedFrameworkSystemId === "airTreatment" ? getSystemProfileSelections() : [null];
     for (const profile of profiles) {
       activeSystemPrefix = profile?.systemPrefix ?? "";
       if (profile) {
@@ -1137,6 +1150,10 @@
   function updateStep2Availability() {
     const button = byId("buildEboXml");
     if (!button) return;
+    if (workflowMode === "review") {
+      button.disabled = true;
+      return;
+    }
     const fsName = byId("fsName").value.trim();
     const systemPrefix = byId("systemPrefix").value;
     const ducName = String(questionAnswers.ducName ?? "").trim();
@@ -2302,6 +2319,10 @@
   byId("workflowMode").addEventListener("change", () => {
     workflowMode = byId("workflowMode").value;
     airTreatmentStarted = false;
+    if (workflowMode === "review") {
+      selectedFrameworkSystemId = "airTreatment";
+      byId("frameworkSystem").value = "airTreatment";
+    }
     questionAnswers = {};
     selectedTagGroups = new Set();
     userSelectedMissingGroups.clear();
@@ -2310,6 +2331,7 @@
     invalidateEboDownload();
     byId("reviewContent").classList.add("hidden");
     if (reviewedRows.length) renderTagGroupQuestions();
+    renderSystemProfiles();
     updateSystemSelectionView();
     updateStep2Availability();
   });

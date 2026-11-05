@@ -20,10 +20,10 @@
 </select>
 </label>
 </header>
-<section class="hero">
-<h2>Välj system</h2>
-<p>Välj vilket system som ska granskas.</p>
-<section class="system-picker" aria-labelledby="systemPickerTitle">
+<section class="hero" id="systemSelectionHero">
+<h2 id="systemSelectionTitle">Välj system</h2>
+<p id="systemSelectionDescription">Välj vilket system som ska granskas.</p>
+<section class="system-picker" id="systemPicker" aria-labelledby="systemPickerTitle">
 <span class="system-picker-label" id="systemPickerTitle">Systemtyp</span>
 <div class="system-choice-list">
 <button type="button" class="system-choice" data-system-id="airTreatment" aria-pressed="false">
@@ -51,7 +51,7 @@
 <button type="button" class="step-button" id="step2Button">Steg 2</button>
 </div>
 <h2 id="selectedSystemTitle">Integrations Verktyg</h2>
-<p>Ladda upp tagglistan som Excelfil. Programmet använder valda scenarier för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.</p>
+<p id="workflowDescription">Ladda upp tagglistan som Excelfil. Programmet använder valda scenarier för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.</p>
 </section>
 <section class="panel" id="step1Panel">
 <div class="drop" id="drop">
