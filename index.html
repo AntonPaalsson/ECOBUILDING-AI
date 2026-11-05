@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integrations Verktyg</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<video class="background-video" autoplay muted loop playsinline aria-hidden="true">
+<source src="assets/background-video.mp4" type="video/mp4">
+</video>
+<div class="wrap">
+<header class="top">
+<a class="brand" href="index.html" aria-label="ECOBUILDING – startsida"><img src="assets/ecobuilding-logo.png" alt="ECOBUILDING"></a>
+<label class="mode-menu">Arbetsläge
+<select id="workflowMode" aria-label="Välj arbetsläge">
+<option value="xml">Granska och skapa XML</option>
+<option value="review">Granska tagglista</option>
+</select>
+</label>
+</header>
+<section class="hero">
+<h2>Välj system</h2>
+<p>Välj vilket system som ska granskas.</p>
+<section class="system-picker" aria-labelledby="systemPickerTitle">
+<span class="system-picker-label" id="systemPickerTitle">Systemtyp</span>
+<div class="system-choice-list">
+<button type="button" class="system-choice" data-system-id="airTreatment" aria-pressed="false">
+<strong>Luftbehandling</strong><span>Aggregat och ventilationssystem</span>
+</button>
+<button type="button" class="system-choice" data-system-id="heating" disabled aria-disabled="true">
+<strong>Värmesystem</strong><span>Kommer senare</span>
+</button>
+</div>
+<select id="frameworkSystem" class="system-select-hidden" aria-hidden="true" tabindex="-1"><option value="">Välj systemtyp</option></select>
+</section>
+<section id="airTreatmentSetup" class="air-treatment-setup hidden" aria-labelledby="airTreatmentSetupTitle">
+<div class="setup-heading"><div><h3 id="airTreatmentSetupTitle">Luftbehandling</h3><p>Hur många system/driftkort vill du skapa XML för? Scenarier och systemnamn väljs efter att tagglistan har lästs in.</p></div></div>
+<label class="scenario-picker system-count-picker">Antal system/driftkort du vill skapa XML för
+<input id="systemCount" type="number" min="1" step="1" value="1" required>
+</label>
+<button type="button" class="button primary" id="continueAirTreatment">Fortsätt</button>
+<p id="airTemplateStatus" class="small" aria-live="polite"></p>
+</section>
+</section>
+<div id="workflow" class="hidden">
+<section class="hero workflow-hero">
+<div class="step-navigation" aria-label="Arbetssteg">
+<button type="button" class="step-button active" id="step1Button" aria-current="step">Steg 1 · Excelgranskning</button>
+<button type="button" class="step-button" id="step2Button">Steg 2</button>
+</div>
+<h2 id="selectedSystemTitle">Integrations Verktyg</h2>
+<p>Ladda upp tagglistan som Excelfil. Programmet använder valda scenarier för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.</p>
+</section>
+<section class="panel" id="step1Panel">
+<div class="drop" id="drop">
+<h2>Välj tagglista</h2>
+<p>Excel(.xlsx). Originalfilen ändras inte.</p>
+<input id="file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
+<button type="button" class="button primary" id="pick">Ladda upp fil</button>
+<div id="filename" class="filename">
+</div>
+<div id="error" class="notice red">
+</div>
+</div>
+<section id="systemProfilesPanel" class="system-profiles-panel hidden" aria-labelledby="systemProfilesTitle">
+<h3 id="systemProfilesTitle">Välj system och scenario för varje XML</h3>
+<p>Välj vilka systemprefix i tagglistan som ska få en XML och vilket driftkortsscenario som gäller för vart och ett.</p>
+<div id="systemProfiles" class="system-profiles"></div>
+<p id="systemProfilesStatus" class="small" aria-live="polite"></p>
+</section>
+<div id="results" class="hidden">
+<section class="tag-group-questions" aria-labelledby="tagGroupQuestionsTitle">
+<h3 id="tagGroupQuestionsTitle">Kontrollera förutsättningarna först</h3>
+<p>Granskningen startar när frågorna som inte kan utläsas säkert ur tagglistan är besvarade.</p>
+<div id="ruleQuestions" class="rule-questions"></div>
+<div id="missingComponentQuestion" class="missing-component-question"></div>
+<div id="tagGroupChoices" class="tag-group-choices hidden"></div>
+<button type="button" class="button primary" id="runReview" disabled>Starta granskning</button>
+</section>
+<div id="reviewContent" class="hidden">
+<div class="summary">
+<div class="stat">
+<span>Stämmer med ramverket</span>
+<b class="green" id="greenCount">0</b>
+</div>
+<div class="stat">
+<span>Potentiellt stavfel</span>
+<b class="yellow" id="yellowCount">0</b>
+</div>
+<div class="stat">
+<span>Saknas i ramverket</span>
+<b class="red" id="redCount">0</b>
+</div>
+<div class="stat">
+<span>"Metadata"</span>
+<b class="included-count" id="includedCount">0</b>
+</div>
+</div>
+<div class="actions">
+<div class="action-buttons">
+<button type="button" class="button" id="copyExcel">Kopiera till Excel</button>
+<button type="button" class="button primary" id="download">Skapa korrigerad Excel</button>
+</div>
+</div>
+<section class="missing-tags" aria-labelledby="missingTagsTitle">
+<div class="missing-tags-heading">
+<h3 id="missingTagsTitle">Taggar i ramverket som saknas i tagglistan</h3>
+<span id="missingTagsCount">0</span>
+</div>
+<ul id="missingTagsList" class="missing-tags-list"></ul>
+</section>
+<div class="tablebox">
+<table class="table">
+<thead>
+<tr>
+<th>Rad</th>
+<th>Name efter korrigering</th>
+<th>Description (källvärde)</th>
+<th>Bedömning</th>
+</tr>
+</thead>
+<tbody id="rows">
+</tbody>
+</table>
+</div>
+<p class="small">Färgmarkeringen följer med i den nedladdade arbetsboken. En gul markering är en automatisk kandidatträff och ska kontrolleras manuellt.</p>
+</div>
+</div>
+</section>
+<section class="panel hidden" id="step2Panel">
+<div class="step2-heading">
+<div>
+<h2>Skapa EBO XML</h2>
+<p>Utgår från tagglistan, DUC namnet och svaren i steg 1.</p>
+</div>
+</div>
+<div class="step2-inputs">
+<label class="rule-question"><span>FS namn</span><input id="fsName" type="text" placeholder="Exempel: FS3090" autocomplete="off" pattern="[A-Za-z0-9_-]+" required></label>
+</div>
+<select id="systemPrefix" class="system-select-hidden" aria-hidden="true" tabindex="-1"><option value="">Välj system</option></select>
+<p class="small" id="step2Status">Ladda upp tagglistan och starta granskningen i steg 1.</p>
+<div class="actions">
+<button type="button" class="button primary" id="buildEboXml" disabled>Skapa XML för import i EBO</button>
+<a class="button hidden" id="downloadEboXml" download>Hämta skapad XML</a>
+</div>
+<div class="tgml-preview-tools">
+<span>Dra komponenter i bilden för att justera deras position.</span>
+<label id="previewSystemControl" class="hidden">Förhandsvisa XML
+<select id="previewSystem"></select>
+</label>
+<button type="button" class="button secondary" id="resetTgmlPositions" disabled>Återställ positioner</button>
+</div>
+<div class="tgml-preview" id="tgmlPreview" role="img" aria-label="Grafisk förhandsvisning av LB11 BILD TGML-mall"></div>
+<details class="tgml-code">
+<summary>Visa XML mall</summary>
+<iframe class="tgml-source" src="templates/tgml/LBXX_MALL.xml" title="Källkod för EBO XML mallen"></iframe>
+</details>
+</section>
+</div>
+</div>
+<script src="vendor/jszip.min.js">
+</script>
+<script src="data/framework-data.js">
+</script>
+<script src="data/framework-system-tags.js">
+</script>
+<script src="data/air-treatment-tags.js">
+</script>
+<script src="data/air-treatment-scenarios.js">
+</script>
+<script src="data/lbxx-objectset-template.js">
+</script>
+<script src="data/air-treatment-objectset-templates.js">
+</script>
+<script src="app.js">
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
