@@ -661,11 +661,17 @@
         const item = reviewedRows[index];
         if (workflowMode === "review") {
           const reviewValue = getTagListReviewValue(item);
+          // Use the same alarm-class parser as the assessment. It also accepts
+          // the category variants that are not caught by the stricter tag helper.
+          const alarmCategory = reviewDescription(item.description).reason.startsWith("Larmklass ");
           if (isStandardTagListReview()) {
-            item.name = item.sourceName ?? "";
+            // Larmkategorier ska alltid få Description som Name, oavsett listformat.
+            item.name = alarmCategory
+              ? item.description
+              : item.sourceName ?? "";
           } else {
             const description = String(item.description ?? "").trim();
-            item.name = isNonFrameworkProperty(description) || isAlarmClass(description)
+            item.name = isNonFrameworkProperty(description) || alarmCategory
               ? description
               : description.split(/\s+/)[0] ?? description;
           }

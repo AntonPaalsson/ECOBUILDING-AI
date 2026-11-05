@@ -221,10 +221,6 @@ p { color: var(--muted); line-height: 1.55; }
 .hidden { display: none; }
 .small { font-size: 12px; color: var(--muted); }
 
-@media (prefers-reduced-motion: reduce) {
- .background-video { display: none; }
-}
-
 @media (max-width: 700px) {
   .wrap { padding: 18px; }
   .system-picker { grid-template-columns: 1fr; gap: 8px; padding: 16px; }
