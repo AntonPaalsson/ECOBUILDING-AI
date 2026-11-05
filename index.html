@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body>
-<video class="background-video" autoplay muted loop playsinline aria-hidden="true">
+<video class="background-video" muted loop playsinline aria-hidden="true">
 <source src="assets/background-video.mp4" type="video/mp4">
 </video>
 <div class="wrap">
@@ -46,7 +46,7 @@
 </section>
 <div id="workflow" class="hidden">
 <section class="hero workflow-hero">
-<div class="step-navigation" aria-label="Arbetssteg">
+<div class="step-navigation" role="group" aria-label="Arbetssteg">
 <button type="button" class="step-button active" id="step1Button" aria-current="step">Steg 1 · Excelgranskning</button>
 <button type="button" class="step-button" id="step2Button">Steg 2</button>
 </div>
@@ -74,6 +74,7 @@
 <section class="tag-group-questions" aria-labelledby="tagGroupQuestionsTitle">
 <h3 id="tagGroupQuestionsTitle">Kontrollera förutsättningarna först</h3>
 <p>Granskningen startar när frågorna som inte kan utläsas säkert ur tagglistan är besvarade.</p>
+<label class="rule-question" id="tagListFormatControl"><span>Format på tagglistan</span><select id="tagListFormat"><option value="kieback">Kiebackstandard</option><option value="standard">Vanlig tagglista</option></select><small></small></label>
 <div id="ruleQuestions" class="rule-questions"></div>
 <div id="missingComponentQuestion" class="missing-component-question"></div>
 <div id="tagGroupChoices" class="tag-group-choices hidden"></div>
@@ -143,7 +144,7 @@
 <p class="small" id="step2Status">Ladda upp tagglistan och starta granskningen i steg 1.</p>
 <div class="actions">
 <button type="button" class="button primary" id="buildEboXml" disabled>Skapa XML för import i EBO</button>
-<a class="button hidden" id="downloadEboXml" download>Hämta skapad XML</a>
+<a class="button hidden" id="downloadEboXml" href="#" download>Hämta skapad XML</a>
 </div>
 <div class="tgml-preview-tools">
 <span>Dra komponenter i bilden för att justera deras position.</span>

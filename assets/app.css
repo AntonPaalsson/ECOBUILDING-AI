@@ -200,6 +200,9 @@ p { color: var(--muted); line-height: 1.55; }
 .rule-question { display: grid; grid-template-columns: minmax(0, 1fr) minmax(130px, 190px); align-items: center; gap: 5px 10px; color: var(--charcoal); font-size: 12px; }
 .rule-question select, .rule-question input { width: 100%; min-width: 0; padding: 6px 8px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--charcoal); }
 .rule-question small { grid-column: 2; color: var(--muted); font-size: 10px; }
+#tagListFormatControl { width: min(360px, 100%); grid-template-columns: minmax(0, 1fr); justify-items: start; }
+#tagListFormatControl select { max-width: 100%; }
+#tagListFormatControl small { grid-column: 1; }
 .missing-component-question { margin-bottom: 8px; font-size: 12px; }
 .missing-component-question p { margin: 0 0 6px; color: var(--muted); }
 .tag-group-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px 14px; max-height: 250px; overflow: auto; }
@@ -243,6 +246,8 @@ p { color: var(--muted); line-height: 1.55; }
   .system-profile-row { grid-template-columns: 44px minmax(0, 1fr); }
   .system-profile-row label:last-child { grid-column: 2; }
   .rule-question { grid-template-columns: minmax(0, 1fr) minmax(120px, 170px); }
+  #tagListFormatControl { grid-template-columns: minmax(0, 1fr); }
+  #tagListFormatControl small { grid-column: 1; }
   .missing-tags-list li { grid-template-columns: 1fr; gap: 4px; }
 }
 

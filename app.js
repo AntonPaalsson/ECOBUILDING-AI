@@ -104,10 +104,11 @@
     if (!selectedFrameworkSystemId) return [];
     if (selectedFrameworkSystemId === "airTreatment") {
       const keep = workflowMode === "review"
-        ? new Set(["missingComponents"])
+        ? new Set()
         : new Set(["ducName", "propertyNumber", "schoolName", "missingComponents"]);
       return projectQuestions.filter((question) => keep.has(question.id));
     }
+    if (workflowMode === "review") return [];
     return projectQuestions.filter((question) => question.id === "missingComponents");
   }
 
@@ -170,6 +171,7 @@
     byId("step2Button").classList.toggle("hidden", reviewOnly);
     byId("selectedSystemTitle").classList.toggle("hidden", reviewOnly);
     byId("systemProfilesPanel").classList.toggle("hidden", reviewOnly || !reviewedRows.length || !airTreatmentSelected);
+    byId("tagListFormatControl").classList.toggle("hidden", !reviewOnly);
     byId("workflowDescription").classList.toggle("hidden", reviewOnly);
     byId("workflowDescription").innerHTML = reviewOnly
       ? 'Ladda upp en tagglista som Excel-fil för granskning mot ramverket. <b>"Name"</b> korrigeras där en matchning finns och <b>"Description"</b> bevaras.'
@@ -409,10 +411,21 @@
     );
   }
 
+  function isStandardTagListReview() {
+    return workflowMode === "review" && byId("tagListFormat")?.value === "standard";
+  }
+
+  function getTagListReviewValue(item) {
+    return isStandardTagListReview() ? String(item.sourceName ?? "") : String(item.description ?? "");
+  }
+
   function reviewDescription(description) {
     const text = String(description ?? "").trim();
     if (!text) {
       return { kind: "bad", label: "Tom beskrivning", reason: "Description saknas" };
+    }
+    if (isNonFrameworkProperty(text)) {
+      return { kind: "included", label: "Ingår * Metadata", reason: "" };
     }
 
     const notification = text.match(
@@ -540,14 +553,21 @@
         cells.map((cell) => [columnIndex(cell.getAttribute("r")), readCell(cell, sharedStrings)]),
       );
       const description = values.get(descriptionColumn) ?? "";
-      if (!description.trim()) return [];
-      const isProperty = isNonFrameworkProperty(description);
-      const isAlarm = isAlarmClass(description);
+      const sourceName = values.get(nameColumn) ?? "";
+      const reviewValue = workflowMode === "review" && byId("tagListFormat")?.value === "standard"
+        ? sourceName
+        : description;
+      if (!description.trim() && !(workflowMode === "review" && byId("tagListFormat")?.value === "standard" && sourceName.trim())) return [];
+      const isProperty = isNonFrameworkProperty(reviewValue);
+      const isAlarm = isAlarmClass(reviewValue);
       return [{
         row,
         cells,
+        sourceName,
         description,
-        name: isProperty || isAlarm
+        name: workflowMode === "review" && byId("tagListFormat")?.value === "standard"
+          ? sourceName
+          : isProperty || isAlarm
           ? description
           : description.trim().split(/\s+/)[0],
         rowNumber: Number(row.getAttribute("r")) || index + 2,
@@ -557,7 +577,7 @@
               label: "Ingår * Metadata",
               reason: "",
             }
-          : reviewDescription(description),
+          : reviewDescription(reviewValue),
       }];
     });
     systemTagKeysCache.clear();
@@ -639,7 +659,18 @@
       const total = reviewedRows.length;
       for (let index = 0; index < total; index++) {
         const item = reviewedRows[index];
-        if (item.result.kind !== "included") {
+        if (workflowMode === "review") {
+          const reviewValue = getTagListReviewValue(item);
+          if (isStandardTagListReview()) {
+            item.name = item.sourceName ?? "";
+          } else {
+            const description = String(item.description ?? "").trim();
+            item.name = isNonFrameworkProperty(description) || isAlarmClass(description)
+              ? description
+              : description.split(/\s+/)[0] ?? description;
+          }
+          item.result = reviewDescription(reviewValue);
+        } else if (item.result.kind !== "included") {
           const token = item.description.trim().split(/\s+/)[0] ?? "";
           const prefix = token.match(systemPrefixPattern)?.[0]?.slice(0, -1).toUpperCase() ?? "";
           const profile = workflowMode === "review" ? null : getProfileForSystemPrefix(prefix);
@@ -681,6 +712,7 @@
     container.replaceChildren();
     const questions = byId("ruleQuestions");
     questions.replaceChildren();
+    byId("tagListFormatControl").classList.toggle("hidden", workflowMode !== "review");
     const tagKeys = getTagKeys();
     applyAirTreatmentScenarioAnswers(tagKeys);
 
@@ -766,7 +798,7 @@
 
     updateGT11NamingQuestion();
     byId("missingComponentQuestion").replaceChildren();
-    renderMissingComponentChoices();
+    if (workflowMode !== "review") renderMissingComponentChoices();
     updateQuestionGate();
   }
 
@@ -1108,9 +1140,9 @@
     return new Set([
       ...getRawGfComponentTagKeys(),
       ...reviewedRows
-        .filter((item) => item.result.kind !== "included" && !isAlarmClass(item.description))
+        .filter((item) => !isNonFrameworkProperty(getTagListReviewValue(item)) && !isAlarmClass(getTagListReviewValue(item)))
         .map((item) => {
-          const token = item.description.trim().split(/\s+/)[0];
+          const token = getTagListReviewValue(item).trim().split(/\s+/)[0];
           const tag = token.replace(systemPrefixPattern, "");
           return normalizeTag(tag);
         })
@@ -1120,8 +1152,9 @@
 
   function getSystemPrefixes() {
     return [...new Set(reviewedRows.flatMap((item) => {
-      if (isNonFrameworkProperty(item.description) || isAlarmClass(item.description)) return [];
-      const token = item.description.trim().split(/\s+/)[0];
+      const value = getTagListReviewValue(item);
+      if (isNonFrameworkProperty(value) || isAlarmClass(value)) return [];
+      const token = value.trim().split(/\s+/)[0];
       const prefix = token.match(systemPrefixPattern)?.[0];
       const systemName = prefix?.slice(0, -1).toUpperCase();
       return systemName && !/^AS(?:[_-]A|\d)/i.test(systemName) ? [systemName] : [];
@@ -1193,8 +1226,9 @@
     const keys = new Set([
       ...getRawGfComponentTagKeys(systemPrefix),
       ...reviewedRows.flatMap((item) => {
-      if (item.result.kind === "included" || isAlarmClass(item.description) || isNonFrameworkProperty(item.description)) return [];
-      const token = item.description.trim().split(/\s+/)[0];
+      const value = getTagListReviewValue(item);
+      if (isAlarmClass(value) || isNonFrameworkProperty(value)) return [];
+      const token = value.trim().split(/\s+/)[0];
       const sourcePrefix = token.match(systemPrefixPattern)?.[0]?.slice(0, -1).toUpperCase();
       if (sourcePrefix && sourcePrefix !== systemPrefix) return [];
       const name = item.name || token;
@@ -1207,8 +1241,9 @@
 
   function getRawGfComponentTagKeys(systemPrefix = "") {
     return new Set(reviewedRows.flatMap((item) => {
-      if (item.result.kind === "included" || isAlarmClass(item.description) || isNonFrameworkProperty(item.description)) return [];
-      const token = item.description.trim().split(/\s+/)[0];
+      const value = getTagListReviewValue(item);
+      if (isAlarmClass(value) || isNonFrameworkProperty(value)) return [];
+      const token = value.trim().split(/\s+/)[0];
       const sourcePrefix = token.match(systemPrefixPattern)?.[0]?.slice(0, -1).toUpperCase();
       if (systemPrefix && sourcePrefix && sourcePrefix !== systemPrefix) return [];
       const tag = normalizeTag(token.replace(systemPrefixPattern, ""));
@@ -1288,6 +1323,11 @@
   }
 
   function frameworkPatternMatches(pattern, value) {
+    const normalizedPattern = normalizeTag(pattern);
+    const normalizedInput = normalizeTag(value);
+    if (normalizedPattern === "ST7PN_TKMO" && /^ST7\d+_ST7\d+_TKMO$/.test(normalizedInput)) {
+      return true;
+    }
     const source = String(pattern);
     let expression = "";
     for (let index = 0; index < source.length; index++) {
@@ -1309,7 +1349,7 @@
       matcher = new RegExp(`^${expression}$`);
       frameworkPatternCache.set(expression, matcher);
     }
-    const normalizedValue = normalizeTag(value);
+    const normalizedValue = normalizedInput;
     // Framework suffixes use a single-fan root; double fans add TF1_TF2 or FF1_FF2.
     return matcher.test(normalizedValue) || (
       /^(?:TF1_TF2|FF1_FF2)_/i.test(normalizedValue) &&
@@ -2334,6 +2374,14 @@
     renderSystemProfiles();
     updateSystemSelectionView();
     updateStep2Availability();
+  });
+  byId("tagListFormat").addEventListener("change", () => {
+    systemTagKeysCache.clear();
+    relevantFrameworkTagsCache.clear();
+    reviewCompleted = false;
+    byId("reviewContent").classList.add("hidden");
+    if (reviewedRows.length) renderTagGroupQuestions();
+    updateQuestionGate();
   });
   updateFrameworkSystemOptions();
   document.querySelectorAll(".system-choice[data-system-id]").forEach((choice) => {
