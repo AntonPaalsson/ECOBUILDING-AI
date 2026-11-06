@@ -7,36 +7,21 @@
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body>
-<video class="background-video" autoplay muted loop playsinline aria-hidden="true">
-<source src="assets/background-video.mp4" type="video/mp4">
-</video>
 <div class="wrap">
 <header class="top">
-<a class="brand" href="index.html" aria-label="ECOBUILDING – startsida"><img src="assets/ecobuilding-logo.png" alt="ECOBUILDING"></a>
-<label class="mode-menu">Arbetsläge
-<select id="workflowMode" aria-label="Välj arbetsläge">
-<option value="xml">Granska och skapa XML</option>
-<option value="review">Granska tagglista</option>
-</select>
-</label>
+<a class="brand" href="index.html" aria-label="Init – startsida"><img src="assets/init-logo.svg" alt="Init"></a>
+<nav class="step-navigation top-tabs" role="tablist" aria-label="Arbetsflöde">
+<button type="button" class="step-button active" id="step1Button" role="tab" aria-controls="step1Panel" aria-selected="true">Steg 1 · Excelgranskning</button>
+<button type="button" class="step-button" id="step2Button" role="tab" aria-controls="step2Panel" aria-selected="false" disabled>Steg 2 · XML</button>
+<button type="button" class="step-button review-tab" id="reviewModeButton" role="tab" aria-controls="step1Panel" aria-selected="false">Granska tagglista</button>
+</nav>
 </header>
 <section class="hero" id="systemSelectionHero">
-<h2 id="systemSelectionTitle">Välj system</h2>
-<p id="systemSelectionDescription">Välj vilket system som ska granskas.</p>
-<section class="system-picker" id="systemPicker" aria-labelledby="systemPickerTitle">
-<span class="system-picker-label" id="systemPickerTitle">Systemtyp</span>
-<div class="system-choice-list">
-<button type="button" class="system-choice" data-system-id="airTreatment" aria-pressed="false">
-<strong>Luftbehandling</strong><span>Aggregat och ventilationssystem</span>
-</button>
-<button type="button" class="system-choice" data-system-id="heating" disabled aria-disabled="true">
-<strong>Värmesystem</strong><span>Kommer senare</span>
-</button>
-</div>
+<h2 id="systemSelectionTitle">Luftbehandling</h2>
+<p id="systemSelectionDescription">Ange antal system/driftkort för XML-exporten.</p>
 <select id="frameworkSystem" class="system-select-hidden" aria-hidden="true" tabindex="-1"><option value="">Välj systemtyp</option></select>
-</section>
 <section id="airTreatmentSetup" class="air-treatment-setup hidden" aria-labelledby="airTreatmentSetupTitle">
-<div class="setup-heading"><div><h3 id="airTreatmentSetupTitle">Luftbehandling</h3><p>Hur många system/driftkort vill du skapa XML för? Scenarier och systemnamn väljs efter att tagglistan har lästs in.</p></div></div>
+<div class="setup-heading"><div><h3 id="airTreatmentSetupTitle">Antal system/driftkort</h3><p>Välj antal XML-filer som ska skapas. En gemensam ventilationsmall används för alla system.</p></div></div>
 <label class="scenario-picker system-count-picker">Antal system/driftkort du vill skapa XML för
 <input id="systemCount" type="number" min="1" step="1" value="1" required>
 </label>
@@ -46,14 +31,10 @@
 </section>
 <div id="workflow" class="hidden">
 <section class="hero workflow-hero">
-<div class="step-navigation" role="group" aria-label="Arbetssteg">
-<button type="button" class="step-button active" id="step1Button" aria-current="step">Steg 1 · Excelgranskning</button>
-<button type="button" class="step-button" id="step2Button">Steg 2</button>
-</div>
 <h2 id="selectedSystemTitle">Integrations Verktyg</h2>
-<p id="workflowDescription">Ladda upp tagglistan som Excelfil. Programmet använder valda scenarier för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.</p>
+<p id="workflowDescription">Ladda upp tagglistan som Excelfil. Programmet använder en gemensam ventilationsmall och jämför innehållet mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.</p>
 </section>
-<section class="panel" id="step1Panel">
+<section class="panel" id="step1Panel" role="tabpanel" aria-labelledby="step1Button">
 <div class="drop" id="drop">
 <h2>Välj tagglista</h2>
 <p>Excel(.xlsx). Originalfilen ändras inte.</p>
@@ -65,16 +46,24 @@
 </div>
 </div>
 <section id="systemProfilesPanel" class="system-profiles-panel hidden" aria-labelledby="systemProfilesTitle">
-<h3 id="systemProfilesTitle">Välj system och scenario för varje XML</h3>
-<p>Välj vilka systemprefix i tagglistan som ska få en XML och vilket driftkortsscenario som gäller för vart och ett.</p>
+<h3 id="systemProfilesTitle">Välj systemnamn för varje XML</h3>
+<p>Koppla varje XML till rätt systemprefix i tagglistan. Samma ventilationsmall används för alla.</p>
 <div id="systemProfiles" class="system-profiles"></div>
 <p id="systemProfilesStatus" class="small" aria-live="polite"></p>
+<div class="profile-template-preview">
+<div class="tgml-preview-tools">
+<span>Förhandsvisning av den gemensamma ventilationsmallen</span>
+<button type="button" class="button secondary" id="resetTgmlPositions" disabled>Återställ positioner</button>
+</div>
+<div class="tgml-preview" id="tgmlPreview" role="img" aria-label="Grafisk förhandsvisning av vald ventilationstgml-mall"></div>
+</div>
 </section>
 <div id="results" class="hidden">
 <section class="tag-group-questions" aria-labelledby="tagGroupQuestionsTitle">
-<h3 id="tagGroupQuestionsTitle">Kontrollera förutsättningarna först</h3>
-<p>Granskningen startar när frågorna som inte kan utläsas säkert ur tagglistan är besvarade.</p>
+<h3 id="tagGroupQuestionsTitle">Projektuppgifter</h3>
+<p>Komponenter och bindningar väljs automatiskt utifrån taggarna i listan.</p>
 <label class="rule-question" id="tagListFormatControl"><span>Format på tagglistan</span><select id="tagListFormat"><option value="kieback">Kiebackstandard</option><option value="standard">Vanlig tagglista</option></select><small></small></label>
+<label class="rule-question" id="fsNameControl"><span>FS-namn / fastighetsnummer</span><input id="fsName" type="text" placeholder="Exempel: FS3090" autocomplete="off" pattern="[A-Za-z0-9_-]+" required></label>
 <div id="ruleQuestions" class="rule-questions"></div>
 <div id="missingComponentQuestion" class="missing-component-question"></div>
 <div id="tagGroupChoices" class="tag-group-choices hidden"></div>
@@ -130,32 +119,31 @@
 </div>
 </div>
 </section>
-<section class="panel hidden" id="step2Panel">
+<section class="panel hidden" id="step2Panel" role="tabpanel" aria-labelledby="step2Button">
 <div class="step2-heading">
 <div>
 <h2>Skapa EBO XML</h2>
 <p>Utgår från tagglistan, DUC namnet och svaren i steg 1.</p>
 </div>
 </div>
-<div class="step2-inputs">
-<label class="rule-question"><span>FS namn</span><input id="fsName" type="text" placeholder="Exempel: FS3090" autocomplete="off" pattern="[A-Za-z0-9_-]+" required></label>
-</div>
+<section id="bindingOverviewPanel" class="binding-overview-panel hidden" aria-labelledby="bindingOverviewTitle">
+<h3 id="bindingOverviewTitle">Taggar och bindningar</h3>
+<p>Visar vilka taggar som kan bindas från den gemensamma ventilationsmallen eller komponentbiblioteket och vilka som saknar en användbar bindning.</p>
+<div id="bindingOverviewProfiles" class="binding-overview-profiles"></div>
+</section>
+<section id="componentLibraryPanel" class="component-library-panel hidden" aria-labelledby="componentLibraryTitle">
+<h3 id="componentLibraryTitle">Komponentbibliotek</h3>
+<p>Välj extra komponenter från biblioteket. Bara komponenter med verifierad bindning till ventilationsmallen och systemet kan läggas till.</p>
+<div id="componentLibraryProfiles" class="component-library-profiles"></div>
+</section>
 <select id="systemPrefix" class="system-select-hidden" aria-hidden="true" tabindex="-1"><option value="">Välj system</option></select>
 <p class="small" id="step2Status">Ladda upp tagglistan och starta granskningen i steg 1.</p>
 <div class="actions">
 <button type="button" class="button primary" id="buildEboXml" disabled>Skapa XML för import i EBO</button>
 <a class="button hidden" id="downloadEboXml" href="#" download>Hämta skapad XML</a>
 </div>
-<div class="tgml-preview-tools">
-<span>Dra komponenter i bilden för att justera deras position.</span>
-<label id="previewSystemControl" class="hidden">Förhandsvisa XML
-<select id="previewSystem"></select>
-</label>
-<button type="button" class="button secondary" id="resetTgmlPositions" disabled>Återställ positioner</button>
-</div>
-<div class="tgml-preview" id="tgmlPreview" role="img" aria-label="Grafisk förhandsvisning av LB11 BILD TGML-mall"></div>
 <details class="tgml-code">
-<summary>Visa XML mall</summary>
+<summary>Visa XML-mall</summary>
 <iframe class="tgml-source" src="templates/tgml/LBXX_MALL.xml" title="Källkod för EBO XML mallen"></iframe>
 </details>
 </section>
@@ -169,11 +157,9 @@
 </script>
 <script src="data/air-treatment-tags.js">
 </script>
-<script src="data/air-treatment-scenarios.js">
-</script>
 <script src="data/lbxx-objectset-template.js">
 </script>
-<script src="data/air-treatment-objectset-templates.js">
+<script src="data/component-library.js">
 </script>
 <script src="app.js">
 </script>

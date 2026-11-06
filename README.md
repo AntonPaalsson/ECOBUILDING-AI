@@ -14,9 +14,8 @@ Frontendens typografi och färger följer Word-mallarna: Arial som brödtext, Ar
 
 - `index.html` – sidans struktur
 - `assets/app.css` – layout, typsnitt och färger
-- `assets/ecobuilding-logo.png` – logotyp i sidhuvudet
-- `assets/init-background.png` – reservbakgrund
-- `assets/background-video.mp4` – loopande bakgrundsvideo
+- `assets/init-logo.svg` – Init-symbol med orange punkter i sidhuvudet
+- `assets/init-wave-dark.jpg` – statisk mörk vågbakgrund för sidan
 - `app.js` – inläsning, jämförelse och Excel-export
 - `data/framework-data.js` – taggar och larmklasser från ramverket
 - `data/lb11-svg-template.js` – SVG-förlaga som appen filtrerar mot uppladdade taggar
