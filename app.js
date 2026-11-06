@@ -9,7 +9,7 @@
   };
   const airTreatmentTags = window.ECO_AIR_TREATMENT_TAGS ?? [];
   const frameworkSystems = window.ECO_FRAMEWORK_SYSTEMS?.systems ?? [];
-  const systemPrefixPattern = /^(?:LB[A-Z0-9]{1,3}|AS[_-][A-Z]\d{2,4}|AS\d{1,3}|BEL_[A-Z0-9]+|(?:VV|VP|VS)\d{1,3}_MQ\d{1,3}|KA\d{1,3}_(?:B\d{1,3}|A\d{3,5})|(?:VS|MV|VV|KV|FA|MQ|KB|VPU)\d{1,3})-/i;
+  const systemPrefixPattern = /^(?:LB[A-Z0-9]{1,3}|AS[_-][A-Z]\d{2,4}|AS\d{1,3}|BEL_[A-Z0-9]+|(?:VV|VP|VS)\d{1,3}_MQ\d{1,3}|KA\d{1,3}_(?:B\d{1,3}|A\d{3,5})|(?:VS|MV|VV|KV|FA|MQ|KB|VPU)\d{1,3})[-_]/i;
   const projectQuestions = [
     { id: "ducName", label: "Vad heter DUC:en i BACnet/IP Network?", type: "text", placeholder: "DUCNAMN", hint: "Namnet direkt under BACnet/IP Network i EBO sökvägen." },
     { id: "schoolName", label: "Skolans namn", type: "text", placeholder: "Exempelskolan" },
@@ -36,6 +36,8 @@
       "Anvisning",
       "Framsteg",
       "IPLinkKonfig",
+      "BACnet",
+      "BACnet MS/TP",
       "Område",
       "Projektering",
       "Restsminne",
@@ -56,6 +58,8 @@
   let descriptionColumn;
   let assessmentColumn;
   let reviewedRows = [];
+  let resultFilter = "";
+  let resultSort = { key: "rowNumber", direction: "asc" };
   let reviewCompleted = false;
   let selectedTagGroups = new Set();
   let userSelectedMissingGroups = new Set();
@@ -844,6 +848,9 @@
           : reviewDescription(reviewValue),
       }];
     });
+    resultFilter = "";
+    resultSort = { key: "rowNumber", direction: "asc" };
+    byId("resultSearch").value = "";
     systemTagKeysCache.clear();
     relevantFrameworkTagsCache.clear();
     selectedTagGroups = new Set();
@@ -868,7 +875,20 @@
 
     renderMissingTags();
 
-    for (const item of reviewedRows) {
+    const query = normalize(resultFilter);
+    const visibleRows = reviewedRows
+      .filter((item) => !query || normalize(`${item.rowNumber} ${item.name} ${item.description} ${item.result.label} ${item.result.reason}`).includes(query))
+      .sort((left, right) => {
+        const leftValue = resultSort.key === "rowNumber" ? left.rowNumber
+          : resultSort.key === "assessment" ? `${left.result.label} ${left.result.reason}` : left[resultSort.key] ?? "";
+        const rightValue = resultSort.key === "rowNumber" ? right.rowNumber
+          : resultSort.key === "assessment" ? `${right.result.label} ${right.result.reason}` : right[resultSort.key] ?? "";
+        const comparison = typeof leftValue === "number" && typeof rightValue === "number"
+          ? leftValue - rightValue
+          : String(leftValue).localeCompare(String(rightValue), "sv-SE", { numeric: true, sensitivity: "base" });
+        return comparison * (resultSort.direction === "asc" ? 1 : -1);
+      });
+    for (const item of visibleRows) {
       counts[item.result.kind]++;
       const row = document.createElement("tr");
       row.className = item.result.kind;
@@ -886,6 +906,27 @@
         if (index === 3) cell.className = "status";
         row.appendChild(cell);
       });
+      if (item.autoResult?.kind === "typo") {
+        const decision = document.createElement("div");
+        decision.className = "review-decisions";
+        const actions = [
+          ["approve", "Godkänn", "good"],
+          ["keep", "Behåll gul", "typo"],
+          ["flag", "Markera röd", "bad"],
+        ];
+        for (const [value, label, kind] of actions) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "review-decision-button";
+          button.dataset.row = String(item.rowNumber);
+          button.dataset.decision = value;
+          button.textContent = label;
+          button.setAttribute("aria-pressed", String(item.manualDecision === value));
+          if (item.manualDecision === value) button.classList.add(`selected-${kind}`);
+          decision.appendChild(button);
+        }
+        row.lastElementChild.appendChild(decision);
+      }
       tableBody.appendChild(row);
     }
 
@@ -927,7 +968,7 @@
           const reviewValue = getTagListReviewValue(item);
           // Use the same alarm-class parser as the assessment. It also accepts
           // the category variants that are not caught by the stricter tag helper.
-          const alarmCategory = reviewDescription(item.description).reason.startsWith("Larmklass ");
+          const alarmCategory = isAlarmClass(item.description);
           if (isStandardTagListReview()) {
             // Larmkategorier ska alltid få Description som Name, oavsett listformat.
             item.name = alarmCategory
@@ -940,6 +981,11 @@
               : description.split(/\s+/)[0] ?? description;
           }
           item.result = reviewDescription(reviewValue);
+          item.autoResult = { ...item.result };
+          item.manualDecision = "";
+        } else if (isAlarmClass(item.description)) {
+          item.name = item.description;
+          item.result = reviewDescription(item.description);
         } else if (item.result.kind !== "included") {
           const token = item.description.trim().split(/\s+/)[0] ?? "";
           const prefix = token.match(systemPrefixPattern)?.[0]?.slice(0, -1).toUpperCase() ?? "";
@@ -956,6 +1002,7 @@
           }
           item.result = reviewDescription(item.description);
         }
+        if (!item.autoResult) item.autoResult = { ...item.result };
         if ((index + 1) % 25 === 0 && index + 1 < total) {
           runButton.textContent = `Granskar ${index + 1} av ${total}…`;
           await new Promise((resolve) => requestAnimationFrame(resolve));
@@ -1342,6 +1389,8 @@
     const token = (description.match(/^[^\s]+/)?.[0] ?? "").replace(/[,:;]$/, "");
     const prefix = token.match(systemPrefixPattern)?.[0] ?? "";
     const sourceTag = token.slice(prefix.length);
+    // These are intentional paired names in the tag list, not framework wildcards.
+    if (/^(?:ST21_ST22_.+|GX71_GX72_(?:L|SL))$/i.test(sourceTag)) return `${prefix}${sourceTag}`;
     if (/^(?:TF1_TF2|FF1_FF2)_/i.test(sourceTag)) {
       const equivalent = sourceTag.replace(/^(TF1_TF2|FF1_FF2)_/i, (_, fans) => `${fans.startsWith("FF") ? "FF1" : "TF1"}_`);
       if (getRelevantFrameworkTags().some((candidate) => frameworkPatternMatches(candidate, equivalent))) {
@@ -1380,7 +1429,7 @@
       const token = value.trim().split(/\s+/)[0];
       const prefix = token.match(systemPrefixPattern)?.[0];
       const systemName = prefix?.slice(0, -1).toUpperCase();
-      return systemName && !/^AS(?:[_-]A|\d)/i.test(systemName) ? [systemName] : [];
+      return systemName && !/^AS(?:[-_]|\d|$)/i.test(systemName) ? [systemName] : [];
     }))].sort();
   }
 
@@ -1577,14 +1626,20 @@
     }
     const normalizedValue = normalizedInput;
     // Framework suffixes use a single-fan root; double fans add TF1_TF2 or FF1_FF2.
-    return matcher.test(normalizedValue) || (
+    const serialAliases = [];
+    const pairedSerial = normalizedValue.match(/^ST21_ST22_(.+)$/);
+    if (pairedSerial) serialAliases.push(`ST21_${pairedSerial[1]}`, `ST22_${pairedSerial[1]}`);
+    const pairedGx = normalizedValue.match(/^GX71_GX72_(.+)$/);
+    if (pairedGx) serialAliases.push(`GX71_${pairedGx[1]}`, `GX72_${pairedGx[1]}`);
+    return matcher.test(normalizedValue) || serialAliases.some((alias) => matcher.test(alias)) || (
       /^(?:TF1_TF2|FF1_FF2)_/i.test(normalizedValue) &&
       matcher.test(normalizedValue.replace(/^(TF1_TF2|FF1_FF2)_/i, (_, fans) => `${fans.startsWith("FF") ? "FF1" : "TF1"}_`))
-    );
+    ) || /^GX71_GX72_(?:L|SL)$/.test(normalizedValue);
   }
 
   async function renderTgmlPreview(objectSetOverride = null) {
     const preview = byId("tgmlPreview");
+    if (!preview) return;
     try {
       const profiles = getSystemProfileSelections();
       const requestedPrefix = byId("systemPrefix")?.value || activeSystemPrefix;
@@ -2810,13 +2865,6 @@
     updateStep2Availability();
     renderTgmlPreview();
   });
-  byId("resetTgmlPositions").addEventListener("click", () => {
-    tgmlPositionOverrides.clear();
-    generatedObjectSetForPreview = null;
-    invalidateEboDownload();
-    updateTgmlPositionControls();
-    renderTgmlPreview();
-  });
   byId("buildEboXml").addEventListener("click", () => {
     buildEboObjectSet().catch((error) => {
       byId("step2Status").textContent = `Kunde inte skapa XML: ${error.message}`;
@@ -2827,6 +2875,38 @@
       console.error("Granskningen misslyckades:", error);
       window.alert(`Granskningen kunde inte slutföras: ${error.message}`);
     });
+  });
+  byId("resultSearch").addEventListener("input", (event) => {
+    resultFilter = event.target.value;
+    renderResults();
+  });
+  document.querySelectorAll(".sort-button[data-sort]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.sort;
+      resultSort = {
+        key,
+        direction: resultSort.key === key && resultSort.direction === "asc" ? "desc" : "asc",
+      };
+      for (const sortButton of document.querySelectorAll(".sort-button[data-sort]")) {
+        sortButton.setAttribute("aria-label", `${sortButton.textContent}, sortera ${sortButton.dataset.sort === key && resultSort.direction === "asc" ? "fallande" : "stigande"}`);
+      }
+      renderResults();
+    });
+  });
+  byId("rows").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-decision][data-row]");
+    if (!button) return;
+    const item = reviewedRows.find((row) => String(row.rowNumber) === button.dataset.row);
+    if (!item?.autoResult || item.autoResult.kind !== "typo") return;
+    item.manualDecision = button.dataset.decision;
+    if (item.manualDecision === "approve") {
+      item.result = { kind: "good", label: "Godkänd manuellt", reason: "" };
+    } else if (item.manualDecision === "flag") {
+      item.result = { kind: "bad", label: "Avvikelse markerad manuellt", reason: "" };
+    } else {
+      item.result = { ...item.autoResult };
+    }
+    renderResults();
   });
   byId("pick").addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", async () => {

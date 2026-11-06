@@ -208,8 +208,16 @@ p { color: var(--muted); line-height: 1.55; }
 .red { color: #b13e42; }
 .included-count { color: #356b8e; }
 .tablebox { overflow: auto; max-height: 520px; border: 1px solid var(--line); border-radius: 3px; }
+.result-search { position: sticky; top: 0; z-index: 3; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 52px; padding: 10px 11px; border-bottom: 1px solid var(--line); background: var(--white); color: var(--charcoal); font-size: 12px; }
+.result-search input { width: min(360px, 60%); padding: 7px 9px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--charcoal); font: inherit; }
 .table { width: 100%; border-collapse: collapse; font-size: 12px; color: var(--charcoal); }
-.table th { position: sticky; top: 0; background: #e8e9e3; text-align: left; }
+.table th { position: sticky; top: 52px; z-index: 2; background: #e8e9e3; text-align: left; }
+.sort-button { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; font-weight: 700; text-align: left; cursor: pointer; }
+.sort-button:hover { color: var(--orange); }
+.review-decisions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.review-decision-button { padding: 3px 6px; border: 1px solid #9a7a2e; border-radius: 3px; background: transparent; color: inherit; font: inherit; font-size: 10px; cursor: pointer; }
+.review-decision-button:hover, .review-decision-button[aria-pressed="true"] { border-color: var(--green); color: var(--green); }
+.review-decision-button.selected-bad { border-color: #b13e42; color: #b13e42; }
 .table th, .table td { padding: 9px 11px; border-bottom: 1px solid #e7e8e2; vertical-align: top; }
 .table td:nth-child(2), .table td:nth-child(3) { min-width: 220px; }
 .table tr.good { background: #e5f2df; }
@@ -297,6 +305,11 @@ select option { background: #202329; color: var(--charcoal); }
 .red, .binding-detail-missing, .binding-status-missing { color: #ff9292; }
 .included-count { color: #91c9ee; }
 .table th, .binding-overview-table th { background: #30343a; color: #f0f1f3; }
+.result-search { border-color: var(--line); }
+.result-search input { background: #17191d; color: var(--charcoal); border-color: #4a4e55; }
+.review-decision-button { color: #ffd36c; border-color: #806a35; }
+.review-decision-button:hover, .review-decision-button[aria-pressed="true"] { color: #8fda7a; border-color: #52ae32; }
+.review-decision-button.selected-bad { color: #ff9292; border-color: #9e3539; }
 .table th, .table td, .binding-overview-table th, .binding-overview-table td { border-color: #3a3e44; }
 .table tr.good, .binding-overview-table .binding-row-available { background: #243526; }
 .table tr.typo, .binding-overview-table .binding-row-selectable { background: #3c341f; }

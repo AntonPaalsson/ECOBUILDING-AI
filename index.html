@@ -50,13 +50,6 @@
 <p>Koppla varje XML till rätt systemprefix i tagglistan. Samma ventilationsmall används för alla.</p>
 <div id="systemProfiles" class="system-profiles"></div>
 <p id="systemProfilesStatus" class="small" aria-live="polite"></p>
-<div class="profile-template-preview">
-<div class="tgml-preview-tools">
-<span>Förhandsvisning av den gemensamma ventilationsmallen</span>
-<button type="button" class="button secondary" id="resetTgmlPositions" disabled>Återställ positioner</button>
-</div>
-<div class="tgml-preview" id="tgmlPreview" role="img" aria-label="Grafisk förhandsvisning av vald ventilationstgml-mall"></div>
-</div>
 </section>
 <div id="results" class="hidden">
 <section class="tag-group-questions" aria-labelledby="tagGroupQuestionsTitle">
@@ -102,13 +95,14 @@
 <ul id="missingTagsList" class="missing-tags-list"></ul>
 </section>
 <div class="tablebox">
+<label class="result-search">Sök i tagglistan<input id="resultSearch" type="search" placeholder="Sök tagg, beskrivning eller bedömning" autocomplete="off"></label>
 <table class="table">
 <thead>
 <tr>
-<th>Rad</th>
-<th>Name efter korrigering</th>
-<th>Description (källvärde)</th>
-<th>Bedömning</th>
+<th><button type="button" class="sort-button" data-sort="rowNumber">Rad</button></th>
+<th><button type="button" class="sort-button" data-sort="name">Name efter korrigering</button></th>
+<th><button type="button" class="sort-button" data-sort="description">Description (källvärde)</button></th>
+<th><button type="button" class="sort-button" data-sort="assessment">Bedömning</button></th>
 </tr>
 </thead>
 <tbody id="rows">
