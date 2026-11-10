@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+    Height="85.0" Left="815.0" Name="GX71 (NY)" Top="415.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+        Height="85.0" Id="Givare" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="45.0" ContentWidth="20.0"
+            Height="45.0" Left="0.0" Name="Givarsymbol ner" Top="0.0"
+            Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4" Top="18" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIiSURBVEiJ7ZbRcpswEEUPhtSuTeskzv//YqduQ2OwIQ/cRWtZYEjzGM3sCGNJR3t3tQK+Wrplsg9N/AjI5nXOZrV8IWwFPMgKvZsNWwI02DdgA2yBNcHT9jOBJuGDQD+BvZ5Xgl3mQosFG1sDJfAsKHrXAWcHnpT4HjATzLzbR8BCsEb93SSaApqUOfBdkEdBSzemBk7qW4K0Seg9D03KnUB7PW/cojXwJmhDL+t5asFU81lpcTvQe7ijlzjn+jw2BGlHE2gMaOdtK8hB0B/ahJ1Bs04QH8+WhKwpYKYFN/RxO8j29LEstKHMjYeQpbWAyYyNgV7Knbx6AZ4IUnqYzfHQSWljYCzli6ClNuHjFsOsvzioFYTB0zyaXNBnZSzlhiBl3Axq/1khqAVNAuOsfOK+lGNgS6DG2SCtB1qiWFYeCFkZSzkGs2fzspGnQ61duUG5gKVA25kwD801x4p8qTWHNUwmXzPXGrQEloKuZb5IZHESxJ8Oi27zxPibTxFfS+3QvgH/1KfO6RjI1mg018yKOnCdNF7anOustJ23rje7EAr2CaiAI/BL9kfvW6Ar3IIX/XEk3OQ1fQL4cxhvxMBneVQBvwU7as2hzBXRxAZ4JVT/ygEt+PEtYR6alBXwV1YRHf44Jv7LzGea3RBTQKsuJ8KFfFNpUkkQx9LHdEpSH0+zmywfyzpfNVLmWzdikDhScyvI1O940UUfxl/tv9s71nW5PwTZW/8AAAAASUVORK5CYII=]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 0,37 c 1.5,3 3,5 10,5 7,0 8.5,-2 10,-5 L 10.5,22.5 V 3.95 C 12.75,3.5 12.5,0 10,0 7.5,0 7.25,3.5 9.5,3.95 V 22.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="45.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="0.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="43.5"><![CDATA[GX71]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="SL.AlarmState" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="20.0"
+            Top="20.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="LT.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="SL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GX71 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFlSURBVFhH7ZTRSgJBFIbn0cUrbwQNFQVbhA0KlDASslW8KVm2YIW8MLIwW2WXAheKFF30jzkepR5g1i7mg2H2/AzMN8PZEWD6/T4ymQzK5TIn8bAX8DwPqVQK9Xqdk3jYC0gSiQR6vR5X8aAFtMD/EQjDkASazSYn8UAC6/UahmFgMBigVCrRmxAXJGDbNmq1GgW+76NYLGK1WlGtGjGbzZDNZrFYLDgC2u02LMviSi1CXv1wOORySxRFyOfzCIKAE3WISqXCn3+R/WCaJlfqELlcDo7j0Kl3yD4oFApwXRebzYZTNQh5Utl0yWSSfkM50uk0Wq0W5vM5L1OHeJsGGI09TCZTjEav6DouOrd3eHoZ04LPr2+aVSEurBtMgw8cn17SmPjvuOrYODm/Rvf+gWaViCOjisfnMaRItdGhUG66XG7fAZmrRBhnDTrpTkDexu9NlQvwfDC0gBbQAlpACxxYAPgBXbqss6eHv1EAAAAASUVORK5CYII=-->

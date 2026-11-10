@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="250.0" ContentWidth="45.0"
+    Height="250.0" Left="330.0" Name="RVÅ  (NY)" Top="195.0"
+    Version="1.0.0-rc1" Visibility="Visible" Width="45.0">
+    <Component Clip="False" ContentHeight="250.0" ContentWidth="45.0"
+        Height="250.0" Id="Värmeväxlare" Left="0.0" Name="" Top="0.0" Width="45.0">
+        <Component Clip="False" ContentHeight="220.0"
+            ContentWidth="45.0" Height="220.0" Left="0.0"
+            Name="Roterande värmeväxlare" Top="15.0" Version="1.0.0-rc1" Width="45.0">
+            <Image Height="228.0" Left="-4" Top="-2" Width="53.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADUAAADkCAYAAAA4hGz6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANDSURBVHic7dbbbtNAFIXh3zm29ISA939EVBRok+ZgLmZ2ZjKNi7ggzkLrl0axWlfan8d22vFx3cDxWPUDxycNDdo1a1Idj1Wf16E6jnXSuSEDMQVmeU3zmgz8zb8uMPu8dnntKchj7YAdafg5sARu8lpScJfesdiNwGyAdV4bYJt/d4S1z8wUWACfgIe87kmwQF16t+pd2pEwP4FVXi/AGxVslv8wbrk5CfQZ+Ao8AXckVA0aY6cCtqZc6OmZc/oaNSXdZg/AF+Ab8AjckvBjvizqoW8pdw6UHYydOkHN8skPpJ16JO3SgvFeEG095QJDuR1fKbcgM8rVD9Q9CXNLAsXL4RqKWRckwB3l8YhnqwtxvMKX1apvuWuqfv7jDb2kPPMnz0l8L825XlAUsHre49fNpDlp7C/Zv2lw5klzUruuucF5Jx+cqNDZeVvUf5FRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaVSi+qrpdDZeScDJyjAzs3bQ0H1wAHY53VAA9XODCRUCPfADtjmz2uGBaied59/3sdOhXgDrPPnluuEBWjL6bzH3ZpRdmqXT/iV1w0wBRakHe0uO/vZAvTG6axr0vw90M+qkwO1IoHid4d8HLAxcHHh45Z7BX4Az6R5axQ1Km6/FWmHyCfeUXZtDFgL2pB25xn4nueN2+8dKu7Tl/yzPekK3FN2roZdqvott6Xcdqu8Xmie/3a4jjT4HFiSMDf5OFBj7VSg4nmqX2jHXWJguI60G1MSJDBj7FJU79au+Xz3hh4asGvWmC+JqH62PvzP509DdgPHY9UPHJ/0G/YL4N1ZbR7NAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 7,0 h 31 c 3.878,0 7,3.122 7,7 v 206 c 0,3.878 -3.122,7 -7,7 H 7 c -3.878,0 -7,-3.122 -7,-7 V 7 C 0,3.122 3.122,0 7,0 Z M 32,69.598076 33.5,67 36.098076,68.5 M 10.32734,77.41221 c 3.381818,-34.94758 11.77255,-49.31935 18.430329,-31.56772 6.65778,17.75163 9.395709,61.79571 6.013889,96.7433 -3.381818,34.94758 -11.772548,49.31934 -18.430328,31.56772 -2.567414,-6.84549 -4.687771,-17.94772 -5.998313,-31.40725 M 4,110 h 18.5 m 15,0 H 41"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="220.0" Left="0.0"
+            Name="TargetArea ContextMenu"
+            Tooltip="Roterade värmeväxlare" Top="15.0" Width="45.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="22.5" Name="Id" Stroke="#304760" TextDecoration="None"
+            Tooltip="Summalarm" Top="0.0"><![CDATA[RVÅ]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="LL_L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="SL_L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="22.5"
+            Name="Styrsignal" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Styrsignal" Top="238.0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="SS.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="10.0"
+            Top="10.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="SS.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="0.0"
+            Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_G.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LG.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LT.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="SL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="RVÅ  (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFfSURBVFhH7Zcxa4NQFEb96Q4ZFBJwEBIhQ4cGTLEgRVILAYcgGTI4pmBB2kBbcEipLZJI+ZrvoSHp7s1QDzzwqXCP7+q9Tw0HPotvZC+veHx6xm635ykxtPV6jdn9A67dW1xNbnAXzJDneX25fbThcIgois7GYDBAWZb1Le2iMeBf+v0+ttttPWuXTuAokCQJ0jRVx+ICWZZhNBrBtm0URSEvEAQBVqsVfN9XKyEuMB6PsdlslARlxAUMw1DfPYsSUyEqEIahCkoY1LIs+RVoqKoKvV7vcgJE1/V/JsCAHFx6dsFm3qXgIgKsBawJogKsA40Eg4rXgfl8rl5AwnLMsiyeAj41A7IRsSGJC7iuq/oA07FcLuUFmi7YrIS4AGHuF4uFOr6IwCmdgKjAdDpVm9LTYZqm2pxKoHmeB8dxzkYcx/Xl9lF/xyR5P/whf+zqmRxHgbevPcrqp55JAfwCr49zE/UcWSUAAAAASUVORK5CYII=-->

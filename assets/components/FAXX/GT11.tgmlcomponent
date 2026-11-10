@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="65.0" ContentWidth="20.0"
+    Height="65.0" Id="" Left="615.0" Name="GT11" Top="350.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="65.0" ContentWidth="20.0"
+        Height="65.0" Id="Givare" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="25.0" ContentWidth="20.0"
+            Height="25.0" Left="0.0" Name="Rumsgivarsymbol" Top="40.0"
+            Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4.0" Top="-2.0" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIaSURBVEiJ7ZZdc9owEEWPDaEJaZN2+v//YQmkfBQcbPqgXXQtJGMyeclMdmbHjLH3aK+uJMNXfPaortyvCqlxKiRyPce0AKuASZK1XRXqxVugs6vmBTQdbWWF74AZ8M1yZoNzuAK9+BFogINlA7zZQE4K0N8Tg82B75Zz4N7uDwHfgD2wAzaWO7vfOlQl9c4egZ/AL+BZgFN7pk6AneVRgK9WqwK2MrAecGLyPQG/LZ+kOweVTNPZ4OaEKahlIOc5TYH3wA/r7Nm6dSnJwBTq9ab2nHbcWF4AZwZ9oD9vdQHkkQ5Ea3i3kCmka8gLlboqgfX5tF4PqE7bEyRo0xeuhJujsRoHokuzwD3BVWui9mOhCttZjY3VPAMnyUu6y9xJlhyqsM662QBLYAGsDH70QadAf1mhM6JxhoAt8I+wBhfAi3XpKmU71NAtTt2aW4ctYb7WBloYeK/dDXWo/ys0lVal3BKk/EOQcmv3e/M/1CFczqdvb+le6lK+EKU8kDHcENAfrA2kJ4a72125Jhrl1QbQk/IWYGog35QhSrkiSLmkIOUYoEZF7NIN1BFM8Ze+K7NSjgFWxK3JD2bfnGsrqmtOXVmMsR36aPUAbohGWRn84oR/DzC3mZ+IzlwyQspbgCotxHW3I8zfhujKq5H7akvDQUcr7GaB+MHkS+DqJn/rWefGcWX8a21w3t4L9Odz36W3nJlf8bHxHzH74WtfILtRAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 0,8 C 1.5,5 3,3 10,3 17,3 18.5,5 20,8 L 10,23.25 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="25.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="40.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None" Top="29.0">
+            <Expose ExposedAttribute="Content"
+                Name="ID"/><![CDATA[GT11]]><Bind Attribute="Stroke"
+                DynamicUpdates="Enable" Name="GF_L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10"
+            Name="Börvärde" Stroke="#007626" TextDecoration="None"
+            Tooltip="Beräknat börvärde" Top="0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="BD.Value" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10.0"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Mätvärde" Top="14.0">
+            <Bind Attribute="Content" Name="MV.Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Börvärden" Left="10.0" Top="10.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #börvärden"/>
+            <Metadata Name="Icon" Value="Settings"/>
+            <Metadata Name="Text" Value="Börvärden"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="BD.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="BNH.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="30.0"
+            Top="30.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #fläktreglering tilluft"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="AFS.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GT11"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJHSURBVFhHxZbfqxJBFMfnT71/Qr35VPQQPXRFXVBLUvEHt0hCEsXQdKUQDYlKL2l61W5lKi5uimb+/MaZcJvVoBdHPzDsnjnunu+cc3YchhPDRGO2/IV72Yfwl56J01IxCaDg7eE33E4peNf5KLqkYRJAgYlk7dXRsmASYEme86vafIPoZVp0ScMk4PH7ONyFC5w9taA7HoguaZgEENQD+s/R7rQ09gQcG5OAqjbDjZdfYcl1MFuuRZc0TALO4p+hz1aIftL5OAbmryDX4Vf1egx/WRNd0tgTQKlPNkd8HIO9HiAR1Acn6YFTcHoBii+CF2oRz1OvcfOOgvsPLlD6UIU2/IG7SoD/qFy9gu9JfPfZg8Az0P7ynRskotP7swXnS2W4Q9G9+0PD6MW3zh9xQxRAiEGlCcjm3/K0EycRULu6Ngyq+3y+MGxRjHh/SNhms0Gv10MikYDP54PX6+UjGAyiUChgNJK7IbFKpQKXy8WDtdttYzQaDcRiMXg8HgwGclZPMIfDgeVyuTtv0O124XQ6sV7L2RmZ2+3+rwDK0HQ63XUdBBYOh5FO//v8R8IoeLFYxGLxtzkPCavX66Ay0Ep3yeVyCIVCGA6HoGaVARuPx8hms7zOYimo8Ww2G1qtlrTVE2y1WvHPMBAIIJVKGQ7qDVVVpdV+C/8vmM/nqNVqsNvtvBT5fB5+vx+apknr/i1cANWXSpHJZKAoCqxWK5rNptTUbzHOA1SKfr+PSCTCNyVKvazGEzEdSGjFuq5jMplIT/2W3z9EkQ/DOa1EAAAAAElFTkSuQmCC-->

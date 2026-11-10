@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="40.0" ContentWidth="130.0"
+    Height="40.0" Id="StatusButton" Left="0" Name="MS_L"
+    PreventAnimation="true" Top="0" Version="1.0.0-rc1" Width="130.0">
+    <Bind Attribute="Visibility" DynamicUpdates="Enable" Name="Value" PreventDefault="True">
+        <ConvertValue AttributeValue="Visible" SignalEqualTo="1">
+            <Expose ExposedAttribute="SignalEqualTo" Name="SO1 Värde Till"/>
+        </ConvertValue>
+        <ConvertValue AttributeValue="Hidden" SignalEqualTo="0">
+            <Expose ExposedAttribute="SignalEqualTo" Name="SO1 Värde Från"/>
+        </ConvertValue>
+    </Bind>
+    <Image Height="48.0" Left="-4" Top="-2" Width="138.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAIoAAAAwCAYAAADO1uJ3AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGfSURBVHic7d3BagIxFEDROzalti6E0v//xy6qFlvTRRJNx1HeqlByD8iYIYLgZXQ2z4lr08I5jSf3i2n2fP7QePLC4xzDBKyAB+CxHlcYy2gycAK+gWM9noCc6oaJEsczsAHWlGAMZSyZEsgB+AD29VxOXL5mHoEX4BXYAk+UeIxlDJlyBfkE3uv6q56blq4oW+CNEo2hjKOFsqvrHeWqMgH0oazqek2JZFPXhjKGdgWB0kCi+52auo0tlvajNmEoI2m3w+1G5tfNTFp4gbfJ47r5ma/+/r3oPzIUhRiKQgxFIYaiEENRiKEoxFAUYigKMRSFGIpCDEUhhqIQQ1GIoSjEUBRiKAoxFIUYikIMRSGGohBDUYihKMRQFGIoCjEUhRiKQgxFIYaiEENRiKEoZGk+ytXoSA3h7ueeZhtPXMZHtjFNDtIZQz/cr3VwDiZ1m05144HLwDeH/Y2jH/Z3oLRwjiXNNu0poyPB8aGjmY8P3df1OZT2nXSk1DTVowOJx9MPJN7V5xnIjjhX7+aIc/80QXN3/zShZyCC2S3yDw/jZkGoPK9lAAAAAElFTkSuQmCC]]></Image>
+    <Rectangle Fill="#E47F00" Height="40.0" Left="0.0" Name="IconBg"
+        Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+        StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0" Width="130.0"/>
+    <TextBox Fill="None" FontFamily="Arial" FontSize="12"
+        FontWeight="Bold" Height="40.0" HorizontalAlign="Center"
+        Left="0.0" Name="Larm" Stroke="#FFFFFF" Top="0.0"
+        VerticalAlign="Middle" Width="130.0"><![CDATA[Aggregatet styrs manuellt]]></TextBox>
+    <Metadata Name="Name" Value="MS_L"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

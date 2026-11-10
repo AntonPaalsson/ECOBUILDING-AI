@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="75.0" ContentWidth="35.0"
+    Height="75.0" Left="482.0" Name="EXP (NY)" Top="41.0"
+    Version="1.0.0-rc1" Width="35.0">
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="25.0" Left="15.0" Name="Rör Kyla" Top="55"
+        Version="1.0.0-rc1" Width="5.0">
+        <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="55.0" ContentWidth="35.0"
+        Height="55.0" Id="Expansionskärl" Left="0.0" Name="" Top="20.0" Width="35.0">
+        <Component Clip="False" ContentHeight="40.0" ContentWidth="35.0"
+            Height="40.0" Left="0.0" Name="Expansionskärl" Top="0.0"
+            Version="1.0.0-rc1" Width="35.0">
+            <Image Height="48.0" Left="-4.0" Top="-2.0" Width="43.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACsAAAAwCAYAAACITIOYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK4SURBVGiB7ZnbcqMwDIb/QI67bS/a93/G7mSb5gCFXlg/CFUGMgHSzKAZDU1iow9huzoscJ0sen4Xk7Lnd72Nx8YsHIX5u01KBVY6CnSAtxkhRCKamivVwreBlgAKpV/mWhj4TlgNuRRdi65EU6Uaug1WA1Iz0YtoLupCLyOgBNwC+ANgJ7oVWD5EH+96XiVUBuAE4Cj6KZ8JzvlR2KVAPQF4Ef0r0Bv5nV7lG+DcmNAgPUbP5gDOAnkAsBf9EOg8BkvDawDPAF5FCUtQ680uUAvsefkssDuENwc4a9jCpgheJewbgoc16DWAfcALNPcEUK/jTAFXsHqtbgTwWa47BXorJIX3KNE8WSCQBwD/EdZxLuNLbxms5Ck3qDdT126/FZonz0rs0ssNu4kzmWdpip9rcyzRx6W1XYmF1ROngLzKtgf7a2WGHUtm2LFkhh1LNGwsE5haohyJGZCiDgHv+U/B5UjMAMYF6zsAaw4dhVUc2rMMuhlkM5CYUhhIbYRjK1yVZ3llKsOoh080pWjPkqMKTx/yNGB6cUFIMTKEHKl3AWIgYX6WCQcTx0LDlqhzoSNCssaUYkop0Mx4z1BJY4I6IftC7dkLas9O5d1OjsQZmN8B1AP+wZE4A239aWqJcjzkafAQMsOOJTPsWPLwsPc8a1ttW1iWIFnsba3xDyi6Zmttu7AczNooo69ojX9gSJbtz8p2AzhVE23+01buvBVav2qGhCeE8vw/AO8I9dkTVKiaendS8PrGRce1S223xjZA9gL5LsAHmDBVF5N5w4s8IWTwJ+oKOHMi2wvTD+eJboBoaL72o9jcI3j0Qzgay8Aa8FpLO9TtJd1a8grOfVpL2rPcG2wrMfBnhtDYJ0M27WL3s15ta9oxnXI39K3t0AWano2Jt+4HaYfGxvzqRnPf8ZO18L8BHk1LEeRnaUMAAAAASUVORK5CYII=]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 3.5,21.5 h 28 m -28,-3 h 28 M 13.5,0 C 6.852,0 1.5,2.23 1.5,5 v 13.5 h -1 C 0.223,18.5 0,18.723 0,19 v 2 c 0,0.277 0.223,0.5 0.5,0.5 h 1 V 35 c 0,2.77 5.352,5 12,5 h 8 c 6.648,0 12,-2.23 12,-5 V 21.5 h 1 c 0.277,0 0.5,-0.223 0.5,-0.5 v -2 c 0,-0.277 -0.223,-0.5 -0.5,-0.5 h -1 V 5 c 0,-2.77 -5.352,-5 -12,-5 z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="40.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Expansionskärl"
+            Top="0.0" Width="35.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="20" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="-15"><![CDATA[EXP1]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="10.0" Name="" Top="10.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Rotate Angle="-360.0" Center="0.499993908113674,0.499995961050545"/>
+    <Metadata Name="Name" Value="EXP (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIJSURBVFhH7ZZLaxpRFMfnq3XRD9Gv0EVXXRfRlVUUKnGiVlFbijLSqAQkKhEfwcWQQrsxlkJIbCUwglYd3/oP5zAOeZg21Vu66PzgwJ07zLm/e+e+JPxjLAFTQDk8hvq5wfHjSsOJ+sUsy+8OcHxyytEf6HgTUYyvdscUoKTU4Nm3C34mIQrilfstvyOR88u2WS8CU4CS34SEXPsfuEwCazEik68apd0xBd5/PGKJ9XDT0FNvqXy3Qfo9org1CVerFcdyubwX63eiYYFer4dMJgOv1wubzfZgBINB1Go1zGYz/lgEUrPZhMfjgaqq6Ha7RvVmWq0WcrkcAoEAJpOJUbsbkizLnPhPSCaTLCwCye12/7bnd0mlUqhUKkLmxNYC5XLZEhAj4HQ6Ua/XUSqVHh3hcBj5fF6MQCgUQrFYRDQafXSQsMPhwGKxMNJsj0SJaEg3NfRQ+P1+RCIRTKdTI832SC6Xa6s5UCgUxIyAtQosgUQigXQ6jfl8blT9Gk3T4PP50Gg0xAi0223EYjHY7XZeXvF4fOPmQ0cw3RdoxOh5NBoZKXZDop53Oh3uEZ31iqLwTrfveQ759TME9xy85rPZLKrVKh/duq4L6T3BNyJKRiLj8RjD4RD9fh9Xn17ge+UJtPMDDAYD7jFtPHQ9E8mtO+FN9K8v8fP0KaadI6Pm72AJ/O8CwDUFNUiji/0iDAAAAABJRU5ErkJggg==-->

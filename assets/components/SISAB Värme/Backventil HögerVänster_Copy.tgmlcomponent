@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Component Clip="False" ComponentCounter="3" ContentHeight="15.0"
+    ContentWidth="20.0" GridSize="10" Height="15.0" IsStandard="False"
+    Left="-4.5" Name="Backventil HögerVänster_Copy"
+    SymbolVersion="Backventil HögerVänster-1.0.0" Top="-3.0" Width="20.0">
+    <Rectangle Fill="#F9F8FB" Height="15.0" Left="2.0" Stroke="None"
+        StrokeWidth="0.0" Top="-0.5" Width="15.0"/>
+    <Image Height="23.0" Left="-4.5" Top="-2.5" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAXCAYAAAAYyi9XAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFMSURBVEiJ7ZXRbsIwDEVPQ0sZaJP2/x85aRuDtjTdA9etSdOhIfGARCQrkPr62InTwnM8+ij+WCuAwa0PGd9rsWa6MiMqgCADiBLFBbCBgtOabqbxQIOVwFpzAfTASdZLPCSalayUDfJvNY/QtMIg2A7YKsgJaICjCxCdvyVYy0oldnCV9rkKLUAl4DuwkeAA/MgaoHP6Wslt5b+Sz4cSbJeAfks3wBvwqiQawfaaW2kqgWxHam3dl5IsXdzslnporUBrZbiTWZXoWVpdp4Q8bBwp0EPtfCoFgqlZ7P8aeBGsdpUEMrAloHVh5NwgQRUemc7SKrQOtMDWZJHLbl4EmpN15l6Q/55hoxgzqAemsE8FvrVLs9C0wqhg3/qdu4c9U5sHl4y/h1FrHdOdBS4P9Z5vmlGTdpEPYM9ufZcOmQTv9rXw2mu653iw8QvDTJD0Dde/CgAAAABJRU5ErkJggg==]]></Image>
+    <Path Fill="#FFFFFF" Name=""
+        PathData="M1.5,3.0214844999999997 L1.5,10.978516999999997 9.5,7.5 17.5,10.978516999999997 17.5,3.0214844999999997 9.5,6.5 1.5,3.0214844999999997 z"
+        Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Backventil"/>
+    <Component Clip="False" ContentHeight="10.0" ContentWidth="5.0"
+        Height="10.0" Left="7.0" Top="2.0" Width="5.0">
+        <Line Name="" Stroke="#808080" StrokeWidth="0.5"
+            Visibility="Visible" X1="0.0" X2="5.0" Y1="10.0" Y2="10.0"/>
+        <Rotate Angle="270" Name="">
+            <Expose ExposedAttribute="Angle" Name="Rotera öppen port (grader)"/>
+        </Rotate>
+    </Component>
+    <Metadata Name="Name" Value="Backventil HögerVänster_Copy"/>
+    <Metadata Name="Description" Value=""/>
+    <Component Clip="False" ContentHeight="15.0" ContentWidth="20.0"
+        Height="15.0" IsStandard="False" Left="-0.5"
+        Name="Backventil HögerVänster_Copy_001"
+        SymbolVersion="Backventil HögerVänster-1.0.0" Top="-0.5" Width="20.0">
+        <Path Fill="#FFFFFF" Name=""
+            PathData="M 2 3.5214844 L 2 11.478516 L 10 8 L 18 11.478516 L 18 3.5214844 L 10 7 L 2 3.5214844 z "
+            Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Backventil"/>
+        <Rotate Angle="90.0" Center="0.5,0.5"/>
+    </Component>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAUXSURBVFhH7VdpUyJJEO2f7gcjdNQR13HV8BhETlFxQgUVz/EcL0AcERZQEI91uEQ5Rc2tl9PNAIJD7G7sftjNiMSu7qr3XmVWZZUSldlj4YkK+WKFJ+JJ6urqomKxKPeqb6enp2QwGF9hwJ+enuVelfZTAfDp6Wna39+Xe9W3oaEhOjsL1cT4SwIuwpfU398v96ptNzc31NfXV3M8vK6Al5cXUhwd87nHV473Wq2W/H6/POy1TUxMkNPhKhFWYxSLTyUexWEsoFAo0OLiIgUDZ5TN5Nlz2ULJAXDs/komk4kHVdvDwwN1qbook86VyMvH36fSIoUHdHR0RM/Pz+yKCAmNWCxGra2tNDg4SAMDA7S/d0DphywDKmIA+uFDD0WjUZn2hy0tLdHq6lpptuiPcd9uY2S3L5JKpeIUWiwWenx8FOl4KomQsLpvb2+5EywSidD4+DipOlUiKksM8nCfYTHrnzdofn6e+ymG8Zh9LJpgUvQ7C4bEbjBQe3uHELbKEXI6nZymTCZD+Xyex0GEhMbV1VVJgGLJZJIFtLe30+SkhRdiMpHifgBUbGdnh2ZnrRwxrIHh4WFejE1NTXKP7wYBZrOZcTFeESFBUSgUeiVAMXTCFsR3nVZHer2BSRUDmc02x9+NRiOdn5/z+1oCEBXslkQiwZFAOqT7+3sKBALU2dkpd61vKDQjIyPU1tbGwtBGhGZmZnhm5VZLwOjoKAtEysGLKEgYCKBGBCiGLYkxer2e3G63/LbSaglQq9Xk8/no8lKkU/DmcjmS4vE4nZyc/CMCsD6Oj48pHA4TeLPZLEnYgnjZaAoAUp0ClOpGUoBt7nK5OA3gxTqQsK8xi3oClEXY0dHBdaCn51fa3t6Wv5Jo9/AZAFGIzFuLEDXG4XCI8+KM60k6nf4uABWqWgBmtLCwQC0treI0/IXUH9VkMo4xUfk2hJjBgUGasnyi4aFh3g3d3d11BRweHlIwGKwvAIUI2wmVUSUKzIAAH1FryKA38rPVauV+iiFCiI5lcoomJyxkNJiEoCF6/76TMVAllUKkRKBCAHKBFLS0tHC5xAz6evuYVK0eoVGNlkEBDiIMrDa73S62p4ZmZ6wsBJHSjupERD5y2t69a6Pe3l5eAxCCFJTWAB6gCAfNp6lpmpmepXHzBI2ZzGQeG2dAAJtMY6TT6WXKSsMMIW5tbV1Uz2Wyzto4JeU4Go2GSzGijcJXEoCqhLB7PB7a2twpAcDn5xZECFdofX2To/PWcYwyizF7uwe0sbFFy8urtDBvJ5t1jn1lZYV2d3eZB3zg5W14d3dH19fXDH544GQRn8WhA9LtrS90sO/gZ4TwLUOJxY7wef3i6D5hrC87e7S5sc3jQY7Zgwd84OVChPAhHFDlPfWR++gruZxu/us58ZL/t4AI41hDVzLk2OFwUjh0QQF/kE49PhZz5DoWxc7DJR884AMv7iESwpBKpXhxhcMRcZSe88UkdB6myMWlUBzkhYnV/jNDYdKKAwtH+PX173QZuWIcYIbDFzxz8IAPvMCUcCKhAUXxeEKc63GKfotRPJagu2RKrIFlXqAoMI14c3OzEBAVd4g0j8etGnjIOcIOHvApFxMJP2ggH/iAlQlHG6eVzWbjQwSnYCOOvl6vlzERYuAomMBHWyHnCwl+0EA48AGOZ3j51Unxt6y8XzluNXY5bsWtGC+rCeF/xqoxamHDKv4vKP/wd1s97AoB/4b9L+C/LoDoD1rsuurSljDyAAAAAElFTkSuQmCC-->

@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<Component Clip="False" ComponentCounter="3" ContentHeight="140.0"
+    ContentWidth="170.0" Height="140.0" Id="VärmeSystem" Left="10"
+    Name="VS01" Top="10" Version="1.0.0-rc2" Width="170.0">
+    <Metadata
+        Media_min-width_559="&quot;display&quot;:&quot;block&quot;"
+        Name="Css" Value="&quot;display&quot;:&quot;none&quot;"/>
+    <Metadata Name="Action" Value="ContextMenu"/>
+    <Expose ExposedAttribute="Name" Name="System ID"/>
+    <Component Clip="False" ContentHeight="148.0" ContentWidth="178.0"
+        Height="148.0" Left="-4.0" Top="-2.0" Width="178.0">
+        <Image Height="148.0" Left="0.0" Top="0.0" Width="178.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAALIAAACUCAYAAAA3f3NDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALnSURBVHic7dhLaxRBAIXR20kHXwtB/P//0YWJkke7qOo4GUdxodJezoGip4oamMVHU1NLfrRcWIOj2U4ny9nn8wFHs10Yz7EuSa6SXCe5mc+riJlj2ZI8JXlMcj+fT0m2dW5YMuJ9k+RdktcZQQuZI9kyAv6S5HOSu7m2rfl+jLhJ8jbJhyTvk7zKiFvMHMGW8Qb+muTTnD/MteXSG/l9ko8ZUQuZo9hDvp3z24y38pIkpyFfzfnrjIjfzbmQOYL9DZyMRtec/I9bTzbuMe9/+tYImePYr9v2i4gXlxHrhS+4huOoftrk1b//LfDnCZkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmwnphbTsbcAS/7HI92/g0x2OSh7m+/OUfCL9jy2jyMd87fQ56Pdn0NDd+SXI7168jZI5hy4j4NqPRh5zEvJ5tukvyaa69ipA5jr3RrxmN3s35c8j7meM+o/ZlPm8iYo5l73Q/NdzPtW0Pdcm4wbjOCPh6zoXMkexH4MeMiPfz8nYa6nJhwNGc315syeVYBcz/4MUV3DcEQmcJoTF9QgAAAABJRU5ErkJggg==]]></Image>
+        <Component Clip="False" ContentHeight="25.0"
+            ContentWidth="170.0" Height="25.0" Id="Header" Left="4.0"
+            Top="2.0" Visibility="Visible" Width="170.0">
+            <Rectangle Fill="#FFFFFF" Height="115.0" Left="0.0"
+                Name="Bg" Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="1.0"
+                Top="25.0" Width="170.0"/>
+            <Rectangle Fill="#FFFFFF" Height="10.0" Left="0.0"
+                Name="ShadowDwn" Opacity="1.0" RadiusX="0.0"
+                RadiusY="0.0" Stroke="None" StrokeDashArray="0.0"
+                StrokeWidth="1.0" Top="25.0" Width="170.0">
+                <LinearGradient EndPoint="0.0,1.0" StartPoint="0.0,0.0">
+                    <GradientStop Color="#C0C0C0" Offset="0"/>
+                    <GradientStop Color="None" Offset="0.5"/>
+                    <GradientStop Color="None" Offset="1.0"/>
+                </LinearGradient>
+            </Rectangle>
+            <Rectangle Fill="#5591CF" Height="25.0" Left="0.0"
+                Name="HeaderBg" Opacity="1.0" RadiusX="0.0"
+                RadiusY="0.0" Stroke="None" StrokeDashArray="0.0"
+                StrokeWidth="1.0" Top="0.0" Width="170.0"/>
+            <Text FontFamily="Arial" FontSize="15.0" FontStyle="Normal"
+                FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+                Name="Title" Opacity="1.0" Stroke="#FFFFFF"
+                TextDecoration="None" Top="13.379000008106232"
+                    VerticalAlign="Middle"><![CDATA[VS01]]><Expose
+                    ExposedAttribute="Content" Name="System ID"/>
+            </Text>
+        </Component>
+        <Component Clip="False" ContentHeight="140.0"
+            ContentWidth="170.0" Height="140.0" Id="Body" Left="4.0"
+            Top="2.0" Visibility="Visible" Width="170.0">
+            <Text FontFamily="Arial" FontSize="12.0" FontStyle="Normal"
+                FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+                Name="Hus" Opacity="1.0" Stroke="#808080"
+                TextDecoration="None" Top="25.0" VerticalAlign="Top"><![CDATA[Hus]]></Text>
+            <Text FontFamily="Arial" FontSize="12.0" FontStyle="Normal"
+                FontWeight="Bold" HorizontalAlign="Left" Left="32"
+                Name="Hus bokstav" Opacity="1.0" Stroke="#808080"
+                TextDecoration="None" Top="25.0"
+                    VerticalAlign="Top"><![CDATA[A]]><Expose
+                    ExposedAttribute="Content" Name="Hus"/>
+            </Text>
+            <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+                FontWeight="Bold" HorizontalAlign="Right" Left="165.0"
+                Name="Betjänar" Opacity="1.0" Stroke="#C0C0C0"
+                TextDecoration="None" Top="138.0"
+                    VerticalAlign="Bottom"><![CDATA[Betjänar]]><Expose
+                    ExposedAttribute="Content" Name="Betjänar"/>
+            </Text>
+            <Rectangle Height="84" Left="5.0" RadiusX="0"
+                Stroke="#E0E0E0" StrokeWidth="0.5" Top="40.0"
+                Visibility="Visible" Width="160.0"/>
+        </Component>
+        <Component Clip="False" ContentHeight="85" ContentWidth="160"
+            Height="85.0" Id="Gauges and Meters" Left="9.0" Opacity="1"
+            Top="42.0" Visibility="Visible" Width="160.0">
+            <Component Clip="False" ContentHeight="28.0"
+                ContentWidth="160" Height="28.0"
+                Id="Kompensering -5 till 5" Left="0.0" Name="" Top="0.0"
+                Version="1.0.0-rc1" Width="160.0">
+                <Component Clip="False" ContentHeight="18.0"
+                    ContentWidth="100.0" Height="18.0" Id="Bar"
+                    Left="40" Top="5.12" Width="100.0">
+                    <Rectangle Fill="#E0E0E0" Height="14.0" Left="0.0"
+                        Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+                        Stroke="None" StrokeDashArray="0.0"
+                        StrokeWidth="1.0" Top="1.996211051940918" Width="100.0"/>
+                    <Rectangle Fill="#B10043" Height="14.0" Id=""
+                        Left="0.0" Name="Bar" Opacity="1.0"
+                        RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                        StrokeDashArray="0.0" StrokeWidth="0"
+                        Top="1.996211051940918" Width="1.0">
+                        <Bind Attribute="Fill" Name="Komp.Value">
+                            <ConvertRange AttributeMaxValue="#C73D3F"
+                                AttributeMinValue="#FF8000"
+                                SignalMaxValue="5" SignalMinValue="2.5"/>
+                            <ConvertRange AttributeMaxValue="#FF8000"
+                                AttributeMinValue="#00C000"
+                                SignalMaxValue="2.5" SignalMinValue="0"/>
+                            <ConvertRange AttributeMaxValue="#00C000"
+                                AttributeMinValue="#00C0C0" Name=""
+                                SignalMaxValue="0" SignalMinValue="-2.5"/>
+                            <ConvertRange AttributeMaxValue="#00C0C0"
+                                AttributeMinValue="#536AAB"
+                                SignalMaxValue="-2.5" SignalMinValue="-5"/>
+                        </Bind>
+                    </Rectangle>
+                    <Component Clip="False" ContentHeight="18.0"
+                        ContentWidth="0.0" Height="18.0" Id="Pointer"
+                        Left="0.0" Name="" Top="-0.003788948059082" Width="1.0">
+                        <Line Opacity="1.0" Stroke="#000000"
+                            StrokeDashArray="0.0" StrokeWidth="0.5"
+                            X1="1" X2="1" Y1="0.0" Y2="18.0">
+                            <Bind Name="Komp.Value">
+                                <Script OnSignalChange="OnChange"><![CDATA[var v,l
+function OnChange(evt)
+{
+    //Get value from binding, updates with changes.
+    value = (evt.getValue());
+    //Get bar from graphic
+    bar = evt.target.parentNode.parentNode.parentNode.getChildByName("Bar");
+    
+    //Translate values between -5 and 5 to 0 and 100
+    moveValue = value*10 + 50;
+
+    //Handle values under -5
+    if (value<-5)
+    {
+        bar.setAttribute("Opacity",0);
+    }
+    //Handle values above 5
+    else if (value>5)
+    {
+        bar.setAttribute("Opacity",1);
+        evt.target.parentNode.parentNode.setAttribute("Left",100);
+        bar.setAttribute("Width",100);
+    }
+    //Set the bar and slider marker depending on value.
+    else
+    {
+        bar.setAttribute("Opacity",1);
+        evt.target.parentNode.parentNode.setAttribute("Left",moveValue);
+        bar.setAttribute("Width",moveValue);
+    }
+ }]]></Script>
+                            </Bind>
+                        </Line>
+                    </Component>
+                </Component>
+                <Component Clip="False" ContentHeight="33.52"
+                    ContentWidth="28.4" Height="33.52" Left="5"
+                    Name="Komp Ikon" Top="-6" Width="28.4">
+                    <Text FontFamily="Arial" FontSize="30"
+                        FontStyle="Normal" FontWeight="Normal"
+                        HorizontalAlign="Left" Left="-0.00432014465332"
+                        Opacity="1.0" Stroke="#0000FF"
+                        TextDecoration="None" Top="0.5" VerticalAlign="Top"><![CDATA[-]]></Text>
+                    <Text FontFamily="Arial" FontSize="20"
+                        FontStyle="Normal" FontWeight="Normal"
+                        HorizontalAlign="Left" Left="10.459014892578125"
+                        Opacity="1.0" Stroke="#000000"
+                        TextDecoration="None" Top="8.970458984375" VerticalAlign="Top"><![CDATA[/]]></Text>
+                    <Text FontFamily="Arial" FontSize="20"
+                        FontStyle="Normal" FontWeight="Bold"
+                        HorizontalAlign="Left" Left="16.71642303466797"
+                        Opacity="1.0" Stroke="#C00000"
+                        TextDecoration="None" Top="8.77447509765625" VerticalAlign="Top"><![CDATA[+]]></Text>
+                </Component>
+                <Rectangle Fill="None" Height="28.0" Left="0.0"
+                    Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+                    Stroke="#E0E0E0" StrokeDashArray="0.0"
+                    StrokeWidth="0.5" Top="0.0" Width="160.0"/>
+                <Component Clip="False" ContentHeight="15"
+                    ContentWidth="56" Height="15.0" Id="Value" Left="63"
+                    Top="7.5" Width="56.0">
+                    <Text Fill="None" FontFamily="Arial" FontSize="11"
+                        FontWeight="Bold" HorizontalAlign="Center"
+                        Left="28" Name="Styrsignal" Stroke="#FFFFFF"
+                        Tooltip="Styrsignal" Top="0.0"
+                            VerticalAlign="Top"><![CDATA[-]]><Bind
+                            Attribute="Content" Id="Ärvärde"
+                            Name="Komp.Value" PreventDefault="True"/>
+                    </Text>
+                </Component>
+            </Component>
+            <Component Clip="False" ContentHeight="56"
+                ContentWidth="80.0" Height="56.0"
+                Id="Medeltemp i byggnad" Left="40" Name="" Top="28"
+                Version="1.0.0-rc1" Width="80.0">
+                <Text FontFamily="Arial" FontSize="12"
+                    FontStyle="Normal" FontWeight="Bold"
+                    HorizontalAlign="Center" Id="Rubrik" Left="40.0"
+                    Opacity="1.0" Stroke="#C0C0C0" TextDecoration="None"
+                    Top="0.0" VerticalAlign="Top" Visibility="Visible"><![CDATA[Medeltemp byggnad]]></Text>
+                <Component Clip="False" ContentHeight="42.0"
+                    ContentWidth="80.0" Height="42.0" Id="Mätare"
+                    Left="0.0" Name="" Top="13" Version="1.0.0-rc1" Width="80.0">
+                    <Component Clip="False" ContentHeight="41"
+                        ContentWidth="74.5" Dödzon="1" Height="41"
+                        Left="2.75" Top="1.0" Width="74.5">
+                        <Expose ExposedAttribute="Dödzon" Name="Dödzon Temp"/>
+                        <Pie Center="37.5,38.96000671386719"
+                            Fill="#E0E0E0" Opacity="1.0" RadiusX="37.0"
+                            RadiusY="37.0" StartAngle="0.0"
+                            Stroke="None" StrokeDashArray="0.0"
+                            StrokeWidth="1.0" SweepAngle="-180.0"/>
+                        <Pie Center="37.5,38.96000671386719"
+                            Fill="#FFFFFF" Opacity="1.0" RadiusX="24.0"
+                            RadiusY="24.0" StartAngle="0.0"
+                            Stroke="None" StrokeDashArray="0.0"
+                            StrokeWidth="1" SweepAngle="-180.0"/>
+                        <Pie Center="37.5,38.96000671386719"
+                            Fill="#3DCD58" Opacity="1.0" RadiusX="38.0"
+                            RadiusY="38.0"
+                            StartAngle="247.50002524109252"
+                            Stroke="None" StrokeDashArray="0.0"
+                            StrokeWidth="1.0" SweepAngle="45.0"/>
+                        <Component Clip="False" ContentHeight="15.0"
+                            ContentWidth="56" Decimals="1" Height="15.0"
+                            Id="Setpoint" Left="9.5" Opacity="0.7"
+                            Top="2.960006713867188" Unit="nounit"
+                            Visibility="Visible" Width="56.0">
+                            <Text Fill="None" FontFamily="Arial"
+                                FontSize="10" FontWeight="Bold"
+                                HorizontalAlign="Center" Left="28"
+                                Name="Börvärde" Stroke="#FFFFFF"
+                                Tooltip="Börvärde" Top="0.0"
+                                    VerticalAlign="Top"><![CDATA[-]]><Bind
+                                    Attribute="Content" Id="Börvärde"
+                                    Name="BörvärdeVerksamhet.Value" PreventDefault="True"/>
+                            </Text>
+                            <Expose ExposedAttribute="Visibility" Name="Visa börvärde"/>
+                        </Component>
+                        <Pie Center="37.5,38.96000671386719" Fill="None"
+                            Id="Pointer" Name="" Opacity="1"
+                            RadiusX="37.5" RadiusY="37.5"
+                            StartAngle="180.0" Stroke="#006699"
+                            StrokeDashArray="0.0" StrokeWidth="1.8" SweepAngle="0.499999999999886">
+                            <Bind Id="MV" Name="Medeltemp.Value"/>
+                            <Bind Id="BB" Name="BörvärdeVerksamhet.Value"/>
+                            <Animate Animation="Stop"
+                                Attribute="Opacity" AutoReverse="False"
+                                CalcMode="Discrete" Duration="0.7"
+                                Freeze="False" From="0"
+                                Name="OutOfLimit" To="1"/>
+                            <Script OnSignalChange="OnChange"><![CDATA[var v,b,a,d,k;
+function OnChange(evt)
+{
+    
+    
+    if (evt.target.getAttribute("Id") == "BB")
+        b = Number(evt.getValue());
+    else if
+        (evt.target.getAttribute("Id") == "DI")
+        d = Number(evt.getValue());
+    else if
+        (evt.target.getAttribute("Id") == "MV")
+         v = Number(evt.getValue());     
+        
+    if (v&&b){
+        
+        var k = Number(evt.target.parentNode.parentNode.getAttribute("Dödzon")/b*4);
+        
+        a = ((v-b)/b/k*90+270)
+        if (a > 360) a = 360               
+        if (a < 180) a = 180 
+        if ((a == 180 | a == 360 & d == 1)) {
+            evt.target.parentNode.setAttribute("Stroke","#FF0000");
+            evt.target.parentNode.getChildByName("OutOfLimit").setAttribute("Animation","Start");
+        }    
+        else {
+            evt.target.parentNode.setAttribute("Stroke","#006699");
+            evt.target.parentNode.getChildByName("OutOfLimit").setAttribute("Animation","Stop");
+        }    
+            
+        evt.target.parentNode.setAttribute("StartAngle",a);
+        
+   
+    }
+
+ }]]></Script>
+                        </Pie>
+                        <Pie Center="37.5,38.96000671386719"
+                            Fill="#FFFFFF" Opacity="1.0" RadiusX="22.5"
+                            RadiusY="22.5" StartAngle="0.0"
+                            Stroke="None" StrokeDashArray="0.0"
+                            StrokeWidth="1.0" SweepAngle="-180.0"/>
+                        <Rectangle Fill="#FFFFFF" Height="4.0"
+                            Left="15.5" RadiusX="0" RadiusY="0"
+                            Stroke="#FFFFFF" Top="36.96000671386719" Width="44.0"/>
+                        <Component Clip="False" ContentHeight="15.0"
+                            ContentWidth="56" Height="15.0" Id="Value"
+                            Left="9.5" Top="25.960006713867188" Width="56.0">
+                            <Text Fill="None" FontFamily="Arial"
+                                FontSize="12" FontWeight="Bold"
+                                HorizontalAlign="Center" Left="28"
+                                Name="Medeltemp" Stroke="#006699"
+                                Tooltip="Ärvärde" Top="0.0"
+                                    VerticalAlign="Top"><![CDATA[-]]><Bind
+                                    Attribute="Content" Id="Ärvärde"
+                                    Name="Medeltemp.Value" PreventDefault="True"/>
+                            </Text>
+                        </Component>
+                    </Component>
+                    <Rectangle Fill="None" Height="42.0" Left="0.0"
+                        Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+                        Stroke="#E0E0E0" StrokeDashArray="0.0"
+                        StrokeWidth="0.5" Top="0.0" Visibility="Hidden" Width="80.0"/>
+                </Component>
+                <Rectangle Fill="None" Height="56" Left="0.0"
+                    Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+                    Stroke="#E0E0E0" StrokeDashArray="0.0"
+                    StrokeWidth="0.5" Top="0.0" Visibility="Hidden" Width="80.0"/>
+            </Component>
+            <Rectangle Fill="#11000000" Height="115" Left="-5"
+                Name="Target" Opacity="0.01" RadiusX="0.0" RadiusY="0.0"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="1.0"
+                Top="-15" Width="170.0"/>
+        </Component>
+        <Component Clip="False" ContentHeight="115.0"
+            ContentWidth="170.0" Height="115.0" Id="LightUpArea"
+            Left="4" Name="" Top="27" Width="170.0">
+            <Polyline Id="AC_Area" Name="A" Opacity="1.0"
+                Points="0.0,0.0 170.0,0.0 170.0,115.0 0.0,115.0 0.0,0.0"
+                Stroke="#000000" StrokeDashArray="0.0" StrokeWidth="1.0">
+                <Expose ExposedAttribute="Name" Name="Byggnad"/>
+            </Polyline>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="20.0" Name="" Top="20.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Driftbild" Left="0" Top="0"
+            Visibility="Visible" Width="1.0">
+            <Metadata Id="" Name="Tag" Value="#menurow"/>
+            <Metadata Name="Icon" Value="Graphic"/>
+            <Metadata Name="Text" Value="Driftbild"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInSelf)"/>
+            <Link Name="Link"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Börvärden" Left="0" Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #börvärden"/>
+            <Metadata Name="Icon" Value="Settings"/>
+            <Metadata Name="Text" Value="Börvärden"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="BörvärdeVerksamhet.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="BörvärdeFrånvaro.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="0" Name=""
+            Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #temperaturreglering"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Komp.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Rum_StyrV.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Rum_StyrF.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Rum_MaxH.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Rum_MaxS.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Rum_BVDiff.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_VerksamhetstidHusA" Left="0.0"
+            Top="0.0" Visibility="Visible" Width="1.0">
+            <Metadata Id="" Name="Tag" Value="#menurow, #tidsinställningar"/>
+            <Metadata Name="Icon" Value="Schedule"/>
+            <Metadata Name="Text" Value="Verksamhetstid"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="VerksamhetstidHusA.Link"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VS01"/>
+    <Metadata Name="Description" Value="Ruta för att visa upp värmesystem. T.ex i klimatöversikt"/>
+</Component>

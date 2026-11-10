@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Component Clip="False"
+    ComponentVersion="Spjäll Tvåläges Fjäder Ner-1.0.0"
+    ContentHeight="85.0" ContentWidth="20.0" Height="85.0" Left="865.0"
+    Name="ST41" Top="335.0" Width="20.0">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+        Height="85.0" Id="Spjäll" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="70.0" ContentWidth="20.0"
+            Height="70.0" Left="0.0" Name="Spjäll Tvåläges Fjäder Ner"
+            SymbolVersion="Spjäll Tvåläges Fjäder Ner-1.0.0" Top="0.0" Width="20.0">
+            <Image Height="78.0" Left="-4" Top="-2" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAABOCAYAAAAzS3ZoAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANISURBVGiB7ZndctowEEaPiYFASJM2ff83bDppEkwIwb3QftZayD/AVTvWjMbYSDpaabVarQraqUie16Y6ebYaLoCZy9dCa+Docu2BBXADlMACmNv7pdAa+AI+gT1wsPe6JEpWAmtgY885l0kqyT6BLfBmzxo4llZoRpBsAzwBD8Atl0kp6XbAi32ThA2wMInWBnsCVlcCK3uvgHfrABpSzeGcINnK4NcAsba8PhReQs3lTZIvAeLqSw8KCBL6VHTkc1Nn/dkFjV2VJuAEnIATcAJOwAk4ASfgBJyAE3ACjknp+bDO5FwqXPk09bZRJoWOhOOysm88hXlA+u7bUIymFrCmHVfZEQMC/sjtT7SaCt+YjzopqLCzNr9UxkuouIpCHWnYRKC5G5mD1WsiTZyGTbZWppFQPd0TgjhY79LAkGC3wNK+fTgpjg6YBob2+n9s6EvSLYE7QkgFa/DdwDkps6EvX0DPD9rKoQ4t3TsG+2PlVV8pG9wrOwrkNFMxl0/rMfZbUqRAaEtMCswWcMCCRMW7pOhL/79pm4D/PjBdFkMpDUmeHd4cA/Q7hM8k796WdqabETAZ7SUhNK2of0ncP7sMxllAhaMXDvRgeWMdaGLZDtgL7wIWJsHSGn8Eflh+BO6tEwvi7pLblE9Sbg5lqHWPIdgjYWtSpB7C0K7dd90SvNLegQaBpUnwAPwk3GPcO5ikWbqs7zVhN8ka9FxUX0pyZ1J9B74RFSX1AjTX2k32BC9AG29reHNAbbR3JtXGpM3dRfl1uTJARbxvkmvRAGeZyl4z1wZPJcuNipRsRVSoVIuzpk2VpX19sK56C1fvpFDaWz3V8zGmK3W2Zsm3TqBftHIfBq0HeZcjawByQ3okTP6e6DCNAft60tBjWsgDvcu/J2jbluAC9kEl1cHKVpa9J9fUGzJtc6Li5K72PKwi+KjPwG8Sj3sMML1T9OqteZJ3XRHM2bPlF8Li18IfBKr3XnEEORDnakfwvl8M9Mt+v9M+bzQpZ0v9PL4RbWNFMAQ6VUE8JW1NwlcHy3nivWtM60knJmUddATUmVJZkp1INwTU/5rDkqg8fu/7Ig6zP/F2NjiU+u6Fc+f53vV6jsc1VHaMReIvTRc+MrzVj0cAAAAASUVORK5CYII=]]></Image>
+            <Path Fill="#FFFFFF" Opacity="1.0"
+                PathData="m 9.5,39.5 v 0.519531 l -6.0175781,5.048828 c -0.2121943,0.178053 -0.2385991,0.490931 -0.060547,0.703125 0.1780522,0.212195 0.4909307,0.240553 0.703125,0.0625 L 9.5,41.324219 V 55.5 h 1 V 41.328125 l 5.363281,4.503906 c 0.212096,0.17817 0.527809,0.152613 0.707031,-0.05859 0.179223,-0.211207 0.151549,-0.524956 -0.06055,-0.703126 L 10.5,40.021484 V 39.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5">
+                <Rotate Angle="0" Name="">
+                    <Expose ExposedAttribute="Angle" Name="Riktning fjäderåtergång (grader)"/>
+                </Rotate>
+            </Path>
+            <Path Fill="#FFFFFF" Opacity="1"
+                PathData="M 10,8 C 9.723,8 9.5,8.223 9.5,8.5 v 9.054688 A 2.5,2.5 0 0 0 7.5,20 a 2.5,2.5 0 0 0 2,2.449219 V 31.5 c 0,0.277 0.223,0.5 0.5,0.5 0.277,0 0.5,-0.223 0.5,-0.5 V 22.445312 A 2.5,2.5 0 0 0 12.5,20 2.5,2.5 0 0 0 10.5,17.550781 V 8.5 C 10.5,8.223 10.277,8 10,8 Z M 9.5,55.017578 c -3.938925,0.26318 -6.9995301,3.534715 -7,7.482422 0,4.142136 3.3578644,7.5 7.5,7.5 4.142136,0 7.5,-3.357864 7.5,-7.5 -0.0046,-3.944697 -3.064076,-7.211632 -7,-7.474609 M 10.5,40 H 19 c 0.554,0 1,-0.446 1,-1 V 1 C 20,0.446 19.554,0 19,0 H 1 C 0.446,0 0,0.446 0,1 v 38 c 0,0.554 0.446,1 1,1 h 8.5"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="70.0" Left="0.0"
+            Name="TargetArea ContextMenu"
+            Tooltip="Spjäll, tvåläges med fjäderåtergång" Top="0.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" HorizontalAlign="Center"
+            Id="Larm" Left="10.0" Name="Id" Stroke="#304760"
+            TextDecoration="None" Top="72.0"><![CDATA[ST21]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" Left="21"
+            Name="Styrsignal" Stroke="#0087CD" Tooltip="Styrsignal" Top="41">
+            <Bind Attribute="Content" Name="SS.Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="0" Name=""
+            Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="SS.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="ST41"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIQSURBVFhH5Zbbi9pAFIfzn1dQ8I74JIIXsA8iPgRRVBaND+ulbG1tkdYWK6WV1bTuGltdYurlV86BSOL2MZM89INxTiaG+Tg5MxMpn8+j0+k8a81mE9lsFufzGSKRaLJ/oWka4vE4jsfj9S1HsQksl8tLTAKxWMxdgUAggPF4zLEnAj6fD6PRiOP/T4DePwlQ9ROuC9RqNV5+VAeHw8F9AZqQMmC9dlWA8LQGCM8FQqEQJpMJx54IbLfbS+yJgBXXBOjASafT3DKZzCVOpVLI5XLiBQaDAe8BJEJFSK1QKPByXK1W4o/jzWbDxVcqlXhy6um61+vx5Im7H3hxu4Cmi8mERD/z+Rz7/Z4F+v0+F6NZkMH+EiP1CfJn7fpZR2ABwipghQQG9zs0Zr9s407xTOB6VRQ/PCL19if0w8k27hQsMJ1OEYlE+BuQ+kqlIrz4TKT1eo1kMmnbhNrtNhqNhu2PopBarRbq9bptUNd1BINBnE5i0m5FUhQF5XLZNkjZCIfD/F0gGklVVX7vtOmYyLKMarXqTgYMw0C320U0GkUikYDf70exWLTVhEh4FZDEYrHAcDjEbDbDbrdzbxWUawru1RVSL2XcvfvIrXJzi4f1BnSPepFISu8NByRAkAyNff2+YBG6FonU7Ly6ZIB4/X7CzYyFC5gZMCf69OUbT/x7+8TNMP5cPeIsl7PAK/4CvZdm6Hv5tMEAAAAASUVORK5CYII=-->

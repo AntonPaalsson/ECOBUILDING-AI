@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Component Clip="False"
+    ComponentVersion="Förbigångsspjäll Modulerande-1.0.0"
+    ContentHeight="125.0" ContentWidth="20.0" Height="125.0"
+    Left="302.0" Name="ST41 (NY)" Top="425.0" Width="20.0">
+    <Component Clip="False" ContentHeight="125.0" ContentWidth="20.0"
+        Height="125.0" Id="Spjäll" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="125.0"
+            ContentWidth="20.0" Height="125.0" Left="0.0"
+            Name="Spjällpar Modulerande Vertikal"
+            SymbolVersion="Spjällpar Modulerande Vertikal-1.0.0"
+            Top="0.0" Width="20.0">
+            <Image Height="133.0" Left="-4" Top="-2" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAACFCAYAAABIZJgfAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQDSURBVGiB7ZpbU9swEEaPcyWEUlL6//9hS2lJQq7ug3bxeiP5lrzAaGc0GMfS8cr2avVJBXUrEsdDrIwde8BISmHKUJiWs5TSAgtgDEyAGTA18CGmkAOwB47ACSgnVJ5NgHvgQf4qtK+X6tUB2ABv8rcEzhO5aETw7AF4Br4DdwSvhwBPwDvwKufUww9gIR7dC+wZWBC8HmJHYCvHW2AtN4B2qT7DKcGzhcCv8RBpa2raKayH+izHrgwBYurbt/6iy4pE6WvJ+kNf+8GWgRmYgRmYgRmYgRmYgRmYgRmYgV3Mzw/LSIlZYa731tjGxF10JkyXtdjG7bEHehHItqEaTanA0lx0IEz+VRCwU3L9a6UUvUkPVlHhXdo8Kcd6qLqKSh1eNrHikdY7YkQf56HKJhtp+8ND5C73BBEHuTsvDI2oVI65nNsZL87OaysM7fX3rtKXdqWKR/dy3jeoXjZKX7YbbHdYBUJvaO7Or4F/4qnv1qi4Zz8L+6P13gJHctdHOX8wXlggqePYdxg7Vq9qr7i7ybOrE7WvH9oy8PMD+yq+XpLsLW92AVrx1hbc/zaWJm3cAaZBe06QpjWWTqjGz06wNqCGs5kBPQJPcjynGk3U47ZMIQm0wXopkB9SnoBvchNz6qOLDdhRaOwZWs+WwMqAHgjjodZbErp3ac4XAosF9CRwIh48AT8J6xiP4pF6g3gyc+d1iIsG9Jiqry+JduWKsHiykPP2U7DLDvqmal6kA2/tmfpnaNegVuLZSuAz4qtvPrE6EgbkHVXqUVqA9c6mEro6o88mtfBlF8vupM7C3GAtOMRCm1bWt68JFoNOpa7Wu2jcV/SRpU/oal309MBk8tPRfL2LIBDr0jPhwe+pEqY2cGnq2dTw7C8cuUpacU/IOTeEV7wJamHvUmdLPVdNfhZqNtpMSa8Ja2P67f0FXqTUMu4uQAzEvjx2InOSRrcC+y3llapnar3SNFrYIOyDsnbhTjxR2C/gD9UE5uIZpoAWoDMkfYF03rcjpPkvxjOFRQM3pEd87a4d8RdiKdetxTtdOvfzwQtrSjH8BEc9tIvKb4TntabjJ9SWYlh4STV0jQW6EdiOyMgQsy5JlJ/z2RmWn8i0RqW+aaIPV50g1r5+5p2Bnx8YSxNTxz518Of9J9KqYjTlI3a/zdTU0/91UtNZp+mjRC0JaaBteE49hiaVKJuh6Ral1Casa7S2j/GxzyasoWoiDNiENVQvhSs3YfVRhOGGm7DaNG+oz6putgkr9VvehJWBGZiBGZiBGZiBGZiBGZiBGfi5gEM3YTVZYxt9N2F1BV69Cauv3WQTVle72SasPsCrN2H1tUbpS611sbGHJcU932BKvhwKvTj+DxGQ695gUN6mAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF" Opacity="1"
+                PathData="m 15.8125,94.544922 c -0.193371,-0.02423 -0.392219,0.06618 -0.496094,0.246094 l -4.52539,7.839844 A 2.5,2.5 0 0 0 10,102.5 2.5,2.5 0 0 0 7.5,105 a 2.5,2.5 0 0 0 0.84375,1.86914 l -4.5273438,7.83984 c -0.1385,0.23989 -0.056295,0.5451 0.1835938,0.6836 0.239889,0.1385 0.5450937,0.0563 0.6835938,-0.1836 l 4.5253906,-7.83984 A 2.5,2.5 0 0 0 10,107.5 2.5,2.5 0 0 0 12.5,105 2.5,2.5 0 0 0 11.65625,103.13086 l 4.527344,-7.839844 c 0.1385,-0.239889 0.0563,-0.545094 -0.183594,-0.683594 -0.05997,-0.03463 -0.123043,-0.05442 -0.1875,-0.0625 z m 0,-85 C 15.619129,9.520694 15.420281,9.611099 15.316406,9.7910157 l -4.52539,7.8398433 A 2.5,2.5 0 0 0 10,17.5 2.5,2.5 0 0 0 7.5,20 2.5,2.5 0 0 0 8.34375,21.869141 L 3.8164062,29.708984 C 3.6779062,29.948873 3.760111,30.254078 4,30.392578 c 0.239889,0.1385 0.5450937,0.05629 0.6835938,-0.183594 L 9.2089844,22.369141 A 2.5,2.5 0 0 0 10,22.5 2.5,2.5 0 0 0 12.5,20 2.5,2.5 0 0 0 11.65625,18.130859 l 4.527344,-7.839843 C 16.322094,10.051127 16.239889,9.7459219 16,9.6074219 15.940028,9.5727969 15.876957,9.552998 15.8125,9.544922 Z M 1,0 C 0.446,0 0,0.446 0,1 v 38 c 0,0.554 0.446,1 1,1 H 9.5 V 55.017578 A 7.5,7.5 0 0 0 2.5,62.5 a 7.5,7.5 0 0 0 7,7.474609 V 85 H 1 c -0.554,0 -1,0.446 -1,1 v 38 c 0,0.554 0.446,1 1,1 h 18 c 0.554,0 1,-0.446 1,-1 V 86 c 0,-0.554 -0.446,-1 -1,-1 H 10.5 V 69.982422 A 7.5,7.5 0 0 0 17.5,62.5 7.5,7.5 0 0 0 10.5,55.025391 V 40 H 19 c 0.554,0 1,-0.446 1,-1 V 1 C 20,0.446 19.554,0 19,0 Z"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="125" Left="0.0"
+            Name="TargetArea ContextMenu"
+            Tooltip="Förbigångsspjäll, analogt" Top="0.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" HorizontalAlign="Left"
+            Id="Larm" Left="21.0" Name="Id" Stroke="#304760"
+            TextDecoration="None" Top="56.0"><![CDATA[ST41]]></Text>
+        <Text FontFamily="Arial" FontSize="14" Left="21.0"
+            Name="Styrsignal" Stroke="#0087CD" Tooltip="Styrsignal" Top="41.0">
+            <Bind Attribute="Content" Name="SS.Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="0.0"
+            Top="0.0" Visibility="Visible" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="Content" Name="SS.Value"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="ST41 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAHNSURBVFhHxZZNa8JAEIbz0z148CDiQamCooKgCBJ7ai3SHFQsqEHjwRYsoZU2xWhTE4uohynvmBQFj2b3hc3uZA/z7NfMKIVCgTRN+2+wO50OiZICp6eC3Ww2fSt8nQG0Wi1KJpNyACzLomg0StVqVTyAaZoUi8Wo0WjIOYJ2u80AvV5PPADOPZPJMAQkHCCVSlEul/NNSa9gu936pgSAIBDhCNAXi0WxALVajZ1GIhEqlUr8DF3X9afDl4LPcrlkgNVqxT/VF4du9AWPw9ZFAO3NpbvXNY/DFgOMRiMGGA6H/NPa7BlChBRd1ymdTtNkMqF8Ps/B6OPLpm7fIPP9kx67R6jl9w89z954fE0p2WyWQzFk2zYno/54SvfaE+12ex4b0xn3tw/HYHVNKaqqUr1ep8PhwNmwUqmwQ6zc9X551bCxI6HswGaz4UiIO4DdWK/FXL5AZ68AvWhdfIYipczncxqPxwxgGAbBFiklkUjwHQga7MFg4E+Hr7OaEBKeDU8BEIRQnEgBcByHi9JyuSweABEwHo9zKpZyBNh6rB75QAqA1KIUzpGAkAsg4QBIQJ7n+aYEANSDcBo04UUpnh2cBg32YiGmHiQi+gPcf2hY4conYgAAAABJRU5ErkJggg==-->

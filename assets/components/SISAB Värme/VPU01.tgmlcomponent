@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="170.0" ContentWidth="145.0"
+    Height="170.0" Left="0.0" Name="VPU01" Top="0.0" Width="145.0">
+    <Rectangle Fill="#FFFFFF" Height="155.0" Left="10.0" Opacity="1.0"
+        RadiusX="0.0" RadiusY="0.0" Stroke="#000000"
+        StrokeDashArray="0.0" StrokeWidth="1.0" Top="15.0" Width="125.0"/>
+    <Rectangle Fill="#FFFFFF" Height="65.0" Left="20.0" Opacity="1.0"
+        RadiusX="2" RadiusY="2" Stroke="#000000" StrokeDashArray="0.0"
+        StrokeWidth=".5" Top="25.0" Width="105.0"/>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="2.5" Left="35.0" Name="Rör Värme primär_038" Top="75.0"
+        Version="1.0.0-rc1" Width="65.0">
+        <Rectangle Fill="#800080" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme primär"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="2.5" Left="35.0" Name="Rör Värme primär_039" Top="35.0"
+        Version="1.0.0-rc1" Width="65.0">
+        <Rectangle Fill="#800080" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme primär"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="60" ContentWidth="50"
+        Height="60.0" Id="Kompressor_1" Left="50.0" Top="8.0" Width="50.0">
+        <Component Clip="False" ContentHeight="60" ContentWidth="60"
+            Height="40.0" Id="Indikering" Left="5.0" Name="KOMP_D1"
+            Top="15.0" Version="1.0.0-rc1" Width="40.0">
+            <Image Height="48.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQaSURBVGiBzZrpdhoxDIW/TCALTdom7fs/YddAoCGE9Id1mWvjgbCjc3xmMou5V5Y0spQL9icXK669V+7Vru3lR7d5/6Iy/P67Hcvh97cGsM17Gg1wGaOxv3UPYB4g3+J8Hudvds8JHYyAg26AfoyrGH2gVxASAQGeAa/A1MbMiG1EZBMCru0+cA3c2riJa/0VBGYxXoB/wAQYx/lLEPNV2QsB13o/gA6AT8BdHAdx/Yq0Aloh9wFfhWmAHgPPwCjGJK6/8sHV6H0Q/CVJu4MA/QX4HOcDWs0LvDuyRGDmtGb0EiRGwBPwFxjGtWmQ1bsbExCIXgC8A77auCOZTql1vVsTAZEJ3sQcA1oz1HyjIDhbRWIdgV5Meg88AN8K8HLYMnyumlNH+VOPNhCUKzkkmVQniS4Cbjb3wCPwPUjcB6neBsBr818EIP1WjzyCuf8oBH+IgCa8Imn6IcA/doDfRZxIn2WFyGfmJHNacuqSgEebAclZH+nW/L5Ec8lkBd5Dr6JSFmJrBNx0Ho4AvouECOijp29EtgqXxQSNgf9G67S35Et8KNHcHooVdp3EQpxAQ2I/CNCy+08kf/AP0yGlTBChJaC0Y7EKTfGwlu+ONlT2OR54ifvireFZMuPGXmpImr6lTQ+uyEPaMcWjoVIXVyiQr4A/rPTAU4Nji1ZBmYBwZUp1ZxGBmxgZ0xOKJ5FKNRZff18BPXhdPnRkwC7um55qLKyiNCHlJZ7jnFrclIQvMyFJuTU8tfYlvh+RYjMn7trbngN4SYlvkTOV34Fz0nwp1crHOUSZnUQEfLu3VXnjCFKtKTXk4MtazblIiW9Bwk2oq9h0avEd2YwWH5CbkBed9OC5EJBiX8n3BRmBOW2pY0pl83ACce0rnfaaUeYDXnDy4tIpxRWrSl6m3NKEpqSi0pi2JnMqh5ZiVYocs0yA0omn8dAzeXXsVARcqc+BLbOM8jswIy2V1yozmzuSuOlMSAWuEW2Ra+Gbl5WXPbVWxaxnzx46zRA4gf8D/AR+k1bhlY6qRAlO2Z+IeBZ4KBKlJTwBv2I8kXwhs4baCrj4PsE7MLq3TynBD0nAf5JWYUJrPgvpIuDxv6uNpHuHAv+b1nRGJGde8sV1BDyl8NZSuV/YlkjZM3DwP+I4JJlONRquMyEvropMCXwbIp5ReqiUzUvzK8FvQuCNPNHr+kKvC7WuEOU2Ctt/O8Av2b3LqgaHXtIEXqPUZ33XFpPmGZK0/8Ryi2llPrauR6YX32hDmGz1mXqTr7avXtfkG9J+/b1b6RiqsmubVR1Lb7N6p8UJlG3WiY2DtlnL5z0aqeCkJrd/tWsERMKb3OX+42CN7hoRX5XyWLaK/F8NyuPR/tWg6/2lcgd1An5eXtsJwD6kNpcTKGUv2e1/epDOaXLxFQ8AAAAASUVORK5CYII=]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="40.0" Left="0.0" Name=""
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="0.0" Visibility="Visible" Width="40.0"/>
+            <Path Fill="#C0C0C0" Name=""
+                PathData="M 19.924634,0.23997265 C 17.499044,0.24189786 15.07864,0.73482729 12.813651,1.6027641 10.002156,10.370607 7.7728888,22.65574 5.726319,33.754382 c 3.7815459,3.883456 8.841327,6.081745 14.190486,6.083087 5.484391,-0.0095 10.740601,-2.179535 14.489688,-6.182404 C 32.386829,22.696211 30.135656,10.358478 27.373041,1.6758505 25.002703,0.71073247 22.483919,0.24385826 19.924634,0.23997265 Z"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="0.0">
+                <Rotate Angle="90" Center="0.5,0.5">
+                    <Expose ExposedAttribute="Angle" Name="Rotera kompressor (grader)"/>
+                </Rotate>
+            </Path>
+        </Component>
+        <TargetArea Height="40.0" Left="5.0"
+            Name="TargetArea ContextMenu" Tooltip="Fläkt" Top="15.0" Width="40.0"/>
+        <Scale ScaleX=".6" ScaleY=".6"/>
+    </Component>
+    <Rectangle Fill="#FFFFFF" Height="65.0" Left="20.0" Opacity="1.0"
+        RadiusX="2" RadiusY="2" Stroke="#000000" StrokeDashArray="0.0"
+        StrokeWidth=".5" Top="95.0" Width="105.0"/>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="2.5" Left="35.0" Name="Rör Värme primär_042" Top="145.0"
+        Version="1.0.0-rc1" Width="65.0">
+        <Rectangle Fill="#800080" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme primär"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="2.5" Left="35.0" Name="Rör Värme primär_043" Top="105.0"
+        Version="1.0.0-rc1" Width="65.0">
+        <Rectangle Fill="#800080" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme primär"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="60" ContentWidth="50"
+        Height="60.0" Id="Kompressor_2" Left="50.0" Top="78.0" Width="50.0">
+        <Component Clip="False" ContentHeight="60" ContentWidth="60"
+            Height="40.0" Id="Indikering" Left="5.0" Name="KOMP_D1"
+            Top="15.0" Version="1.0.0-rc1" Width="40.0">
+            <Image Height="48.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQaSURBVGiBzZrpdhoxDIW/TCALTdom7fs/YddAoCGE9Id1mWvjgbCjc3xmMou5V5Y0spQL9icXK669V+7Vru3lR7d5/6Iy/P67Hcvh97cGsM17Gg1wGaOxv3UPYB4g3+J8Hudvds8JHYyAg26AfoyrGH2gVxASAQGeAa/A1MbMiG1EZBMCru0+cA3c2riJa/0VBGYxXoB/wAQYx/lLEPNV2QsB13o/gA6AT8BdHAdx/Yq0Aloh9wFfhWmAHgPPwCjGJK6/8sHV6H0Q/CVJu4MA/QX4HOcDWs0LvDuyRGDmtGb0EiRGwBPwFxjGtWmQ1bsbExCIXgC8A77auCOZTql1vVsTAZEJ3sQcA1oz1HyjIDhbRWIdgV5Meg88AN8K8HLYMnyumlNH+VOPNhCUKzkkmVQniS4Cbjb3wCPwPUjcB6neBsBr818EIP1WjzyCuf8oBH+IgCa8Imn6IcA/doDfRZxIn2WFyGfmJHNacuqSgEebAclZH+nW/L5Ec8lkBd5Dr6JSFmJrBNx0Ho4AvouECOijp29EtgqXxQSNgf9G67S35Et8KNHcHooVdp3EQpxAQ2I/CNCy+08kf/AP0yGlTBChJaC0Y7EKTfGwlu+ONlT2OR54ifvireFZMuPGXmpImr6lTQ+uyEPaMcWjoVIXVyiQr4A/rPTAU4Nji1ZBmYBwZUp1ZxGBmxgZ0xOKJ5FKNRZff18BPXhdPnRkwC7um55qLKyiNCHlJZ7jnFrclIQvMyFJuTU8tfYlvh+RYjMn7trbngN4SYlvkTOV34Fz0nwp1crHOUSZnUQEfLu3VXnjCFKtKTXk4MtazblIiW9Bwk2oq9h0avEd2YwWH5CbkBed9OC5EJBiX8n3BRmBOW2pY0pl83ACce0rnfaaUeYDXnDy4tIpxRWrSl6m3NKEpqSi0pi2JnMqh5ZiVYocs0yA0omn8dAzeXXsVARcqc+BLbOM8jswIy2V1yozmzuSuOlMSAWuEW2Ra+Gbl5WXPbVWxaxnzx46zRA4gf8D/AR+k1bhlY6qRAlO2Z+IeBZ4KBKlJTwBv2I8kXwhs4baCrj4PsE7MLq3TynBD0nAf5JWYUJrPgvpIuDxv6uNpHuHAv+b1nRGJGde8sV1BDyl8NZSuV/YlkjZM3DwP+I4JJlONRquMyEvropMCXwbIp5ReqiUzUvzK8FvQuCNPNHr+kKvC7WuEOU2Ctt/O8Av2b3LqgaHXtIEXqPUZ33XFpPmGZK0/8Ryi2llPrauR6YX32hDmGz1mXqTr7avXtfkG9J+/b1b6RiqsmubVR1Lb7N6p8UJlG3WiY2DtlnL5z0aqeCkJrd/tWsERMKb3OX+42CN7hoRX5XyWLaK/F8NyuPR/tWg6/2lcgd1An5eXtsJwD6kNpcTKGUv2e1/epDOaXLxFQ8AAAAASUVORK5CYII=]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="40.0" Left="0.0" Name=""
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="0.0" Visibility="Visible" Width="40.0"/>
+            <Path Fill="#C0C0C0" Name=""
+                PathData="M 19.924634,0.23997265 C 17.499044,0.24189786 15.07864,0.73482729 12.813651,1.6027641 10.002156,10.370607 7.7728888,22.65574 5.726319,33.754382 c 3.7815459,3.883456 8.841327,6.081745 14.190486,6.083087 5.484391,-0.0095 10.740601,-2.179535 14.489688,-6.182404 C 32.386829,22.696211 30.135656,10.358478 27.373041,1.6758505 25.002703,0.71073247 22.483919,0.24385826 19.924634,0.23997265 Z"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="0.0">
+                <Rotate Angle="90" Center="0.5,0.5">
+                    <Expose ExposedAttribute="Angle" Name="Rotera kompressor (grader)"/>
+                </Rotate>
+            </Path>
+        </Component>
+        <TargetArea Height="40.0" Left="5.0"
+            Name="TargetArea ContextMenu" Tooltip="Fläkt" Top="15.0" Width="40.0"/>
+        <Scale ScaleX=".6" ScaleY=".6"/>
+    </Component>
+    <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+        FontWeight="Normal" HorizontalAlign="Center" Id="Larm" Left="70"
+        Name="Id" Stroke="#304760" TextDecoration="None"
+            Top="0.0"><![CDATA[VPU01]]><Bind Attribute="Stroke"
+            DynamicUpdates="Enable" Name="DF.AlarmState" PreventDefault="True"/>
+        <Bind Attribute="Stroke" DynamicUpdates="Enable"
+            Name="L.AlarmState" PreventDefault="True"/>
+        <Expose ExposedAttribute="Content" Name="ID"/>
+    </Text>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="0.0" Name="Rörpil KB_046" Top="95.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#006699"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#006699" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Kyla"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="0.0" Name="Rörpil KB_048" Top="25.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#006699"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#006699" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Kyla"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="0.0" Name="Rörpil KB_052" Top="135.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#006699"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#006699" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Kyla"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+        <Rotate Angle="-180.0" Center="-6.500010347174344,0.499992608739905"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="0.0" Name="Rörpil KB_053" Top="65.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#006699"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#006699" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Kyla"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+        <Rotate Angle="-180.0" Center="7.499993467522927,0.499994897558264"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="115.0" Name="Rör Värme_057" Top="35.0"
+        Version="1.0.0-rc1" Width="25.0">
+        <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="5.0" Name="Rör Kyla_059" Top="35.0"
+        Version="1.0.0-rc1" Width="28.0">
+        <Rectangle Fill="#006699" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+        </Rectangle>
+        <Rotate Angle="-180.0" Center="0.499999370332896,0.500001239935602"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="5.0" Name="Rör Kyla_060" Top="75.0"
+        Version="1.0.0-rc1" Width="28.0">
+        <Rectangle Fill="#006699" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+        </Rectangle>
+        <Rotate Angle="-180.0" Center="0.499999370332896,0.500001239935602"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="5.0" Name="Rör Kyla_061" Top="105.0"
+        Version="1.0.0-rc1" Width="28.0">
+        <Rectangle Fill="#006699" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+        </Rectangle>
+        <Rotate Angle="-180.0" Center="0.499999370332896,0.500001239935602"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="5.0" Name="Rör Kyla_062" Top="145.0"
+        Version="1.0.0-rc1" Width="28.0">
+        <Rectangle Fill="#006699" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Kyla"/>
+        </Rectangle>
+        <Rotate Angle="-180.0" Center="0.499999370332896,0.500001239935602"/>
+    </Component>
+    <Component Clip="False" ContentHeight="48.0" ContentWidth="38.0"
+        Height="60.0" Left="25.0" Top="100.0" Width="30.0">
+        <Image Height="48.0" Left="0.0" Top="0.0" Width="38.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAAB9sggoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAABW0lEQVRYR+2ZMWsCQRBGLxo1EAgRRDF1OoPJD7BOEQV7C7WxMKj/v/R7hwN3RIuBrK4wA+8a7+Z7N7c2u8WZejjRuBKWd7FM5lG0REc8JYYMssg0yVqZVFs8i67oib4YJILeZLwKMsn+I2dSL+JNvIuR+BRfiaA3GWQNBdkmVxaGTYE1N3yIifgWP2IqZv8MPelNBllkko0DLuXUuPCdGSn23DgXC7ES60TQmwyyyCQbB1xKMUbHIuR7M1reggc2Yit+E0FvMsgik2wccCk/Jxf+ISzGsWDES8GDO7FPBL3JIItMsnHApSbGP4VFyRpg1LwVDQ6JoDcZZJFJNg4hdokQ8xJiXkLMS4h5CTEvIeYlxLyEmJcQ8xJiXkLMS4h5CTEvIebl/sWy3LjLcqsz281hLllup1OMzg4guAF7RnvTAwgKQ5PDOpsjG8rksjrkqhY/muQ1sLxKFcURkfYQ+t8Wh4oAAAAASUVORK5CYII=]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="40.0" Left="4.0" Opacity="1.0"
+            RadiusX="2" RadiusY="2" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth=".5" Top="2.0" Width="30.0"/>
+        <Line Opacity="1.0" Stroke="#000000" StrokeDashArray="0.0"
+            StrokeWidth="1.0" X1="33.0" X2="5.0" Y1="3.0" Y2="41.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="48.0" ContentWidth="38.0"
+        Height="60.0" Left="25.0" Top="30.0" Width="30.0">
+        <Image Height="48.0" Left="0.0" Top="0.0" Width="38.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAAB9sggoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAABW0lEQVRYR+2ZMWsCQRBGLxo1EAgRRDF1OoPJD7BOEQV7C7WxMKj/v/R7hwN3RIuBrK4wA+8a7+Z7N7c2u8WZejjRuBKWd7FM5lG0REc8JYYMssg0yVqZVFs8i67oib4YJILeZLwKMsn+I2dSL+JNvIuR+BRfiaA3GWQNBdkmVxaGTYE1N3yIifgWP2IqZv8MPelNBllkko0DLuXUuPCdGSn23DgXC7ES60TQmwyyyCQbB1xKMUbHIuR7M1reggc2Yit+E0FvMsgik2wccCk/Jxf+ISzGsWDES8GDO7FPBL3JIItMsnHApSbGP4VFyRpg1LwVDQ6JoDcZZJFJNg4hdokQ8xJiXkLMS4h5CTEvIeYlxLyEmJcQ8xJiXkLMS4h5CTEvIebl/sWy3LjLcqsz281hLllup1OMzg4guAF7RnvTAwgKQ5PDOpsjG8rksjrkqhY/muQ1sLxKFcURkfYQ+t8Wh4oAAAAASUVORK5CYII=]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="40.0" Left="4.0" Opacity="1.0"
+            RadiusX="2" RadiusY="2" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth=".5" Top="2.0" Width="30.0"/>
+        <Line Opacity="1.0" Stroke="#000000" StrokeDashArray="0.0"
+            StrokeWidth="1.0" X1="33.0" X2="5.0" Y1="3.0" Y2="41.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="115.0" Name="Rör Värme_063" Top="75.0"
+        Version="1.0.0-rc1" Width="25.0">
+        <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="115.0" Name="Rör Värme_064" Top="105.0"
+        Version="1.0.0-rc1" Width="25.0">
+        <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+        Height="5.0" Left="115.0" Name="Rör Värme_065" Top="145.0"
+        Version="1.0.0-rc1" Width="25.0">
+        <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Rectangle>
+    </Component>
+    <Component Clip="False" ContentHeight="48.0" ContentWidth="38.0"
+        Height="60.0" Left="90.0" Top="100.0" Width="30.0">
+        <Image Height="48.0" Left="0.0" Top="0.0" Width="38.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAAB9sggoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAABW0lEQVRYR+2ZMWsCQRBGLxo1EAgRRDF1OoPJD7BOEQV7C7WxMKj/v/R7hwN3RIuBrK4wA+8a7+Z7N7c2u8WZejjRuBKWd7FM5lG0REc8JYYMssg0yVqZVFs8i67oib4YJILeZLwKMsn+I2dSL+JNvIuR+BRfiaA3GWQNBdkmVxaGTYE1N3yIifgWP2IqZv8MPelNBllkko0DLuXUuPCdGSn23DgXC7ES60TQmwyyyCQbB1xKMUbHIuR7M1reggc2Yit+E0FvMsgik2wccCk/Jxf+ISzGsWDES8GDO7FPBL3JIItMsnHApSbGP4VFyRpg1LwVDQ6JoDcZZJFJNg4hdokQ8xJiXkLMS4h5CTEvIeYlxLyEmJcQ8xJiXkLMS4h5CTEvIebl/sWy3LjLcqsz281hLllup1OMzg4guAF7RnvTAwgKQ5PDOpsjG8rksjrkqhY/muQ1sLxKFcURkfYQ+t8Wh4oAAAAASUVORK5CYII=]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="40.0" Left="4.0" Opacity="1.0"
+            RadiusX="2" RadiusY="2" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth=".5" Top="2.0" Width="30.0"/>
+        <Line Opacity="1.0" Stroke="#000000" StrokeDashArray="0.0"
+            StrokeWidth="1.0" X1="33.0" X2="5.0" Y1="3.0" Y2="41.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="48.0" ContentWidth="38.0"
+        Height="60.0" Left="90.0" Top="30.0" Width="30.0">
+        <Image Height="48.0" Left="0.0" Top="0.0" Width="38.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAAB9sggoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAABW0lEQVRYR+2ZMWsCQRBGLxo1EAgRRDF1OoPJD7BOEQV7C7WxMKj/v/R7hwN3RIuBrK4wA+8a7+Z7N7c2u8WZejjRuBKWd7FM5lG0REc8JYYMssg0yVqZVFs8i67oib4YJILeZLwKMsn+I2dSL+JNvIuR+BRfiaA3GWQNBdkmVxaGTYE1N3yIifgWP2IqZv8MPelNBllkko0DLuXUuPCdGSn23DgXC7ES60TQmwyyyCQbB1xKMUbHIuR7M1reggc2Yit+E0FvMsgik2wccCk/Jxf+ISzGsWDES8GDO7FPBL3JIItMsnHApSbGP4VFyRpg1LwVDQ6JoDcZZJFJNg4hdokQ8xJiXkLMS4h5CTEvIeYlxLyEmJcQ8xJiXkLMS4h5CTEvIebl/sWy3LjLcqsz281hLllup1OMzg4guAF7RnvTAwgKQ5PDOpsjG8rksjrkqhY/muQ1sLxKFcURkfYQ+t8Wh4oAAAAASUVORK5CYII=]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="40.0" Left="4.0" Opacity="1.0"
+            RadiusX="2" RadiusY="2" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth=".5" Top="2.0" Width="30.0"/>
+        <Line Opacity="1.0" Stroke="#000000" StrokeDashArray="0.0"
+            StrokeWidth="1.0" X1="33.0" X2="5.0" Y1="3.0" Y2="41.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="140.0" Name="Rörpil VS_066" Top="95.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#F1CD45"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#F1CD45" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="140.0" Name="Rörpil VS_067" Top="25.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#F1CD45"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#F1CD45" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="140.0" Name="Rörpil VS_068" Top="135.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#F1CD45"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#F1CD45" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+        <Rotate Angle="-180.0" Center="-6.500022554205588,0.499980274408728"/>
+    </Component>
+    <Component Clip="False" ContentHeight="5" ContentWidth="5"
+        Height="5.0" Left="140.0" Name="Rörpil VS_069" Top="65.0"
+        Version="1.0.0-rc1" Width="5.0">
+        <Path Fill="#F1CD45"
+            PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+            Stroke="#F1CD45" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+        </Path>
+        <Rotate Angle="90">
+            <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+        </Rotate>
+        <Rotate Angle="-180.0" Center="7.499978208733864,0.49998332616654"/>
+    </Component>
+    <Metadata Name="Name" Value="VPU01"/>
+    <Metadata Name="Description" Value=""/>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+</Component>

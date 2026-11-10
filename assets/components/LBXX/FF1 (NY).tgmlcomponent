@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="80.0" ContentWidth="50.0"
+    Height="80.0" Left="240.0" Name="FF1 (NY)" Top="195.0"
+    Version="1.0.0-rc1" Width="50.0">
+    <Component Clip="False" ContentHeight="60.0" ContentWidth="50.0"
+        Height="60.0" Id="Fläkt" Left="0.0" Top="0.0" Width="50.0">
+        <Component Clip="False" ContentHeight="40.0" ContentWidth="40.0"
+            Height="40.0" Id="Indikering" Left="5" Name="D" Top="15" Width="40.0">
+            <Image Height="48.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQaSURBVGiBzZrpdhoxDIW/TCALTdom7fs/YddAoCGE9Id1mWvjgbCjc3xmMou5V5Y0spQL9icXK669V+7Vru3lR7d5/6Iy/P67Hcvh97cGsM17Gg1wGaOxv3UPYB4g3+J8Hudvds8JHYyAg26AfoyrGH2gVxASAQGeAa/A1MbMiG1EZBMCru0+cA3c2riJa/0VBGYxXoB/wAQYx/lLEPNV2QsB13o/gA6AT8BdHAdx/Yq0Aloh9wFfhWmAHgPPwCjGJK6/8sHV6H0Q/CVJu4MA/QX4HOcDWs0LvDuyRGDmtGb0EiRGwBPwFxjGtWmQ1bsbExCIXgC8A77auCOZTql1vVsTAZEJ3sQcA1oz1HyjIDhbRWIdgV5Meg88AN8K8HLYMnyumlNH+VOPNhCUKzkkmVQniS4Cbjb3wCPwPUjcB6neBsBr818EIP1WjzyCuf8oBH+IgCa8Imn6IcA/doDfRZxIn2WFyGfmJHNacuqSgEebAclZH+nW/L5Ec8lkBd5Dr6JSFmJrBNx0Ho4AvouECOijp29EtgqXxQSNgf9G67S35Et8KNHcHooVdp3EQpxAQ2I/CNCy+08kf/AP0yGlTBChJaC0Y7EKTfGwlu+ONlT2OR54ifvireFZMuPGXmpImr6lTQ+uyEPaMcWjoVIXVyiQr4A/rPTAU4Nji1ZBmYBwZUp1ZxGBmxgZ0xOKJ5FKNRZff18BPXhdPnRkwC7um55qLKyiNCHlJZ7jnFrclIQvMyFJuTU8tfYlvh+RYjMn7trbngN4SYlvkTOV34Fz0nwp1crHOUSZnUQEfLu3VXnjCFKtKTXk4MtazblIiW9Bwk2oq9h0avEd2YwWH5CbkBed9OC5EJBiX8n3BRmBOW2pY0pl83ACce0rnfaaUeYDXnDy4tIpxRWrSl6m3NKEpqSi0pi2JnMqh5ZiVYocs0yA0omn8dAzeXXsVARcqc+BLbOM8jswIy2V1yozmzuSuOlMSAWuEW2Ra+Gbl5WXPbVWxaxnzx46zRA4gf8D/AR+k1bhlY6qRAlO2Z+IeBZ4KBKlJTwBv2I8kXwhs4baCrj4PsE7MLq3TynBD0nAf5JWYUJrPgvpIuDxv6uNpHuHAv+b1nRGJGde8sV1BDyl8NZSuV/YlkjZM3DwP+I4JJlONRquMyEvropMCXwbIp5ReqiUzUvzK8FvQuCNPNHr+kKvC7WuEOU2Ctt/O8Av2b3LqgaHXtIEXqPUZ33XFpPmGZK0/8Ryi2llPrauR6YX32hDmGz1mXqTr7avXtfkG9J+/b1b6RiqsmubVR1Lb7N6p8UJlG3WiY2DtlnL5z0aqeCkJrd/tWsERMKb3OX+42CN7hoRX5XyWLaK/F8NyuPR/tWg6/2lcgd1An5eXtsJwD6kNpcTKGUv2e1/epDOaXLxFQ8AAAAASUVORK5CYII=]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="40.0" Left="0.0" Name=""
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="0.0" Visibility="Visible" Width="40.0">
+                <Bind Attribute="Fill" Name="Value" PreventDefault="True">
+                    <ConvertStatus Error="#FFFFFF" Forced="#FF8000"
+                        Name="Forced" Stored="#FFFFFF"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#C0C0C0" Name=""
+                PathData="m 20,2.5 c -1.55,0 -2.16,1.25 -2.16,1.25 l -13,22.5 C 3.88,27.9 5,30 7,30 h 26 c 2,0 3.12,-2.08 2.16,-3.75 l -13,-22.5 c 0,0 -0.61,-1.25 -2.16,-1.25 z"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="0.0">
+                <Rotate Angle="270" Center="0.5,0.636">
+                    <Expose ExposedAttribute="Angle" Name="Rotera fläkt (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="Value"/>
+            </Path>
+        </Component>
+        <TargetArea Height="40.0" Left="5.0"
+            Name="TargetArea ContextMenu" Tooltip="Fläkt" Top="15.0" Width="40.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="25.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="0.0"><![CDATA[FF1]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="HM_L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="DS_L.AlarmState" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="20.0" ContentWidth="50.0"
+        Height="20.0" Id="Omformare" Left="0.0" Top="60.0"
+        Version="1.0.0-rc1" Width="50.0">
+        <Image Height="53" Left="-4" Top="-2" Width="58.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADoAAAAcCAYAAAAwTqwDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFiF7dlBbsIwEIXhLyGUqnRRtfe/YzfQUgLpwh4wKQfAbp40cmLPwr/GiTIvnb/qZmNtmmYjbmG6HP1srEkTzrNxgiEnBOSANZ6wUhdswI045hhjrQQd8IxXvGCT52oCHXHALsd3npsCpJMqucU73iTYcv2RFUd0xB6fef6Uo4uK9q6gb/jI12uPDxmapOO6y/ff+MIPzlGxXqreRqrkNkeNR5cEGI9er6howK7yYsRKXaDc7v3yMh2KxIDti4Qans9S9xjIN/9CC2hrWkBb0wLamhbQ1rSAtqbyWzc69IiLDVGJYr9zBlxBI+EktToR1PNRH21axEkBO7j1Wg5Shx7Na62N915iGWXYqOi5SAob4kvdVspOYjpzreg9G6IFc+yY56fSrG7V7rwBpXED+x5Ik78kfgFGEXnmrQV4JwAAAABJRU5ErkJggg==]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="45" Left="0.0" Opacity="1.0"
+            RadiusX="2.0" RadiusY="2.0" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth="0.5" Top="0.0" Width="50.0"/>
+        <TargetArea Height="45" Left="0.0" Name="TargetArea ContextMenu"
+            Top="0.0" Width="50.0"/>
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="15.0"
+            Height="15.0" Id="Manöver" Left="34.0" Name="" Top="2.5"
+            Version="1.0.0-rc1" Visibility="Visible" Width="15.0">
+            <Ellipse Fill="#F68B1C" Height="15.0" Left="0.0"
+                Name="Forcerad manöver" Opacity="1" Stroke="None"
+                Tooltip="Forcerad manöver" Top="0.0" Visibility="Hidden" Width="15.0">
+                <Bind Attribute="Visibility" Name="M.Value">
+                    <ConvertStatus Error="Hidden" Forced="Visible"
+                        Name="Forced Visible" Stored="Hidden"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Manöver">
+                <Rotate Angle="270" Center="0.5,0.63">
+                    <Expose ExposedAttribute="Angle" Name="Rotera fläkt (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="M.Value"/>
+                <Bind Attribute="Stroke" Name="M.Value"/>
+            </Path>
+        </Component>
+        <Component Clip="False" ContentHeight="16.5" ContentWidth="30.0"
+            Height="16.5" Id="Styrsignal" Left="3.5" Name="" Top="1.0" Width="30.0">
+            <Rectangle Fill="None" Height="4.0" Left="0.0"
+                Name="Stapel Ram" Opacity="1" RadiusX="1" RadiusY="1"
+                Stroke="#C0C0C0" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="12.5" Width="30.0"/>
+            <Rectangle Fill="#009530" Height="4.0" Left="0.0"
+                Name="Styrsignal Stapel" RadiusX="1" RadiusY="1"
+                StrokeDashArray="0" StrokeWidth="0.0" Top="12.5"
+                Visibility="Visible" Width="30.0">
+                <Scale Center="0.0,1.0" ScaleX="0.0" ScaleY="1.0">
+                    <Bind Attribute="ScaleX" Name="SS.Value">
+                        <ConvertValue AttributeValue="0" SignalLessThan="0"/>
+                        <ConvertRange AttributeMaxValue="1"
+                            AttributeMinValue="0" SignalMaxValue="100" SignalMinValue="0"/>
+                        <ConvertValue AttributeValue="1" SignalMoreThan="100"/>
+                    </Bind>
+                </Scale>
+            </Rectangle>
+            <Text FontFamily="Arial" FontSize="10" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Right" Left="29.5"
+                Name="Styrsignal" Stroke="#0087CD" TextDecoration="None"
+                Tooltip="Styrsignal" Top="0.0">
+                <Bind Attribute="Content" Name="SS.Value" PreventDefault="True"/><![CDATA[0]]></Text>
+            <Text FontFamily="Arial" FontSize="10" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Right" Left="41.44"
+                Name="Hz" Stroke="#0087CD" TextDecoration="None"
+                Tooltip="Hz" Top="20">
+                <Bind Attribute="Content" Name="Hz.Value" PreventDefault="True"/><![CDATA[0]]></Text>
+            <Text FontFamily="Arial" FontSize="10" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Right" Left="41.44"
+                Name="kW" Stroke="#0087CD" TextDecoration="None"
+                Tooltip="kW" Top="30">
+                <Bind Attribute="Content" Name="kW.Value" PreventDefault="True"/><![CDATA[0]]></Text>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="10.0"
+            Top="10.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="D.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="M.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="SS.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="30.0"
+            Top="30.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #fläktreglering tilluft"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="GRI.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="60.0"
+            Top="60.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="DS_LT.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Energi" Left="0" Name="" Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #övrigaparametrar"/>
+            <Metadata Name="Icon" Value="MiscSettings"/>
+            <Metadata Name="Text" Value="Energi"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="Hz.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="A.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="V.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="kW.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="FF1 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAANVSURBVFhHxVZpTxpRFOUv9w80NjFGI65R64J1aQ0fiGgVRYjWBeNGIoI2iILEmAYim5QSZPM052bGDgjtMJD0JJeZuTPMPe8u540J/xlNCbz7MIqPn1fg9Qfx3myR8x/xhJx3Ek0JjH6ySXAG/WJ3IRAM42cuD5vjm/JEZ9CUwFe3R44kQCIqVH+n0JRAMv0kx2KxJCtXofo7haYEXl5ekM1mcX19jZ2dHZyenuL+/l78nURDAolEAlNTU+jv78fCwgJ2d3extraG6elpdHd3y3W1WlWebg81BLi6k5MTjI+P4+HhQfHWIp1Ow+12C8FkMql4jaOGwNHREZaWllAoFBTPH7Ac5+fn2Nvbw93dnRAcGRnB8/Oz8oQxvBKIxWIYGxt7E7xYLEofMLBqvCbOzs6wvLzcVjmEQKVSwezsLG5vb8VJ8KVsusPDw5rgWgLE5OQkIpGIctU6hADr2tPTIw4ilUrJ6uoDq6YlcHx8DLvdbng6TPzjxcUFZmZmkM/nEQgEGgbVmpZANBqVLDCLRiAEtra2sLGxIRPQKGC9aQmwZ5i9crmseFqDibU+ODjA4uKirKZRwHrTEmDzchrYrEYgGQiFQjCbzeLQUwYtAZ/Ph/n5eeMZIAE2YW9vL3K5nOL+eyNqCayurmJzc9PwKMoUUEwotRShelBw6kdRJaCm//Hx0fgU8Ifs4/E4JiYm4Pf75YYWTO/Nzc0bAnx+f38fpVJJro3gVQn5ksvLSwwODsLpdDasKUvERg2HwxKcKkif0dUTrwQIjhQb0mKxCBHuesFgEJlMRgJTdGw2m9xzuVzibyc4UUOAL2MmWFumlgLDGvf19WFoaEh2SavVKtLLaWk3OGFiQO5uWmMAZoLj6PV6RaD4QcKRY0ZYgvr/sBGNwMT5n5uba9u4k66vryuv1Q/T9va2cvpvOCNZRJ9qFY9NyF6gsUytlsXERtODTKGClVBGTIXH45GVU8RIgM3ZqiDpJlAoVyUD1u8pCcYGZfY4OV1dXeIbGBhoeVfUTYDwxfOI/SrJyqn/6teTSoD91KooCQEqm1Zq/2acCAbmdAwPD8tRS6DVXVEI8GOUL9BjJEtRIkjE4XDIhsR7hglQePhVpMeurq4aynRbBDoBYwSA3147BX5UC0TUAAAAAElFTkSuQmCC-->

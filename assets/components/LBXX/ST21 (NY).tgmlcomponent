@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<Component Clip="False"
+    ComponentVersion="Spjäll Tvåläges Fjäder Ner-1.0.0"
+    ContentHeight="85.0" ContentWidth="20.0" Height="85.0" Left="170.0"
+    Name="ST21 (NY)" Top="390.0" Width="20.0">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+        Height="85.0" Id="Spjäll" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="70.0" ContentWidth="20.0"
+            Height="70.0" Left="0.0" Name="Spjäll Tvåläges Fjäder Ner"
+            SymbolVersion="Spjäll Tvåläges Fjäder Ner-1.0.0" Top="0.0" Width="20.0">
+            <Image Height="78.0" Left="-4" Top="-2" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAABOCAYAAAAzS3ZoAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANISURBVGiB7ZndctowEEaPiYFASJM2ff83bDppEkwIwb3QftZayD/AVTvWjMbYSDpaabVarQraqUie16Y6ebYaLoCZy9dCa+Docu2BBXADlMACmNv7pdAa+AI+gT1wsPe6JEpWAmtgY885l0kqyT6BLfBmzxo4llZoRpBsAzwBD8Atl0kp6XbAi32ThA2wMInWBnsCVlcCK3uvgHfrABpSzeGcINnK4NcAsba8PhReQs3lTZIvAeLqSw8KCBL6VHTkc1Nn/dkFjV2VJuAEnIATcAJOwAk4ASfgBJyAE3ACjknp+bDO5FwqXPk09bZRJoWOhOOysm88hXlA+u7bUIymFrCmHVfZEQMC/sjtT7SaCt+YjzopqLCzNr9UxkuouIpCHWnYRKC5G5mD1WsiTZyGTbZWppFQPd0TgjhY79LAkGC3wNK+fTgpjg6YBob2+n9s6EvSLYE7QkgFa/DdwDkps6EvX0DPD9rKoQ4t3TsG+2PlVV8pG9wrOwrkNFMxl0/rMfZbUqRAaEtMCswWcMCCRMW7pOhL/79pm4D/PjBdFkMpDUmeHd4cA/Q7hM8k796WdqabETAZ7SUhNK2of0ncP7sMxllAhaMXDvRgeWMdaGLZDtgL7wIWJsHSGn8Eflh+BO6tEwvi7pLblE9Sbg5lqHWPIdgjYWtSpB7C0K7dd90SvNLegQaBpUnwAPwk3GPcO5ikWbqs7zVhN8ka9FxUX0pyZ1J9B74RFSX1AjTX2k32BC9AG29reHNAbbR3JtXGpM3dRfl1uTJARbxvkmvRAGeZyl4z1wZPJcuNipRsRVSoVIuzpk2VpX19sK56C1fvpFDaWz3V8zGmK3W2Zsm3TqBftHIfBq0HeZcjawByQ3okTP6e6DCNAft60tBjWsgDvcu/J2jbluAC9kEl1cHKVpa9J9fUGzJtc6Li5K72PKwi+KjPwG8Sj3sMML1T9OqteZJ3XRHM2bPlF8Li18IfBKr3XnEEORDnakfwvl8M9Mt+v9M+bzQpZ0v9PL4RbWNFMAQ6VUE8JW1NwlcHy3nivWtM60knJmUddATUmVJZkp1INwTU/5rDkqg8fu/7Ig6zP/F2NjiU+u6Fc+f53vV6jsc1VHaMReIvTRc+MrzVj0cAAAAASUVORK5CYII=]]></Image>
+            <Path Fill="#FFFFFF" Opacity="1.0"
+                PathData="m 9.5,39.5 v 0.519531 l -6.0175781,5.048828 c -0.2121943,0.178053 -0.2385991,0.490931 -0.060547,0.703125 0.1780522,0.212195 0.4909307,0.240553 0.703125,0.0625 L 9.5,41.324219 V 55.5 h 1 V 41.328125 l 5.363281,4.503906 c 0.212096,0.17817 0.527809,0.152613 0.707031,-0.05859 0.179223,-0.211207 0.151549,-0.524956 -0.06055,-0.703126 L 10.5,40.021484 V 39.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5">
+                <Rotate Angle="0" Name="">
+                    <Expose ExposedAttribute="Angle" Name="Riktning fjäderåtergång (grader)"/>
+                </Rotate>
+            </Path>
+            <Path Fill="#FFFFFF" Opacity="1"
+                PathData="M 10,8 C 9.723,8 9.5,8.223 9.5,8.5 v 9.054688 A 2.5,2.5 0 0 0 7.5,20 a 2.5,2.5 0 0 0 2,2.449219 V 31.5 c 0,0.277 0.223,0.5 0.5,0.5 0.277,0 0.5,-0.223 0.5,-0.5 V 22.445312 A 2.5,2.5 0 0 0 12.5,20 2.5,2.5 0 0 0 10.5,17.550781 V 8.5 C 10.5,8.223 10.277,8 10,8 Z M 9.5,55.017578 c -3.938925,0.26318 -6.9995301,3.534715 -7,7.482422 0,4.142136 3.3578644,7.5 7.5,7.5 4.142136,0 7.5,-3.357864 7.5,-7.5 -0.0046,-3.944697 -3.064076,-7.211632 -7,-7.474609 M 10.5,40 H 19 c 0.554,0 1,-0.446 1,-1 V 1 C 20,0.446 19.554,0 19,0 H 1 C 0.446,0 0,0.446 0,1 v 38 c 0,0.554 0.446,1 1,1 h 8.5"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="70.0" Left="0.0"
+            Name="TargetArea ContextMenu"
+            Tooltip="Spjäll, tvåläges med fjäderåtergång" Top="0.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" HorizontalAlign="Center"
+            Id="Larm" Left="10.0" Name="Id" Stroke="#304760"
+            TextDecoration="None" Top="72.0"><![CDATA[ST21]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" Name="FSL_L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="15.0"
+            Height="15.0" Id="Manöver" Left="18.0" Name=""
+            SymbolVersion="Manöver-1.0.0" Top="43.0" Width="15.0">
+            <Image Height="23.0" Left="-4" Top="-2"
+                    Width="23.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEvSURBVEiJ7ZRRU4MwEIS/kIJWmVpb//9/1AerUMCH7EkKScHpi854MxkSuOxu9i7AXw13Q96wtMmvBHbK9T8QtAjugAIogTugivbcpDwG3gI18KC1A/olgs0CuJfiHbCX8gZ4FbgRJEly4Ka6Ah6BZ+Aook99b4HuGkEK3Aq4Ae4j1fsIvNOzAc5kLMop95HqnUatd6UATxqNyGbqpwWNi1gT7HiRaitmodxewA3Boj6lcAruCXY8EXw+RKoLxj7vdQIjMHu+o+AyDLwitN9Wc2s9K6BL5MwuWK6gPiJuGb11BF87vTeByZubAh90xA/gTXO7OAY+CPxdeWdWdIupMuCWsYhukmcFPSnfOubCgunabCm5/rMyIWbRrB1Tm1xi5GJIjKzytd9SJP/xC+ILuNZYTobdDXAAAAAASUVORK5CYII=]]><Rotate
+                    Angle="90" Center="0.5,0.5">
+                    <Expose ExposedAttribute="Angle" Name="Rotera indikering/manöver (grader)"/>
+                </Rotate>
+            </Image>
+            <Ellipse Fill="#F68B1C" Height="15.0" Left="0.0"
+                Name="Forcerad manöver" Opacity="1" Stroke="None"
+                Tooltip="Forcerad manöver" Top="0.0" Visibility="Hidden" Width="15.0">
+                <Bind Attribute="Visibility" Name="M.Value">
+                    <ConvertStatus Error="Hidden" Forced="Visible"
+                        Name="Forced" Stored="Hidden"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Manöver">
+                <Rotate Angle="90" Center="0.5,0.63">
+                    <Expose ExposedAttribute="Angle" Name="Rotera indikering/manöver (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="M.Value"/>
+                <Bind Attribute="Stroke" Name="M.Value"/>
+            </Path>
+        </Component>
+        <Component Clip="False" ContentHeight="10.0" ContentWidth="20.0"
+            Height="10.0" Id="Indikering öppet" Left="14.0" Name="IÖ"
+            Tooltip="Indikering" Top="28.0" Width="20.0">
+            <Text FontFamily="Arial" FontSize="10.0" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="9.0"
+                Opacity="1.0" Stroke="#304760" TextDecoration="None"
+                Top="0.0" VerticalAlign="Top"
+                    Visibility="Hidden"><![CDATA[Ö]]><Bind
+                    Attribute="Visibility" Name="Value"/>
+                <Expose ExposedAttribute="Content" Name="Text indikering till"/>
+            </Text>
+            <Ellipse Fill="#FFFFFF" Height="4.0" Left="0.0"
+                Opacity="1.0" Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="0.1" Top="6.0" Width="4.0">
+                <Bind Attribute="Fill" Name="Value"/>
+                <Bind Attribute="Stroke" Name="Value"/>
+            </Ellipse>
+        </Component>
+        <Component Clip="False" ContentHeight="10.0" ContentWidth="20.0"
+            Height="10.0" Id="Indikering stängt" Left="14.0" Name="IS"
+            Tooltip="Indikering" Top="28.0" Width="20.0">
+            <Text FontFamily="Arial" FontSize="10.0" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="9.0"
+                Opacity="1.0" Stroke="#304760" TextDecoration="None"
+                Top="0.0" VerticalAlign="Top"
+                    Visibility="Hidden"><![CDATA[S]]><Bind
+                    Attribute="Visibility" Name="Value"/>
+                <Expose ExposedAttribute="Content" Name="Text indikering från"/>
+            </Text>
+            <Ellipse EffectsFillOn="#FF0000" EffectsStrokeOn="#FF0000"
+                Fill="#FFFFFF" Height="4.0" Left="0.0" Opacity="1.0"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.1"
+                Top="0.0" Width="4.0">
+                <Bind Attribute="Fill" Name="Value"/>
+                <Bind Attribute="Stroke" Name="Value"/>
+            </Ellipse>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="0" Name=""
+            Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="M.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="70.0"
+            Top="70.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="FSL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="ST21 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAI2SURBVFhH5ZZZi1pBEIXvTxdU3HEDgzsYREVRRFEJLg9xI1FMEJIBIyERNwwq0aDGpcKp8Q5OZh5v33mYA2VXdyP1WV3VrRQOh6lWqz2xUqlEwWCQLpcLiZSEYM9ptVqRzWaj0+l0XRGjRwDT6fTq3QNYrVZ1AXQ6HfX7ffZfBECj0VCv12P/9QHg/AGA6odUB8jn89x+qIPj8ag+AAIiA7fz11mE7XabjEYjeTwe9QEQuNVqkcPhIJfLpT7AZrPhAvT7/ZRMJtUHgEajEWfAYrGwCQfAg+P1etkCgQCP8hGEQiHxADhz3AEAQRHCIpEIt+NisRD/HK/Xay6+RCLBwTFi3mg0aDabkdvtpm63KwxEwgfOfb/fM0Cz2eRihKElkY10Ok0+n4/m8zl/SUkxAHQLIKter1MqlWIfzzSKUulMPAG47QoAxONxKpfLXCOdTofO5/N1VxkxwGAwILPZzP8BMWazWf6lWNfr9RSNRmk8HvMdobSk5XJJTqeTz1xWpVKhYrHIAbG/2+3EFSHSWygUrtN7IaDBYFA83c9JqlarfO3eCtkwmUxCUv6/JPQ6zh2XjqxMJkO5XE6dDBwOB652tJjdbietVkuxWOxRTYgUdwEgJpMJt9lwOKTtdiv8CpYlJfNVGs8W9OZthj58+sKWffeefi3XhD2MIiVVG112AAABBmvff04YBHORkkq19kMGoI+fv7LJvnAAOQNyoLtvPzjw780ftsPhL6+L0sNb8DIi+gf6Z1Eu1p22tAAAAABJRU5ErkJggg==-->

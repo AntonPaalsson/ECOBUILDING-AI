@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+    Height="85.0" Left="740.0" Name="GT31_GT71 (NY)" Top="140.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+        Height="85.0" Id="Givare" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="45.0" ContentWidth="20.0"
+            Height="45.0" Left="0.0" Name="Givarsymbol upp" Top="40.0"
+            Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4.0" Top="-2.0" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIaSURBVEiJ7ZZdc9owEEWPDaEJaZN2+v//YQmkfBQcbPqgXXQtJGMyeclMdmbHjLH3aK+uJMNXfPaortyvCqlxKiRyPce0AKuASZK1XRXqxVugs6vmBTQdbWWF74AZ8M1yZoNzuAK9+BFogINlA7zZQE4K0N8Tg82B75Zz4N7uDwHfgD2wAzaWO7vfOlQl9c4egZ/AL+BZgFN7pk6AneVRgK9WqwK2MrAecGLyPQG/LZ+kOweVTNPZ4OaEKahlIOc5TYH3wA/r7Nm6dSnJwBTq9ab2nHbcWF4AZwZ9oD9vdQHkkQ5Ea3i3kCmka8gLlboqgfX5tF4PqE7bEyRo0xeuhJujsRoHokuzwD3BVWui9mOhCttZjY3VPAMnyUu6y9xJlhyqsM662QBLYAGsDH70QadAf1mhM6JxhoAt8I+wBhfAi3XpKmU71NAtTt2aW4ctYb7WBloYeK/dDXWo/ys0lVal3BKk/EOQcmv3e/M/1CFczqdvb+le6lK+EKU8kDHcENAfrA2kJ4a72125Jhrl1QbQk/IWYGog35QhSrkiSLmkIOUYoEZF7NIN1BFM8Ze+K7NSjgFWxK3JD2bfnGsrqmtOXVmMsR36aPUAbohGWRn84oR/DzC3mZ+IzlwyQspbgCotxHW3I8zfhujKq5H7akvDQUcr7GaB+MHkS+DqJn/rWefGcWX8a21w3t4L9Odz36W3nJlf8bHxHzH74WtfILtRAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 0,8 C 1.5,5 3,3 10,3 17,3 18.5,5 20,8 L 10.5,22.5 V 41.05 C 12.75,41.5 12.5,45 10,45 7.5,45 7.25,41.5 9.5,41.05 V 22.5 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5" Visibility="Visible"/>
+        </Component>
+        <TargetArea Height="45.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="40.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="28.5"><![CDATA[GT31_GT71]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="GF_L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="BL.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10.0"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Mätvärde" Top="14.0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="MV.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="30.0"
+            Top="30.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #fläktreglering tilluft"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="NK_G.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="GT3U_NK_G.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="20.0"
+            Top="20.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="BL_LG.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="BL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GT31_GT71 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAHaSURBVFhH7ZXfa9pQFMfzZ+9twhijoE6kOvUhozpcseAYFN2GqBhSJ2UKgrhBMXRiM7oyi3PKdPod37Ob4Oijza0Pfl5yz/dccr65P04MPDB7A3sDu2NgPP+DZ2cu3nwZK0UPvoEX7Ws4t7/x2LpSih58Ay+7N7IKj+ojpejBN+BOF7IFXAmd7MYhtM+7EniMvn3HyWlV9Kr9CU/jR3hVfI/PF5cS3/y4lRyf22J0+xfy8k1YnNAIefvBkidhbvLzl5jy8tsgK7BZgJjHp1Ikbp5I7OWdr1d4V/soY2r3ZoBLuwlfzAJeYS9PncYINW+8DcZ6vUav18PrQhFPDp4jepiBbduYTCZqSrAYlUoF2WwWtVoNjuOg0+mgXC4jkUhgOp2qacFhpFIpNfyffr+PXC6nouAwIpEIxuO7/T+fz6PRaKgoOIx6vY5MJqPCf/Dr0+k0ZrOZUoLD4D6bpolWqyXCfD5HNBrFYDAAD2jQyC0YDocIh8OyFYVCAaVSCcvlUk0JFukDi8VCbkEsFkMymZTTr+PriRhgMRYNhUJy8FarlSR1IAYITdBAu91Wih58A4QG2Ih0sjewOwbYgGiA11EnvoFmswn+mNgLdOIbYOezLAuu6ypFB8BfCmqg9vTzsNcAAAAASUVORK5CYII=-->

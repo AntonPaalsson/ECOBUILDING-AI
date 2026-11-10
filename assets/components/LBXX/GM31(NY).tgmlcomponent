@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="65.0" ContentWidth="20.0"
+    Height="65.0" Left="1060.0" Name="GM31(NY)" Top="405.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="65.0" ContentWidth="20.0"
+        Height="65.0" Id="Givare" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="25.0" ContentWidth="20.0"
+            Height="25.0" Left="0.0" Name="Rumsgivarsymbol" Top="40.0"
+            Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4.0" Top="-2.0" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIaSURBVEiJ7ZZdc9owEEWPDaEJaZN2+v//YQmkfBQcbPqgXXQtJGMyeclMdmbHjLH3aK+uJMNXfPaortyvCqlxKiRyPce0AKuASZK1XRXqxVugs6vmBTQdbWWF74AZ8M1yZoNzuAK9+BFogINlA7zZQE4K0N8Tg82B75Zz4N7uDwHfgD2wAzaWO7vfOlQl9c4egZ/AL+BZgFN7pk6AneVRgK9WqwK2MrAecGLyPQG/LZ+kOweVTNPZ4OaEKahlIOc5TYH3wA/r7Nm6dSnJwBTq9ab2nHbcWF4AZwZ9oD9vdQHkkQ5Ea3i3kCmka8gLlboqgfX5tF4PqE7bEyRo0xeuhJujsRoHokuzwD3BVWui9mOhCttZjY3VPAMnyUu6y9xJlhyqsM662QBLYAGsDH70QadAf1mhM6JxhoAt8I+wBhfAi3XpKmU71NAtTt2aW4ctYb7WBloYeK/dDXWo/ys0lVal3BKk/EOQcmv3e/M/1CFczqdvb+le6lK+EKU8kDHcENAfrA2kJ4a72125Jhrl1QbQk/IWYGog35QhSrkiSLmkIOUYoEZF7NIN1BFM8Ze+K7NSjgFWxK3JD2bfnGsrqmtOXVmMsR36aPUAbohGWRn84oR/DzC3mZ+IzlwyQspbgCotxHW3I8zfhujKq5H7akvDQUcr7GaB+MHkS+DqJn/rWefGcWX8a21w3t4L9Odz36W3nJlf8bHxHzH74WtfILtRAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 0,8 C 1.5,5 3,3 10,3 17,3 18.5,5 20,8 L 10,23.25 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="25.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="40.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None" Top="29.0">
+            <Expose ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" Name="GF_L.AlarmState" PreventDefault="True"/><![CDATA[GM31]]></Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10.0"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Mätvärde" Top="14.0">
+            <Bind Attribute="Content" Name="MV.Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="10.0"
+            Top="10.0" Visibility="Visible" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="Content" Name="G.Value"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GM31(NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIjSURBVFhH7ZZNi1JRGMfP52vXF4gWfYCCFtMmaBEtStQLakgqvjAEQkOiVJpeIUQhWjQudDR1KiYVL5qmiK//5n/m3mnMRZt7xhb+4FzOee6B5/+83IcrsGP2AvYC9gL+LwEVY4q777/jIH+G6WJlWtWyIeB28hSD6RJHJwO5roMNAYyc6F9HCB0bcq+aLQFM/ZvGUK7rYKsHKIJ9sJMe2AW7F/D0+SHOOj3cuHVfGka/Jrh55wGM/k8EXybhix5J+3HlC3jXbgSdt779wMETHz5+ruCtXsK9R5oURbsWjMuLtFti7ETQGR3HkznpLPbqHR4+eyFfUgSjZlaIEgGPtbBM7+v0BymAkVJArvBJ7ilgNpvLy0oE8EEHrDkX90w9YQYs54RnuxHr9RqdTgepVArBYBCBQECuSCSCYrGI4VDtQBLlchler1c6a7Val6teryORSMDv96PXsz9yC+F2u7FYLMzjNu12Gx6PB6uVmskofD7fPwUwQ5PJxZdgNyIWiyGTyZjHTSiMzkulEubzP81oJ6JWq4FlYKR/k8/nEY1G0e/3wWZVgRiNRsjlcrLOV0vBxnM6nWg2m8qiJ2K5XMrPMBwOI51Om+bzoXPeG7quK6u9hTmIZqhWq3C5XLIUhUIBoVAIhmEo634LKYD1ZSmy2Sw0TYPD4UCj0VCaeovL/wGWotvtIh6Py6HE1KtqvKts/JAw4sFggPF4rDz1FwC/Abx8k4/kNqJkAAAAAElFTkSuQmCC-->

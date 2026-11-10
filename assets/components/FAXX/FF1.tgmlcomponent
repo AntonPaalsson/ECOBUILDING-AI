@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="60.0" ContentWidth="50.0"
+    Height="60.0" Left="955.0" Name="FF1" Top="240.0"
+    Version="1.0.0-rc1" Width="50.0">
+    <Component Clip="False" ContentHeight="60.0" ContentWidth="50.0"
+        Height="60.0" Id="Fläkt" Left="0.0" Top="0.0" Width="50.0">
+        <Component Clip="False" ContentHeight="40.0" ContentWidth="40.0"
+            Height="40.0" Id="Indikering" Left="5" Name="D" Top="15"
+            Version="1.0.0-rc1" Width="40.0">
+            <Image Height="48.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQaSURBVGiBzZrpdhoxDIW/TCALTdom7fs/YddAoCGE9Id1mWvjgbCjc3xmMou5V5Y0spQL9icXK669V+7Vru3lR7d5/6Iy/P67Hcvh97cGsM17Gg1wGaOxv3UPYB4g3+J8Hudvds8JHYyAg26AfoyrGH2gVxASAQGeAa/A1MbMiG1EZBMCru0+cA3c2riJa/0VBGYxXoB/wAQYx/lLEPNV2QsB13o/gA6AT8BdHAdx/Yq0Aloh9wFfhWmAHgPPwCjGJK6/8sHV6H0Q/CVJu4MA/QX4HOcDWs0LvDuyRGDmtGb0EiRGwBPwFxjGtWmQ1bsbExCIXgC8A77auCOZTql1vVsTAZEJ3sQcA1oz1HyjIDhbRWIdgV5Meg88AN8K8HLYMnyumlNH+VOPNhCUKzkkmVQniS4Cbjb3wCPwPUjcB6neBsBr818EIP1WjzyCuf8oBH+IgCa8Imn6IcA/doDfRZxIn2WFyGfmJHNacuqSgEebAclZH+nW/L5Ec8lkBd5Dr6JSFmJrBNx0Ho4AvouECOijp29EtgqXxQSNgf9G67S35Et8KNHcHooVdp3EQpxAQ2I/CNCy+08kf/AP0yGlTBChJaC0Y7EKTfGwlu+ONlT2OR54ifvireFZMuPGXmpImr6lTQ+uyEPaMcWjoVIXVyiQr4A/rPTAU4Nji1ZBmYBwZUp1ZxGBmxgZ0xOKJ5FKNRZff18BPXhdPnRkwC7um55qLKyiNCHlJZ7jnFrclIQvMyFJuTU8tfYlvh+RYjMn7trbngN4SYlvkTOV34Fz0nwp1crHOUSZnUQEfLu3VXnjCFKtKTXk4MtazblIiW9Bwk2oq9h0avEd2YwWH5CbkBed9OC5EJBiX8n3BRmBOW2pY0pl83ACce0rnfaaUeYDXnDy4tIpxRWrSl6m3NKEpqSi0pi2JnMqh5ZiVYocs0yA0omn8dAzeXXsVARcqc+BLbOM8jswIy2V1yozmzuSuOlMSAWuEW2Ra+Gbl5WXPbVWxaxnzx46zRA4gf8D/AR+k1bhlY6qRAlO2Z+IeBZ4KBKlJTwBv2I8kXwhs4baCrj4PsE7MLq3TynBD0nAf5JWYUJrPgvpIuDxv6uNpHuHAv+b1nRGJGde8sV1BDyl8NZSuV/YlkjZM3DwP+I4JJlONRquMyEvropMCXwbIp5ReqiUzUvzK8FvQuCNPNHr+kKvC7WuEOU2Ctt/O8Av2b3LqgaHXtIEXqPUZ33XFpPmGZK0/8Ryi2llPrauR6YX32hDmGz1mXqTr7avXtfkG9J+/b1b6RiqsmubVR1Lb7N6p8UJlG3WiY2DtlnL5z0aqeCkJrd/tWsERMKb3OX+42CN7hoRX5XyWLaK/F8NyuPR/tWg6/2lcgd1An5eXtsJwD6kNpcTKGUv2e1/epDOaXLxFQ8AAAAASUVORK5CYII=]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="40.0" Left="0.0" Name=""
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="0.0" Visibility="Visible" Width="40.0">
+                <Bind Attribute="Fill" Name="Value" PreventDefault="True">
+                    <ConvertStatus Error="#FFFFFF" Forced="#FF8000"
+                        Name="Forced" Stored="#FFFFFF"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#C0C0C0" Name=""
+                PathData="m 20,2.5 c -1.55,0 -2.16,1.25 -2.16,1.25 l -13,22.5 C 3.88,27.9 5,30 7,30 h 26 c 2,0 3.12,-2.08 2.16,-3.75 l -13,-22.5 c 0,0 -0.61,-1.25 -2.16,-1.25 z"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="0.0">
+                <Rotate Angle="90" Center="0.5,0.636">
+                    <Expose ExposedAttribute="Angle" Name="Rotera fläkt (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="Value"/>
+            </Path>
+        </Component>
+        <TargetArea Height="40.0" Left="5.0"
+            Name="TargetArea ContextMenu" Tooltip="Fläkt" Top="15.0" Width="40.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Left" Id="Larm"
+            Left="40.0" Name="Id" Stroke="#304760" TextDecoration="None" Top="2.0">
+            <Expose ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" Name="HM_L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" Name="DS_L.AlarmState"
+                PreventDefault="True"/><![CDATA[FF1]]><Bind
+                Attribute="Stroke" Name="SB_L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="15.0"
+            Height="15.0" Id="Manöver" Left="43" Name="" Top="45.0"
+            Version="1.0.0-rc1" Visibility="Visible" Width="15.0">
+            <Image Height="23.0" Left="-4" Top="-2"
+                    Width="23.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEvSURBVEiJ7ZRRU4MwEIS/kIJWmVpb//9/1AerUMCH7EkKScHpi854MxkSuOxu9i7AXw13Q96wtMmvBHbK9T8QtAjugAIogTugivbcpDwG3gI18KC1A/olgs0CuJfiHbCX8gZ4FbgRJEly4Ka6Ah6BZ+Aook99b4HuGkEK3Aq4Ae4j1fsIvNOzAc5kLMop95HqnUatd6UATxqNyGbqpwWNi1gT7HiRaitmodxewA3Boj6lcAruCXY8EXw+RKoLxj7vdQIjMHu+o+AyDLwitN9Wc2s9K6BL5MwuWK6gPiJuGb11BF87vTeByZubAh90xA/gTXO7OAY+CPxdeWdWdIupMuCWsYhukmcFPSnfOubCgunabCm5/rMyIWbRrB1Tm1xi5GJIjKzytd9SJP/xC+ILuNZYTobdDXAAAAAASUVORK5CYII=]]><Rotate
+                    Angle="90" Center="0.5,0.5">
+                    <Expose ExposedAttribute="Angle" Name="Rotera fläkt (grader)"/>
+                </Rotate>
+            </Image>
+            <Ellipse Fill="#F68B1C" Height="15.0" Left="0.0"
+                Name="Forcerad manöver" Opacity="1" Stroke="None"
+                Tooltip="Forcerad manöver" Top="0.0" Visibility="Hidden" Width="15.0">
+                <Bind Attribute="Visibility" Name="M.Value">
+                    <ConvertStatus Error="Hidden" Forced="Visible"
+                        Name="Forced Visible" Stored="Hidden"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Manöver">
+                <Rotate Angle="90" Center="0.5,0.63">
+                    <Expose ExposedAttribute="Angle" Name="Rotera fläkt (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="M.Value"/>
+                <Bind Attribute="Stroke" Name="M.Value"/>
+            </Path>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="20.0" Name="" Top="20.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="0" Name=""
+            Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="M.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="D.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="10.0"
+            Top="10.0" Visibility="Visible" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="DS_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="FF1"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAO0SURBVFhHxZZXTxtBEMfzLfMd8pa3PCHygiVCEaaYakBYBgmRUPJiQLQgmgAhuujNEJroxbSJfiPtyXs+7APFyV8a+e52dva/U/1B/jM+uD/8a2SFQDDcKqGmHyrx38fyJRBy3kEi8SAd3b/0OSsEcgpq075/q4wqSZAVAp+/BvW2ke8xff/4KUffza2B8UZWCLhv7H4HWSUQbvmZ9h34zoGXlxd5fn6W+fl56e3ttYRvrKHzXrxKAKOPj4/S19cngUBAotGo9Pf3W8I31nh+enp6FxFPAtxqd3dXKisrpbu7W+7u7twqDlhDB914PK5734IUAtxkbGxMysvLlcTa2pq6+urqyq1qAd2KigoZHx9/EwmLABuXl5elqqpK3c+hAwMDjqysrEgikUjeYoE91dXVqueXhEOA+F1cXEhpaakcHx/rt7OzM4sAMjw8LNvb28k2LLC3rKxMrq+vfeWEQ+Dh4UHa29tlcHDQWfQiYGRiYkJOT08d3WRgo6urS8OZCUoApgcHB5Kfn28tpiNgZHZ2Vm5ubqx9AFsnJycZvaAEiB113dHRYS36IYAMDQ3JxsaG2jHo7OzUtUy5oATu7++lsbFR5ubmrEW/BIyMjIxoKQJsNTU1WaS8oARwYSgUks3NTWvxrQSMEBZsUU3pqgYoAcqNGv5bBKgUbNGc8G46OARQXl1dtRbfQ4AmRnUsLS1JXV1d2i4KnBBEIhEZHR21Ft9CwPQHk3TYamlp8RcC3IQRulgy/BLw6pA1NTVKgv6SDk4Z7uzsSFFRkfYDg0wEZmZmPGcENoqLi+Xo6MhfGaLEYbFYTIeQKZ3XCBBn067dYC82GNGE1lcjAriQZlJbW6vjFbgJ0HCS4+yFnp4eaWho0H5we3ur5Y2wz4uMQwCjDKOpqSkpKSnRX25DcnH44uJiSpzdYE8wGNTxzTDa3993wkpOtLW16RnJsMYxw4P+TUfDjeFwWM7PzzOWEnmALr1kcnJSD8EWeVVYWOjoTU9P67Rl5BtYBAC3hgQJRmkWFBTolHQ3KUDfYA2d5uZmWVhYUMLm79nW1pZFANuEqLW11QljCgHzX5BbrK+v62iloZDVubm5lhCq+vp6pwfgdmPYTQCyhIdLHR4eOqM6hYABhugPJCLGiSsxpgIQ3Ele7O3tKVnqPTnJeCYR8/LydChxOH9w+YZdo/sqAQOIYJw84IaXl5cac0oMQ3jLqyo4AH1Km9HMf0su4yaakYABmxAOM89eZZUME0ryArJeRP8AEXfi+XbaSloAAAAASUVORK5CYII=-->

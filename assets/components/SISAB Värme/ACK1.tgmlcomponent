@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="140.0" ContentWidth="65.85"
+    Height="140.0" Left="0.0" Name="ACK1" Top="0.0" Width="65.85">
+    <Rectangle Fill="#FFFFFF" Height="125.0" Left="0.0" Opacity="1.0"
+        RadiusX="2" RadiusY="2" Stroke="#000000" StrokeDashArray="0.0"
+        StrokeWidth=".5" Top="15.0" Width="65.0"/>
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="55.0"
+        Height="85.0" Left="5.0" Name="" Top="35.0" Version="1.0.0-rc1" Width="55.0">
+        <Image Height="93.0" Left="6.0" Top="-2.0" Width="43.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACsAAABdCAYAAAA8Jp8cAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAOJSURBVGiB7Zttc5swEISXYFyn/f8/tU0MtukHacMiwAjp5DYzuhkGTAQ8Pu5tMwnwjawxvtfa/Ua/mTzA6j5vAFq/pz0A3P0+G7jNvQEm0A7AD9lOmMBNPHvKvJ6vvgVwBvATwMV/vgP49OvUs8ngubDA3LMXOOAOwOB/PgDo/boR26G3+yUsYIEJ+ATn4c6fu/lzLZx3Cbxm48rxbK0VLI1hwWQj/Nmf30u00a/hxnNFYBWkxRQaI5yXn5Uxgt78NiCoJLmwo2zqEcZmB+DdP+eBONgewBUuOa+yfrTyLD3CZGox1dyzh41pDg9/j5N8Zq02qbPAFKfaxdTrwDYor2WCtpjim6EwwtizA6a6eoPzqH6BNVhNyE5gO/n81REtYAlxh4sxxh0f9KylE/YEF9vvHvJNNq5prDzL5OB+iAAlLOOa0Cf52ez6WNjYgUerQsw1hAXcPPG0Dq/BNsE+PP5nFsJqwGvMlDINA43xVe8qrLZJZmJMkuTCMlYvmGYKYFn6FsHcwsXOxe+1/JSE1dLFGstW+wWuntUx7xfmZaSkNZhn/h2umgxw9ZrAM8+yg1w8KIfoESuvxND0vix7H3A1e8DGIENYdg/OoLfgohLAhKZXrx544Vl9DVoFONZ9yIWlYdU5N8hcQFi1cBBhv/8D10JNVGoEsI6aUcO3ftMer4Hlc1cntdKZbmrPPBuKQOD1YcBzAJaw+gooS6ihznhdgm1qsC0dxXYbq6GsYKM0mJaNAZOOYhssCaoMURos1FE6D5SETNJgezqqFOhhDZajoyxgD2uwVB2VC5uswdTDsToqxw5psG/dwaoG24GtGqyUVQ1WNVgAWzVYSasarIRVDVYStmowK6sarCRs1WDWVjVYKasarGqwALhqsKrBUDVY1WBxVjVYJmjVYCWsajBL0KrBSsGaaTC9aQk7pMHWmsJaqzsC2wR7M4v9K8+YapCi35I1WI6l6rckDZYLuqfftryVrMFybEu/adPZCqXDGizH1vTbO+adaDFBiSVpsBxT/cZkaeC81CNOw0VpsBzb0m+MUXopRsMd1mC54Jr9Omv8RvBKd4APa7BcY0YzWfY03BgcL9ZZwoZe0VmU22Pz6ojGYwUbKmHG69qrT56Nc/8RSOcATSxCU5oQOstyPatTWu+Pezhw9fQsq1PNajLS2UB/F6FtM1saWY5xi2HZ2yuE5v9nfwGxWamoyHkAFwAAAABJRU5ErkJggg==]]></Image>
+        <Path Fill="#808080"
+            PathData="m 25,0 v 5 c 0,2.216 1.784,4 4,4 h 11 c 0.554,0 1,0.446 1,1 v 4 c 0,0.554 -0.446,1 -1,1 H 14 c -2.216,0 -4,1.784 -4,4 v 6 c 0,2.216 1.784,4 4,4 h 26 c 0.554,0 1,0.446 1,1 v 4 c 0,0.554 -0.446,1 -1,1 H 14 c -2.216,0 -4,1.784 -4,4 v 6 c 0,2.216 1.784,4 4,4 h 26 c 0.554,0 1,0.446 1,1 v 4 c 0,0.554 -0.446,1 -1,1 H 14 c -2.216,0 -4,1.784 -4,4 v 6 c 0,2.216 1.784,4 4,4 h 26 c 0.554,0 1,0.446 1,1 v 4 c 0,0.554 -0.446,1 -1,1 H 29 c -2.216,0 -4,1.784 -4,4 v 6 h 5 v -5 c 0,-0.554 0.446,-1 1,-1 h 10 c 2.216,0 4,-1.784 4,-4 v -6 c 0,-2.216 -1.784,-4 -4,-4 H 15 c -0.554,0 -1,-0.446 -1,-1 v -4 c 0,-0.554 0.446,-1 1,-1 h 26 c 2.216,0 4,-1.784 4,-4 v -6 c 0,-2.216 -1.784,-4 -4,-4 H 15 c -0.554,0 -1,-0.446 -1,-1 v -4 c 0,-0.554 0.446,-1 1,-1 h 26 c 2.216,0 4,-1.784 4,-4 v -6 c 0,-2.216 -1.784,-4 -4,-4 H 15 c -0.554,0 -1,-0.446 -1,-1 v -4 c 0,-0.554 0.446,-1 1,-1 h 26 c 2.216,0 4,-1.784 4,-4 V 9 C 45,6.784 43.216,5 41,5 H 31 C 30.446,5 30,4.554 30,4 V 0 Z"
+            Stroke="None" StrokeDashArray="0" StrokeWidth="0.5">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Path>
+    </Component>
+    <Text FontFamily="Arial" FontSize="10" FontStyle="Normal"
+        FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+        Left="52.785932183265686" Name="Id" Stroke="#304760"
+        TextDecoration="None" Top="0.0"><![CDATA[ACK1]]><Expose
+            ExposedAttribute="Content" Name="ID"/>
+    </Text>
+    <Metadata Name="Name" Value="ACK1"/>
+    <Metadata Name="Description" Value=""/>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+</Component>

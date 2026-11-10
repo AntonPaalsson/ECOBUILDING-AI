@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="45.0" ContentWidth="45.0"
+    Height="45.0" Left="555.0" Name="SV31 Vänster" Top="450.0"
+    Version="1.0.0-rc1" Width="45.0">
+    <Component Clip="False" ContentHeight="45.0" ContentWidth="45.0"
+        Height="45.0" Id="Ventil" Left="0.0" Tooltip="Ventil" Top="0.0" Width="45.0">
+        <Component Clip="False" ContentHeight="25.0" ContentWidth="45.0"
+            Height="25.0" Left="0.0" Name="Ventil 3väg vänster"
+            Top="10.0" Version="1.0.0-rc1" Width="45.0">
+            <Rectangle Fill="#F9F8FB" Height="15.0" Left="25.0"
+                Stroke="None" StrokeWidth="0.0" Top="5.0" Width="15.0"/>
+            <Image Height="33.0" Left="-4" Top="-2" Width="53.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADUAAAAhCAYAAAB5oeP9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARASURBVFiF7ZjdcuI4EIU/wJAESGZmZ9//EXdryAAxGHsv1Gd9LGRMuNmarVGVKyaW1H369J8Ev8evMWb/kdx5yJ7b+9jogDYevd8c1QMK5Qp0D6yfA0t7FoV9tfcFONvTTcm8F9TMhI6BmhRm+yyAZ2ALrIEV14yJlRNwAH7SM+Zyr8YUKCkhN1lkwiX4wtBFboETqCfgFfgWwJaxt0ZLYuYA/B3vNdBM7H8TlIQvSJbUU8X/CDANyZp6LvHcw9oK2ABfSMwt7PsF+Ih5ez4R/2OgxMoqhK1D+IsBwwAdQ/AhFBG4PKjFotiV1SsSc8tQviMxo+9NYT/3lklQ7h5b4I1kyVcD5UwJ1DvwA9iR/L+OOSVgWvcRj5SXq8uNG5tzsr08xjsyl89Blfz9e4Daxv+rbMMmAKxJrPr3j1ygAVUC2IdRlDB832PMOcZv6ONa8Xchc3kH5al2DXwF/gT+CIBS2INZCq5inQCJDQmS5aWws7CPZ2OgZKhDPGf6GKzovaWNebXLyZma07vdVxJTbyS3c0DO1JxhEVU81PSxlbPl6Vrx+BFyZgZKrjmPb8sw7kuAOpPcvY15LVwzVcWiV3qXc4byDKTfc1t7obfyMQSPdQEtQ0bWsefZ1lWhTxVgNiGHWHMJObWMKlByPWWhNcMYmWplfL2y5ZaUME4xx9O8G0P1SMxWMXcWunyJeWJIjCnG5Ir/6pczpTT+ZJOnAI0B25As3JiiXWG+uonO5igM3uL3Mn57oqrpC/ZAP2fKlVKBvRdQSVGx1YYypYLsRpC1Z/YuwEpCAiR2i/rlTDm4WWnBJ4ApS63oWSjNXXBtRFd2XvjecUM3B+VF7J4ebmxovbdPNbeZWtB3DHk/KddU5zFjQjeBcjANw7bkplVGAHln/YOUmm/F1Izkql7DvP6UYsob6CIoKaT2xWtMy32uKEBn+qL6HsByUNqriv9tGMaSysIu/o5lP6X9ATBnSix53VCRy/18DJDW7wOMGtya61rlRVtMqGMQYzWJaWXQUp3yAj8AJcXUuryTsteTgRrrKDBAHwFmF3t48S112Erdqovq1KFP103s1VLuKPZkjOVtkir8T66PArd6PzfGX6RDnTr1UoLweHLr62jfhXzJbOmb2z3Xvd+ga/FDmUZXePybMpPOQ3K3XQASqD39cWEsQWxJDfN3UqF1z/CEcaQ/fpwZHkpP9H1fkSkli9p+e5yNnacOJJZ2pBjYM84SDAu0Dp9+ZJG7v8ScFzOSjHn3eSoHpo5bh8DPnnxLgLwde2Z4BvMa6Q32c8z3LOpHmcEYO8578XWm/EoLhtdX8u1bdxTesaiT8KNGY3OdEd2VeDw/dJskxhRDJ677wUduk3z/E4lhFdj8Nqmhz253dzdTV2R56+S+7HN87tRw936P96l7v6kYHYxHG9Zcyc+uX/D4De0ksP/lXfrv8auMfwCsuQGzIktqDwAAAABJRU5ErkJggg==]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 1,12.5 a 9,9 0 0 0 9,9 9,9 0 0 0 8.9824,-8.5 H 31.7832 L 27,24 H 38 L 33.3847,13.384766 44,18 V 7 L 33.3847,11.6153 38,1 H 27 l 4.7832,11 H 18.9824 A 9,9 0 0 0 10,3.5 a 9,9 0 0 0 -9,9 z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Component Clip="True" ContentHeight="17.0"
+                ContentWidth="12.5" Height="17.0" Left="28.0" Name=""
+                Top="4.0" Width="12.5">
+                <Component Clip="False" ContentHeight="12.5"
+                    ContentWidth="17.0" Height="12.5" Left="-4.0"
+                    Top="4.5" Width="17.0">
+                    <Line Name="Block" Stroke="#808080"
+                        StrokeWidth="0.5" Visibility="Visible" X1="4.5"
+                        X2="12.5" Y1="-4" Y2="-4"/>
+                    <Line Name="Block" Stroke="#808080"
+                        StrokeWidth="0.5" Visibility="Visible" X1="17.0"
+                        X2="17.0" Y1="0.0" Y2="8.0"/>
+                    <Line Name="Block" Stroke="#808080"
+                        StrokeWidth="0.5" Visibility="Visible" X1="0.0"
+                        X2="0.0" Y1="0.0" Y2="8.0"/>
+                    <Rotate Angle="180" Center="0.5,0.32">
+                        <Expose ExposedAttribute="Angle" Name="Rotera öppen port (grader)"/>
+                    </Rotate>
+                </Component>
+            </Component>
+        </Component>
+        <TargetArea Height="25.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Styrventil"
+            Top="10.0" Width="45.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Right" Id="Larm"
+            Left="25.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="-2.0"><![CDATA[SV31]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="9.0"
+            Name="Styrsignal" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Styrsignal" Top="33.0">
+            <Bind Attribute="Content" Name="Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="10.0"
+            Top="10.0" Visibility="Visible" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Name="Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Kurva" Left="0" Name="Kurva"
+            Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #kurva, #SV21 kurva"/>
+            <Metadata Name="Icon" Value="Curve"/>
+            <Metadata Name="Text" Value="Kurva"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="Kurva.Link" PreventDefault="False"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="SV31 Vänster"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

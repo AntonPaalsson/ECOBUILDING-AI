@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+    Height="5.0" Left="710.0" Name="Rör Värme primär" Top="80.0"
+    Version="1.0.0-rc1" Width="25.0">
+    <Rectangle Fill="#800080" Height="5.0" Left="0.0" Name=""
+        Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+        StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+        <Expose ExposedAttribute="Fill" Name="Rörfärg Värme primär"/>
+    </Rectangle>
+    <Metadata Name="Name" Value="Rör Värme primär"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

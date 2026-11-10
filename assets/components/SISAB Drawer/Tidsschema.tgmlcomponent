@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+    Height="130.0" Left="10" Name="Tidsschema" Top="10"
+    Version="1.0.0-rc1" Width="130.0">
+    <Script Name="Align and Sort" OnDocumentLoad="onLoad" OnSignalChange=""><![CDATA[function onLoad(evt)
+{
+	var comp = evt.getCurrentTarget();
+	align(comp);								//	TA BORT NÄR ALLT ÄR LAGGT RÄTT
+}
+
+function align(comp)
+{
+	var children = comp.getChildNodes();
+	var pos = 30;
+	
+	for (var i=0;i<children.getLength();i++) {
+	
+        var currcomp = children.item(i);
+    
+		if(currcomp.getAttribute("Id") == "Checkbox") {
+			currcomp.setAttribute("Left", 10);
+			currcomp.setAttribute("Top", pos);
+            var size =  Number(currcomp.getAttribute("Height"));
+			pos = pos + size + 10;
+		}
+		
+	}
+}]]></Script>
+    <Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+        Height="130.0" Left="0.0" Name="Dialog" Top="0.0" Width="130.0">
+        <Image Height="138.0" Left="-4.0" Top="-2.0" Width="138.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAIoAAACKCAYAAAB1h9JkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKoSURBVHic7ddba9VAAIXRnTbFSx8E8f//Rx9sLb3Eh5nU4/Eo+0VRshYM6QxTOJCPJLPkZ8uFNY5nO50sZ3+fD45nuzBeY1iSXCW5TnIzr1cRy9FsSV6SPCd5nNeXJNs6NywZcbxLcpvkbUYwQjmWLSOQr0m+JLmfa9ua76+ZmyTvk3xM8iHJm4x4xHIMW8YT5CHJ5zl/mmvLpSfKhySfMqIRynHsodzN+V3GU2VJktNQrub8bUYkt3MulGPYnyDJaGDNyXfqerJxj2X/qF0jlCPZj8P7QeaHw8x64R8ck4/rl/f86u//Fv5HQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQq64W17WxwDL+97+vZxpc5npM8zfXlD/9A/g1bxj1/zvcOXoNZTza9zI1fk9zN9esI5Si2jEjuMhp4ykks69mm+ySf59qbCOVI9gYeMhq4n/PXUPZ30mNGTcu83kQkR7N3sL9VHufatoewZJyArjMCuZ5zoRzL/gnynBHJ/r2ynYawXBgcz/npZ0suxyAQkrMj8jfboWb1FbqQyAAAAABJRU5ErkJggg==]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="130.0" Left="0.0"
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0" Width="130.0"/>
+        <Line Stroke="#808080" StrokeWidth="0.5" X1="0.0" X2="130.0"
+            Y1="20.0" Y2="20.0"/>
+        <Text FontFamily="Arial" FontSize="13" FontStyle="Normal"
+            FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+            Name="Rubrik" Stroke="#304760" TextDecoration="None" Top="2.0"><![CDATA[Tidsschema]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="15.0" ContentWidth="110.0"
+        Height="15.0" Id="Checkbox" Left="10.0" Name="TKDR" Top="30"
+        Visibility="Visible" Width="110.0">
+        <Group Name="Default">
+            <Rectangle Height="15.0" Left="0.0" Stroke="#9FA0A4"
+                StrokeWidth="2.0" Top="0.0" Visibility="Visible" Width="15.0"/>
+        </Group>
+        <Group Name="Checked" Visibility="Hidden">
+            <Path Fill="#169736"
+                PathData="M 11.5,1.5 13.5,3 7,13.5 H 6.5 L 2.25,6.5 V 6 H 5 L 6.75,9 Z M 0,0 V 15 H 15 V 0 Z"
+                Stroke="#9FA0A4" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Bind Attribute="Visibility" Name="Value" PreventDefault="True"/>
+        </Group>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Left" Left="22.0"
+            Stroke="#304760" TextDecoration="None" Top="1.0" VerticalAlign="Top"><![CDATA[Normaldrift]]></Text>
+        <TargetArea Height="20" Left="-5" Name="TargetArea ContextMenu"
+            Top="-2" Width="120.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="15.0" ContentWidth="110.0"
+        Height="15.0" Id="Checkbox" Left="10" Name="TKMO" Top="55"
+        Visibility="Visible" Width="110.0">
+        <Group Name="Default">
+            <Rectangle Height="15.0" Left="0.0" Stroke="#9FA0A4"
+                StrokeWidth="2.0" Top="0.0" Visibility="Visible" Width="15.0"/>
+        </Group>
+        <Group Name="Checked" Visibility="Hidden">
+            <Path Fill="#169736"
+                PathData="M 11.5,1.5 13.5,3 7,13.5 H 6.5 L 2.25,6.5 V 6 H 5 L 6.75,9 Z M 0,0 V 15 H 15 V 0 Z"
+                Stroke="#9FA0A4" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Bind Attribute="Visibility" Name="Value" PreventDefault="True"/>
+        </Group>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Left" Left="22.0"
+            Stroke="#304760" TextDecoration="None" Top="1.0" VerticalAlign="Top"><![CDATA[Pumpmotion]]></Text>
+        <TargetArea Height="20.0" Left="-5"
+            Name="TargetArea ContextMenu" Top="-2" Width="120.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="15.0" ContentWidth="110.0"
+        Height="15.0" Id="Checkbox" Left="10" Name="TKNK" Top="80"
+        Visibility="Visible" Width="110.0">
+        <Group Name="Default">
+            <Rectangle Height="15.0" Left="0.0" Stroke="#9FA0A4"
+                StrokeWidth="2.0" Top="0.0" Visibility="Visible" Width="15.0"/>
+        </Group>
+        <Group Name="Checked" Visibility="Hidden">
+            <Path Fill="#169736"
+                PathData="M 11.5,1.5 13.5,3 7,13.5 H 6.5 L 2.25,6.5 V 6 H 5 L 6.75,9 Z M 0,0 V 15 H 15 V 0 Z"
+                Stroke="#9FA0A4" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Bind Attribute="Visibility" Name="Value" PreventDefault="True"/>
+        </Group>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Left" Left="22.0"
+            Stroke="#304760" TextDecoration="None" Top="1.0" VerticalAlign="Top"><![CDATA[Nattkyla]]></Text>
+        <TargetArea Height="20.0" Left="-5"
+            Name="TargetArea ContextMenu" Top="-2" Width="120.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="15.0" ContentWidth="110.0"
+        Height="15.0" Id="Checkbox" Left="10" Name="TKBS" Top="105"
+        Visibility="Visible" Width="110.0">
+        <Group Name="Default">
+            <Rectangle Height="15.0" Left="0.0" Stroke="#9FA0A4"
+                StrokeWidth="2.0" Top="0.0" Visibility="Visible" Width="15.0"/>
+        </Group>
+        <Group Name="Checked" Visibility="Hidden">
+            <Path Fill="#169736"
+                PathData="M 11.5,1.5 13.5,3 7,13.5 H 6.5 L 2.25,6.5 V 6 H 5 L 6.75,9 Z M 0,0 V 15 H 15 V 0 Z"
+                Stroke="#9FA0A4" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Bind Attribute="Visibility" Name="Value" PreventDefault="True"/>
+        </Group>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Left" Left="22.0"
+            Stroke="#304760" TextDecoration="None" Top="1.0" VerticalAlign="Top"><![CDATA[Brandspj.motion]]></Text>
+        <TargetArea Height="20.0" Left="-5"
+            Name="TargetArea ContextMenu" Top="-2" Width="120.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_TKDR_Drift" Left="0.0" Top="0.0"
+            Visibility="Visible" Width="1.0">
+            <Metadata Id="" Name="Tag" Value="#menurow, #tidsinställningar"/>
+            <Metadata Name="Icon" Value="Schedule"/>
+            <Metadata Name="Text" Value="Normaldrift"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="TKDR_Drift.Link"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_TKMO_Drift" Left="0" Top="0"
+            Visibility="Visible" Width="1.0">
+            <Metadata Id="" Name="Tag" Value="#menurow, #tidsinställningar"/>
+            <Metadata Name="Icon" Value="Schedule"/>
+            <Metadata Name="Text" Value="Pumpmotion"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="TKMO_Drift.Link"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_TKNK_Drift" Left="0" Top="0"
+            Visibility="Visible" Width="1.0">
+            <Metadata Id="" Name="Tag" Value="#menurow, #tidsinställningar"/>
+            <Metadata Name="Icon" Value="Schedule"/>
+            <Metadata Name="Text" Value="Nattkyla"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="TKNK_Drift.Link"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_TKBS_Drift" Left="0" Top="0"
+            Visibility="Visible" Width="1.0">
+            <Metadata Id="" Name="Tag" Value="#menurow, #tidsinställningar"/>
+            <Metadata Name="Icon" Value="Schedule"/>
+            <Metadata Name="Text" Value="Brandspj.motion"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="TKBS_Drift.Link"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="Tidsschema"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

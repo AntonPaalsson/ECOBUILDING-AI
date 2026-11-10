@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+    Height="130.0" Left="10" Name="Styrfabrikat" Top="10" Width="130.0">
+    <Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+        Height="130.0" Left="0.0" Name="Dialog" Top="0.0" Width="130.0">
+        <Image Height="138.0" Left="-4" Top="-2" Width="138.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAIoAAACKCAYAAAB1h9JkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKoSURBVHic7ddba9VAAIXRnTbFSx8E8f//Rx9sLb3Eh5nU4/Eo+0VRshYM6QxTOJCPJLPkZ8uFNY5nO50sZ3+fD45nuzBeY1iSXCW5TnIzr1cRy9FsSV6SPCd5nNeXJNs6NywZcbxLcpvkbUYwQjmWLSOQr0m+JLmfa9ua76+ZmyTvk3xM8iHJm4x4xHIMW8YT5CHJ5zl/mmvLpSfKhySfMqIRynHsodzN+V3GU2VJktNQrub8bUYkt3MulGPYnyDJaGDNyXfqerJxj2X/qF0jlCPZj8P7QeaHw8x64R8ck4/rl/f86u//Fv5HQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQq64W17WxwDL+97+vZxpc5npM8zfXlD/9A/g1bxj1/zvcOXoNZTza9zI1fk9zN9esI5Si2jEjuMhp4ykks69mm+ySf59qbCOVI9gYeMhq4n/PXUPZ30mNGTcu83kQkR7N3sL9VHufatoewZJyArjMCuZ5zoRzL/gnynBHJ/r2ynYawXBgcz/npZ0suxyAQkrMj8jfboWb1FbqQyAAAAABJRU5ErkJggg==]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="130.0" Left="0.0"
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0" Width="130.0"/>
+        <Line Stroke="#808080" StrokeWidth="0.5" X1="0.0" X2="130.0"
+            Y1="20.0" Y2="20.0"/>
+        <Text FontFamily="Arial" FontSize="13" FontStyle="Normal"
+            FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+            Name="Rubrik" Stroke="#304760" TextDecoration="None" Top="2.0"><![CDATA[Styrfabrikat]]></Text>
+    </Component>
+    <Text FontFamily="Arial" FontSize="13" FontStyle="Normal"
+        FontWeight="Normal" HorizontalAlign="Left" Left="5.0"
+        Name="Fabrikat" Opacity="1.0" Stroke="#304760"
+        TextDecoration="None" Top="32.26200008392334"
+            VerticalAlign="Middle"><![CDATA[Fabrikat x]]><Expose
+            ExposedAttribute="Content" Name="Fabrikat"/>
+    </Text>
+    <Text FontFamily="Arial" FontSize="13" FontStyle="Normal"
+        FontWeight="Normal" HorizontalAlign="Left" Left="5.0"
+        Name="DUC Modell" Opacity="1.0" Stroke="#304760"
+        TextDecoration="None" Top="52.26200008392334"
+            VerticalAlign="Middle"><![CDATA[DUC: Modell]]><Expose
+            ExposedAttribute="Content" Name="Produkt ID"/>
+        <Bind Attribute="Content" Name="ProductID.Value"/>
+    </Text>
+    <Component AET_FlowDiagramOption="Remove" Clip="False"
+        ContentHeight="20" ContentWidth="80" Height="20.0" Left="0"
+        Name="" Top="80" Version="1.0.0-rc1" Width="80.0">
+        <Component Clip="False" ContentHeight="20" ContentWidth="80"
+            Height="20.0" Left="0.0" Name=""
+            Tooltip="Till betjänande system" Top="0.0"
+            Visibility="Visible" Width="80.0">
+            <Script Name="EffectsAndInvoke"
+                OnDocumentLoad="OnDocumentLoad"
+                OnMouseClick="OnMouseClick" OnMouseDown="OnMouseDown"
+                OnMouseOut="OnMouseOut" OnMouseOver="OnMouseOver" OnMouseUp="OnMouseUp"><![CDATA[function OnMouseOver(evt)
+{
+	evt.currentTarget.getChild("Button").setAttribute("Fill", "#F9F8FB"); 
+}
+function OnMouseOut(evt)
+{ 
+	evt.currentTarget.getChild("Button").setAttribute("Fill", "#FFFFFF");
+}
+function OnMouseDown(evt)
+{
+	evt.currentTarget.getChild("Button").setAttribute("Fill", "#E0E0E0");
+}
+function OnMouseUp(evt)
+{   
+    OnMouseOut(evt);
+}
+function OnMouseClick(evt)
+{
+	evt.preventDefault();
+								// Öppna bild för betjänat system
+	var linkname = evt.currentTarget.getElementsByTagName("Link").item(0).getFullBindName();
+	invoke(linkname,'OpenInSelf');	
+}
+function OnDocumentLoad(evt)
+{
+    var textContent = evt.currentTarget.getChild("Text").getAttribute("Content");
+    if (textContent == "xxxx" || textContent == "")
+        evt.currentTarget.setAttribute("Visibility","Hidden");
+}
+]]></Script>
+            <Image Height="28.0" Left="-4.0" Name="" Top="-2.0" Width="88.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAFgAAAAcCAYAAADlXHhOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJkSURBVGiB7Zpdc9owEEWPbXATKE2mnfz/X5g0bdqA+Qh9WN1oLWxiUp5s3RmNYmbNw8nVarWi4DIVF8aPVcehgUOAFW4ukucp6ejmY/Lcq3OQPNDKjTKMj94fkwTxLYyDGynwlmY9XyiwM2AO1MCXMM8x0N7NY5cAHoAdsAWaMO+AvYtrqQtQgTl0jkFdunETPpOTpwBZcOXcBtgAf91oMNBvJJBTOIJbA7fAN+A+zMvwmRxcdrw/VnnAO2CNgf0NPId5jTm6BdmnCO/cBXAH/AC+AysMbs304Eoesla0DCceRxInp4ArLA2sMLgPGOgF08y9qZQutC8JLhjUPRFuC7Cgyb33mHPvsP9UzXRy7jnJpVrtYqHU0WCQD4r1Dq4wkEss564w2EoLUwbr5cvXmpgWtPFtiGmiVc9WxKrhK6f5Jastv2fdYswWxCqrgPayl4NvwsjO/VgpN18IFEDhHVxiOXmqh4nPyJtTG98Mt+rLJLhkumXY/6iXXdn3RtZ15AH7QvrkyJd1Vr3syiRgT2xg+E5RVre6mkD+sEGZBG2xOm4T/hbkrG55bmtiP+LdnGUS2GDF8p8Q3NkhygLiqvfNn1eM4bsxqxDsbylUrqkXrJ2RJHaq8u3LLQb1GXgEfobnHQlgOAXny47chzCl6VRwn8J4wRzc2U3Ti5sQKNcqged2ZawUlHNfMLCPRLitfSsFrJzySnsZrMkN966G+68w1HA/2bPSOzkPNV0KujJKj4Njh+xzrsrYNcbk4isj/3m+9IwacunZeWbI1/bD9Olr+/zDk+G6+g9PrhE/Vg0+eP0DqFj49YBtlCYAAAAASUVORK5CYII=]]></Image>
+            <Rectangle Fill="#FFFFFF" Height="20.0" Left="0.0"
+                Name="Button" RadiusX="10" RadiusY="10" Stroke="None"
+                StrokeDashArray="0" StrokeWidth="0.5" Top="0.0" Width="80.0"/>
+            <Component Clip="False" ContentHeight="15.0"
+                ContentWidth="15.0" Height="15.0" Left="6.0" Top="2.5" Width="15.0">
+                <Path Fill="#808080"
+                    PathData="M7.6635518,3.1875 L8.364486,3.890625 2.2897196,8.296875 c0.0,0.0 -1.9158878,5.109375 -2.2897196,6.1875 L4.8598131,9.65625 C4.7196262,9.328125 4.8130841,8.953125 5.046729,8.71875 c0.3271027999999996,-0.328125 0.8878504009999997,-0.328125 1.2616822,0.0 0.3738317999999996,0.328125 0.3738317999999996,0.890625 0.0,1.265625 -0.23364480000000043,0.234375 -0.6074766,0.328125 -0.9345793990000004,0.1875 L0.5140187,15.0 6.635514,12.609375 11.074766,6.515625 11.775701,7.21875 12.570093,6.46875 8.504673,2.4375 z M15.0,2.953125 L14.392523,2.34375 12.383178,4.359375 11.775701,3.75 13.785047,1.734375 12.009346,0.0 9.439252,2.53125 l2.9906550099999993,3.0 z" Stroke="None"/>
+            </Component>
+            <Text FontFamily="Arial" FontSize="10"
+                HorizontalAlign="Center" Left="50.0" Name="Text"
+                Stroke="#304760" TextDecoration="None" Top="10.0" VerticalAlign="Middle"><![CDATA[Utökad Info]]></Text>
+            <Link Name="Link"/>
+        </Component>
+        <Metadata Name="Css" Value="&quot;margin-left&quot;:&quot;auto&quot;, &quot;margin-right&quot;:&quot;auto&quot;"/>
+    </Component>
+    <Metadata Name="Name" Value="Styrfabrikat"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<Component Clip="False" ComponentVersion="Elbatteri Analog-1.0.0"
+    ContentHeight="80.0" ContentWidth="40.0" Height="80.0" Left="705.0"
+    Name="LV1 (NY)" Top="378.0" Width="40.0">
+    <Component Clip="False" ContentHeight="55.0" ContentWidth="40.0"
+        Height="55.0" Id="Elbatteri" Left="0.0" Top="0.0" Width="40.0">
+        <Component Clip="False" ContentHeight="40.0" ContentWidth="40.0"
+            Height="40.0" Left="0.0" Name="Batteri Elvärme"
+            SymbolVersion="Batteri Elvärme-1.0.0" Top="15.0" Width="40.0">
+            <Image Height="48.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFISURBVGiB7ZpBb8IwDEZfIJ0GQtqB//8jJ21QldHs4Jim0ZjEyQb5SVHaqgc/m3D5mliTut0bpdtXhSZgU5dee2JGCp+b61XHt0AG3oCh3nuZRAGuwAWYgJ96XzJLtzOwBw51H1imYYl2/QKcgK+6F2DO9aUN0vkDcAQ+gHd8TEG7PwKf9ZlO4CaQkI7vkeKPwA5fAud6fwa+ESH0J6RnYEA6v0NkPAmA1Naez9ROQM/CtlseBGCpR89lAplAS7qzrLlbj7f/+ocJAWtCwJoQsCYErAkBa0LAmhCwJgSsCQFrQsCaELAmBKwJAWtCwJoQsKbPB8ofy5p/a8rdSzMS5+gC+4BDIyZdmhEXEIHCOocdWQI1LxGThnwjUuO1Pi/tBDSH1SjTa8x6Qmq9TQBkLBMSIoPYeg66p/rs+T81eJmPPZSn+9zmF5MybzGUOXGcAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 1,0 h 38 c 0.554,0 1,0.446 1,1 v 38 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,40 0,39.554 0,39 V 1 C 0,0.446 0.446,0 1,0 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth=".5"/>
+            <Path Fill="#B10043"
+                PathData="m 12.5,23 c -0.3324,0 -0.599609,0.267209 -0.599609,0.599609 v 3.300782 H 8.5996094 C 8.2672094,26.900391 8,27.1676 8,27.5 c 0,0.3324 0.2672094,0.599609 0.5996094,0.599609 h 3.3007816 v 3.300782 C 11.900391,31.732791 12.1676,32 12.5,32 c 0.3324,0 0.599609,-0.267209 0.599609,-0.599609 v -3.300782 h 3.300782 C 16.732791,28.099609 17,27.8324 17,27.5 17,27.1676 16.732791,26.900391 16.400391,26.900391 H 13.099609 V 23.599609 C 13.099609,23.267209 12.8324,23 12.5,23 Z M 19,27.5 A 6.5,6.5 0 0 1 12.5,34 6.5,6.5 0 0 1 6,27.5 6.5,6.5 0 0 1 12.5,21 6.5,6.5 0 0 1 19,27.5 Z"
+                Stroke="None" StrokeDashArray="0" StrokeWidth="0"/>
+            <Path Fill="None"
+                PathData="M 30.623958,6 H 25 l -2.707354,6.707916 h 3.055626 l -2.538233,5.508078 -1.858888,-0.649378 1.133678,3.73218 4.528978,-1.508234 -1.686901,-0.815796 6.696008,-7.171092 -4.081813,-0.07448 7.060046,-5.780398"
+                Stroke="#B10043" StrokeDashArray="0" StrokeWidth="1"/>
+        </Component>
+        <TargetArea Height="40.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Elbatteri" Top="15.0" Width="40.0"/>
+        <Text FontFamily="Arial" FontSize="12" HorizontalAlign="Center"
+            Id="Larm" Left="20.0" Name="Id" Stroke="#304760" Top="0.0">
+            <Bind Attribute="Stroke" Name="L.AlarmState" PreventDefault="True"/><![CDATA[ID]]></Text>
+    </Component>
+    <Component Clip="False" ComponentVersion="Omformare-1.0.0"
+        ContentHeight="20.0" ContentWidth="50.0" Height="20.0"
+        Id="Omformare" Left="-5.0" Top="60.0" Width="50.0">
+        <Image Height="28.0" Left="-4" Top="-2" Width="58.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADoAAAAcCAYAAAAwTqwDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFiF7dlBbsIwEIXhLyGUqnRRtfe/YzfQUgLpwh4wKQfAbp40cmLPwr/GiTIvnb/qZmNtmmYjbmG6HP1srEkTzrNxgiEnBOSANZ6wUhdswI045hhjrQQd8IxXvGCT52oCHXHALsd3npsCpJMqucU73iTYcv2RFUd0xB6fef6Uo4uK9q6gb/jI12uPDxmapOO6y/ff+MIPzlGxXqreRqrkNkeNR5cEGI9er6howK7yYsRKXaDc7v3yMh2KxIDti4Qans9S9xjIN/9CC2hrWkBb0wLamhbQ1rSAtqbyWzc69IiLDVGJYr9zBlxBI+EktToR1PNRH21axEkBO7j1Wg5Shx7Na62N915iGWXYqOi5SAob4kvdVspOYjpzreg9G6IFc+yY56fSrG7V7rwBpXED+x5Ik78kfgFGEXnmrQV4JwAAAABJRU5ErkJggg==]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="20.0" Left="0.0" Opacity="1.0"
+            RadiusX="2.0" RadiusY="2.0" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth="0.5" Top="0.0" Width="50.0"/>
+        <TargetArea Height="20.0" Left="0.0"
+            Name="TargetArea ContextMenu" Top="0.0" Width="50.0"/>
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="15.0"
+            Height="15.0" Id="Manöver" Left="34.0" Name=""
+            SymbolVersion="Manöver_flat-1.0.0" Top="2.5" Width="15.0">
+            <Ellipse Fill="#F68B1C" Height="15.0" Left="0.0"
+                Name="Forcerad manöver" Opacity="1" Stroke="None"
+                Tooltip="Forcerad manöver" Top="0.0" Visibility="Hidden" Width="15.0">
+                <Bind Attribute="Visibility" Name="M.Value">
+                    <ConvertStatus Error="Hidden" Forced="Visible"
+                        Name="Forced" Stored="Hidden"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Manöver">
+                <Rotate Angle="90" Center="0.5,0.63">
+                    <Expose ExposedAttribute="Angle" Name="Rotera indikering/manöver (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="M.Value"/>
+                <Bind Attribute="Stroke" Name="M.Value"/>
+            </Path>
+        </Component>
+        <Component Clip="False" ContentHeight="16.5" ContentWidth="30.0"
+            Height="16.5" Id="Styrsignal" Left="3.5" Name="" Top="1.0" Width="30.0">
+            <Rectangle Fill="None" Height="4.0" Left="0.0"
+                Name="Stapel Ram" Opacity="1" RadiusX="1" RadiusY="1"
+                Stroke="#C0C0C0" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="12.5" Width="30.0"/>
+            <Rectangle Fill="#009530" Height="4.0" Left="0.0"
+                Name="Styrsignal Stapel" RadiusX="1" RadiusY="1"
+                StrokeDashArray="0" StrokeWidth="0.0" Top="12.5"
+                Visibility="Visible" Width="30.0">
+                <Scale Center="0.0,1.0" ScaleX="0.0" ScaleY="1.0">
+                    <Bind Attribute="ScaleX" Name="SS.Value">
+                        <ConvertValue AttributeValue="0" SignalLessThan="0"/>
+                        <ConvertRange AttributeMaxValue="1"
+                            AttributeMinValue="0" SignalMaxValue="100" SignalMinValue="0"/>
+                        <ConvertValue AttributeValue="1" SignalMoreThan="100"/>
+                    </Bind>
+                </Scale>
+            </Rectangle>
+            <Text FontFamily="Arial" FontSize="10" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Right" Left="29.5"
+                Name="Styrsignal" Stroke="#0087CD" TextDecoration="None"
+                Tooltip="Styrsignal" Top="0.0">
+                <Bind Attribute="Content" Name="SS.Value" PreventDefault="True"/><![CDATA[0]]></Text>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="0.0"
+            Top="0.0" Visibility="Visible" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #temperaturreglering"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Temperaturreglering"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="PB.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="IT.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="STP_FD.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="LV1 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJjSURBVFhH3ZfPa9NgGMdz9E/w6NGjR4+CF7158eRFL+LBg3raSSqUCqWw4sEcWpqCoD0U2mgPQyspWjuqYMyqC5a1Y7Sa4eoqqyP9Zb/6vEtm2bo2fZNM8AMP75M38DzfPHnyvm8E/GMmCviyuQX5+WvcvvcA4qMM8/1iqgBKTtijH8wU0Ov1kUjlrDveM1EAJW1t/8CKvoZ3mo6dzq51x3uEYrGIfD7PZbVazQrDjyBJEhRF4bJgMIjhcGiF4kOgQLPoGt+xpXxgRvTbHTYGAoE/r6vHfF4cCSicuY435+4wU6+G8fbSXTZPAkzTZD4vMwVsL6/i1dmb+GX2oN2I4uOth9adYxJASV+evsaeXBbOs9HmWATsrhtYOnkZXzNF9gro2sZ3AZRs+cLCfg+MJyd8F0DdT2WnCoyX3sZzARvS0n6325/c6kIc6+JTJuYgngqghHaTvTh1Bc9OXDxU8oN4KoCelJJTs60tplkVqCLT8FQAJRuvAPm0BkzD8x6g5NRwVP7q/cfW7NF4LmBe/g8B4XCYBeKxZDLpfjcsl8ugQ8m8ViqVoGkams2mFYoPIZFIwI2JoghZljEajayQ8+Hov0DZ2IG6uXcuHAwGMIzDewLN8+BIgPj+G6SVFvPpLBiJRJBKpdDp/D0Zdbtd5s+LIwGZz208+bS3F2SzWaiqCl3XEY1Gme+7AL1lwvjZZ74tgKCRRLgSUCgU4MSo86nkJCCXyyEejyOdTrM5VwLa7TacWL1eR7VaRaVSYe+/0WhYIVz2wKSnPcpo1ZxkoVCIe0ES6Dt2Y7FYjC1KfD8owG8iI+FVI6uIBQAAAABJRU5ErkJggg==-->

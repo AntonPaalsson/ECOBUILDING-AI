@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="45.0" ContentWidth="45.0"
+    Height="45.0" Left="555.0" Name="SV31 (NY)" Top="450.0"
+    Version="1.0.0-rc1" Width="45.0">
+    <Component Clip="False" ContentHeight="45.0" ContentWidth="45.0"
+        Height="45.0" Id="Ventil" Left="0.0" Tooltip="Ventil" Top="0.0" Width="45.0">
+        <Component Clip="False" ContentHeight="25.0" ContentWidth="45.0"
+            Height="25.0" Left="0.0" Name="Ventil 3väg vänster"
+            Top="10.0" Version="1.0.0-rc1" Width="45.0">
+            <Rectangle Fill="#F9F8FB" Height="15.0" Left="25.0"
+                Stroke="None" StrokeWidth="0.0" Top="5.0" Width="15.0"/>
+            <Image Height="33.0" Left="-4" Top="-2" Width="53.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADUAAAAhCAYAAAB5oeP9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARASURBVFiF7ZjdcuI4EIU/wJAESGZmZ9//EXdryAAxGHsv1Gd9LGRMuNmarVGVKyaW1H369J8Ev8evMWb/kdx5yJ7b+9jogDYevd8c1QMK5Qp0D6yfA0t7FoV9tfcFONvTTcm8F9TMhI6BmhRm+yyAZ2ALrIEV14yJlRNwAH7SM+Zyr8YUKCkhN1lkwiX4wtBFboETqCfgFfgWwJaxt0ZLYuYA/B3vNdBM7H8TlIQvSJbUU8X/CDANyZp6LvHcw9oK2ABfSMwt7PsF+Ih5ez4R/2OgxMoqhK1D+IsBwwAdQ/AhFBG4PKjFotiV1SsSc8tQviMxo+9NYT/3lklQ7h5b4I1kyVcD5UwJ1DvwA9iR/L+OOSVgWvcRj5SXq8uNG5tzsr08xjsyl89Blfz9e4Daxv+rbMMmAKxJrPr3j1ygAVUC2IdRlDB832PMOcZv6ONa8Xchc3kH5al2DXwF/gT+CIBS2INZCq5inQCJDQmS5aWws7CPZ2OgZKhDPGf6GKzovaWNebXLyZma07vdVxJTbyS3c0DO1JxhEVU81PSxlbPl6Vrx+BFyZgZKrjmPb8sw7kuAOpPcvY15LVwzVcWiV3qXc4byDKTfc1t7obfyMQSPdQEtQ0bWsefZ1lWhTxVgNiGHWHMJObWMKlByPWWhNcMYmWplfL2y5ZaUME4xx9O8G0P1SMxWMXcWunyJeWJIjCnG5Ir/6pczpTT+ZJOnAI0B25As3JiiXWG+uonO5igM3uL3Mn57oqrpC/ZAP2fKlVKBvRdQSVGx1YYypYLsRpC1Z/YuwEpCAiR2i/rlTDm4WWnBJ4ApS63oWSjNXXBtRFd2XvjecUM3B+VF7J4ebmxovbdPNbeZWtB3DHk/KddU5zFjQjeBcjANw7bkplVGAHln/YOUmm/F1Izkql7DvP6UYsob6CIoKaT2xWtMy32uKEBn+qL6HsByUNqriv9tGMaSysIu/o5lP6X9ATBnSix53VCRy/18DJDW7wOMGtya61rlRVtMqGMQYzWJaWXQUp3yAj8AJcXUuryTsteTgRrrKDBAHwFmF3t48S112Erdqovq1KFP103s1VLuKPZkjOVtkir8T66PArd6PzfGX6RDnTr1UoLweHLr62jfhXzJbOmb2z3Xvd+ga/FDmUZXePybMpPOQ3K3XQASqD39cWEsQWxJDfN3UqF1z/CEcaQ/fpwZHkpP9H1fkSkli9p+e5yNnacOJJZ2pBjYM84SDAu0Dp9+ZJG7v8ScFzOSjHn3eSoHpo5bh8DPnnxLgLwde2Z4BvMa6Q32c8z3LOpHmcEYO8578XWm/EoLhtdX8u1bdxTesaiT8KNGY3OdEd2VeDw/dJskxhRDJ677wUduk3z/E4lhFdj8Nqmhz253dzdTV2R56+S+7HN87tRw936P96l7v6kYHYxHG9Zcyc+uX/D4De0ksP/lXfrv8auMfwCsuQGzIktqDwAAAABJRU5ErkJggg==]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 1,12.5 a 9,9 0 0 0 9,9 9,9 0 0 0 8.9824,-8.5 H 31.7832 L 27,24 H 38 L 33.3847,13.384766 44,18 V 7 L 33.3847,11.6153 38,1 H 27 l 4.7832,11 H 18.9824 A 9,9 0 0 0 10,3.5 a 9,9 0 0 0 -9,9 z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Component Clip="True" ContentHeight="17.0"
+                ContentWidth="12.5" Height="17.0" Left="28.0" Name=""
+                Top="4.0" Width="12.5">
+                <Component Clip="False" ContentHeight="12.5"
+                    ContentWidth="17.0" Height="12.5" Left="-4.0"
+                    Top="4.5" Width="17.0">
+                    <Line Name="Block" Stroke="#808080"
+                        StrokeWidth="0.5" Visibility="Visible" X1="4.5"
+                        X2="12.5" Y1="-4" Y2="-4"/>
+                    <Line Name="Block" Stroke="#808080"
+                        StrokeWidth="0.5" Visibility="Visible" X1="17.0"
+                        X2="17.0" Y1="0.0" Y2="8.0"/>
+                    <Line Name="Block" Stroke="#808080"
+                        StrokeWidth="0.5" Visibility="Visible" X1="0.0"
+                        X2="0.0" Y1="0.0" Y2="8.0"/>
+                    <Rotate Angle="180" Center="0.5,0.32">
+                        <Expose ExposedAttribute="Angle" Name="Rotera öppen port (grader)"/>
+                    </Rotate>
+                </Component>
+            </Component>
+        </Component>
+        <TargetArea Height="25.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Styrventil"
+            Top="10.0" Width="45.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Right" Id="Larm"
+            Left="25.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="-2.0"><![CDATA[SV31]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="9.0"
+            Name="Styrsignal" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Styrsignal" Top="33.0">
+            <Bind Attribute="Content" Name="SS.Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="10.0"
+            Top="10.0" Visibility="Visible" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Name="SS.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="40.0"
+            Top="40.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #fläktreglering tilluft"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="G.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Kurva" Left="0" Name="Kurva"
+            Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #kurva, #SV21 kurva"/>
+            <Metadata Name="Icon" Value="Curve"/>
+            <Metadata Name="Text" Value="Kurva"/>
+            <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+            <Link Name="Kurva.Link" PreventDefault="False"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="SV31 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAUlSURBVFhHtVbZUmJXFL2fksd8Qh7zC3lKnvLUT8lDJw9d1alUdZlyLqc0VjRqtMXZxnKKQzuUxgG0IhgnRBRExLEFB8QBUFdYG45Brmmsbl1Vh3ume/baa++zL9qrwj/g2dzBisuLmpYeJINrRNfghPRn5h0yJsLhiG7/x0Cj8a+/eyUD9SRIKNtgxIjZJoZo8NvnmbK2vXeA738uwrMXeTL+FGjB07NEFzDUmG69ZH/B4ZI+QSLKIEn7D48fhwAPoacEPVOy00MFkiyv78DL3HLpKzwKAf78+ItBPFJ9etvQPiBjklJGC35vuqPKoxCgIRpVeDc6ja+e/XRLiLlANUgqWRXiUQgw5kwwBfZpNBlUIPkGKKTu+xhICD4VV1dXGB4eRk1NDaqrq3WN85OTk7i+vk688R90BLiJjYeysX9zc5NY1YNr4XAYAwMDaG5uhsfj0bX6+nqMjo4iEonozrolQEPn5+cYGRkR1llZWcjIyJD+0NAQLi4u7vVAvedwOFBUVIRoNJpYiYPv5efnw+fz4fLy8n4C9HRtbQ1lZWVijKzVQeyTFNe8Xq+OBA8Mhc7gdq2jqipWLWdmEitxmM1mGGuN2N7aETLcn0xCo/Ht7W0YDAYcHBwkpvXgGknwmUri4vwSW75t9PcNoLS0NDEbB703T05hP3aduY/2XC4XbDabENHOzs5QWVkpnqYD91RVVemkDF9GEPAfYXHBjlJDqahJMCxlv5VhxbEqBMbHJ1BSUoLy8nJ5Mnc0q9UKozFeCR8C5sTi4uKdWEfCUQRPQtjweGEytaGurk7m6RjH7e0dKC4ulnnOHR0dSb6cnp5C6+jokBg/FNzb2toq3tFTtpUVJ+xLy7BabXjXP4jc3FwhySQuLIwVsdg7NEYFa2trhUBhYSECgQA0MlKSPQTMZh6crk1MTEhLViqVAPNJa2howNTUVGJLenAvE5YqtLW1STO9NeFtqwktza2xcNYhJycHPT09yMzMjIXAhN3dXXn3XgLd3d1yyEPBosKw2e12UY4Z7YyFwLHsxML8koRA3YS8vDy8/vU1CgoKUFFRgbGxMT2B+fl5SRDGKB24h3vn5uawv78vBx0fH8N/EMDe7ntsen1oqG+ExWyR/awBlRWV6PmzF7VvjLF3S5CdnS21hgT8fj+0jY0NUYD1Oh2YL5SWdYPVT5Xry4uw3IK1NfedaqiqoM32D6wzsxgfG0dnZ6fcJN68w8NDaMxEqkACqtCkgolHWZuammIZv4JgMCiGFaLRK5wGQ3LdWlpaJNaqccyQ7e7siUKrq6tyg3hmKBSCRpY7OztSmbiZ8aJMjBkb40jZ29vb5WqRYOpHhWToCK8fvWOcVaNqlJukaYthPDk5EeM8R1MfE2bq0tKSJAoTk8nGG8K+xWKB0+mUmKVWQfZ5EG9HY2NjYvYuOM9vBPfRHgnzKaWYGzjgwUyqra0tyW5m+fLysmQ5FaIHLJ3JxgnlAKvcffVAta6urv//GhJcIDMa8fiD6He+F5l4uGKe+jKhCPBLOT09jcHBQfT29krr6+uTjJ+dnRWFP0hAoc91jC8bV/F8aBNfGFdwHrm617AC10hQqed2u0U11dbX128V5O1IS4DGd0Px/4gv/4p9Yt0n0v8QqAIPp4dMtNRGVanufY7oCHxeaU/0gDcLfpT8vZ8YPQ3SEsi1xOv4U0FH4LOyRVxE4/946H2zPSD9p4KOwA/DPjHMPGASqnx4KugIEJT+my4PRr3BxMxTAfgXoJ6nnOWg3loAAAAASUVORK5CYII=-->

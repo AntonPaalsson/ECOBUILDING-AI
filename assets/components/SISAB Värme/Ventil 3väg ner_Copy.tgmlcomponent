@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="45.0" ContentWidth="25.0"
+    Height="45.0" IsStandard="False" Left="-4.0"
+    Name="Ventil 3väg ner_Copy" SymbolVersion="Ventil 3väg Ner-1.0.0"
+    Top="-2.0" Width="25.0">
+    <Rectangle Fill="#F9F8FB" Height="15.0" Left="5.0" Stroke="None"
+        StrokeWidth="0.0" Top="5.0" Width="15.0"/>
+    <Image Height="53.0" Left="-4" Top="-2" Width="33.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACEAAAA1CAYAAADPo4LiAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASPSURBVFiFzZjpkiI3EIQ/7uHwsLb3/d9wvfbOMMPRgH+o0kqE+gDbYStC0dBSl1KlOrIE/4M2emLukG+uxfMfATGOuWP73QXgEl2/O9t0AAAtPrM+aQFyBc7AyfqVHo30gRhFnwAvwAZYAXPuNaJdH4EP4J2sEY0/BUJAJsAC+An4OYDMAojahbTzD+B7/D4ATReAoSAczAxYA1uSZiY2fgb2MW/HA0bfBqIUcIlFzqRdTUmamcXcK2nn2nUTc90oJfNOKyWIkXX/QGe9jy6Dk9HKExqbczQQpcwbY3UQOnt1LS5BDfBJUvWedCxzE6zxj3g2MTYhuzZkjUqrNyDkhgvSeY9i4jEEjkIDWmhjIBqSEX5EP8X8eawxi+cl5h3I7lwFsQFeQ4CrV4L17gAs7d0h3jchaxnyXqJPQ8aPACO7qYJYk9xwHWj3puKT7UjBaGS/zzG+CVlLkjtLsx8x5zNAU4KQTczjw22M66w/A9CZdGQjss3IbhahxXEsvAogU+065N9E3Jp3SCMvIZQQprPU7hdkYxsbgCvZttyND+QAdxMCanHCE5UEzGIHywBxiXHtSGFdu3RjlMZONQBtIByMAJXvGm4zpXx+agDkmgpmrRG0C4SEeyA6kVz2SDpjgdIc2dSF7J4jejJpDYTzgVO8UzKSgR5iXIHtTHZNGfaSW5twzXWCEIAT2ec9Eu7ieSR7wNTmX2LRFcnF19x6h+zpBoiDUAQTH5AaFScEQFpYkNV+JPGHI9lzBKSMEzrKau6QBnYkFb+T07NihATIWBcxtzHwFwP9Fppwje1MI60g3snuJM0oTZ/tu2vRle7dgKXFMnf0glDa1jvxAi3WZe3uTfr2RHZXyBm0CuJqg429K+n7UMovwAIziE+UH/vCzzbfwGBmVX7c1kYdvQ/QXXuU6ELOK86Yyv8PVWCT/il/ARiTQM9JLqdg5Cyst9p6FoR2qSwq5rWNp2oQ10R5/p0a6QMhAKq+tsCvwC/Rt2RtLAKol4leiz5lE2Xl9SW6LyyScol3G1JEXJGjKWRiWwXSVfwoI25InPNrPDfkMOx8QSxdWvHCqKzUB4OYhsBX8hG8VgCoiU+oC4DCuJ6DQDjPVN25JR2JaHwtJjgTcwBKgAdy9rwBUjNMGeOKZANf47mmhagWQByQgDhJvgPh/NEFuUt6Ku67pdH3iikvJuOO6reB8KiowLR4AEANyJzMN8c23grCBYi6C/0jl2ySI61KTnUjNRD/RuuMmDUQJUuqWvTAhcVRnMjcySlB+KWIeKPunaoCOgC4DF0vVEN4mybELb0QHgrEAXhFf8ey1doSmBuVrNsTU5uhOoBP0l3E9+gi0Hfpvi+L1jylzVVLDbwBv0X/Qb5WGKwJCS0BtV2AyYh1hG+k3X8DfifXGtWj7NOEe8qZ2xJACUl16j4W+4O0+2/kY2i1B+ivys/kax3VIztSHvFIKlCHGH+PrrKxFQAMi4J+YSLOIBblpb+OQ5dqXml1cs9Hc4HyQWmkZYArL1F6hQ9tnqa1eElqvAyEgcHt0aQ05Lu/W7X9N+1PqSHp1ODC3XcAAAAASUVORK5CYII=]]></Image>
+    <Path Fill="#FFFFFF" Name=""
+        PathData="m 12.5,44 a 9,9 0 0 0 9,-9 A 9,9 0 0 0 13,26.0176 V 13.2168 L 24,18 V 7 L 13.384766,11.6153 18,1 H 7 L 11.6153,11.6153 1,7 V 18 L 12,13.2168 V 26.0176 A 9,9 0 0 0 3.5,35 a 9,9 0 0 0 9,9 z"
+        Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5" Visibility="Visible"/>
+    <Component Clip="True" ContentHeight="12.5" ContentWidth="17.0"
+        Height="12.5" Left="4.0" Name="" Top="4.0" Width="17.0">
+        <Component Clip="False" ContentHeight="12.5" ContentWidth="17.0"
+            Height="12.5" Left="0.0" Top="4.5" Width="17.0">
+            <Line Name="Block" Stroke="#808080" StrokeWidth="0.5"
+                Visibility="Visible" X1="4.5" X2="12.5" Y1="12.5" Y2="12.5"/>
+            <Line Name="Block" Stroke="#808080" StrokeWidth="0.5"
+                Visibility="Visible" X1="17.0" X2="17.0" Y1="0.0" Y2="8.0"/>
+            <Line Name="Block" Stroke="#808080" StrokeWidth="0.5"
+                Visibility="Visible" X1="0.0" X2="0.0" Y1="0.0" Y2="8.0"/>
+            <Rotate Angle="270" Center="0.5,0.32">
+                <Expose ExposedAttribute="Angle" Name="Rotera öppen port (grader)"/>
+            </Rotate>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="Ventil 3väg ner_Copy"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQCSURBVFhHtVeJUlpLFLyfbrnjXsYFJUDAJUErTxMrxjwgimsEietzZXkoiiAibohrhz6Va0EFo+HedNVAAXNnes706XNQkIf7+3sEAgFYLJYnx+joqMzTC48EHh4ecHt7i6WlJXR2diIcDv8yXC4Xenp6cH19LfP1QAGBbDaLg4MDNDU1YWRkBOPj4wWjra0NMzMzyGQyukVBCHBzjqurLKJ7+7Db7Oju7i7YnITq6uoRDIRwcXEpBPSIghIKhXB4eCgLXmWyOIwl8G3Oi9ra2hyhq5/TgOHhYbx9+w57u1FcnGdwd3eXI3KB5eVlTUQUs9mM+vp68N3r9SF5lMLG+hZM3SYJN3F+fp47fR38/kUhGA5FRAt8rrKyEvF4vGQSCkOtimxgYEDu/8PwR3z6NIqGhgaZ5PF4YDFb4HK6JRNaW1tRVlYmouX83d1diUgpUFTFqzg5OYHT6YTBYEB5eTlWV1dhqDWgqqoKfX192NnZkXkkQDQ2Nkrq3tzcyOc/hdLR0VFAQAVPt7i4KGNsbEyI5SOfwNbWlr4EKD7eP++YGzESg4ODODo6+jnjLxHgKal2Co45b35tkY1etb6CsdMo33d1dWFjY0NfAsxzu92eSz1DzgWN+PiBJuTB589fZCOr9U1OiFP494sTtjd2tLS0oKKiAj6fT0hpImAymeS0vb29cLu+Yv6bT9IwFAzD5/ULAYdjQD7vbAfw3b+E8a8eiZTRaJRrYhaUTCASiWBtbQ3r6+u5/P4fsYM4UsdpGWur/wmB9+//EX9In5whEU8iEtnD9vY2VlZWEAwGkU6nS09Dmgzv/vT0VMRH9XMx1gWGlgR42svLS/le/Y3PpVIpeY6fSzYiWjAXzfd2vhcjoBYg/q4+x1Hq5sRjMcpHMQL0fZWACi0bqyhoSAj1dCy509PTQoACpQdoPW0xFBDg4lSz2+2WjZnzs7OzYsE1NTWw2Ww4Pj7+JRJa8EiAi1LNVqtVakExsA6oxsVo6IFHDTADHA5HriR75YenwIxpb29HIpHQJRJCgGH3+/0S4peA+c9r0aM3lDRkijH09PiXgppQhakFCo2Hwmpubi6ods+BNsx2rFQLVqFwAfaE1dXVBT3gc2BqTk1NaXJBQuE97u/vS0Eq1pg8BZZhdkv0C00E1AiwHLP3ewlYB9g1swpqjoCqgfn5eTkVF38O/f39GBoakm5YswbULGBZZVfMJvV3JPj3jJ00y/fZ2Zn2LOALo5BMJkXVzG+243RDOh/JUBtzc3PigtycnVAsFtPHB/jCRXiXDClJ8B8wN2PrxXxn70+RMkILCwuIRqMSNa2bEwW1gGnISLDPpzOyGk5MTGByclIsenNzUwSrNifaAfwA87f93MTcM3UAAAAASUVORK5CYII=-->

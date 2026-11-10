@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="10.0" ContentWidth="10.0"
+    Height="10.0" Left="120.0" Name="Kanal Tilluft Pil" Top="305.0"
+    Version="1.0.0-rc1" Width="10.0">
+    <Path Fill="#B10043"
+        PathData="m 5.3535535,-1.363961 c -0.1958686,-0.1958686 -0.5112382,-0.1958686 -0.7071068,0 -3.4176827,3.4176827 -6.8353658,6.8353658 -10.2530483,10.2530483 -0.1958686,0.1958686 -0.1958686,0.5112382 0,0.7071068 l 1.7677669,1.7677669 c 0.1958686,0.195869 0.5112382,0.195869 0.7071068,0 l 8.131728,-8.1317279 8.1317279,8.1317279 c 0.195869,0.195869 0.511238,0.195869 0.707107,0 l 1.767767,-1.7677669 c 0.195868,-0.1958686 0.195868,-0.5112382 0,-0.7071068 C 12.188919,5.4714048 8.7712362,2.0537217 5.3535535,-1.363961 Z"
+        Stroke="#B10043" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+        <Expose ExposedAttribute="Fill" Name="Kanalfärg Tilluft"/>
+        <Expose ExposedAttribute="Stroke" Name="Kanalfärg Tilluft"/>
+    </Path>
+    <Rotate Angle="0">
+        <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+    </Rotate>
+    <Metadata Name="Name" Value="Kanal Tilluft Pil"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

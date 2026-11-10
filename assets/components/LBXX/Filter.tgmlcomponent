@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="40.0" ContentWidth="30.0"
+    Height="40.0" Left="452.0" Name="Filter" Top="210.0"
+    Version="1.0.0-rc1" Width="30.0">
+    <Image Height="48.0" Left="-4" Top="-2" Width="38.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAAB9sggoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAABW0lEQVRYR+2ZMWsCQRBGLxo1EAgRRDF1OoPJD7BOEQV7C7WxMKj/v/R7hwN3RIuBrK4wA+8a7+Z7N7c2u8WZejjRuBKWd7FM5lG0REc8JYYMssg0yVqZVFs8i67oib4YJILeZLwKMsn+I2dSL+JNvIuR+BRfiaA3GWQNBdkmVxaGTYE1N3yIifgWP2IqZv8MPelNBllkko0DLuXUuPCdGSn23DgXC7ES60TQmwyyyCQbB1xKMUbHIuR7M1reggc2Yit+E0FvMsgik2wccCk/Jxf+ISzGsWDES8GDO7FPBL3JIItMsnHApSbGP4VFyRpg1LwVDQ6JoDcZZJFJNg4hdokQ8xJiXkLMS4h5CTEvIeYlxLyEmJcQ8xJiXkLMS4h5CTEvIebl/sWy3LjLcqsz281hLllup1OMzg4guAF7RnvTAwgKQ5PDOpsjG8rksjrkqhY/muQ1sLxKFcURkfYQ+t8Wh4oAAAAASUVORK5CYII=]]></Image>
+    <Path Fill="#FFFFFF"
+        PathData="m 1,0 h 28 c 0.554,0 1,0.446 1,1 v 38 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,40 0,39.554 0,39 V 1 C 0,0.446 0.446,0 1,0 Z M 0.5,0.5 29,10 1,20 29,30 0.5,39.5"
+        Stroke="#808080" StrokeWidth="0.5"/>
+    <Metadata Name="Name" Value="Filter"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

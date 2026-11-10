@@ -61,14 +61,13 @@ h1, h2, .brand, .step-button { font-family: Outfit, "Arial Black", Arial, sans-s
 .air-treatment-setup { width: 100%; max-width: none; margin: 0 0 24px; padding: 20px; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
 .setup-heading h3 { margin: 0; color: var(--charcoal); }
 .setup-heading p { margin: 5px 0 16px; font-size: 13px; }
-.scenario-picker { display: grid; gap: 7px; max-width: 760px; margin: 0 0 14px; color: var(--charcoal); font-weight: 700; }
-.scenario-picker select, .scenario-picker input { width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--charcoal); font: inherit; font-weight: 400; }
-.system-count-picker { max-width: 260px; }
+.system-count-picker { display: grid; gap: 7px; max-width: 260px; margin: 0 0 14px; color: var(--charcoal); font-weight: 700; }
+.system-count-picker input { width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--charcoal); font: inherit; font-weight: 400; }
 .system-profiles-panel { margin: 14px 0; padding: 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
 .system-profiles-panel h3 { margin: 0 0 6px; color: var(--charcoal); }
 .system-profiles-panel > p { margin: 5px 0 12px; }
 .system-profiles { display: grid; gap: 10px; }
-.system-profile-row { display: grid; grid-template-columns: 70px minmax(260px, 1fr); gap: 12px; align-items: center; }
+.system-profile-row { display: grid; grid-template-columns: 70px minmax(220px, 1fr) minmax(260px, 1fr); gap: 12px; align-items: center; }
 .system-profile-row label { display: grid; gap: 5px; color: var(--charcoal); font-size: 13px; font-weight: 700; }
 .system-profile-row select { width: 100%; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--charcoal); font: inherit; font-weight: 400; }
 .profile-template-preview { margin-top: 14px; }
@@ -274,8 +273,7 @@ body { color: var(--charcoal); }
 .binding-overview-profile,
 .component-library-option { background: #292c32; border-color: var(--line); }
 .mode-menu select,
-.scenario-picker select,
-.scenario-picker input,
+.system-count-picker input,
 .system-profile-row select,
 .component-library-search,
 .binding-overview-search,
@@ -341,7 +339,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   .tag-group-choices { grid-template-columns: 1fr; }
   .rule-questions { grid-template-columns: 1fr; }
   .system-profile-row { grid-template-columns: 44px minmax(0, 1fr); }
-  .system-profile-row label:last-child { grid-column: 2; }
+  .system-profile-row label { grid-column: 2; }
   .component-library-choices { grid-template-columns: 1fr; }
   .binding-overview-table { min-width: 680px; }
   .rule-question { grid-template-columns: minmax(0, 1fr) minmax(120px, 170px); }

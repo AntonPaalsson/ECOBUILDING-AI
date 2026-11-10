@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="60.0" ContentWidth="20.0"
+    Height="60.0" Left="735.0" Name="SN11" Top="320.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="60.0" ContentWidth="20.0"
+        Height="60.0" Id="Timer" Left="0.0" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="30.0" ContentWidth="20.0"
+            Height="30.0" Left="0.0" Name="Timer" Top="15.0" Width="20.0">
+            <Image Height="38.0" Left="-4" Top="-2" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAmCAYAAADX7PtfAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEeSURBVFiF7ZjbasMwEESPErk0IdCH/P9HFtrEuI3UB83GspoULIUWihYWWcLa4/EFduxYhivG1ojFuCjsgI3SjlsiCBSy44WiLeCBJ2DQvFZpBC7ABzABn5pHz6zGA3vgoHFgVrsWFgQ7AW8aIxC8TtqQlB2AI/ACPFOn0tSNwKvWTOEV6KRoL9gR2DUCz5qfgXddAHZL7RkOJGU7wVuAqFb+PrhcoT3LbZE1QLL99h44SArzcHdybdzd3/qtrY4O7MAO7MAO7MAO7MD/ACy7tngj18aPNXxxUiA1sZZQ3whbmnOKBows3c7I3Ka3tvqjal6Mkys0t2MG5FFm5qTaV4WQZE8ka4Wu7pF2bdLa7xvSP7PcOfTWem18+6nwBd9Tbx0ErAsyAAAAAElFTkSuQmCC]]></Image>
+            <Rectangle Fill="#FFFFFF" Height="30.0" Left="0.0"
+                RadiusX="1.0" RadiusY="1.0" Stroke="#808080"
+                StrokeWidth="0.5" Top="0.0" Width="20.0"/>
+        </Component>
+        <TargetArea Height="30.0" Left="-5.0"
+            Name="TargetArea ContextMenu" Top="15.0" Width="30.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="0.0"><![CDATA[SN11]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10.0"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Återstående timertid" Top="47.0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="TL.Value" PreventDefault="True"/>
+        </Text>
+        <Component Clip="False" ContentHeight="6.0" ContentWidth="8.0"
+            Height="6.0" Id="Knapp" Left="6.0" Name="" Top="34.0" Width="8.0">
+            <Script Name="Activate timer" OnMouseClick="onMouseClick"
+                OnMouseOut="onMouseOut" OnMouseOver="onMouseOver"><![CDATA[/*
+Activate timer
+*/
+function onMouseClick(evt) {
+    // Verify leftclick
+    if(evt.getButton() != 0) return
+    
+    // Find bind
+    var bind = evt.getCurrentTarget().getElementsByTagName("Bind").item(0);
+    if (bind == null) return;
+    
+    // Activate timer
+    if (setValue(bind.getFullBindName(), 1)) {
+        // If successful
+        evt.getTarget().setAttribute("Stroke", "#808080");
+    }
+    evt.preventDefault();
+}
+
+
+function onMouseOver(evt){
+    evt.getTarget().setAttribute("Stroke","#FF0000");
+}
+
+function onMouseOut(evt){
+    evt.getTarget().setAttribute("Stroke","#808080");
+}]]></Script>
+            <Rectangle Fill="#FFFFFF" Height="6.0" Id="" Left="0.0"
+                Name="" RadiusX="1" RadiusY="1" Stroke="#808080"
+                StrokeDashArray="0" StrokeWidth="0.5" Top="0.0" Width="8.0"/>
+            <Bind Description="" Name="M.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="8.0" ContentWidth="8.0"
+            Height="8.0" Id="Indikering" Left="6.0" Name="D"
+            Tooltip="Indikering" Top="20.0" Width="8.0">
+            <Ellipse Fill="#FFFFFF" Height="8.0" Left="0.0"
+                Opacity="1.0" Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="0.1" Top="0.0" Width="8.0">
+                <Bind Attribute="Fill" Name="Value"/>
+                <Bind Attribute="Stroke" Name="Value"/>
+            </Ellipse>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Tidsinställningar" Left="0.0"
+            Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #tidsinställningar"/>
+            <Metadata Name="Icon" Value="TimeSettings"/>
+            <Metadata Name="Text" Value="Tidsinställningar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="T.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="10.0"
+            Name="" Top="10.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="D.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="M.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="SN11"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIjSURBVFhH5Zffa9pQFMfvn7nHPe51b3vaGLinqRVR9GFkDmUTItSCMBkyhTKEBpVVhxuupC1rbTVbtvkjdm6c8j2QS5JuvjS5PuwLB0/O5eZ8cu7JvVHQliX02lt2nuZf0tXVL/a1co1/P34+oXfG4Q0/TAncFInvP07LxA/jz8g8Pacn6Re092afzi6m0g9bIq3pDJAr7jIAnhQAEBK7Sb1+mBK4qfF+yAAAQXKlAG4F3JujAu5SWN++y3X3+mFKBAOqJVqtFmmattGKxSJZlhWcG4qErutkmuZG6/f7lM1mab1eB+ffWqLZbAZjN2TbNiUSCVoul8GhW8sHMB6PqVKpUCqVIsMwZBwA8Xic5vO5jIUlH0Amk6Fer8cJC4UCDYdDjrsAs9nMMzUcSQA8fT6flwNIXi6X2VcCgAZD6QECv1qtUrvd5jElABA6HlWIxWLUaDRkXBnAv/T/ANTrde5+WKlU4sSQEgDsdkjq7n5oQFxDSgDw/qPzXQEClYCUAEynU96I3CXA24AlgZQAQEjkPYS88cgAUPbg6Rc09EdkALlcjpLJ5EbDDomNKZLTcDQacQN2Op2/WrfbpcFgQJPJJJrvgdVqRYvFwme9L7bv2nGcSJJDvm9C2/lNd/ZMerR/TjsHl96hyOQD2P1k0+ujH+wDRIV8AM8PLWqe/GT/bu3YOxSZfACvPnyVFdgKgLP+Q/fqp/SgdcbLoUJb/2NyDf3QVKvy2b6CAAAAAElFTkSuQmCC-->

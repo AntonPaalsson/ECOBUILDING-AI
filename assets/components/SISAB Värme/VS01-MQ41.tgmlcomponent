@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="110" ContentWidth="60"
+    Height="110.0" Left="0.0" Name="VS01-MQ41" Top="0.0" Width="60.0">
+    <Component Clip="False" ContentHeight="115.0" ContentWidth="50.0"
+        Height="115.0" Id="Givare" Left="0" Name="" Top="0" Width="50.0">
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="8.0" Y1="4.0" Y2="68.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="14.0" Y1="68.0" Y2="68.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="14.0" Y1="77.0" Y2="77.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="8.0" Y1="77.0" Y2="101.0"/>
+        <Line Stroke="#808080" StrokeWidth="1" Visibility="Visible"
+            X1="23.0" X2="23.0" Y1="80.0" Y2="101.0"/>
+        <Ellipse Fill="#FFFFFF" Height="4.0" Left="6.0" Name="Ring"
+            Stroke="#808080" StrokeWidth="0.5" Top="0.0" Width="4.0"/>
+        <Ellipse Fill="#FFFFFF" Height="4.0" Left="21.0" Name="Ring"
+            Stroke="#808080" StrokeWidth="0.5" Top="101.0" Width="4.0"/>
+        <Component Clip="False" ContentHeight="20.0" ContentWidth="20.0"
+            Height="15.0" Id="" Left="0.5" Name="Flödesgivare"
+            Top="100.0" Width="15.0">
+            <Image Height="28.0" Left="-4" Top="-2" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIbSURBVEiJvZbrktowDEZPQmAptHvp9v3fsO1uW2BZLukP9JHPKgFCO9WMJ07s6EiyLLvieqkujLf/QkllT7U6zdkHTO0svLkAq4CRtSaAgu6jbYGdtV5on4cCNcAEmAJ30R8n4AZ4B9bAW/RlwB/QU8A6YBPgAzAHPgGzAE8S8D1AS+AnsABW8X0Xc46SQyrP7gL0ADzGU8DGDG3DGwFnwAvwGuA15doWQMEmAfsMPANPwEeDjRJwFyCPwMjGNad1oBKkiTA+BOwZuA9FvnYObGKsoUsqKJNIYW3dQ/fuMTy7D8ulKK953jZ5bdd0a7kVhJg4DtgT8CWeM/Ps3J6tUhNUwE28tzVlOJUsc8owXioQgsrwaRg7D51KtEoh8K0wtUnXwjJUxnsS1QJJZJ0SIJewIdKry7NOJUvW+HoMEV9LlcRjpP7Gi5tEwJZDFvm+KSrEANF/p/QVHqrqb+JZ1MCB0qvLN+qOrhCvbeIQL+XZlvL0OFabmi4EmrSI9oZt2AGwTfwrPTK+BdqR/eCZNeawf7xYn8ta92wF/AC+Ad+BX+HlHrrSVpkXfSntBdtB7pnDvkZ/FYbgwGytK61OjHkWbsODZYK9cAhpsSxNUqbEWcQ3TySdd8cyZVAdwK+UB/CGdNXIJ76g69TXaa6Crsjs6JLErxjLU7Acrvz9v12ifOzWa2JvlbrlIpwzNjc4s2+HnnXn5KqK9BtnROIWMnUr3wAAAABJRU5ErkJggg==]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="20.0" Left="0.0" Name=""
+                Stroke="None" StrokeWidth="0.5" Top="0.0"
+                Visibility="Visible" Width="20.0"/>
+            <Path EffectsFillOff="None" EffectsFillOn="#15009530"
+                Fill="None" Name=""
+                PathData="M 20,10 C 20,15.5 15.5,20 10,20 4.5,20 0,15.5 0,10 0,4.5 4.5,0 10,0 15.5,0 20,4.5 20,10 Z M 2.934,17.066 17.066,2.934 m -14.132,0 14.132,14.132"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+        </Component>
+        <Component Clip="False" ContentHeight="10.0" ContentWidth="10.0"
+            Height="10.0" Left="4.0" Name="Givare tillopp" Top="10.0" Width="10.0">
+            <Path Fill="#FFFFFF"
+                PathData="M 0,6 C 0.6,7.2 1.2,8 4,8 6.8,8 7.4,7.2 8,6 L 4,-0.1 Z"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <Component Clip="False" ContentHeight="10.0" ContentWidth="10.0"
+            Height="10.0" Left="19.0" Name="Givare retur" Top="87.0" Width="10.0">
+            <Path Fill="#FFFFFF"
+                PathData="M 0,2 C 0.6,0.8 1.2,0 4,0 6.8,0 7.4,0.8 8,2 L 4,8.1 Z"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <Text FontFamily="Arial" FontSize="12" Left="15.0" Name="TempT"
+            Stroke="#0087CD" Top="7.0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="FramledningsTemp.Value" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="12" Left="30.0" Name="TempR"
+            Stroke="#0087CD" Top="85.0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="ReturTemp.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="35.0" ContentWidth="30.0"
+        Height="35.0" Id="Mätare" Left="10.0" Top="50.0" Width="30.0">
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="12.0"
+            Height="15.0" Left="4.0" Name="Symbol Mätare" Top="15.0" Width="12.0">
+            <Image Height="23.0" Left="-4" Top="-2" Width="20.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEESURBVDiN7ZVRb8IwDIS/lHQaCGkP/P8fOWmDqoNkD5yZ8Zp204bEA5ZOlhP7co1qJ3FtKfglq8FfFSagE5JDi8hQhBoVrYAMPAG94jnCE/ABjMBRcc1OWQY2wFa+d2ojWRHZHniTr0DJSuqkbAvsgBfguaHS1A3Aq9ZM4YUwSdFGZDtgvUB4UHwA3nUA9sl2h72UrUU+R4hy/X0nr9DuchUwRYjb938FOSSnBqI197uJ5D/Zg/AOCeNvUycQbTYnh6TCuQsM0O4UQ3H1ZBfYOBr46tOlXh5UczIer9DGkU2Qn06bvWovCpHskfNsQ6f/Zh6OWvv/iX2zN8WTTq237Nur9wmXDXD/OMK5CAAAAABJRU5ErkJggg==]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 2.5625,2 h 6.875 C 9.749125,2 10,2.223 10,2.5 v 4 C 10,6.777 9.749125,7 9.4375,7 H 2.5625 C 2.250875,7 2,6.777 2,6.5 v -4 C 2,2.223 2.250875,2 2.5625,2 Z M 1,0 h 10 c 0.554,0 1,0.446 1,1 v 13 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,15 0,14.554 0,14 V 1 C 0,0.446 0.446,0 1,0 Z"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="15.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Energimätare"
+            Top="15.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" Id="Larm" Left="3.0"
+            Name="Id" Stroke="#304760" Top="0.0"><![CDATA[MQ41]]><Expose
+                ExposedAttribute="Content" Name="Synligt ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" HorizontalAlign="Left"
+            Left="20.0" Name="Mätvärde" Stroke="#0087CD"
+                Top="15.0"><![CDATA[0]]><Bind Attribute="Content"
+                DynamicUpdates="Enable" Name="Effekt.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu, #vs2_mq41"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Förbrukning" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #övrigaparametrar, #förbrukning"/>
+            <Metadata Name="Icon" Value="MiscSettings"/>
+            <Metadata Name="Text" Value="Förbrukning"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Effekt.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Energi.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Flöde.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="TempDiff.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Volym.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VS01-MQ41"/>
+    <Metadata Name="Description" Value=""/>
+    <Expose ExposedAttribute="Name" Name="Bindnings ID"/>
+</Component>

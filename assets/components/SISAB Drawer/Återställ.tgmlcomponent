@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+    Formula="max" Height="130.0" Left="10" Name="Återställ" Top="10"
+    Version="1.0.0-rc1" Visibility="Visible" Width="130.0">
+    <Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+        Height="130.0" Left="0.0" Name="Dialog" Top="0.0" Width="130.0">
+        <Image Height="138.0" Left="-4.0" Top="-2.0" Width="138.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAIoAAACKCAYAAAB1h9JkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKoSURBVHic7ddba9VAAIXRnTbFSx8E8f//Rx9sLb3Eh5nU4/Eo+0VRshYM6QxTOJCPJLPkZ8uFNY5nO50sZ3+fD45nuzBeY1iSXCW5TnIzr1cRy9FsSV6SPCd5nNeXJNs6NywZcbxLcpvkbUYwQjmWLSOQr0m+JLmfa9ua76+ZmyTvk3xM8iHJm4x4xHIMW8YT5CHJ5zl/mmvLpSfKhySfMqIRynHsodzN+V3GU2VJktNQrub8bUYkt3MulGPYnyDJaGDNyXfqerJxj2X/qF0jlCPZj8P7QeaHw8x64R8ck4/rl/f86u//Fv5HQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQq64W17WxwDL+97+vZxpc5npM8zfXlD/9A/g1bxj1/zvcOXoNZTza9zI1fk9zN9esI5Si2jEjuMhp4ykks69mm+ySf59qbCOVI9gYeMhq4n/PXUPZ30mNGTcu83kQkR7N3sL9VHufatoewZJyArjMCuZ5zoRzL/gnynBHJ/r2ynYawXBgcz/npZ0suxyAQkrMj8jfboWb1FbqQyAAAAABJRU5ErkJggg==]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="130.0" Left="0.0"
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0" Width="130.0"/>
+        <Line Stroke="#808080" StrokeWidth="0.1" X1="0.0" X2="130.0"
+            Y1="20.0" Y2="20.0"/>
+        <Text FontFamily="Arial" FontSize="13" FontStyle="Normal"
+            FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+            Name="Rubrik" Stroke="#E47F00" TextDecoration="None" Top="2.0"><![CDATA[Återställ]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="70" ContentWidth="70"
+        Height="110" Id="Återställ" Left="15" Name="" Top="22"
+        Visibility="Visible" Width="110" ÅterställningFrån="0" ÅterställningTill="1">
+        <Metadata Name="Meta" txtRubrik="Omkopplare" txtStatStopp="Från"
+            txtStatTill="Till" txtStopp="Från" txtTill="Till"/>
+        <Script OnDocumentLoad="OnDocumentLoad" OnMouseClick=""
+            OnMouseOut="" OnMouseOver=""><![CDATA[/*  Driftomkopplare
+   Leif Jansson 1/8-07
+*/
+
+function OnDocumentLoad(evt)
+{
+  var Komponent = evt.getCurrentTarget()
+  var omk = Komponent.getChildByName("Omkopplare");
+  var MetaData = Komponent.getChildByName("Meta");
+  										// Hämta texter till omkopplaren
+  var txtStopp = MetaData.getAttribute("txtStopp");
+  var txtTill = MetaData.getAttribute("txtTill");
+  omk.getChildByName("Stopp").setAttribute("Content",txtStopp);
+  omk.getChildByName("Till").setAttribute("Content",txtTill);
+}]]></Script>
+        <Scale Center="0.5,1" Name="Skalning" ScaleY="1"/>
+        <Bind Name="ÅtStart" PreventDefault="True">
+            <Script OnDocumentLoad="OnDocumentLoad"
+                OnMouseClick="OnMouseClick" OnSignalChange="OnSignalChange"><![CDATA[/*  Driftonkopplare
+	Leif Jansson 1/8-07
+*/
+var till;
+var från;
+
+function OnDocumentLoad(evt)
+{							// Spar fulla namnet till bindningen vid start
+	bindValue = null;
+    var bind = evt.getCurrentTarget();
+	var fullnamn = bind.getFullBindName();
+	bind.getParentNode().setAttribute("FullBindName",fullnamn);
+        
+    till = Number(evt.getCurrentTarget().getParentNode().getAttribute("ÅterställningTill"));
+    från = Number(evt.getCurrentTarget().getParentNode().getAttribute("ÅterställningFrån"));
+}
+function OnMouseClick(evt){
+	evt.preventDefault();
+}
+
+function OnSignalChange(evt){		// Om signalen ändras
+    bindValue = evt.getValue();
+    
+    
+    var Komponent = evt.getCurrentTarget().getParentNode();
+	var MetaData = Komponent.getChildByName("Meta");
+	var omk = Komponent.getChildByName("Omkopplare");
+	var txtStatStopp = MetaData.getAttribute("txtStatStopp");
+	var txtStatTill = MetaData.getAttribute("txtStatTill");
+    var statusBall = Komponent.getChildByName("StatusBoll");
+
+	var value = new Number(evt.getValue());
+	if (value == från){
+		omk.getChildByName("Ratt").getChildByName("Pal").getChildByName("Rotation").setAttribute("Angle", 90);
+        statusBall.setAttribute("Fill", "#169736");
+	}
+	else if (value == till){
+		omk.getChildByName("Ratt").getChildByName("Pal").getChildByName("Rotation").setAttribute("Angle", 150);
+        statusBall.setAttribute("Fill", "#FF0000");
+	}	
+}]]></Script>
+        </Bind>
+        <Ellipse Fill="#169736" Height="10" Left="55" Name="StatusBoll"
+            Stroke="None" Top="55" Width="10"/>
+        <Component Clip="False" ContentHeight="57.0"
+            ContentWidth="57.33" Height="57.0" Left="7.5"
+            Name="Omkopplare" Top="3.0" Width="57.33">
+            <Group Name="Ratt">
+                <Script OnMouseClick="OnMouseClick"><![CDATA[function OnMouseClick(evt)
+{
+    var node = null;						// Leta upp 'Bind' noden
+	var nodeList = evt.getCurrentTarget().getParentNode().getParentNode().getChildNodes();
+    
+    var till = Number(evt.getCurrentTarget().getParentNode().getParentNode().getAttribute("ÅterställningTill"));
+    var från = Number(evt.getCurrentTarget().getParentNode().getParentNode().getAttribute("ÅterställningFrån"));
+    
+	for(var i=0; i<nodeList.getLength(); ++i)
+	{
+		node = nodeList.item(i);
+		if(node.getTagName() == "Bind") break;
+	}
+	if(node == null) return;			// Ingen bindnode hittad, tillbaks
+    
+    
+    
+    if(bindValue == till)
+    {
+        if(confirm("Detta kommer att starta aggregatet igen om knappen inte fjädrat tillbaka av sig själv.\n\nHar du väntat minst 5 sekunder?"))
+        {
+            setValue(node.getFullBindName(),från);
+        }
+    }
+    else if (bindValue == från)
+    {
+        if(confirm("Detta återställer förreglingar, om knappen inte fjädrat tillbaka inom någon sekund ställ den manuellt i \"Från\"\n\nVill du fortsätta?"))
+        {
+            setValue(node.getFullBindName(),till);
+        }
+    }
+}]]></Script>
+                <Ellipse Fill="#FFFFFF" Height="38.0" Left="0.0"
+                    Name="OuterMask" Opacity="1.0" Stroke="#C0C0C0"
+                    StrokeDashArray="0.0" StrokeWidth="2" Top="19.0"
+                    Visibility="Visible" Width="38.0"/>
+                <Group Name="Pal">
+                    <Rectangle Fill="#000000" Height="5.0" Left="4.0"
+                        RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                        StrokeDashArray="0.0" StrokeWidth="1.0"
+                        Top="34.5" Width="30.0"/>
+                    <Rectangle Fill="#FFFFFF" Height="4.799999999999997"
+                        Left="4.100000000000001" RadiusX="0.0"
+                        RadiusY="0.0" Stroke="#000000"
+                        StrokeDashArray="0.0" StrokeWidth="1.0"
+                        Top="34.6" Width="4.799999999999997"/>
+                    <Rotate Angle="90" Name="Rotation"/>
+                </Group>
+                <TargetArea Height="67" Left="-16" Top="-3" Width="80"/>
+            </Group>
+            <Text Fill="None" FontFamily="Arial" FontSize="12"
+                FontStyle="Normal" FontWeight="Normal"
+                HorizontalAlign="Center" Left="19.0" Name="Stopp"
+                Stroke="#000000" TextDecoration="None" Top="0.0"><![CDATA[Från]]></Text>
+            <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="42.0"
+                Name="Till" Stroke="#000000" TextDecoration="None" Top="18.0"><![CDATA[Till]]></Text>
+        </Component>
+        <Expose ExposedAttribute="ÅterställningTill" Name="Återställning Värde Till"/>
+        <Expose ExposedAttribute="ÅterställningFrån" Name="Återställning Värde Från"/>
+    </Component>
+    <Metadata Name="Name" Value="Återställ"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

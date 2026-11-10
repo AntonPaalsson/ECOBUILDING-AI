@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="10.0" ContentWidth="10.0"
+    Height="10.0" Left="300.0" Name="Kanal Tilluft" Top="120.0"
+    Version="1.0.0-rc1" Width="35.0">
+    <Rectangle Fill="#B10043" Height="10.0" Left="0.0" Name=""
+        Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+        StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="10.0">
+        <Expose ExposedAttribute="Fill" Name="Kanalfärg Tilluft"/>
+    </Rectangle>
+    <Metadata Name="Name" Value="Kanal Tilluft"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

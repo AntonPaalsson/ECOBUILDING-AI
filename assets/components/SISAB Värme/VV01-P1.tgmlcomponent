@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="50.0" ContentWidth="45.0"
+    Height="50.0" Id="" Left="0.0" Name="VV01-P1" Top="0.0"
+    Version="1.0.0-rc1" Width="45.0">
+    <Component Clip="False" ContentHeight="50.0" ContentWidth="45.0"
+        Height="50.0" Id="Pump" Left="0.0" Top="0.0" Width="45.0">
+        <Component Clip="False" ContentHeight="35.0" ContentWidth="35.0"
+            Height="35.0" Id="Indikering" Left="5.0" Name="D" Top="10.0" Width="35.0">
+            <Image Height="43.0" Left="-4" Top="-2" Width="43.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMcSURBVFiF7ZlbUxsxDEZPLiTQ0JRS/v8vbGlhEkhCQvpgfV1F8V6TTXlAMx7DsrLPyrJsCfiUfmRwgfH2fQ7eRX8QfpbsXb8PzzpP1kVPbWhtZH2EfQd21r9TgLeGbgvrAUfAGLiyNgnAAt0Cb65tHXwr6DawghTgtbUb66f2fORgdwa4yjSBC/pssFrqiYHNgFvrZwE2WvYNWBvg0trC+hWwoXCRShk3BB0ZzAyYW/tmv9/Y38YUVpV4626AV4N8Bp6sX9rHUAdcByvQa5Il74B7628NVEsvi0bYvX3MDvhizX+g9FZ1wFWw8tGpgd0DD8B3B6rJhkHPw2If4zfkJHyk3l1RsenKYAU6IS31HfDDgOckSws0AsZxJMNM00q8u7amZNNVwY4N6qtBetArjpe8TvTu0PQlew7Dm3z8CHZUMqg21Jxk0QeSdf3Sn3KgqJeFPfDGgBvBKpbOSP4pP51xGJpOkUFoihobkhtk4+/wcIx/ynIBxdFzWDQHLMPk5jpyswirZzqhpHwui5YBT2weHTCa7wisTFnHqT/z+xDF8jjnkXFifNTmkmX9EdqnaDWnFJbVaTjwL+UUBZxVOrNEI8XD4gCsTLHsCO1D4tUza6Cq5b0EZKs5q2A73eZPlMo5I6xe3tHxNt9RNIdSoB2ZeXOWjalIVrEHUN0JNOfRVXFYobQiHX1vOcUzS8woskbKuYEUV6SbvS4WfQFr6ZVJ+FSnkRsI9sUGkHXP7QoyjkBfKCxb6QZS1nVNCd6iJ+C4igs315bMPsldEePfxxRpiL8NnRKDfU3hlZQ4/gJ+kwyUtWwdLBzWCmLO1QU4rt4z8Giwz/as8eXbD6o+HoXxGG4CrfFk0Qj6h8KqWVers2yuLiXQsow2l90KUmFRS/8I/HSg2SjQFFaT+OJak8qg/0jpbklxdEkqcHiLLqjIaiV1RQ45ufJ5v3vnFPUDXwdoU5F5IoWrNQ1ieZPykQf2J83SYH2Fpdda1ylVxClFBVEtV0VUxnqxKqJ/v6w+60Pbf6/P5qA/dOW7TP9D/0+hzXiXzjY+pbX8BRKyWVtp2nqeAAAAAElFTkSuQmCC]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="30.0" Left="2.5" Name=""
+                Stroke="#808080" StrokeWidth="0.5" Top="2.5" Width="30.0">
+                <Bind Attribute="Fill" Name="Value" PreventDefault="True">
+                    <ConvertStatus Error="#FFFFFF" Forced="#FF8000"
+                        Name="Forced" Stored="#FFFFFF"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#C0C0C0" Name=""
+                PathData="m 17.5,4 c -1.196,0 -1.73,1 -1.73,1 l -6.5,11.25 c -0.773,1.35 0.18,3 1.73,3 h 13 c 1.55,0 2.504,-1.659 1.73,-3 L 19.23,5 c 0,0 -0.534,-1 -1.73,-1 z"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="0.0">
+                <Rotate Angle="90" Center="0.5,0.886">
+                    <Expose ExposedAttribute="Angle" Name="Rotera pump (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="Value"/>
+            </Path>
+        </Component>
+        <TargetArea Height="30.0" Left="7.5"
+            Name="TargetArea ContextMenu" Tooltip="Pump" Top="12.5" Width="30.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="22.5" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="-2.0"><![CDATA[P1]]><Bind Attribute="Stroke"
+                DynamicUpdates="Enable" Name="DS.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="HM.AlarmState" PreventDefault="True"/>
+            <Expose ExposedAttribute="Content" Name="Synligt ID"/>
+        </Text>
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="15.0"
+            Height="15.0" Id="Manöver" Left="35.0" Name="" Top="35.0"
+            Version="1.0.0-rc1" Visibility="Visible" Width="15.0">
+            <Image Height="23.0" Left="-4" Top="-2"
+                    Width="23.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEvSURBVEiJ7ZRRU4MwEIS/kIJWmVpb//9/1AerUMCH7EkKScHpi854MxkSuOxu9i7AXw13Q96wtMmvBHbK9T8QtAjugAIogTugivbcpDwG3gI18KC1A/olgs0CuJfiHbCX8gZ4FbgRJEly4Ka6Ah6BZ+Aook99b4HuGkEK3Aq4Ae4j1fsIvNOzAc5kLMop95HqnUatd6UATxqNyGbqpwWNi1gT7HiRaitmodxewA3Boj6lcAruCXY8EXw+RKoLxj7vdQIjMHu+o+AyDLwitN9Wc2s9K6BL5MwuWK6gPiJuGb11BF87vTeByZubAh90xA/gTXO7OAY+CPxdeWdWdIupMuCWsYhukmcFPSnfOubCgunabCm5/rMyIWbRrB1Tm1xi5GJIjKzytd9SJP/xC+ILuNZYTobdDXAAAAAASUVORK5CYII=]]><Rotate
+                    Angle="90" Center="0.5,0.5">
+                    <Expose ExposedAttribute="Angle" Name="Rotera pump (grader)"/>
+                </Rotate>
+            </Image>
+            <Ellipse Fill="#F68B1C" Height="15.0" Left="0.0"
+                Name="Forcerad manöver" Opacity="1" Stroke="None"
+                Tooltip="Forcerad manöver" Top="0.0" Visibility="Hidden" Width="15.0">
+                <Bind Attribute="Visibility" Name="Value">
+                    <ConvertStatus Error="Hidden" Forced="Visible"
+                        Name="Forced Visible" Stored="Hidden"/>
+                </Bind>
+            </Ellipse>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5" Tooltip="Manöver">
+                <Rotate Angle="90" Center="0.5,0.63">
+                    <Expose ExposedAttribute="Angle" Name="Rotera pump (grader)"/>
+                </Rotate>
+                <Bind Attribute="Fill" Name="Value"/>
+                <Bind Attribute="Stroke" Name="Value"/>
+            </Path>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="0.0"
+            Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="0" Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="DS_LT.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="HM_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VV01-P1"/>
+    <Metadata Name="Description" Value=""/>
+    <Expose ExposedAttribute="Name" Name="Bindnings ID"/>
+</Component>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="55.0" ContentWidth="35.0"
+    Height="55.0" Left="0.0" Name="KV01-SV91 TrueFalse" Top="0.0"
+    Version="1.0.0-rc1" Width="35.0">
+    <Component Clip="False" ContentHeight="55.0" ContentWidth="35.0"
+        Height="55.0" Id="Ventil" Left="0.0" Tooltip="Ventil" Top="0.0" Width="35.0">
+        <Component Clip="False" ContentHeight="39.0" ContentWidth="25.0"
+            Height="39.0" Left="5.0" Name="Ventil 2väg upp" Top="10.0"
+            Version="1.0.0-rc1" Width="25.0">
+            <Rectangle Fill="#F9F8FB" Height="15.0" Left="5.0"
+                Stroke="None" StrokeWidth="0.0" Top="25.0" Width="15.0"/>
+            <Image Height="47.0" Left="-4" Top="-2" Width="33.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACEAAAAvCAYAAABt7qMfAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPVSURBVFiFzZjrUtswEIU/52Jyo7QM7/+GlA7knjjpD+1Ba0VyHApMNbMjx7F2j1Z7FfwHo/qCdeevBFG5eWCzX382OjkgvQD1BSHBQ6ORzQIj4Q1wtLlJAP0TiIHRGLgDJjbXBkYgjsAe2AFbmw8G5NQlYNQDwNCEzoAFcG/PkwyILbAG3oClPe+MVxFIF4jKAVgAP4FfwIOBKGli7f4fGK8d0WZ6g5AN1AbgEXgyEAuCFko2MTXgYwfi5OgCSBeIkQn7YSAe7VnHIAAaAiLjrez3kWAbjc29QEgLY4JaHwhHcW+7HHPpnrh3XjtHwlFsbG7IHMswA0LGODPhTzbPiSoueZWPJQJyMADylgsQAy6HDLK2nU8pH0EJyIB4nDPjUROPqTVSEJV7P7KFdzcAyAGpiZ40cP8XQXgGPjLmbKAPEGk1jbCtkQPx7SMHIpcHioGmY2iN55ONEykIfSD/Vi44lhh0APA89o6Hl5MFoQ8aW7gx2t4AxANQLtkYP2m1NXJxAtpGJese0zbSnKF6ABvgFXgxWhKzai8QHkzqKSVXTTXwBvw2erV3N2lCTDVX5DXgqynlho0BeAGebV4TjiN7lNc0IQES4mfZh4RvCSr/Q9j9sz0v6bAH6K4nJEBFiYx1TUjnc0JIHtp/a2BlQtOipggAPl7ezQlZdUEw2r0TLm/4tPIOotp99SS/bwzYjmB8b0R37l3oXrOJLkBKUBiIFdEAj9wQZftoQsNH0xylBtt7lBLYtax57qDSKPJMNZHGAs/45vbO8cnxfOc3ShYMHUFbzbdkUr8ZRVxpvXF09iB8cSs3rIix4UC0+HRnqXAJ85XV2J5PxHrzvW/1mhCIBaG0r4l5QJlUkc83xH7HaoaU+CbEOnVom3kl5phTSRNzQpMzN7RKx3LBnS1W7ankVjteahvnRhP7b22bUDCrUk34HajfGBHTsgeyN9AeiJod9SsLYqU9Nj6Qqbpz3iGNqPvGMVWRo3wgg2tsx+pddQRqBytbk+1bujowgals1hnPaDcyft3IBKdXByf7PluLXOvKvbXrnR8yrhIA3xIWg9+1VO6vf9TY7mhnSh1LzWXK9lcHxRiTA+ELmYO9k3AZqGoFlWz+IkUekdpE76sBAVCldCR6xyohxY0TbWOeJzQ1OarALoB4EL7UXxPV6OOEhMswpX65t76bOq3oaqkiunfr2ATCa2BlDJf2sY+YaoRy+UQ2s7dvV4Qix3f14t/SSHo3qS78juj/ae7ouqf0HnUtd+goz1XCoE8W7ZNJb8qipSufb60nuhZ/9N77O3l+3vgLP9W120vCLmcAAAAASUVORK5CYII=]]></Image>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 12.5 1 A 9 9 0 0 0 3.5 10 A 9 9 0 0 0 12 18.974609 L 12 31.783203 L 1 27 L 1 38 L 12.5 33 L 24 38 L 24 27 L 13 31.783203 L 13 18.982422 A 9 9 0 0 0 21.5 10 A 9 9 0 0 0 12.5 1 z "
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5" Visibility="Visible"/>
+        </Component>
+        <TargetArea Height="39.0" Left="5.0"
+            Name="TargetArea ContextMenu" Tooltip="Styrventil"
+            Top="10.0" Width="25.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="17.5" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="-3.0"><![CDATA[SV91]]><Expose
+                ExposedAttribute="Content" Name="Synligt ID"/>
+        </Text>
+        <Component Clip="False" ContentHeight="10.0" ContentWidth="20.0"
+            Height="10.0" Id="Indikering öppet" Left="0" Name=""
+            Tooltip="Indikering" Top="15" Version="1.0.0-rc1" Width="20.0">
+            <Text FontFamily="Arial" FontSize="10.0" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="-9"
+                Opacity="1.0" Stroke="#304760" TextDecoration="None"
+                Top="0.0" VerticalAlign="Top"
+                    Visibility="Hidden"><![CDATA[Ö]]><Bind
+                    Attribute="Visibility" Name="Value">
+                    <ConvertValue AttributeValue="Visible" SignalEqualTo="1">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Öppet"/>
+                    </ConvertValue>
+                    <ConvertValue AttributeValue="Hidden" SignalEqualTo="0">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Stängt"/>
+                    </ConvertValue>
+                </Bind>
+                <Expose ExposedAttribute="Content" Name="Text indikering till"/>
+            </Text>
+            <Ellipse Fill="#FFFFFF" Height="4.0" Left="0.0"
+                Opacity="1.0" Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="0.1" Top="6.0" Width="4.0">
+                <Bind Attribute="Fill" Name="Value">
+                    <ConvertValue AttributeValue="#009530" SignalEqualTo="1">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Öppet"/>
+                    </ConvertValue>
+                    <ConvertValue AttributeValue="#FFFFFF" SignalEqualTo="0">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Stängt"/>
+                    </ConvertValue>
+                </Bind>
+                <Bind Attribute="Stroke" Name="Value">
+                    <ConvertValue AttributeValue="#009530" SignalEqualTo="1">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Öppet"/>
+                    </ConvertValue>
+                    <ConvertValue AttributeValue="#808080" SignalEqualTo="0">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Stängt"/>
+                    </ConvertValue>
+                </Bind>
+            </Ellipse>
+        </Component>
+        <Component Clip="False" ContentHeight="10.0" ContentWidth="20.0"
+            Height="10.0" Id="Indikering stängt" Left="0" Name=""
+            Tooltip="Indikering" Top="15" Version="1.0.0-rc1" Width="20.0">
+            <Text FontFamily="Arial" FontSize="10.0" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="-9"
+                Opacity="1.0" Stroke="#304760" TextDecoration="None"
+                Top="0.0" VerticalAlign="Top"
+                    Visibility="Hidden"><![CDATA[S]]><Bind
+                    Attribute="Visibility" Name="Value">
+                    <ConvertValue AttributeValue="Hidden" SignalEqualTo="1">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Öppet"/>
+                    </ConvertValue>
+                    <ConvertValue AttributeValue="Visible" SignalEqualTo="0">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Stängt"/>
+                    </ConvertValue>
+                </Bind>
+                <Expose ExposedAttribute="Content" Name="Text indikering från"/>
+            </Text>
+            <Ellipse EffectsFillOn="#FF0000" EffectsStrokeOn="#FF0000"
+                Fill="#FFFFFF" Height="4.0" Left="0.0" Opacity="1.0"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.1"
+                Top="0.0" Width="4.0">
+                <Bind Attribute="Fill" Name="Value">
+                    <ConvertValue AttributeValue="#FFFFFF" SignalEqualTo="1">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Öppet"/>
+                    </ConvertValue>
+                    <ConvertValue AttributeValue="#FF0000" SignalEqualTo="0">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Stängt"/>
+                    </ConvertValue>
+                </Bind>
+                <Bind Attribute="Stroke" Name="Value">
+                    <ConvertValue AttributeValue="#808080" SignalEqualTo="1">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Öppet"/>
+                    </ConvertValue>
+                    <ConvertValue AttributeValue="#FF0000" SignalEqualTo="0">
+                        <Expose ExposedAttribute="SignalEqualTo" Name="Manöver värde Stängt"/>
+                    </ConvertValue>
+                </Bind>
+            </Ellipse>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="10.0" Name="" Top="10.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Manöverparametrar" Left="0" Top="0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+            <Metadata Name="Icon" Value="SystemSettings"/>
+            <Metadata Name="Text" Value="Manöverparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="Bindnings ID"/>
+    <Metadata Name="Name" Value="KV01-SV91 TrueFalse"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

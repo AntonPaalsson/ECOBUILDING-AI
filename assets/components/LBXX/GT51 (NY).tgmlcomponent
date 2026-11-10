@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="65.0" ContentWidth="20.0"
+    Height="65.0" Left="1105.0" Name="GT51 (NY)" Top="335.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="65.0" ContentWidth="20.0"
+        Height="65.0" Id="Givare" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="25.0" ContentWidth="20.0"
+            Height="25.0" Left="0.0" Name="Rumsgivarsymbol" Top="40.0"
+            Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4.0" Top="-2.0" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIaSURBVEiJ7ZZdc9owEEWPDaEJaZN2+v//YQmkfBQcbPqgXXQtJGMyeclMdmbHjLH3aK+uJMNXfPaortyvCqlxKiRyPce0AKuASZK1XRXqxVugs6vmBTQdbWWF74AZ8M1yZoNzuAK9+BFogINlA7zZQE4K0N8Tg82B75Zz4N7uDwHfgD2wAzaWO7vfOlQl9c4egZ/AL+BZgFN7pk6AneVRgK9WqwK2MrAecGLyPQG/LZ+kOweVTNPZ4OaEKahlIOc5TYH3wA/r7Nm6dSnJwBTq9ab2nHbcWF4AZwZ9oD9vdQHkkQ5Ea3i3kCmka8gLlboqgfX5tF4PqE7bEyRo0xeuhJujsRoHokuzwD3BVWui9mOhCttZjY3VPAMnyUu6y9xJlhyqsM662QBLYAGsDH70QadAf1mhM6JxhoAt8I+wBhfAi3XpKmU71NAtTt2aW4ctYb7WBloYeK/dDXWo/ys0lVal3BKk/EOQcmv3e/M/1CFczqdvb+le6lK+EKU8kDHcENAfrA2kJ4a72125Jhrl1QbQk/IWYGog35QhSrkiSLmkIOUYoEZF7NIN1BFM8Ze+K7NSjgFWxK3JD2bfnGsrqmtOXVmMsR36aPUAbohGWRn84oR/DzC3mZ+IzlwyQspbgCotxHW3I8zfhujKq5H7akvDQUcr7GaB+MHkS+DqJn/rWefGcWX8a21w3t4L9Odz36W3nJlf8bHxHzH74WtfILtRAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 0,8 C 1.5,5 3,3 10,3 17,3 18.5,5 20,8 L 10,23.25 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="25.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="40.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None" Top="29.0">
+            <Expose ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" Name="GF_L.AlarmState" PreventDefault="True"/><![CDATA[GT51]]></Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10.0"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Mätvärde" Top="14">
+            <Bind Attribute="Content" Name="MV.Value"/><![CDATA[0]]></Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10"
+            Name="Börvärde" Stroke="#007626" TextDecoration="None"
+            Tooltip="börvärde" Top="0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="B.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Component Clip="False" ContentHeight="1.0"
+                ContentWidth="1.0" Height="1.0" Id="MenuRow_Börvärden"
+                Left="10.0" Top="10.0" Width="1.0">
+                <Metadata Name="Tag" Value="#menurow, #börvärden"/>
+                <Metadata Name="Icon" Value="Settings"/>
+                <Metadata Name="Text" Value="Börvärden"/>
+                <Metadata Name="Action" Value="OpenBindsDefault"/>
+                <Bind Attribute="" DynamicUpdates="Disable"
+                    Name="B.Value" PreventDefault="True"/>
+            </Component>
+            <Metadata Name="Text" Value=""/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GT51 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJaSURBVFhHxZZdixJRGMfPR92PUHdeFXsRXbSiDqglqfjCBklJsmJpOlKIhkS1Lq3pqm1lKg5OTpr5+s/nOCNOBt149AeHc84zDs//eZnjYTgwJgGj6W/czTyAv/hEt4jHJICcN3rfcDsp4V3zo24Vi0kAOSYS5Vd7y4JJgCVxwme59gbRixRfi8Yk4NH7M7jzpzh6bEFL6+pWsZgEENQD6q++vhPPloB9YxJwqYxw4+VXWLLN5Sc5161iMQk4OvsMdTRD9JPKxz4wCaDICflag/9c4WvRbAmg1CdqfT72wVYPkAjqg4P0wCE4vADJF8FzuYBnyde4eSzh3v1TFD9c8tkdiqJ8dQ3t5xB3pID+ym7hGWh8+c43JKLZXh3Bt04eIvz0BXeeK55zQSJgFCU5IzYFkCil9wOUIYJ+JwKWyb1dR2cIGI8nPOW0p+eEMAFUYwOKmJwTNBvZIDbXu4QtFgu0223E43H4fD54vV4+gsEg8vk8+n2xBxIrlUpwuVzcWaPRWI9qtYpYLAaPx4NuV9zdgDkcDkynU327TavVgtPpxHwu5mRkbrf7vwIoQ8PhULfsFhYOh5FK/fv+R8LIeaFQwGSyas5dwyqVCqgMFOnfZLNZhEIh9Ho9ULOKgGmahkwmw+u8WQpqPJvNhnq9Lix6gs1mM/4ZBgIBJJNJ3bw8eJa9IcuysNob8P+C8XiMcrkMu93OS5HL5eD3+6EoirDuN+ACqL5UinQ6DUmSYLVaUavVhKbeYH0foFJ0Oh1EIhF+KFHqRTXeJqYLCUWsqioGg4Hw1K8A/gDLYYynVDke2wAAAABJRU5ErkJggg==-->

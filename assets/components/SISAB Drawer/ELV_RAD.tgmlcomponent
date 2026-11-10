@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<Component Clip="False" ComponentCounter="3" ContentHeight="140.0"
+    ContentWidth="170.0" Height="140.0" Id="VärmeSystem" Left="-4.0"
+    Name="ELV_RAD" Top="-2.0" Version="1.0.0-rc2" Visibility="Visible" Width="170.0">
+    <Metadata
+        Media_min-width_559="&quot;display&quot;:&quot;block&quot;"
+        Name="Css" Value="&quot;display&quot;:&quot;none&quot;"/>
+    <Metadata Name="Action" Value="ContextMenu"/>
+    <Metadata Name="Action" Value="InvokeLink(OpenInNewWindow)"/>
+    <Expose ExposedAttribute="Name" Name="System ID"/>
+    <Component Clip="False" ContentHeight="148.0" ContentWidth="178.0"
+        Height="148.0" Left="-4.0" Top="-2.0" Width="178.0">
+        <Image Height="148.0" Left="0.0" Top="0.0" Width="178.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAALIAAACUCAYAAAA3f3NDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALnSURBVHic7dhLaxRBAIXR20kHXwtB/P//0YWJkke7qOo4GUdxodJezoGip4oamMVHU1NLfrRcWIOj2U4ny9nn8wFHs10Yz7EuSa6SXCe5mc+riJlj2ZI8JXlMcj+fT0m2dW5YMuJ9k+RdktcZQQuZI9kyAv6S5HOSu7m2rfl+jLhJ8jbJhyTvk7zKiFvMHMGW8Qb+muTTnD/MteXSG/l9ko8ZUQuZo9hDvp3z24y38pIkpyFfzfnrjIjfzbmQOYL9DZyMRtec/I9bTzbuMe9/+tYImePYr9v2i4gXlxHrhS+4huOoftrk1b//LfDnCZkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmgpCpIGQqCJkKQqaCkKkgZCoImQpCpoKQqSBkKgiZCkKmwnphbTsbcAS/7HI92/g0x2OSh7m+/OUfCL9jy2jyMd87fQ56Pdn0NDd+SXI7168jZI5hy4j4NqPRh5zEvJ5tukvyaa69ipA5jr3RrxmN3s35c8j7meM+o/ZlPm8iYo5l73Q/NdzPtW0Pdcm4wbjOCPh6zoXMkexH4MeMiPfz8nYa6nJhwNGc315syeVYBcz/4MUV3DcEQmcJoTF9QgAAAABJRU5ErkJggg==]]></Image>
+        <Component Clip="False" ContentHeight="25.0"
+            ContentWidth="170.0" Height="25.0" Id="Header" Left="4.0"
+            Top="2.0" Visibility="Visible" Width="170.0">
+            <Rectangle Fill="#FFFFFF" Height="115.0" Left="0.0"
+                Name="Bg" Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="1.0"
+                Top="25.0" Width="170.0"/>
+            <Rectangle Fill="#FFFFFF" Height="10.0" Left="0.0"
+                Name="ShadowDwn" Opacity="1.0" RadiusX="0.0"
+                RadiusY="0.0" Stroke="None" StrokeDashArray="0.0"
+                StrokeWidth="1.0" Top="25.0" Width="170.0">
+                <LinearGradient EndPoint="0.0,1.0" StartPoint="0.0,0.0">
+                    <GradientStop Color="#C0C0C0" Offset="0"/>
+                    <GradientStop Color="None" Offset="0.5"/>
+                    <GradientStop Color="None" Offset="1.0"/>
+                </LinearGradient>
+            </Rectangle>
+            <Rectangle Fill="#5591CF" Height="25.0" Left="0.0"
+                Name="HeaderBg" Opacity="1.0" RadiusX="0.0"
+                RadiusY="0.0" Stroke="None" StrokeDashArray="0.0"
+                StrokeWidth="1.0" Top="0.0" Width="170.0"/>
+            <Text FontFamily="Arial" FontSize="15.0" FontStyle="Normal"
+                FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+                Name="Title" Opacity="1.0" Stroke="#FFFFFF"
+                TextDecoration="None" Top="13.379000008106232"
+                    VerticalAlign="Middle"><![CDATA[ELV_RAD]]><Expose
+                    ExposedAttribute="Content" Name="System ID"/>
+            </Text>
+        </Component>
+        <Component Clip="False" ContentHeight="140.0"
+            ContentWidth="170.0" Height="140.0" Id="Body" Left="4.0"
+            Top="2.0" Visibility="Visible" Width="170.0">
+            <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+                FontWeight="Bold" HorizontalAlign="Right" Left="165.0"
+                Name="Betjänar" Opacity="1.0" Stroke="#C0C0C0"
+                TextDecoration="None" Top="138.0"
+                    VerticalAlign="Bottom"><![CDATA[Byggnad X]]><Expose
+                    ExposedAttribute="Content" Name="Betjänar"/>
+            </Text>
+            <Rectangle Height="84" Left="5.0" RadiusX="0"
+                Stroke="#E0E0E0" StrokeWidth="0.5" Top="40.0"
+                Visibility="Visible" Width="160.0"/>
+            <TextBox FontFamily="Arial" FontSize="23" FontWeight="Bold"
+                Height="83" HorizontalAlign="Center" Left="5" Top="40" Width="160"><![CDATA[El-radiatorer översikt]]></TextBox>
+        </Component>
+        <Component Clip="False" ContentHeight="85" ContentWidth="160"
+            Height="85.0" Id="Gauges and Meters" Left="9.0" Opacity="1"
+            Top="42.0" Visibility="Visible" Width="160.0">
+            <Rectangle Fill="#11000000" Height="115" Left="-5"
+                Name="Target" Opacity="0.01" RadiusX="0.0" RadiusY="0.0"
+                Stroke="None" StrokeDashArray="0.0" StrokeWidth="1.0"
+                Top="-15" Width="170.0">
+                <Script Name="DimTarget" OnMouseOut="OnMouseOut" OnMouseOver="OnMouseOver"><![CDATA[function OnMouseOver(evt)
+{
+    evt.getCurrentTarget().setAttribute("Opacity","1");
+}
+
+function OnMouseOut(evt)
+{
+    evt.getCurrentTarget().setAttribute("Opacity","0.01");
+}]]></Script>
+            </Rectangle>
+        </Component>
+    </Component>
+    <Link Name="Link" PreventDefault="True"/>
+    <Script Name="EffectsAndInvoke" OnDocumentLoad=""
+        OnMouseClick="OnMouseClick" OnMouseDown="" OnMouseOut=""
+        OnMouseOver="" OnMouseUp=""><![CDATA[function OnMouseClick(evt)
+{
+	evt.preventDefault();
+								// Öppna bild för betjänat system
+	var linkname = evt.currentTarget.getElementsByTagName("Link").item(0).getFullBindName();
+	invoke(linkname,'OpenInSelf');	
+}
+]]></Script>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="10.0" Name="" Top="10.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Info" Left="30.0" Top="30.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow"/>
+            <Metadata Name="Icon" Value="Graphic"/>
+            <Metadata Name="Text" Value="Ingen bild tillgänglig"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="ELV_RAD"/>
+    <Metadata Name="Description" Value="Textruta med en länkning. Används i t.ex Klimatöversikt"/>
+</Component>

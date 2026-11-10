@@ -1,0 +1,485 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="180.0" ContentWidth="150.0"
+    Height="180.0" Id="Kyla_värme_batteri_krets" Left="545.0"
+    Name="Batteri_Värme_Kyla_Krets" Top="385.0" Width="150.0">
+    <Component Clip="False" ContentHeight="150.0" ContentWidth="120.0"
+        Height="150.0" Left="0.0" Name="Rör" Top="0.0" Width="120.0">
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="5.0" Left="65.0" Name="Rör Värme" Top="60.0"
+            Version="1.0.0-rc1" Width="55.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="90.0" Left="35.0" Name="Rör Värme" Top="40.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="25.0" Left="65.0" Name="Rör Värme" Top="40.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5" ContentWidth="5"
+            Height="5.0" Left="15.0" Name="Rörpil VS" Top="125.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Path Fill="#F1CD45"
+                PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+                Stroke="#F1CD45" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+                <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+            </Path>
+            <Rotate Angle="90">
+                <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+            </Rotate>
+        </Component>
+        <Component Clip="False" ContentHeight="5" ContentWidth="5"
+            Height="5.0" Left="0.0" Name="Rörpil VS" Top="135.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Path Fill="#F1CD45"
+                PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+                Stroke="#F1CD45" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+                <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+            </Path>
+            <Rotate Angle="270">
+                <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+            </Rotate>
+        </Component>
+        <Component Clip="False" ContentHeight="40.0" ContentWidth="40.0"
+            Height="45.0" Left="30.0" Name="Batteri Värme_Kyla_101"
+            Tooltip="Värmebatteri" Top="0.0" Version="1.0.0-rc1" Width="45.0">
+            <Image Height="48.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFISURBVGiB7ZpBb8IwDEZfIJ0GQtqB//8jJ21QldHs4Jim0ZjEyQb5SVHaqgc/m3D5mliTut0bpdtXhSZgU5dee2JGCp+b61XHt0AG3oCh3nuZRAGuwAWYgJ96XzJLtzOwBw51H1imYYl2/QKcgK+6F2DO9aUN0vkDcAQ+gHd8TEG7PwKf9ZlO4CaQkI7vkeKPwA5fAud6fwa+ESH0J6RnYEA6v0NkPAmA1Naez9ROQM/CtlseBGCpR89lAplAS7qzrLlbj7f/+ocJAWtCwJoQsCYErAkBa0LAmhCwJgSsCQFrQsCaELAmBKwJAWtCwJoQsKbPB8ofy5p/a8rdSzMS5+gC+4BDIyZdmhEXEIHCOocdWQI1LxGThnwjUuO1Pi/tBDSH1SjTa8x6Qmq9TQBkLBMSIoPYeg66p/rs+T81eJmPPZSn+9zmF5MybzGUOXGcAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 1,0 h 38 c 0.554,0 1,0.446 1,1 v 38 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,40 0,39.554 0,39 V 1 C 0,0.446 0.446,0 1,0 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth=".5">
+                <Scale Center="0,0" ScaleY="0.5"/>
+            </Path>
+            <Path Fill="#FFFFFF"
+                PathData="m 1,0 h 38 c 0.554,0 1,0.446 1,1 v 38 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,40 0,39.554 0,39 V 1 C 0,0.446 0.446,0 1,0 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth=".5">
+                <Scale Center="0,1" ScaleY="0.5"/>
+            </Path>
+            <Component Clip="False" ContentHeight="20.0"
+                ContentWidth="20.0" Height="20" Left="10.0" Top="0" Width="20.0">
+                <Path Fill="#B10043"
+                    PathData="m9.0,4.0 l0.0,5.0 -5.0,0.0 c-0.5540000000000003,0.0 -1.0,0.4460000000000015 -1.0,1.0 0.0,0.5539999999999985 0.44599999999999973,1.0 1.0,1.0 l5.0,0.0 0.0,5.0 c0.0,0.5539999999999985 0.437812000000001,1.0 1.0,1.0 0.562187999999999,0.0 1.0,-0.4460000000000015 1.0,-1.0 l0.0,-5.0 5.0,0.0 c0.5539999999999985,0.0 1.0,-0.4460000000000015 1.0,-1.0 0.0,-0.5539999999999985 -0.4460000000000015,-1.0 -1.0,-1.0 l-5.0,0.0 0.0,-5.0 c0.0,-0.5540000000000003 -0.437812000000001,-1.0 -1.0,-1.0 -0.562187999999999,0.0 -1.0,0.44599999999999973 -1.0,1.0 z m11.0,6.0 A10.0,10.0 0.0 0,1 10.0,20.0 10.0,10.0 0.0 0,1 0.0,10.0 10.0,10.0 0.0 0,1 10.0,0.0 10.0,10.0 0.0 0,1 20.0,10.0 z"
+                    Stroke="None" StrokeDashArray="0" StrokeWidth="0"/>
+                <Scale ScaleX="0.8" ScaleY="0.8"/>
+            </Component>
+            <Component Clip="False" ContentHeight="20.0"
+                ContentWidth="20.0" Height="20" Left="10.0" Top="20" Width="20.0">
+                <Path Fill="#42B4E6"
+                    PathData="m9.0,4.0 l0.0,5.0 -5.0,0.0 c-0.5540000000000003,0.0 -1.0,0.4460000000000015 -1.0,1.0 0.0,0.5539999999999985 0.44599999999999973,1.0 1.0,1.0 l5.0,0.0 0.0,5.0 c0.0,0.5539999999999985 0.437812000000001,1.0 1.0,1.0 0.562187999999999,0.0 1.0,-0.4460000000000015 1.0,-1.0 l0.0,-5.0 5.0,0.0 c0.5539999999999985,0.0 1.0,-0.4460000000000015 1.0,-1.0 0.0,-0.5539999999999985 -0.4460000000000015,-1.0 -1.0,-1.0 l-5.0,0.0 0.0,-5.0 c0.0,-0.5540000000000003 -0.437812000000001,-1.0 -1.0,-1.0 -0.562187999999999,0.0 -1.0,0.44599999999999973 -1.0,1.0 z m11.0,6.0 A10.0,10.0 0.0 0,1 10.0,20.0 10.0,10.0 0.0 0,1 0.0,10.0 10.0,10.0 0.0 0,1 10.0,0.0 10.0,10.0 0.0 0,1 20.0,10.0 z"
+                    Stroke="None" StrokeDashArray="0" StrokeWidth="0"/>
+                <Scale ScaleX="0.8" ScaleY="0.8"/>
+                <Rectangle Fill="#42B4E6" Height="7" Left="8.5"
+                    Stroke="None" Top="2" Width="3"/>
+                <Rectangle Fill="#42B4E6" Height="7" Left="8.5"
+                    Stroke="None" Top="11" Width="3"/>
+            </Component>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="5.0" Left="60.0" Name="Rör Kyla" Top="90.0"
+            Version="1.0.0-rc1" Width="55.0">
+            <Rectangle Fill="#42B4E6" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="30.0" Left="115.0" Name="Rör Värme_105" Top="60.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="30.0" Left="80.0" Name="Rör Värme_106" Top="60.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="20.0" ContentWidth="15.0"
+            Height="20.0" Left="75.0" Name="Backventil_107" Top="65.0"
+            Version="1.0.0-rc1" Width="15.0">
+            <Rectangle Fill="#F9F8FB" Height="15.0" Left="0.0"
+                Stroke="None" StrokeWidth="0.0" Top="2.5" Width="15.0"/>
+            <Image Height="28.0" Left="-4" Top="-2" Width="23.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABcAAAAcCAYAAACK7SRjAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGTSURBVEiJ1ZZbb4MwDIU/LgPaapP2///k1Kn0AmV7yLFiLqFs2h5qyYqIw/HJiWOAZ7VsQ2xtzddkHFm5ApwBudyePegXMMgXEyyxMtACqIAXkcjdmgHogQ64AXfNjRKkmOcCPsgbJTHrgAtw0vPV7WAV3CQogT3wDrwBtZIOAjuK6VXssy3MbUFGkKYBXrWDkiDHSYAFUdqZ5vl0QjYQdOw1ZgSZao3ZJD6TJAVuldATdD2LZU88yJvmL3q2d0aWOlADuQItQYa9GNtBtopb0pkVCfCM8cFWcsT4Q35yzDeD+yRW76Z1K+CjdnFPgadkgXgD/WUpNXZEORaBIV0tf2JrzK0NeM0rAuOK2BJml+cRuAdugB2hWnaK7zR/Jmq++RJZrBLQQeDmB81XaxipgLGuGTevSqMla5h3zFVwX9+NvHYglnTn5qf9HlhvuYXiBaHkOmJpDpN4TtD+IbjvcnfCRfkk1LdvuXaB/HubWq41rpbYT/zanlAprXa0WC3/+plLfdl/+oHezHwa+/WvxfPaN0L8h3BuvlouAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF" Name=""
+                PathData="M 3.5214842,18 H 11.478516 L 8,10 11.478516,2.0000002 H 3.5214842 L 6.9999998,10 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Component Clip="False" ContentHeight="10.0"
+                ContentWidth="5.0" Height="10.0" Left="5.0" Top="5.0" Width="5.0">
+                <Line Name="" Stroke="#808080" StrokeWidth="0.5"
+                    Visibility="Visible" X1="0.0" X2="5.0" Y1="10.0" Y2="10.0"/>
+                <Rotate Angle="0" Name="">
+                    <Expose ExposedAttribute="Angle" Name="Rotera öppen port (grader)"/>
+                </Rotate>
+            </Component>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="45.0" Left="115.0" Name="Rör Kyla_108" Top="95.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#42B4E6" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="50.0" Left="90.0" Name="Rör Kyla_109" Top="90.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#42B4E6" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="20.0" Left="60.0" Name="Rör Kyla_110" Top="90.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#42B4E6" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="25.0" Left="60.0" Name="Rör Värme_112" Top="115.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="5.0" Left="25.0" Name="Rör Värme_113" Top="125.0"
+            Version="1.0.0-rc1" Width="15.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5.0" ContentWidth="5.0"
+            Height="5.0" Left="10.0" Name="Rör Värme_114" Top="135.0"
+            Version="1.0.0-rc1" Width="55.0">
+            <Rectangle Fill="#F1CD45" Height="5.0" Left="0.0" Name=""
+                Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+                StrokeDashArray="0.0" StrokeWidth="0.0" Top="0.0" Width="5.0">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+            </Rectangle>
+        </Component>
+        <Component Clip="False" ContentHeight="5" ContentWidth="5"
+            Height="5.0" Left="90.0" Name="Rörpil VS_116" Top="145.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Path Fill="#42B4E6"
+                PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+                Stroke="#42B4E6" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+                <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+            </Path>
+            <Rotate Angle="0">
+                <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+            </Rotate>
+        </Component>
+        <Component Clip="False" ContentHeight="5" ContentWidth="5"
+            Height="5.0" Left="115.0" Name="Rörpil VS_117" Top="145.0"
+            Version="1.0.0-rc1" Width="5.0">
+            <Path Fill="#42B4E6"
+                PathData="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z"
+                Stroke="#42B4E6" StrokeDashArray="0.0" StrokeWidth="1.0" Visibility="Visible">
+                <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+                <Expose ExposedAttribute="Stroke" Name="Rörfärg Värme"/>
+            </Path>
+            <Rotate Angle="180">
+                <Expose ExposedAttribute="Angle" Name="Riktning (grader)"/>
+            </Rotate>
+        </Component>
+    </Component>
+    <Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+        Height="130.0" Id="Komponenter" Left="20.0" Top="50.0" Width="130.0">
+        <Component Clip="False" ContentHeight="35.0" ContentWidth="35.0"
+            Height="35.0" Left="0.0" Name="P1" Top="0.0"
+            Version="1.0.0-rc1" Width="35.0">
+            <Component Clip="False" ContentHeight="35.0"
+                ContentWidth="35.0" Height="35.0" Id="Pump" Left="0.0"
+                Top="0.0" Width="35.0">
+                <Component Clip="False" ContentHeight="25.0"
+                    ContentWidth="25.0" Height="25.0" Id="Indikering"
+                    Left="5.0" Name="D" Top="5.0" Version="1.0.0-rc1" Width="25.0">
+                    <Image Height="33.0" Left="-4" Top="-2" Width="33.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAI9SURBVFiF7ZfrbtswDEaP4zhpki4NCuz9n3CXdl3j3Jz9ML+ZkqW4dbuuBUqAcCBI1BH56RL4tNaKVx57fguIwn1zEGf3+1UhCuclMLGv2jT5CWjseyaEehFE4SatgJl55UAEcAD25gcHdRFkCGJiXgFXwNJ8AcytXRAHYAdsgUfz2tob86RNBwBK2lWvgLX5tYFc0c9EbZM/AHfAL+A3bWbIgeQgVIK5TboBbu27MoDK+giisVXXiT4P1p7USApCADNb8Qb4ahBfLPjUAXhhzgx8br9LlwGJtaeRHERpgdY2+S1wE63O91fQkm73qM8JONIJtZeNGEIrqywLa8uEMuBLEI+TScgQlmhLq41TBB6sSCYxLm3ylAYumcqpHbWiE/MsNWfc4PWwoNsFU/KnZA6ksHHa2gs6nQRx4tpKD1qFzoKnZCAFoozM6Wfzb7xUOQQypb8LngshEMWSaANLlSPnY8yDZOPFEOcLPsY0tuFCvFQ5dAQfzX2AMQDxOdE7uieZQXvave0voDEQjQHszPckFpUqR2OddRvWFug52VDfI92l5g+rIE4ZDZZg/A2qbSplDwnVX2Zb2tv0B/DTYA5DEB5EWzXervGZERzBhEf1PfDd/N7aeqVNQfgVySakAXxf3ZTKgAC+0WVBZQ1sCELBG9JbTRNL/TXtI+YuAtDDJinw3KNGE+wIa6xJlrRa0Z0iEe7Iv6yyO+xdvDE/xGvb94v/d3iheu38k/8dqf7/5R/YU8eOveg+DYA/SfHxTzzdPi4AAAAASUVORK5CYII=]]></Image>
+                    <Ellipse Fill="#FFFFFF" Height="20.0" Left="2.5"
+                        Name="" Stroke="#808080" StrokeWidth="0.5"
+                        Top="2.5" Width="20.0">
+                        <Bind Attribute="Fill" Name="Value" PreventDefault="True">
+                            <ConvertStatus Error="#FFFFFF"
+                                Forced="#FF8000" Name="Forced" Stored="#FFFFFF"/>
+                        </Bind>
+                    </Ellipse>
+                    <Path Fill="#C0C0C0" Name=""
+                        PathData="m 12.5,3.5 c -0.8,0 -1.16,0.68 -1.16,0.68 L 7,11.71 c -0.5,0.863 0.145,2 1.15,2.01 h 8.7 c 1,0 1.65,-1.14138 1.15,-2 L 13.66,4.18 c 0,0 -0.3647,-0.68 -1.16,-0.68 z"
+                        Stroke="None" StrokeDashArray="0.0" StrokeWidth="1.0">
+                        <Rotate Angle="0" Center="0.5,0.886">
+                            <Expose ExposedAttribute="Angle" Name="Rotera pump (grader)"/>
+                        </Rotate>
+                        <Bind Attribute="Fill" Name="Value"/>
+                    </Path>
+                </Component>
+                <TargetArea Height="21.0" Left="7.0"
+                    Name="TargetArea ContextMenu" Tooltip="Pump"
+                    Top="7.0" Width="21.0"/>
+                <Text FontFamily="Arial" FontSize="12"
+                    FontStyle="Normal" FontWeight="Normal"
+                    HorizontalAlign="Left" Id="Larm" Left="29.0"
+                    Name="Id" Stroke="#304760" TextDecoration="None"
+                        Top="0.0"><![CDATA[P1]]><Expose
+                        ExposedAttribute="Content" Name="ID"/>
+                    <Bind Attribute="Stroke" Name="DS.AlarmState" PreventDefault="True"/>
+                    <Bind Attribute="Stroke" Name="HM.AlarmState" PreventDefault="True"/>
+                </Text>
+                <Component Clip="False" ContentHeight="15.0"
+                    ContentWidth="15.0" Height="15.0" Id="Manöver"
+                    Left="24.0" Name="" Top="24.0" Version="1.0.0-rc1"
+                    Visibility="Visible" Width="15.0">
+                    <Image Height="23.0" Left="-4" Top="-2"
+                            Width="23.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEvSURBVEiJ7ZRRU4MwEIS/kIJWmVpb//9/1AerUMCH7EkKScHpi854MxkSuOxu9i7AXw13Q96wtMmvBHbK9T8QtAjugAIogTugivbcpDwG3gI18KC1A/olgs0CuJfiHbCX8gZ4FbgRJEly4Ka6Ah6BZ+Aook99b4HuGkEK3Aq4Ae4j1fsIvNOzAc5kLMop95HqnUatd6UATxqNyGbqpwWNi1gT7HiRaitmodxewA3Boj6lcAruCXY8EXw+RKoLxj7vdQIjMHu+o+AyDLwitN9Wc2s9K6BL5MwuWK6gPiJuGb11BF87vTeByZubAh90xA/gTXO7OAY+CPxdeWdWdIupMuCWsYhukmcFPSnfOubCgunabCm5/rMyIWbRrB1Tm1xi5GJIjKzytd9SJP/xC+ILuNZYTobdDXAAAAAASUVORK5CYII=]]><Rotate
+                            Angle="0" Center="0.5,0.5">
+                            <Expose ExposedAttribute="Angle" Name="Rotera pump (grader)"/>
+                        </Rotate>
+                    </Image>
+                    <Ellipse Fill="#F68B1C" Height="15.0" Left="0.0"
+                        Name="Forcerad manöver" Opacity="1"
+                        Stroke="None" Tooltip="Forcerad manöver"
+                        Top="0.0" Visibility="Hidden" Width="15.0">
+                        <Bind Attribute="Visibility" Name="Value">
+                            <ConvertStatus Error="Hidden"
+                                Forced="Visible" Name="Forced Visible" Stored="Hidden"/>
+                        </Bind>
+                    </Ellipse>
+                    <Path Fill="#FFFFFF" Name=""
+                        PathData="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z"
+                        Stroke="#808080" StrokeDashArray="0.0"
+                        StrokeWidth="0.5" Tooltip="Manöver">
+                        <Rotate Angle="0" Center="0.5,0.63">
+                            <Expose ExposedAttribute="Angle" Name="Rotera pump (grader)"/>
+                        </Rotate>
+                        <Bind Attribute="Fill" Name="Value"/>
+                        <Bind Attribute="Stroke" Name="Value"/>
+                    </Path>
+                </Component>
+            </Component>
+            <Component Clip="False" ContentHeight="1.0"
+                ContentWidth="1.0" Height="1.0" Id="ContextMenu"
+                Left="0.0" Name="" Top="0.0" Visibility="Hidden" Width="1.0">
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0" Id="MenuRow_Head"
+                    Left="0.0" Top="0.0" Width="1.0">
+                    <Metadata Name="Text" Value=""/>
+                </Component>
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0"
+                    Id="MenuRow_Manöverparametrar" Left="0.0" Top="0.0"
+                    Visibility="Visible" Width="1.0">
+                    <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+                    <Metadata Name="Icon" Value="SystemSettings"/>
+                    <Metadata Name="Text" Value="Manöverparametrar"/>
+                    <Metadata Name="Action" Value="OpenBindsDefault"/>
+                    <Bind Name="STP.Value" PreventDefault="True"/>
+                    <Bind Attribute="" DynamicUpdates="Disable"
+                        Name="D.Value" PreventDefault="True"/>
+                    <Bind Name="Value" PreventDefault="True"/>
+                </Component>
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0"
+                    Id="MenuRow_Larmparametrar" Left="40.0" Top="40.0" Width="1.0">
+                    <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+                    <Metadata Name="Icon" Value="AlarmSettings"/>
+                    <Metadata Name="Text" Value="Larmparametrar"/>
+                    <Metadata Name="Action" Value="OpenBindsDefault"/>
+                    <Bind Attribute="" DynamicUpdates="Disable"
+                        Name="DS_LT.Value" PreventDefault="True"/>
+                    <Bind Attribute="" DynamicUpdates="Disable"
+                        Name="HM_LT.Value" PreventDefault="True"/>
+                </Component>
+            </Component>
+            <Expose ExposedAttribute="Name" Name="ID"/>
+        </Component>
+        <Component Clip="False" ComponentCounter="2"
+            ComponentVersion="Styrventil 2V Ner-1.0.0"
+            ContentHeight="55.0" ContentWidth="35.0" Height="55.0"
+            Left="5.0" Name="SV21" Top="75.0" Width="35.0">
+            <Component Clip="False" ContentHeight="55.0"
+                ContentWidth="35.0" Height="55.0" Id="Ventil" Left="0.0"
+                Tooltip="Ventil" Top="0.0" Width="35.0">
+                <Component Clip="False" ContentHeight="39.0"
+                    ContentWidth="25.0" Height="39.0" Left="5.0"
+                    Name="Ventil 2väg Ner"
+                    SymbolVersion="Ventil 2väg Ner-1.0.0" Top="5.0" Width="25.0">
+                    <Rectangle Fill="#F9F8FB" Height="15.0" Left="5.0"
+                        Stroke="None" StrokeWidth="0.0" Top="0" Width="15.0"/>
+                    <Image Height="47.0" Left="-4" Top="-2" Width="33.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACEAAAAvCAYAAABt7qMfAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPxSURBVFiF7ZjZctswDEWPvMdN4qbt//9huiTeIstSH4QbQhQpyem0T+UMRoksApcglkvC/zE8CpN/ojN+WdD9uDHBPW81HANo6OrtgCiAuROAGrjaszd5xLhkZvpm9tvVSQOwcBNnwBJYAxtTcAVK4AJUESDoA/KGZ6Z/ZXoXNvfNpDF9SRD3wKNNroAzcLLnWwKMgPhVL23+Briz58IW82JzpScJ4hPwZM/GjB+Bg4nAXJxLtZUL8+QdsDUdW+fZo805mQ5iEFK0sok7+72ySYdIzrRbVbsFbMywlzvTczU7K7PzHo8ehHepFK7t/ZZ2m062mr09z6Z8bt9q9TK+Nl2FrXxp+jtZGYPwQASmoLvHWxO5VCDkQRlfmf7CvHVJAciB8GAEyL/TmBuoOgLqAchoQ8L4FBCKfGVBZatRil3opqr/3+svGKkvKRAyLBfijJ/ob8OMUHxmhNiIY0I6e2BiEAJwoQ26ipAdStMjbVbIoDLobHOX9ANU2XFJAfEgVMFKMyQ3+jpxNC/UBqCm3f+SNmNKm+czJa4TJa5kxyDkgQOtm/f2sa+YUqBgXdu3lQNfO9Cv9CvmwXkkC2JPSKdU79C8JhI1OwVw6bwY945RELUp0Lu4TwxFu88mzb2Q7qJJEI37sXLv4o45hex4wAKT5ROp7GiiCX8y/AKyOnPFasx4MSBjgHpjqGKmDEPoK3P3d/z/TZRwPv7JOwDPlHzL9ixMQXkTSZ4CQqtc0ea8mNfOnlvaFJy7b+P9H/TIGAgp3ZjxHfAV+GKyI/QJdVABUiorFT8UE2Jaa+AB+GyyI2yDSEpt7x5oi92WwKAgENskkBwIxcCK1gNPwDd73hPKsOcLYukSD9B35skpWthvG9p91xY8JgBoNHTPLSpUlZMU5xikd2LeO5MH2r0XPxg6vck7FYGHiIP0tmVGfwiE2vEDIQbElHIp6FNZaXxvzzUZjpkD4VPSt+KkkhEgPns6VD8HwldFFSaxpykAUkBWdImvt5ME4RXoRCX0t14VaI7XM3k7/sYYrJgpEDFLSkb0RMPiKJ7I9PTEIPSB8rsknMSTCgYAeB2l0+HtJEHoA3FLnTNE/6cA8QDEMU8kWLZGroH5oFJ0+8aUC1QP4ER7F/HDRAS6jieNddFUpuRSNfbAK/Dd5IVwgp/sCSmNAeUuwBTE2sJX2tU/Az8JZ43kVo55wmfKle4RQA1J59SzGftFu/pnwjZk4wHGT+VXwrWOziMHQi9QFRSoN/t9T7hI8Y0rOaZUQX9hIs4QX4KoY+rU5a8PxCOy49ZeoH4QB2lc4JTOk2rLLf3A387KeExq/DEQJha3j95ff+iQkxu/AX/zomckas6WAAAAAElFTkSuQmCC]]></Image>
+                    <Path Fill="#FFFFFF"
+                        PathData="m 12.5,39 a 9,9 0 0 0 9,-9 A 9,9 0 0 0 13,21.025391 V 8.216797 L 24,13 V 2 L 12.5,7 1,2 V 13 L 12,8.216797 V 21.017578 A 9,9 0 0 0 3.5,30 a 9,9 0 0 0 9,9 z"
+                        Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+                </Component>
+                <TargetArea Height="39.0" Left="5.0"
+                    Name="TargetArea ContextMenu" Tooltip="Styrventil"
+                    Top="5.0" Width="25.0"/>
+                <Text FontFamily="Arial" FontSize="12"
+                    HorizontalAlign="Center" Id="Larm" Left="17.5"
+                    Name="Id" Stroke="#304760" Top="46.0">
+                    <Expose ExposedAttribute="Content" Name="ID"/><![CDATA[SV21]]></Text>
+                <Text FontFamily="Arial" FontSize="14"
+                    HorizontalAlign="Left" Left="30.0" Name="Styrsignal"
+                    Stroke="#0087CD" Tooltip="Styrsignal" Top="27.0">
+                    <Bind Attribute="Content" Name="Value"/><![CDATA[0]]></Text>
+            </Component>
+            <Component Clip="False" ContentHeight="1.0"
+                ContentWidth="1.0" Height="1.0" Id="ContextMenu"
+                Left="0.0" Name="" Top="0.0" Visibility="Hidden" Width="1.0">
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0" Id="MenuRow_Head"
+                    Left="0.0" Top="0.0" Width="1.0">
+                    <Metadata Name="Text" Value=""/>
+                </Component>
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0"
+                    Id="MenuRow_Manöverparametrar" Left="10.0"
+                    Top="10.0" Width="1.0">
+                    <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+                    <Metadata Name="Icon" Value="SystemSettings"/>
+                    <Metadata Name="Text" Value="Manöverparametrar"/>
+                    <Metadata Name="Action" Value="OpenBindsDefault"/>
+                    <Bind Attribute="" DynamicUpdates="Disable"
+                        Name="Value" PreventDefault="True"/>
+                </Component>
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0" Id="MenuRow_Kurva"
+                    Left="10.0" Name="Kurva" Top="10.0" Width="1.0">
+                    <Metadata Name="Tag" Value="#menurow, #kurva, #SV21 kurva"/>
+                    <Metadata Name="Icon" Value="Curve"/>
+                    <Metadata Name="Text" Value="Kurva"/>
+                    <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+                    <Link Name="Kurva.Link" PreventDefault="False"/>
+                </Component>
+            </Component>
+            <Expose ExposedAttribute="Name" Name="ID"/>
+        </Component>
+        <Component Clip="False" ContentHeight="155.0" ContentWidth="40"
+            Height="35.0" Left="20.49910831451416" Name="Värmeväxlare"
+            Top="42.50099331723061" Version="1.0.0-rc1" Width="20.000957883511774">
+            <Image Height="163.0" Left="-4" Top="-2" Width="48.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAACjCAYAAADM8J1qAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPESURBVHic7Z3bUtswEEBPnIRLC21n2v//xBYaKJCQuA/ajVeyHToUvDKzZ0ZTN7aZPZJ8WT9oF5xmMbI9Be3IdsZYUPp7I9sL2T51zluhwR5ku5Vtu+/IUDAa7FLaStqSTug90YD3wLO0vTSVyoIt/78E1sA5cCHtnE5iMXDeWwbfmuCfgEfgQbZV5iixKoJvgDPgE3At7Uok1hML7CT4O2AD/Ab+0I1QawU0+LUE/w34DnwVAR2BKaeQjsAdqQO181qROwCtHYGlBHotwf8AvgCX5NNnCg7SLiWmtfyuI6P7sxFYygnXpBH4AnwmTakpet6yJPW0jjp0U+oB2JJGqF3RTZ8VaaiuJPBLCX7KnrfotXZG6m2N6wK4Jwm19t6+orvzTDnnT2E795yuU7XjsweV3vPXTD/nT2El1hR3w6Y4SB9e3j1fUsZ3vJVbgbLVxFB8mUB5YK30OrgUmB0h4E0IePOhBPQ11qZytWBTyywra8wBmsZpq0XCJjm91LIhD35HSiJ2FKmbIzZDK2Nr7QjYHHRLHaNge39Lik1z4wPkU2homGphaHoD/Ze5JfkbaS3YN9HsNX8sobGZmHdCox17Rj/ZOr73q6F+D7JJgzflt6p/Smhq6H1lbHr38gGVsGlmLdjvs1m2WNOF+ipCwJsQ8CYEvAkBb0LAmxDwJgS8CQFvQsCbEPAmBLwJAW9CwJsQ8CYEvAkBb0LAmxDwJgS8CQFvQsCbEPAmBLwJAW9CwJsQ8CYEvAkBb0LAmxDwJgS8CQFvQsCbEPAmBLwJAW9CwJsQ8CYEvAkBb0LAmxDwJgS8CQFvQsCbEPAmBLwJAW9CwJsPJRCrXb4TsdplTatdPtHFNqvVLu38H7wGal/tUhez1NZbqrDm1S4bUmy62uXg8v01r3YJKb41KXjt3IYZrXapi0TOdrVLGCkvUNOF+irmKtC7jc6J7ME6R4GMEJiYXpG1OQkMvlTOSWCQOQpkr/hzFMgoBbwTmJfoxVcmNGWrhTKuLCfG/DhafdCZMr5jBzfk6eROmlZYqEHC1ujT+EaT+i15CUVvibLAYFbODlJyoNjU7YwuK/O6U2nwW1I5x1vgl/z7gKnJpwfvZceGrg4l8kc0kZ5KRr8+PEtMt8CNxPaA+WZlyzruScO0oRuZHXXUpbwBfkpsTxIr0AnoSTtSxUG9Jh6NwBRfKobKttyTqoJuSFPpWFSTgUBscUGtQqifMjxKm6rEaG3WU9Vx9aKuoTqu3hFfrI5b/m6/UDTFvvfiv+sTj+33qhB98jn0FzzyYmdFrxkwAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 2,132.5 h 13 v -35 L 20,95 10,90 20,85 10,80 20,75 10,70 20,65 10,60 15,57.5 v -35 H 2 m 36,0 H 25 v 35 l -5,2.5 10,5 -10,5 10,5 -10,5 10,5 -10,5 10,5 -5,2.5 v 35 H 38 M 7,0 A 7,7 0 0 0 0,7 v 13.5 l 2,2 -2,2 v 106 l 2,2 -2,2 V 148 a 7,7 0 0 0 7,7 h 26 a 7,7 0 0 0 7,-7 L 40.0625,134.375 38,132.5 l 2,-2 v -106 l -2,-2 2,-2 V 7 A 7,7 0 0 0 33,0 Z"
+                Stroke="#808080" StrokeWidth="0.5" Tooltip="Värmeväxlare"/>
+            <Rotate Angle="90.0" Center="0.5,0.5"/>
+        </Component>
+        <Component Clip="False" ContentHeight="45.0" ContentWidth="45.0"
+            Height="45.0" Left="85.0" Name="SV31" Top="20.0"
+            Version="1.0.0-rc1" Width="45.0">
+            <Component Clip="False" ContentHeight="45.0"
+                ContentWidth="45.0" Height="45.0" Id="Ventil" Left="0.0"
+                Tooltip="Ventil" Top="0.0" Width="45.0">
+                <Component Clip="False" ContentHeight="25.0"
+                    ContentWidth="45.0" Height="25.0" Left="0.0"
+                    Name="Ventil 3väg vänster" Top="10.0"
+                    Version="1.0.0-rc1" Width="45.0">
+                    <Rectangle Fill="#F9F8FB" Height="15.0" Left="25.0"
+                        Stroke="None" StrokeWidth="0.0" Top="5.0" Width="15.0"/>
+                    <Image Height="33.0" Left="-4" Top="-2" Width="53.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADUAAAAhCAYAAAB5oeP9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARASURBVFiF7ZjdcuI4EIU/wJAESGZmZ9//EXdryAAxGHsv1Gd9LGRMuNmarVGVKyaW1H369J8Ev8evMWb/kdx5yJ7b+9jogDYevd8c1QMK5Qp0D6yfA0t7FoV9tfcFONvTTcm8F9TMhI6BmhRm+yyAZ2ALrIEV14yJlRNwAH7SM+Zyr8YUKCkhN1lkwiX4wtBFboETqCfgFfgWwJaxt0ZLYuYA/B3vNdBM7H8TlIQvSJbUU8X/CDANyZp6LvHcw9oK2ABfSMwt7PsF+Ih5ez4R/2OgxMoqhK1D+IsBwwAdQ/AhFBG4PKjFotiV1SsSc8tQviMxo+9NYT/3lklQ7h5b4I1kyVcD5UwJ1DvwA9iR/L+OOSVgWvcRj5SXq8uNG5tzsr08xjsyl89Blfz9e4Daxv+rbMMmAKxJrPr3j1ygAVUC2IdRlDB832PMOcZv6ONa8Xchc3kH5al2DXwF/gT+CIBS2INZCq5inQCJDQmS5aWws7CPZ2OgZKhDPGf6GKzovaWNebXLyZma07vdVxJTbyS3c0DO1JxhEVU81PSxlbPl6Vrx+BFyZgZKrjmPb8sw7kuAOpPcvY15LVwzVcWiV3qXc4byDKTfc1t7obfyMQSPdQEtQ0bWsefZ1lWhTxVgNiGHWHMJObWMKlByPWWhNcMYmWplfL2y5ZaUME4xx9O8G0P1SMxWMXcWunyJeWJIjCnG5Ir/6pczpTT+ZJOnAI0B25As3JiiXWG+uonO5igM3uL3Mn57oqrpC/ZAP2fKlVKBvRdQSVGx1YYypYLsRpC1Z/YuwEpCAiR2i/rlTDm4WWnBJ4ApS63oWSjNXXBtRFd2XvjecUM3B+VF7J4ebmxovbdPNbeZWtB3DHk/KddU5zFjQjeBcjANw7bkplVGAHln/YOUmm/F1Izkql7DvP6UYsob6CIoKaT2xWtMy32uKEBn+qL6HsByUNqriv9tGMaSysIu/o5lP6X9ATBnSix53VCRy/18DJDW7wOMGtya61rlRVtMqGMQYzWJaWXQUp3yAj8AJcXUuryTsteTgRrrKDBAHwFmF3t48S112Erdqovq1KFP103s1VLuKPZkjOVtkir8T66PArd6PzfGX6RDnTr1UoLweHLr62jfhXzJbOmb2z3Xvd+ga/FDmUZXePybMpPOQ3K3XQASqD39cWEsQWxJDfN3UqF1z/CEcaQ/fpwZHkpP9H1fkSkli9p+e5yNnacOJJZ2pBjYM84SDAu0Dp9+ZJG7v8ScFzOSjHn3eSoHpo5bh8DPnnxLgLwde2Z4BvMa6Q32c8z3LOpHmcEYO8578XWm/EoLhtdX8u1bdxTesaiT8KNGY3OdEd2VeDw/dJskxhRDJ677wUduk3z/E4lhFdj8Nqmhz253dzdTV2R56+S+7HN87tRw936P96l7v6kYHYxHG9Zcyc+uX/D4De0ksP/lXfrv8auMfwCsuQGzIktqDwAAAABJRU5ErkJggg==]]></Image>
+                    <Path Fill="#FFFFFF"
+                        PathData="m 1,12.5 a 9,9 0 0 0 9,9 9,9 0 0 0 8.9824,-8.5 H 31.7832 L 27,24 H 38 L 33.3847,13.384766 44,18 V 7 L 33.3847,11.6153 38,1 H 27 l 4.7832,11 H 18.9824 A 9,9 0 0 0 10,3.5 a 9,9 0 0 0 -9,9 z"
+                        Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+                    <Component Clip="True" ContentHeight="17.0"
+                        ContentWidth="12.5" Height="17.0" Left="28.0"
+                        Name="" Top="4.0" Width="12.5">
+                        <Component Clip="False" ContentHeight="12.5"
+                            ContentWidth="17.0" Height="12.5"
+                            Left="-4.0" Top="4.5" Width="17.0">
+                            <Line Name="Block" Stroke="#808080"
+                                StrokeWidth="0.5" Visibility="Visible"
+                                X1="4.5" X2="12.5" Y1="-4" Y2="-4"/>
+                            <Line Name="Block" Stroke="#808080"
+                                StrokeWidth="0.5" Visibility="Visible"
+                                X1="17.0" X2="17.0" Y1="0.0" Y2="8.0"/>
+                            <Line Name="Block" Stroke="#808080"
+                                StrokeWidth="0.5" Visibility="Visible"
+                                X1="0.0" X2="0.0" Y1="0.0" Y2="8.0"/>
+                            <Rotate Angle="180" Center="0.5,0.32">
+                                <Expose ExposedAttribute="Angle" Name="Rotera öppen port (grader)"/>
+                            </Rotate>
+                        </Component>
+                    </Component>
+                    <Scale ScaleX="-1.0"/>
+                </Component>
+                <TargetArea Height="25.0" Left="0.0"
+                    Name="TargetArea ContextMenu" Tooltip="Styrventil"
+                    Top="10.0" Width="45.0"/>
+                <Text FontFamily="Arial" FontSize="12"
+                    FontStyle="Normal" FontWeight="Normal"
+                    HorizontalAlign="Right" Id="Larm" Left="50"
+                    Name="Id" Stroke="#304760" TextDecoration="None"
+                        Top="-2.0"><![CDATA[SV31]]><Expose
+                        ExposedAttribute="Content" Name="ID"/>
+                </Text>
+                <Text FontFamily="Arial" FontSize="14"
+                    FontStyle="Normal" FontWeight="Normal"
+                    HorizontalAlign="Center" Left="35" Name="Styrsignal"
+                    Stroke="#0087CD" TextDecoration="None"
+                    Tooltip="Styrsignal" Top="33.0">
+                    <Bind Attribute="Content" Name="Value"/><![CDATA[0]]></Text>
+            </Component>
+            <Component Clip="False" ContentHeight="1.0"
+                ContentWidth="1.0" Height="1.0" Id="ContextMenu"
+                Left="0.0" Name="" Top="0.0" Visibility="Hidden" Width="1.0">
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0" Id="MenuRow_Head"
+                    Left="0.0" Top="0.0" Width="1.0">
+                    <Metadata Name="Text" Value=""/>
+                </Component>
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0"
+                    Id="MenuRow_Manöverparametrar" Left="10.0"
+                    Top="10.0" Visibility="Visible" Width="1.0">
+                    <Metadata Name="Tag" Value="#menurow, #manöverparametrar"/>
+                    <Metadata Name="Icon" Value="SystemSettings"/>
+                    <Metadata Name="Text" Value="Manöverparametrar"/>
+                    <Metadata Name="Action" Value="OpenBindsDefault"/>
+                    <Bind Name="Value" PreventDefault="True"/>
+                </Component>
+                <Component Clip="False" ContentHeight="1.0"
+                    ContentWidth="1.0" Height="1.0" Id="MenuRow_Kurva"
+                    Left="0" Name="Kurva" Top="0" Width="1.0">
+                    <Metadata Name="Tag" Value="#menurow, #kurva, #SV21 kurva"/>
+                    <Metadata Name="Icon" Value="Curve"/>
+                    <Metadata Name="Text" Value="Kurva"/>
+                    <Metadata Name="Action" Value="InvokeLink(OpenInFloatingWindow Width=800 | Height=600 | Top=160 | Left=612 | ShowToolBar=Yes)"/>
+                    <Link Name="Kurva.Link" PreventDefault="False"/>
+                </Component>
+            </Component>
+            <Expose ExposedAttribute="Name" Name="ID"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="Batteri_Värme_Kyla_Krets"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

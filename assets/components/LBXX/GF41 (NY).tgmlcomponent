@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+    Height="85.0" Left="455.0" Name="GF41 (NY)" Top="315.0"
+    Version="1.0.0-rc1" Width="20.0">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="20.0"
+        Height="85.0" Id="Givare" Left="0.0" Name="" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="45.0" ContentWidth="20.0"
+            Height="45.0" Left="0.0" Name="Givarsymbol bruten"
+            Top="40.0" Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4.0" Top="-2.0" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIaSURBVEiJ7ZZdc9owEEWPDaEJaZN2+v//YQmkfBQcbPqgXXQtJGMyeclMdmbHjLH3aK+uJMNXfPaortyvCqlxKiRyPce0AKuASZK1XRXqxVugs6vmBTQdbWWF74AZ8M1yZoNzuAK9+BFogINlA7zZQE4K0N8Tg82B75Zz4N7uDwHfgD2wAzaWO7vfOlQl9c4egZ/AL+BZgFN7pk6AneVRgK9WqwK2MrAecGLyPQG/LZ+kOweVTNPZ4OaEKahlIOc5TYH3wA/r7Nm6dSnJwBTq9ab2nHbcWF4AZwZ9oD9vdQHkkQ5Ea3i3kCmka8gLlboqgfX5tF4PqE7bEyRo0xeuhJujsRoHokuzwD3BVWui9mOhCttZjY3VPAMnyUu6y9xJlhyqsM662QBLYAGsDH70QadAf1mhM6JxhoAt8I+wBhfAi3XpKmU71NAtTt2aW4ctYb7WBloYeK/dDXWo/ys0lVal3BKk/EOQcmv3e/M/1CFczqdvb+le6lK+EKU8kDHcENAfrA2kJ4a72125Jhrl1QbQk/IWYGog35QhSrkiSLmkIOUYoEZF7NIN1BFM8Ze+K7NSjgFWxK3JD2bfnGsrqmtOXVmMsR36aPUAbohGWRn84oR/DzC3mZ+IzlwyQspbgCotxHW3I8zfhujKq5H7akvDQUcr7GaB+MHkS+DqJn/rWefGcWX8a21w3t4L9Odz36W3nJlf8bHxHzH74WtfILtRAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 10,30 C 9.5,30 9.5,29.5 9.5,29.5 v -7 L 0,8 C 1.5,5 3,3 10,3 c 7,0 8.5,2 10,5 l -9.5,14.5 v 7 c 0,0 0,0.5 -0.5,0.5 z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"/>
+            <Path Fill="#FFFFFF"
+                PathData="m 9.5,29.5 10e-7,-16.05 C 7.25,13 7.5,9.5 10,9.5 c 2.5,0 2.75,3.5 0.5,3.95 V 29.5"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5">
+                <Rotate Angle="225" Center="0.5,1.0">
+                    <Expose ExposedAttribute="Angle" Name="Riktning arm (grader)"/>
+                </Rotate>
+            </Path>
+        </Component>
+        <TargetArea Height="45.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="40.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="10.0" Name="Id" Stroke="#304760" TextDecoration="None"
+                Top="28.5"><![CDATA[GF41]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="10.0"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Mätvärde" Top="14.0"><![CDATA[0]]><Bind
+                Attribute="Content" DynamicUpdates="Enable"
+                Name="MV.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GF41 (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAG/SURBVFhH7ZXNS0JBFMXnz26Xm3CRigiaulDScGGgtNEKv1CMRFAT5BWIEmJGSYqZ4jM9cW/jo2g981r4W82cd+GcmbnzRsBm9gH2Af5PgMnyE86bEdIPE6nowQpw0nhBf7rCYeVJKnqwAkTbY96Fg9JQKnqwAozmJh8B7YRO7G/Cs9QVVisTR75TnMTTmL1/oFpvY/w25XH9zpClahBkTka+yDnaRpfHx8EEhs+vPL+4rshSNQhaIZnsjC6Lt6BdIXNCeQAyoFXfdx+lBF49acRPXQViu92i0+kgn88jGo0ilUqhWq1iNpvJErWIXC6HWCyGYrGIfr+PZrOJbDYLv9+P+Xwuy9QhgsGgHP7GMAzE43E5U4dwu92YTP7+/xOJBMrlspypQ5RKJYTDYTn9hlYfCoWwWCykog5B5xyJRFCr1VhYLpfweDzo9XqgBlUN34LBYACXy8VHkUwmkclksF6vZYla+C0wTZNvgdfrRSAQ4O7XsXqCA5AZmTocDm68zWbDH3VgvYYUggI0Gg2p6MEKQOfvdDrRarWkogcOQOZ0/oVCgUWdiJ05NaEdCDvNCX6M7ETQT8hOrFtgD8AXHkCsrQj0M9IAAAAASUVORK5CYII=-->

@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+    Height="130.0" Left="10" Name="Driftval" Top="10"
+    Version="1.0.0-rc1" Width="130.0">
+    <Component Clip="False" ContentHeight="130.0" ContentWidth="130.0"
+        Height="130.0" Left="0.0" Name="Dialog" Top="0.0" Width="130.0">
+        <Image Height="138.0" Left="-4.0" Top="-2.0" Width="138.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAIoAAACKCAYAAAB1h9JkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKoSURBVHic7ddba9VAAIXRnTbFSx8E8f//Rx9sLb3Eh5nU4/Eo+0VRshYM6QxTOJCPJLPkZ8uFNY5nO50sZ3+fD45nuzBeY1iSXCW5TnIzr1cRy9FsSV6SPCd5nNeXJNs6NywZcbxLcpvkbUYwQjmWLSOQr0m+JLmfa9ua76+ZmyTvk3xM8iHJm4x4xHIMW8YT5CHJ5zl/mmvLpSfKhySfMqIRynHsodzN+V3GU2VJktNQrub8bUYkt3MulGPYnyDJaGDNyXfqerJxj2X/qF0jlCPZj8P7QeaHw8x64R8ck4/rl/f86u//Fv5HQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQqQqEiFCpCoSIUKkKhIhQq64W17WxwDL+97+vZxpc5npM8zfXlD/9A/g1bxj1/zvcOXoNZTza9zI1fk9zN9esI5Si2jEjuMhp4ykks69mm+ySf59qbCOVI9gYeMhq4n/PXUPZ30mNGTcu83kQkR7N3sL9VHufatoewZJyArjMCuZ5zoRzL/gnynBHJ/r2ynYawXBgcz/npZ0suxyAQkrMj8jfboWb1FbqQyAAAAABJRU5ErkJggg==]]></Image>
+        <Rectangle Fill="#FFFFFF" Height="130.0" Left="0.0"
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0" Width="130.0"/>
+        <Line Stroke="#808080" StrokeWidth="0.5" X1="0.0" X2="130.0"
+            Y1="20.0" Y2="20.0"/>
+        <Text FontFamily="Arial" FontSize="13" FontStyle="Normal"
+            FontWeight="Bold" HorizontalAlign="Left" Left="5.0"
+            Name="Rubrik" Stroke="#304760" TextDecoration="None" Top="2.0"><![CDATA[Driftval]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="100.0" ContentWidth="120.0"
+        Height="100.0" Id="RadioGroup" Left="5.0" Name="MS" Top="25.0" Width="120.0">
+        <Script Name="EffectsAndInvoke" OnMouseClick="onMouseClick"
+            OnMouseDown="onMouseDown" OnMouseOut="onMouseOut"
+            OnMouseOver="onMouseOver" OnMouseUp="onMouseUp" OnSignalChange="onSignal"><![CDATA[function onSignal(evt)
+{
+    var value = Number(evt.getValue());
+    var buttons = evt.getCurrentTarget().getElementsByTagName("Component");
+    
+    for (var i=0; i < buttons.getLength(); i++) {
+        
+        var button = buttons.item(i);
+        if (button.getAttribute("Id").indexOf("Button_") < 0) continue;     // Not a button
+        
+        if(Number(button.getAttribute("StatusActive")) == value)            // Does active status match bind value?
+            button.getChild("Checked").setAttribute("Visibility", "Visible");
+        else
+            button.getChild("Checked").setAttribute("Visibility", "Hidden");
+            
+        button.getChild("Selected").setAttribute("Visibility", "Hidden");
+    }
+}
+
+function onMouseOver(evt)
+{
+	var button = evt.target.parentNode;
+	button.getChild("Text").setAttribute("TextDecoration","Underline");
+}
+
+function onMouseOut(evt)
+{
+	var button = evt.target.parentNode;
+	button.getChild("Text").setAttribute("TextDecoration","None");
+    button.getChild("Selected").setAttribute("Visibility","Hidden");
+	onMouseUp(evt);
+}
+
+function onMouseDown(evt)
+{
+    var button = evt.target.parentNode;
+	button.getChild("Text").setAttribute("FontSize","11");
+	button.getChild("Selected").setAttribute("Visibility","Visible");
+}
+
+function onMouseUp(evt)
+{
+	var button = evt.target.parentNode;
+	button.getChild("Text").setAttribute("FontSize","12");
+}
+
+function onMouseClick(evt)
+{
+    var button = evt.target.parentNode;
+    var buttonText = button.getChild("Text").getAttribute("Content");
+    if (!confirm("Aggregatet kommer byta driftläge till '"+ buttonText +"'\n\nVill du fortsätta?")) {
+        button.getChild("Selected").setAttribute("Visibility","Hidden");
+        return;
+    }
+    button.getChild("Selected").setAttribute("Visibility","Visible");
+	
+	var bind = evt.currentTarget.getElementsByTagName("Bind").item(0);
+	if (bind == null) return;
+
+	setValue(bind.getFullBindName(), Number(button.getAttribute("StatusActive")));
+	evt.preventDefault();
+}]]></Script>
+        <Bind Name="Value" PreventDefault="True"/>
+        <Component Clip="False" ContentHeight="23.0"
+            ContentWidth="100.0" Height="23.0" Id="Button_Auto"
+            Left="0.0" StatusActive="1" Top="0.0" Width="100.0">
+            <Group Name="Default" Visibility="Visible">
+                <Ellipse Fill="None" Height="15.0" Left="4.0"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4.0" Width="15.0"/>
+            </Group>
+            <Group Name="Selected" Visibility="Hidden">
+                <Ellipse Fill="#007626" Height="30.0" Left="-4"
+                    Opacity="0.1" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="-4" Width="30.0"/>
+                <Ellipse Fill="None" Height="15.0" Left="4"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4" Width="15.0"/>
+                <Ellipse Fill="#007626" Height="8.0" Left="7.5"
+                    Opacity="1.0" Stroke="None" StrokeDashArray="0.0"
+                    StrokeWidth="3" Top="7.5" Width="8.0"/>
+            </Group>
+            <Group Name="Checked" Visibility="Hidden">
+                <Ellipse Fill="None" Height="15.0" Left="4"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4" Width="15.0"/>
+                <Ellipse Fill="#007626" Height="8.0" Left="7.5"
+                    Opacity="1.0" Stroke="None" StrokeDashArray="0.0"
+                    StrokeWidth="3" Top="7.5" Width="8.0"/>
+            </Group>
+            <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="28.0"
+                Name="Text" Stroke="#304760" TextDecoration="None" Top="4.5">Automatik</Text>
+            <TargetArea Height="23.0" Left="3.0" Top="0.0" Width="95.0"/>
+            <Expose ExposedAttribute="StatusActive" Name="MS Värde Auto"/>
+        </Component>
+        <Component Clip="False" ContentHeight="23.0"
+            ContentWidth="100.0" Height="23.0" Id="Button_Stopp"
+            Left="0.0" StatusActive="3" Top="25.0" Width="100.0">
+            <Group Name="Default" Visibility="Visible">
+                <Ellipse Fill="None" Height="15.0" Left="4.0"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4.0" Width="15.0"/>
+            </Group>
+            <Group Name="Selected" Visibility="Hidden">
+                <Ellipse Fill="#007626" Height="30.0" Left="-4"
+                    Opacity="0.1" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="-4" Width="30.0"/>
+                <Ellipse Fill="None" Height="15.0" Left="4"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4" Width="15.0"/>
+                <Ellipse Fill="#007626" Height="8.0" Left="7.5"
+                    Opacity="1.0" Stroke="None" StrokeDashArray="0.0"
+                    StrokeWidth="3" Top="7.5" Width="8.0"/>
+            </Group>
+            <Group Name="Checked" Visibility="Hidden">
+                <Ellipse Fill="None" Height="15.0" Left="4"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4" Width="15.0"/>
+                <Ellipse Fill="#007626" Height="8.0" Left="7.5"
+                    Opacity="1.0" Stroke="None" StrokeDashArray="0.0"
+                    StrokeWidth="3" Top="7.5" Width="8.0"/>
+            </Group>
+            <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="28.0"
+                Name="Text" Stroke="#304760" TextDecoration="None" Top="4.5"><![CDATA[Stopp]]></Text>
+            <TargetArea Height="23.0" Left="3.0" Top="0.0" Width="95.0"/>
+            <Expose ExposedAttribute="StatusActive" Name="MS Värde Stopp"/>
+        </Component>
+        <Component Clip="False" ContentHeight="23.0"
+            ContentWidth="100.0" Height="23.0" Id="Button_Till"
+            Left="0.0" StatusActive="2" Top="50.0" Width="100.0">
+            <Group Name="Default" Visibility="Visible">
+                <Ellipse Fill="None" Height="15.0" Left="4.0"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4.0" Width="15.0"/>
+            </Group>
+            <Group Name="Selected" Visibility="Hidden">
+                <Ellipse Fill="#007626" Height="30.0" Left="-4"
+                    Opacity="0.1" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="-4" Width="30.0"/>
+                <Ellipse Fill="None" Height="15.0" Left="4"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4" Width="15.0"/>
+                <Ellipse Fill="#007626" Height="8.0" Left="7.5"
+                    Opacity="1.0" Stroke="None" StrokeDashArray="0.0"
+                    StrokeWidth="3" Top="7.5" Width="8.0"/>
+            </Group>
+            <Group Name="Checked" Visibility="Hidden">
+                <Ellipse Fill="None" Height="15.0" Left="4"
+                    Opacity="1.0" Stroke="#007626" StrokeDashArray="0.0"
+                    StrokeWidth="2" Top="4" Width="15.0"/>
+                <Ellipse Fill="#007626" Height="8.0" Left="7.5"
+                    Opacity="1.0" Stroke="None" StrokeDashArray="0.0"
+                    StrokeWidth="3" Top="7.5" Width="8.0"/>
+            </Group>
+            <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+                FontWeight="Normal" HorizontalAlign="Left" Left="28.0"
+                Name="Text" Stroke="#304760" TextDecoration="None" Top="4.5"><![CDATA[Till]]></Text>
+            <TargetArea Height="23.0" Left="3.0" Top="0.0" Width="95.0"/>
+            <Expose ExposedAttribute="StatusActive" Name="MS Värde Till"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="Driftval"/>
+    <Metadata Name="Description" Value=""/>
+</Component>

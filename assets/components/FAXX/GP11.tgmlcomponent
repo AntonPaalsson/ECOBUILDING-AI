@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="85.0" ContentWidth="30.69"
+    Height="85.0" Left="645.0" Name="GP11" Top="210.0" Width="30.6900000000001">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="30.69"
+        Height="85.0" Id="Givare" Left="0.0" Top="0.0" Width="30.690000000000055">
+        <Component Clip="False" ContentHeight="45.0" ContentWidth="20.0"
+            Height="45.0" Left="5.34002685546875" Name="Givarsymbol upp"
+            Top="40.0" Version="1.0.0-rc1" Width="20.0">
+            <Image Height="33.0" Left="-4.0" Top="-2.0" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIaSURBVEiJ7ZZdc9owEEWPDaEJaZN2+v//YQmkfBQcbPqgXXQtJGMyeclMdmbHjLH3aK+uJMNXfPaortyvCqlxKiRyPce0AKuASZK1XRXqxVugs6vmBTQdbWWF74AZ8M1yZoNzuAK9+BFogINlA7zZQE4K0N8Tg82B75Zz4N7uDwHfgD2wAzaWO7vfOlQl9c4egZ/AL+BZgFN7pk6AneVRgK9WqwK2MrAecGLyPQG/LZ+kOweVTNPZ4OaEKahlIOc5TYH3wA/r7Nm6dSnJwBTq9ab2nHbcWF4AZwZ9oD9vdQHkkQ5Ea3i3kCmka8gLlboqgfX5tF4PqE7bEyRo0xeuhJujsRoHokuzwD3BVWui9mOhCttZjY3VPAMnyUu6y9xJlhyqsM662QBLYAGsDH70QadAf1mhM6JxhoAt8I+wBhfAi3XpKmU71NAtTt2aW4ctYb7WBloYeK/dDXWo/ys0lVal3BKk/EOQcmv3e/M/1CFczqdvb+le6lK+EKU8kDHcENAfrA2kJ4a72125Jhrl1QbQk/IWYGog35QhSrkiSLmkIOUYoEZF7NIN1BFM8Ze+K7NSjgFWxK3JD2bfnGsrqmtOXVmMsR36aPUAbohGWRn84oR/DzC3mZ+IzlwyQspbgCotxHW3I8zfhujKq5H7akvDQUcr7GaB+MHkS+DqJn/rWefGcWX8a21w3t4L9Odz36W3nJlf8bHxHzH74WtfILtRAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 0,8 C 1.5,5 3,3 10,3 17,3 18.5,5 20,8 L 10.5,22.5 V 41.05 C 12.75,41.5 12.5,45 10,45 7.5,45 7.25,41.5 9.5,41.05 V 22.5 Z"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5" Visibility="Visible"/>
+        </Component>
+        <TargetArea Height="45.0" Left="5.34002685546875"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="40.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="15.34002685546875" Name="Id" Stroke="#304760"
+            TextDecoration="None" Top="28.5"><![CDATA[GP11]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="GF_L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="TL_L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center"
+            Left="15.34002685546875" Name="Börvärde" Stroke="#007626"
+            TextDecoration="None" Tooltip="Beräknat börvärde"
+                Top="0.0"><![CDATA[0]]><Bind Attribute="Content"
+                DynamicUpdates="Enable" Name="B.Value" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center"
+            Left="15.34002685546875" Name="Mätvärde" Stroke="#0087CD"
+            TextDecoration="None" Tooltip="Mätvärde"
+                Top="14.0"><![CDATA[0]]><Bind Attribute="Content"
+                DynamicUpdates="Enable" Name="MV.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="5.34002685546875" Name=""
+        Top="0.0" Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Börvärden" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #börvärden"/>
+            <Metadata Name="Icon" Value="Settings"/>
+            <Metadata Name="Text" Value="Börvärden"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="B.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Reglerparametrar" Left="20.0"
+            Top="20.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #reglerparametrar, #fläktreglering tilluft"/>
+            <Metadata Name="Icon" Value="PIDSettings"/>
+            <Metadata Name="Text" Value="Reglerparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="FF1_PB.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="FF1_IT.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="ST41_PB.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="ST41_IT.Value" PreventDefault="True"/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="0.0"
+            Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="TL_LG.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="GP11"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAILSURBVFhH7ZXva9pAGMfzn9d3A4cWhuAQMeJGHUotBcEZMEJD5lTUqi9soSVYu2ZdQy3+ykzV73gOlOXubU77oh+Qw/t6PB/vuVwUHBiFnxg83iJeO0H2sshHUhAEjo003Ne/ONI+8ZEUBAG1eXpYAev5nkmUri74SAqCwL4RBOyZhw8/bJxdj/lICoLAceMRY3eFI+OBj6QgCMTbf+C+rg8nYL0sWQvUnsNHUhAE9o0ymc6RL+r4Xv2Jq5shPn4+gW62sFx6bCR6gxs4zy/82kBQqDhBBcxmD18LZaS+FVlRkiHo+6/fT9zSYFCoIO0CjfEvZ2zc/ttzzWBjszuQJ7BtARWz7h58haglBM3R72SwO4SbzQbdbheapkFVVRQKBZimicVi4V8RMEyAiufzeeRyORiGAcuy0Ol0UCqVkEwmMZvN+HWBwQT6/T7S6TSfMSjLZrP8dGAwAcdxEIlEMB6L9z+1o9Fo8NOBwQQ8z4Ou60gkEr6w1WohlUrBdV3ffJDsDuFkMmH9rtfr7Pt0OkU0GsVoNGJnRBY7gfV6jeFwiHA4zIpnMhlUKhWsViv/ioDxvQuoFeVymZ0H2o35XM6z/z8+AdpqakUoFGKPo8yt3yK8DakoCbTbbT6SgiBAkABdRPvgXeDtCdB1TAK1Wo2PpCAI0OMXi8XYZx8IAnTvV6tV2LbNR1L4B8A8mhi/m0t6AAAAAElFTkSuQmCC-->

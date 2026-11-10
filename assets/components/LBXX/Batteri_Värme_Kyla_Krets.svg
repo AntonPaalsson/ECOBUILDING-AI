@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     width="150" height="180" viewBox="0 0 150 180">
+  <title>Batteri_Värme_Kyla_Krets</title>
+  
+  <!-- Rör (pipes) group -->
+  <g id="Ror">
+    <!-- Rör Värme - horizontal at top -->
+    <rect x="65" y="60" width="55" height="5" fill="#F1CD45"/>
+    
+    <!-- Rör Värme - vertical left -->
+    <rect x="35" y="40" width="5" height="90" fill="#F1CD45"/>
+    
+    <!-- Rör Värme - short vertical -->
+    <rect x="65" y="40" width="5" height="25" fill="#F1CD45"/>
+    
+    <!-- Rörpil VS (pipe arrow) - rotated 90 degrees -->
+    <g transform="translate(17.5, 127.5) rotate(90)">
+      <path d="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z" 
+            fill="#F1CD45" stroke="#F1CD45" stroke-width="1"/>
+    </g>
+    
+    <!-- Rörpil VS (pipe arrow) - rotated 270 degrees -->
+    <g transform="translate(2.5, 137.5) rotate(270)">
+      <path d="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z" 
+            fill="#F1CD45" stroke="#F1CD45" stroke-width="1"/>
+    </g>
+    
+    <!-- Batteri Värme/Kyla symbol -->
+    <g id="BatteriVarmeKyla" transform="translate(30, 0)">
+      <!-- Top rectangle (scaled) -->
+      <path d="m 1,0 h 38 c 0.554,0 1,0.446 1,1 v 38 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,40 0,39.554 0,39 V 1 C 0,0.446 0.446,0 1,0 Z" 
+            fill="#FFFFFF" stroke="#808080" stroke-width="0.5" transform="scale(1, 0.5)"/>
+      <!-- Bottom rectangle (scaled) -->
+      <path d="m 1,20 h 38 c 0.554,0 1,0.446 1,1 v 38 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,60 0,59.554 0,59 V 21 C 0,20.446 0.446,20 1,20 Z" 
+            fill="#FFFFFF" stroke="#808080" stroke-width="0.5" transform="scale(1, 0.5)"/>
+      
+      <!-- Heat indicator (red plus circle) -->
+      <g transform="translate(10, 0) scale(0.8)">
+        <path d="m9.0,4.0 l0.0,5.0 -5.0,0.0 c-0.554,0 -1.0,0.446 -1.0,1.0 0.0,0.554 0.446,1.0 1.0,1.0 l5.0,0.0 0.0,5.0 c0.0,0.554 0.438,1.0 1.0,1.0 0.562,0.0 1.0,-0.446 1.0,-1.0 l0.0,-5.0 5.0,0.0 c0.554,0.0 1.0,-0.446 1.0,-1.0 0.0,-0.554 -0.446,-1.0 -1.0,-1.0 l-5.0,0.0 0.0,-5.0 c0.0,-0.554 -0.438,-1.0 -1.0,-1.0 -0.562,0.0 -1.0,0.446 -1.0,1.0 z m11.0,6.0 A10.0,10.0 0 0,1 10.0,20.0 10.0,10.0 0 0,1 0.0,10.0 10.0,10.0 0 0,1 10.0,0.0 10.0,10.0 0 0,1 20.0,10.0 z" 
+              fill="#B10043" stroke="none"/>
+      </g>
+      
+      <!-- Cooling indicator (blue minus circle) -->
+      <g transform="translate(10, 20) scale(0.8)">
+        <path d="m9.0,4.0 l0.0,5.0 -5.0,0.0 c-0.554,0 -1.0,0.446 -1.0,1.0 0.0,0.554 0.446,1.0 1.0,1.0 l5.0,0.0 0.0,5.0 c0.0,0.554 0.438,1.0 1.0,1.0 0.562,0.0 1.0,-0.446 1.0,-1.0 l0.0,-5.0 5.0,0.0 c0.554,0.0 1.0,-0.446 1.0,-1.0 0.0,-0.554 -0.446,-1.0 -1.0,-1.0 l-5.0,0.0 0.0,-5.0 c0.0,-0.554 -0.438,-1.0 -1.0,-1.0 -0.562,0.0 -1.0,0.446 -1.0,1.0 z m11.0,6.0 A10.0,10.0 0 0,1 10.0,20.0 10.0,10.0 0 0,1 0.0,10.0 10.0,10.0 0 0,1 10.0,0.0 10.0,10.0 0 0,1 20.0,10.0 z" 
+              fill="#42B4E6" stroke="none"/>
+        <rect x="8.5" y="2" width="3" height="7" fill="#42B4E6"/>
+        <rect x="8.5" y="11" width="3" height="7" fill="#42B4E6"/>
+      </g>
+    </g>
+    
+    <!-- Rör Kyla (cooling pipe) - horizontal -->
+    <rect x="60" y="90" width="55" height="5" fill="#42B4E6"/>
+    
+    <!-- Rör Värme vertical sections -->
+    <rect x="115" y="60" width="5" height="30" fill="#F1CD45"/>
+    <rect x="80" y="60" width="5" height="30" fill="#F1CD45"/>
+    
+    <!-- Backventil (check valve) -->
+    <g id="Backventil" transform="translate(75, 65)">
+      <rect x="0" y="2.5" width="15" height="15" fill="#F9F8FB" stroke="none"/>
+      <path d="M 3.5214842,18 H 11.478516 L 8,10 11.478516,2.0000002 H 3.5214842 L 6.9999998,10 Z" 
+            fill="#FFFFFF" stroke="#808080" stroke-width="0.5"/>
+      <line x1="5" y1="15" x2="10" y2="15" stroke="#808080" stroke-width="0.5"/>
+    </g>
+    
+    <!-- Rör Kyla vertical sections -->
+    <rect x="115" y="95" width="5" height="45" fill="#42B4E6"/>
+    <rect x="90" y="90" width="5" height="50" fill="#42B4E6"/>
+    <rect x="60" y="90" width="5" height="20" fill="#42B4E6"/>
+    
+    <!-- Rör Värme additional sections -->
+    <rect x="60" y="115" width="5" height="25" fill="#F1CD45"/>
+    <rect x="25" y="125" width="15" height="5" fill="#F1CD45"/>
+    <rect x="10" y="135" width="55" height="5" fill="#F1CD45"/>
+    
+    <!-- Cooling pipe arrows -->
+    <g transform="translate(92.5, 147.5) rotate(0)">
+      <path d="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z" 
+            fill="#42B4E6" stroke="#42B4E6" stroke-width="1"/>
+    </g>
+    
+    <g transform="translate(117.5, 147.5) rotate(180)">
+      <path d="m 2.5009766,-0.75802102 c -0.1278096,0 -0.2555814,0.0485501 -0.3535156,0.14648438 L -2.4501953,3.9841665 c -0.1958686,0.1958686 -0.1958686,0.5111627 0,0.7070312 l 0.9199219,0.9199219 c 0.1958686,0.1958686 0.5111626,0.1958686 0.70703122,0 L 2.4990234,2.288854 5.8232422,5.6111196 c 0.1958686,0.1958686 0.5111627,0.1958686 0.7070312,0 L 7.4501953,4.6911977 c 0.1958686,-0.1958685 0.1958686,-0.5111626 0,-0.7070312 L 2.8544922,-0.61153664 C 2.7565579,-0.70947093 2.6287861,-0.75802102 2.5009766,-0.75802102 Z" 
+            fill="#42B4E6" stroke="#42B4E6" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- Komponenter (components) group -->
+  <g id="Komponenter" transform="translate(20, 50)">
+    
+    <!-- P1 Pump -->
+    <g id="P1" transform="translate(0, 0)">
+      <ellipse cx="17.5" cy="17.5" rx="10" ry="10" fill="#FFFFFF" stroke="#808080" stroke-width="0.5"/>
+      <path d="m 12.5,3.5 c -0.8,0 -1.16,0.68 -1.16,0.68 L 7,11.71 c -0.5,0.863 0.145,2 1.15,2.01 h 8.7 c 1,0 1.65,-1.14138 1.15,-2 L 13.66,4.18 c 0,0 -0.3647,-0.68 -1.16,-0.68 z" 
+            fill="#C0C0C0" stroke="none" transform="translate(5, 5)"/>
+      <text x="29" y="12" font-family="Arial" font-size="12" fill="#304760">P1</text>
+      
+      <!-- Manual override indicator -->
+      <g transform="translate(24, 24)">
+        <ellipse cx="7.5" cy="7.5" rx="7.5" ry="7.5" fill="#F68B1C" opacity="0" stroke="none"/>
+        <path d="M 7.5,1.5 C 6.9,1.5 6.63,2 6.63,2 L 2.13,9.5 C 1.76,10.15 2.25,11 3,11 h 9 c 0.75,0 1.245,-0.85 0.87,-1.5 L 8.37,2 C 8.37,2 8.1,1.5 7.5,1.5 Z" 
+              fill="#FFFFFF" stroke="#808080" stroke-width="0.5"/>
+      </g>
+    </g>
+    
+    <!-- SV21 Control Valve -->
+    <g id="SV21" transform="translate(5, 75)">
+      <rect x="10" y="7.5" width="15" height="15" fill="#F9F8FB" stroke="none"/>
+      <path d="m 12.5,39 a 9,9 0 0 0 9,-9 A 9,9 0 0 0 13,21.025391 V 8.216797 L 24,13 V 2 L 12.5,7 1,2 V 13 L 12,8.216797 V 21.017578 A 9,9 0 0 0 3.5,30 a 9,9 0 0 0 9,9 z" 
+            fill="#FFFFFF" stroke="#808080" stroke-width="0.5" transform="translate(5, 5) scale(0.65)"/>
+      <text x="17.5" y="52" font-family="Arial" font-size="12" fill="#304760" text-anchor="middle">SV21</text>
+      <text x="30" y="35" font-family="Arial" font-size="14" fill="#0087CD">0</text>
+    </g>
+    
+    <!-- Heat exchanger (Värmeväxlare) -->
+    <g id="Varmevaxlare" transform="translate(20.5, 42.5) rotate(90) scale(0.23)">
+      <path d="m 2,132.5 h 13 v -35 L 20,95 10,90 20,85 10,80 20,75 10,70 20,65 10,60 15,57.5 v -35 H 2 m 36,0 H 25 v 35 l -5,2.5 10,5 -10,5 10,5 -10,5 10,5 -10,5 10,5 -5,2.5 v 35 H 38 M 7,0 A 7,7 0 0 0 0,7 v 13.5 l 2,2 -2,2 v 106 l 2,2 -2,2 V 148 a 7,7 0 0 0 7,7 h 26 a 7,7 0 0 0 7,-7 L 40.0625,134.375 38,132.5 l 2,-2 v -106 l -2,-2 2,-2 V 7 A 7,7 0 0 0 33,0 Z" 
+            fill="#FFFFFF" stroke="#808080" stroke-width="0.5"/>
+    </g>
+    
+    <!-- SV31 3-way valve -->
+    <g id="SV31" transform="translate(85, 20)">
+      <rect x="5" y="15" width="15" height="15" fill="#F9F8FB" stroke="none"/>
+      <g transform="scale(-1, 1) translate(-45, 0)">
+        <path d="m 1,12.5 a 9,9 0 0 0 9,9 9,9 0 0 0 8.9824,-8.5 H 31.7832 L 27,24 H 38 L 33.3847,13.384766 44,18 V 7 L 33.3847,11.6153 38,1 H 27 l 4.7832,11 H 18.9824 A 9,9 0 0 0 10,3.5 a 9,9 0 0 0 -9,9 z" 
+              fill="#FFFFFF" stroke="#808080" stroke-width="0.5" transform="translate(0, 10)"/>
+      </g>
+      <text x="50" y="8" font-family="Arial" font-size="12" fill="#304760" text-anchor="end">SV31</text>
+      <text x="35" y="43" font-family="Arial" font-size="14" fill="#0087CD" text-anchor="middle">0</text>
+    </g>
+  </g>
+</svg>

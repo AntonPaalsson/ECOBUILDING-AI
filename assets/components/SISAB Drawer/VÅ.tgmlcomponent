@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="40.0" ContentWidth="130.0"
+    Height="40.0" Id="InfoButton" Left="0" Name="VÅ" Top="0"
+    Version="1.0.0-rc1" Width="130.0">
+    <Script Name="EffectsAndInvoke" OnMouseClick="OnMouseClick"
+        OnMouseDown="OnMouseDown" OnMouseOut="OnMouseOut"
+        OnMouseOver="OnMouseOver" OnMouseUp="OnMouseUp"><![CDATA[function OnMouseClick(evt)
+{
+    evt.preventDefault();
+	var link = evt.currentTarget.getElementsByTagName("Link").item(0);
+    if (link) invoke(link.getFullBindName(), "OpenInFloatingWindow");// Width=800 | Height=720 | Top=160 | Left=612 | ShowToolBar=No");
+}
+
+function OnMouseOver(evt)
+{
+	var comp = evt.getCurrentTarget();
+	comp.getChild("Bg").setAttribute("Fill", "#F9F8FB");
+}
+
+function OnMouseOut(evt)
+{
+	var comp = evt.getCurrentTarget();
+	comp.getChild("Bg").setAttribute("Fill", "#FFFFFF");
+}
+
+function OnMouseDown(evt)
+{
+	var comp = evt.getCurrentTarget();
+	comp.getChild("Bg").setAttribute("Fill", "#E0E0E0");
+}
+
+function OnMouseUp(evt)
+{
+	OnMouseOver(evt);
+}]]></Script>
+    <Image Height="48.0" Left="-4" Top="-2" Width="138.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAIoAAAAwCAYAAADO1uJ3AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGfSURBVHic7d3BagIxFEDROzalti6E0v//xy6qFlvTRRJNx1HeqlByD8iYIYLgZXQ2z4lr08I5jSf3i2n2fP7QePLC4xzDBKyAB+CxHlcYy2gycAK+gWM9noCc6oaJEsczsAHWlGAMZSyZEsgB+AD29VxOXL5mHoEX4BXYAk+UeIxlDJlyBfkE3uv6q56blq4oW+CNEo2hjKOFsqvrHeWqMgH0oazqek2JZFPXhjKGdgWB0kCi+52auo0tlvajNmEoI2m3w+1G5tfNTFp4gbfJ47r5ma/+/r3oPzIUhRiKQgxFIYaiEENRiKEoxFAUYigKMRSFGIpCDEUhhqIQQ1GIoSjEUBRiKAoxFIUYikIMRSGGohBDUYihKMRQFGIoCjEUhRiKQgxFIYaiEENRiKEoZGk+ytXoSA3h7ueeZhtPXMZHtjFNDtIZQz/cr3VwDiZ1m05144HLwDeH/Y2jH/Z3oLRwjiXNNu0poyPB8aGjmY8P3df1OZT2nXSk1DTVowOJx9MPJN7V5xnIjjhX7+aIc/80QXN3/zShZyCC2S3yDw/jZkGoPK9lAAAAAElFTkSuQmCC]]></Image>
+    <Rectangle Fill="#FFFFFF" Height="40.0" Left="40.0" Name="Bg"
+        Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+        StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0" Width="90.0"/>
+    <Rectangle Fill="#3DCD58" Height="40.0" Larmgräns="" Left="0.0"
+        Name="IconBg" Opacity="1.0" RadiusX="0.0" RadiusY="0.0"
+        Stroke="None" StrokeDashArray="0.0" StrokeWidth="1.0" Top="0.0"
+        Vgrad="" Width="40.0">
+        <Script Name="Effects" OnSignalChange="OnChange"><![CDATA[var vgrad, lg, vvx, g;
+function OnChange(evt)
+{
+    var value = Number(evt.getValue());
+    var signalId = evt.target.getAttribute("Id");
+    if (signalId == "Verkningsgrad")
+        vgrad = value;
+    else if (signalId == "Larmgräns")
+        lg = value;
+    else if (signalId == "StyrsignalVVX")
+        vvx = value;
+    else if (signalId == "Gräns beräkning")
+        g = value;
+
+    if (vgrad && lg && vvx>g) {
+        if (vgrad <= lg)
+            evt.target.parentNode.setAttribute("Fill","#FF0000");
+        else if (vgrad < (lg + (lg * 0.1)))
+            evt.target.parentNode.setAttribute("Fill","#E47F00");
+        else
+            evt.target.parentNode.setAttribute("Fill","#3DCD58");
+    }
+    else
+        evt.target.parentNode.setAttribute("Fill","#C0C0C0");
+ }
+ ]]></Script>
+        <Bind Attribute="" DynamicUpdates="Enable" Id="" Name="V.Value" PreventDefault="True"/>
+    </Rectangle>
+    <Component Clip="False" ContentHeight="30.0" ContentWidth="30.0"
+        Height="30.0" Left="5.0" Name="Icon_Återvinning" Top="5.0" Width="30.0">
+        <Path Fill="#FFFFFF"
+            PathData="M15.00125002861023,0.0025000572204589844 C6.701250528610229,0.0025000572204589844 0.0012500286102294922,7.002499757220459 0.0012500286102294922,15.002500057220459 0.0012500286102294922,23.402500057220458 6.701250528610229,30.00250005722046 15.00125002861023,30.00250005722046 23.30125002861023,30.00250005722046 30.00125002861023,23.402500057220458 30.00125002861023,15.002500057220459 30.00125002861023,7.002499757220459 23.30125002861023,0.0025000572204589844 15.00125002861023,0.0025000572204589844 z M17.97000002861023,7.127500057220459 C18.24765702861023,7.110012457220458 18.53744902861023,7.188429057220459 18.81375002861023,7.346250057220459 L23.62625002861023,11.471250057220459 C24.14239402861023,11.766030057220458 24.39588002861023,12.278180057220458 24.37625002861023,12.846250057220459 24.38941802861023,12.915833057220459 24.40135102861023,12.99157605722046 24.40750002861023,13.065000057220459 24.34205902861023,13.84327805722046 23.660077028610228,14.418850057220459 23.00125002861023,14.471250057220459 L6.1262500286102295,14.533750057220459 C5.665947728610229,14.52248205722046 5.32594002861023,14.322401057220459 4.9700000286102295,13.971250057220459 4.75643602861023,13.76056005722046 4.558894028610229,13.404193057220459 4.6262500286102295,12.908750057220459 4.55027252861023,12.13143005722046 5.1839913286102295,11.476950057220458 6.0325000286102295,11.471250057220459 L19.15750002861023,11.502500057220459 17.37625002861023,10.002500057220459 C16.98375202861023,9.761771057220459 16.789172028610228,9.422351057220459 16.65750002861023,8.940000057220459 16.57849702861023,8.650590457220458 16.56936902861023,8.24099705722046 16.87625002861023,7.846250057220459 17.07896502861023,7.402192557220459 17.507238028610228,7.1566462572204586 17.97000002861023,7.127500057220459 z M23.06375002861023,16.06500005722046 C23.524052028610228,16.07626805722046 23.83281002861023,16.245099057220457 24.18875002861023,16.59625005722046 24.40231402861023,16.80694005722046 24.59986002861023,17.163307057220457 24.53250002861023,17.65875005722046 24.60847702861023,18.43607005722046 23.97475902861023,19.090550057220458 23.12625002861023,19.09625005722046 L10.00125002861023,19.06500005722046 11.78250002861023,20.56500005722046 C12.17499802861023,20.80572905722046 12.36957802861023,21.145149057220458 12.50125002861023,21.62750005722046 12.58025302861023,21.91691005722046 12.58938102861023,22.32650305722046 12.28250002861023,22.72125005722046 11.95815602861023,23.43174305722046 11.081804028610229,23.67335605722046 10.34500002861023,23.25250005722046 L5.5325000286102295,19.12750005722046 C5.000347228610229,18.823577057220458 4.74363562861023,18.27896305722046 4.7825000286102295,17.69000005722046 4.77898992861023,17.668809057220457 4.7853793286102295,17.64904305722046 4.7825000286102295,17.62750005722046 4.77789312861023,17.59303205722046 4.75420922861023,17.56908605722046 4.7512500286102295,17.53375005722046 4.816691028610229,16.75547205722046 5.49867302861023,16.148650057220458 6.1575000286102295,16.09625005722046 L23.06375002861023,16.06500005722046 z"
+            Stroke="None" StrokeWidth="1"/>
+    </Component>
+    <Component Clip="False" ContentHeight="25.0" ContentWidth="90.0"
+        Height="25.0" Id="Verkningsgrad" Left="40.0" Name="" Top="0.0" Width="90.0">
+        <TextBox Fill="None" FontFamily="Arial" FontSize="23"
+            Height="25.0" HorizontalAlign="Center" Left="0.0" Name=""
+            Stroke="#808080" Top="0.0" Width="90.0"><![CDATA[0]]><Bind
+                Attribute="Content" Name="V.Value" PreventDefault="True"/>
+        </TextBox>
+        <TargetArea Height="40" Left="-40" Name="TargetArea ContextMenu"
+            Top="0.0" Width="130.0"/>
+    </Component>
+    <TextBox Fill="None" FontFamily="Arial" FontSize="9" Height="14.0"
+        HorizontalAlign="Center" Left="40.0" Name="Description"
+        Stroke="#808080" Top="25.0" VerticalAlign="Middle" Width="90.0"><![CDATA[Verkningsgrad]]></TextBox>
+    <Component Clip="False" ContentHeight="70" ContentWidth="165"
+        Height="70.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="165.0">
+        <Component Clip="False" ContentHeight="21" ContentWidth="162.0"
+            Height="21.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="162.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="21.0"
+            ContentWidth="161.0" Height="21.0"
+            Id="MenuRow_Larmparametrar" Left="0" Top="0"
+            Visibility="Visible" Width="161.0">
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_G.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LG.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VÅ"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAF+SURBVFhH7ZO/S8NQEMfzj/kHODkVnTsp/pgERVDEQVE6ueggroI4OJWAgVqDLkEqDRgwaJXQNBI1Q5oUU+3JXd+LJkPagD8G3xe+vMsl4T733j1p5HICBnmxvgk/oSiKIAEwd7MG+/YRuaDPxvmZi2X2S7ZM04RKpQKu67JMtoIg+AQ4dk9Yuq/X9whW77ZzAciyDN1ul9ZhFANgoa/abR7AmacRxFh9cmgA7B6lKAqtgxQDYPflp1M6Au55c4MAlm5LQwOoqgqapoGu6yyTrQSA8nJOO8FnAJ0XAOX7PosGKwbg3ZYe9uA58throHj0qpgLII8SQ3j4WGbpvvy3gLrHd2mARqNBtiyLtr3VatFzrVajGG8DX/l3eDRpJQDQxesFGsD1+x0aPp5PA+CkY4FOp0MFMPY8L44Nw6CiHAivJa5pEcC4Og2F6lSmV6pbYNv2t9pxHAjDECSkaLfbv26s2+v1QGK78WcSAAJAAAgAASAABIAAEAD/HQDgA4+1ayoN7N/UAAAAAElFTkSuQmCC-->

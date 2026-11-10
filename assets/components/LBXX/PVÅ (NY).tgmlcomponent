@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Component Clip="False" ComponentVersion="Plattvärmeväxlare-1.0.0"
+    ContentHeight="235.0" ContentWidth="45.0" Height="235.0" Left="28.0"
+    Name="PVÅ (NY)" Top="191.0" Width="45.0">
+    <Component Clip="False" ContentHeight="235.0" ContentWidth="45.0"
+        Height="235.0" Id="Värmeväxlare" Left="0.0" Name="" Top="0.0" Width="45.0">
+        <Component Clip="False" ContentHeight="220.0"
+            ContentWidth="45.0" Height="220.0" Left="0.0"
+            Name="Plattvärmeväxlare"
+            SymbolVersion="Plattvärmeväxlare-1.0.0" Top="15.0" Width="45.0">
+            <Image Height="228.0" Left="-4" Top="-2" Width="53.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADUAAADkCAYAAAA4hGz6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANDSURBVHic7dbbbtNAFIXh3zm29ISA939EVBRok+ZgLmZ2ZjKNi7ggzkLrl0axWlfan8d22vFx3cDxWPUDxycNDdo1a1Idj1Wf16E6jnXSuSEDMQVmeU3zmgz8zb8uMPu8dnntKchj7YAdafg5sARu8lpScJfesdiNwGyAdV4bYJt/d4S1z8wUWACfgIe87kmwQF16t+pd2pEwP4FVXi/AGxVslv8wbrk5CfQZ+Ao8AXckVA0aY6cCtqZc6OmZc/oaNSXdZg/AF+Ab8AjckvBjvizqoW8pdw6UHYydOkHN8skPpJ16JO3SgvFeEG095QJDuR1fKbcgM8rVD9Q9CXNLAsXL4RqKWRckwB3l8YhnqwtxvMKX1apvuWuqfv7jDb2kPPMnz0l8L825XlAUsHre49fNpDlp7C/Zv2lw5klzUruuucF5Jx+cqNDZeVvUf5FRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaWSUSoZpZJRKhmlklEqGaVSi+qrpdDZeScDJyjAzs3bQ0H1wAHY53VAA9XODCRUCPfADtjmz2uGBaied59/3sdOhXgDrPPnluuEBWjL6bzH3ZpRdmqXT/iV1w0wBRakHe0uO/vZAvTG6axr0vw90M+qkwO1IoHid4d8HLAxcHHh45Z7BX4Az6R5axQ1Km6/FWmHyCfeUXZtDFgL2pB25xn4nueN2+8dKu7Tl/yzPekK3FN2roZdqvott6Xcdqu8Xmie/3a4jjT4HFiSMDf5OFBj7VSg4nmqX2jHXWJguI60G1MSJDBj7FJU79au+Xz3hh4asGvWmC+JqH62PvzP509DdgPHY9UPHJ/0G/YL4N1ZbR7NAAAAAElFTkSuQmCC]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 7,0 h 31 c 3.878,0 7,3.122 7,7 v 206 c 0,3.878 -3.122,7 -7,7 H 7 c -3.878,0 -7,-3.122 -7,-7 V 7 C 0,3.122 3.122,0 7,0 Z M 45,20 H 40 L 22.5,180 5,20 H 0 M 0,200 H 5 L 22.5,40 40,200 h 5"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="220.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Plattvärmeväxlare"
+            Top="15.0" Width="45.0"/>
+        <Text FontFamily="Arial" FontSize="12" HorizontalAlign="Center"
+            Id="Larm" Left="22.5" Name="Id" Stroke="#304760"
+            Tooltip="Summalarm" Top="0.0"><![CDATA[PVÅ]]><Bind
+                Attribute="Stroke" Name="LL.AlarmState" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="0" Top="0"
+            Visibility="Visible" Width="1.0">
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LG.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Id=""
+                Name="LL_G.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="PVÅ (NY)"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAGYSURBVFhHvZcxawJBEIXvp1tYCApaCFooWFxxwgWukIsBwcJCxMLCwvIgkhiwEHIEC4tJvuXGREnrGxiWXQ/ed3NvdtfIfuKz/LLi9T3k28eRJVlEp9PJ8ueXkHHyZOM0s8PhUP38+IiazabN5/ObbLfbtt/vq0ceGxGC9+Egioi63a6VZVlNzS6Xi/X7fR1ArVaz7XZbTS2UnjUpwHK5rKZmu91OC9BoNGw6ndpmswmiwEgB8ECapgEiSRKbzWZWr9d1AKPRyEggBoOBZVlmnU5HB+CCiLdarQBDygAQ4psD4SNQUgDe/C8EPpACePl9ZE0KgPsRx4i+C0oBvAV9lAOQk8nEFovF1YBSAEznwnwGOQCi9D4QeEEOgDgt6KMcAFH2f84FP4ikAIjS/0AwSndC3I8o/c/RjAfiONYB0PeI348yABelErw5mxGVkAFQfsQR9M3IjaiIcCdE9Hw+h+SCKgfgPuhRFIUWgNY7Hn//D1IFqQf+E2JNBtDr9a6CnsPh0NbrdfXIYyNarVaW5/lNYkpNmH0D+KY1+cO99WoAAAAASUVORK5CYII=-->
