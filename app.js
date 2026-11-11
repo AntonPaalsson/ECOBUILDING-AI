@@ -68,6 +68,7 @@
   let descriptionColumn;
   let assessmentColumn;
   let reviewedRows = [];
+  let missingFrameworkRows = [];
   let resultFilter = "";
   let resultSort = { key: "rowNumber", direction: "asc" };
   let reviewCompleted = false;
@@ -111,6 +112,16 @@
   function getSystemItems(systemId = selectedFrameworkSystemId) {
     if (systemId === "airTreatment") return airTreatmentTags;
     return getFrameworkSystem(systemId)?.items ?? [];
+  }
+
+  function getObjectsetBindings(item) {
+    const bindings = item?.objectsetBindings;
+    return Array.isArray(bindings) ? bindings : typeof bindings === "string" && bindings ? [bindings] : [];
+  }
+
+  function getComponentXmlEntries(item, key) {
+    const entries = item?.[key];
+    return Array.isArray(entries) ? entries : typeof entries === "string" && entries ? [entries] : [];
   }
 
   function supportsXmlProfiles() {
@@ -328,7 +339,9 @@
         ...getRawGfComponentTagKeys(profile.systemPrefix),
       ]);
       for (const item of catalog) {
-        const verifiedBindings = item.objectsetBindings ?? [];
+        const verifiedBindings = getObjectsetBindings(item);
+        const piXmlEntries = getComponentXmlEntries(item, "piXml");
+        const propertyReferenceEntries = getComponentXmlEntries(item, "propertyReferenceXml");
         const templateBindings = item.category === "FAXX"
           ? getTemplateBindingCandidates(getAirTreatmentTemplateId(profile.systemPrefix))
             .filter((candidate) => candidate.component === item.name)
@@ -336,7 +349,7 @@
           : [];
         const availableBindings = item.category === "FAXX"
           ? templateBindings
-          : verifiedBindings.filter((binding, index) => Boolean(item.piXml?.[index] && item.propertyReferenceXml?.[index]));
+          : verifiedBindings.filter((_binding, index) => Boolean(piXmlEntries[index] && propertyReferenceEntries[index]));
         const bindingStatuses = availableBindings.map((binding) => ({
           binding,
           target: resolveTemplateBinding(binding, tagRows),
@@ -470,10 +483,12 @@
       ]);
       for (const item of catalog) {
         if (!item.safeToAdd) continue;
+        const piXmlEntries = getComponentXmlEntries(item, "piXml");
+        const propertyReferenceEntries = getComponentXmlEntries(item, "propertyReferenceXml");
         const variantAllowed = !isExcludedGt11Variant(item.name, tagKeys) && !isExcludedGt31Variant(item.name);
-        for (const [index, binding] of (item.objectsetBindings ?? []).entries()) {
+        for (const [index, binding] of getObjectsetBindings(item).entries()) {
           if (templateNames.has(binding.toUpperCase())) continue;
-          if (!item.piXml?.[index] || !item.propertyReferenceXml?.[index]) continue;
+          if (!piXmlEntries[index] || !propertyReferenceEntries[index]) continue;
           candidates.push({
             binding,
             component: item.name,
@@ -736,6 +751,8 @@
     const value = String(description ?? "").trim();
     return (
       nonFrameworkProperties.has(normalize(value)) ||
+      /^(?:Hardware|Hardwate)[ _-]*(?:Output|Input)(?:[ _-]*[A-Z0-9]+)?$/i.test(value) ||
+      /^Binary[ _-]*Memory(?:[ _-]*(?:\d+|x+))?$/i.test(value) ||
       /^(?:LB\d+-)?[A-Z0-9_-]+\((?:actValue|BACInfo)\)$/i.test(value)
     );
   }
@@ -745,7 +762,10 @@
   }
 
   function getTagListReviewValue(item) {
-    return isStandardTagListReview() ? String(item.sourceName ?? "") : String(item.description ?? "");
+    if (item.editedTag !== undefined) return item.editedTag;
+    if (isStandardTagListReview()) return String(item.sourceName ?? "");
+    const description = String(item.description ?? "");
+    return description.trim() ? description : String(item.sourceName ?? "");
   }
 
   function reviewDescription(description) {
@@ -789,6 +809,13 @@
     const tag = token.replace(systemPrefixPattern, "");
     const normalizedTag = normalize(tag);
     const frameworkTag = normalizeTag(tag);
+    const system = token.match(systemPrefixPattern)?.[0]?.slice(0, -1).toUpperCase();
+    if (system && /^SV(?:21|31)_/.test(frameworkTag)) {
+      const opposite = frameworkTag.startsWith("SV21_") ? "SV31_" : "SV21_";
+      if (hasTagPrefix(getTagKeysForSystem(system), opposite)) {
+        return { kind: "bad", label: "Komponentkonflikt", reason: `${system}: SV31 och SV21 får inte förekomma samtidigt` };
+      }
+    }
     // A tag can be a valid framework tag even when its conditional component
     // group is inactive for the answers in this project. Keep applicability
     // rules for the missing-tag suggestions, but don't call a known framework
@@ -883,22 +910,22 @@
       );
       const description = values.get(descriptionColumn) ?? "";
       const sourceName = values.get(nameColumn) ?? "";
-      const reviewValue = workflowMode === "review" && byId("tagListFormat")?.value === "standard"
-        ? sourceName
-        : description;
-      if (!description.trim() && !(workflowMode === "review" && byId("tagListFormat")?.value === "standard" && sourceName.trim())) return [];
+      const standardReview = workflowMode === "review" && byId("tagListFormat")?.value === "standard";
+      const reviewValue = standardReview || !description.trim() ? sourceName : description;
+      if (!description.trim() && !sourceName.trim()) return [];
       const isProperty = isNonFrameworkProperty(reviewValue);
       const isAlarm = isAlarmClass(reviewValue);
+      const nameSource = description.trim() ? description : sourceName;
       return [{
         row,
         cells,
         sourceName,
         description,
-        name: workflowMode === "review" && byId("tagListFormat")?.value === "standard"
+        name: standardReview
           ? sourceName
           : isProperty || isAlarm
-          ? description
-          : description.trim().split(/\s+/)[0],
+          ? nameSource
+          : nameSource.trim().split(/\s+/)[0],
         rowNumber: Number(row.getAttribute("r")) || index + 2,
         result: isProperty
           ? {
@@ -989,6 +1016,27 @@
         row.lastElementChild.appendChild(decision);
       }
       tableBody.appendChild(row);
+      if (item.result.kind === "bad" || item.editedTag !== undefined) {
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.textContent = "Redigera tagg";
+        edit.className = "edit-tag-button";
+        edit.addEventListener("click", () => {
+          const value = window.prompt("Korrigera taggnamnet", item.editedTag ?? item.name);
+          if (value === null || !value.trim()) return;
+          item.editedTag = value.trim();
+          item.name = item.editedTag;
+          item.result = reviewDescription(item.editedTag);
+          item.autoResult = { ...item.result };
+          systemTagKeysCache.clear();
+          relevantFrameworkTagsCache.clear();
+          generatedObjectSetForPreview = null;
+          invalidateEboDownload();
+          renderResults();
+          renderBindingOverview();
+        });
+        row.lastElementChild.appendChild(edit);
+      }
     }
 
     byId("greenCount").textContent = counts.good;
@@ -1025,11 +1073,16 @@
       const total = reviewedRows.length;
       for (let index = 0; index < total; index++) {
         const item = reviewedRows[index];
+        if (item.editedTag !== undefined) {
+          item.name = item.editedTag;
+          item.result = reviewDescription(item.editedTag);
+          continue;
+        }
         if (workflowMode === "review") {
           const reviewValue = getTagListReviewValue(item);
           // Use the same alarm-class parser as the assessment. It also accepts
           // the category variants that are not caught by the stricter tag helper.
-          const alarmCategory = isAlarmClass(item.description);
+          const alarmCategory = isAlarmClass(reviewValue);
           if (isStandardTagListReview()) {
             // Larmkategorier ska alltid få Description som Name, oavsett listformat.
             item.name = alarmCategory
@@ -1037,9 +1090,10 @@
               : item.sourceName ?? "";
           } else {
             const description = String(item.description ?? "").trim();
-            item.name = isNonFrameworkProperty(description) || alarmCategory
-              ? description
-              : description.split(/\s+/)[0] ?? description;
+            const nameSource = description || String(item.sourceName ?? "");
+            item.name = isNonFrameworkProperty(reviewValue) || alarmCategory
+              ? nameSource
+              : nameSource.trim().split(/\s+/)[0] ?? nameSource;
           }
           item.result = reviewDescription(reviewValue);
           item.autoResult = { ...item.result };
@@ -1048,7 +1102,7 @@
           item.name = item.description;
           item.result = reviewDescription(item.description);
         } else if (item.result.kind !== "included") {
-          const token = item.description.trim().split(/\s+/)[0] ?? "";
+          const token = getTagListReviewValue(item).trim().split(/\s+/)[0] ?? "";
           const prefix = token.match(systemPrefixPattern)?.[0]?.slice(0, -1).toUpperCase() ?? "";
           const profile = workflowMode === "review" ? null : getProfileForSystemPrefix(prefix);
           activeSystemPrefix = profile?.systemPrefix ?? "";
@@ -1330,6 +1384,8 @@
         if (!(isAlwaysApplicable || isSelected)) continue;
         if (/^LB/i.test(profile?.systemPrefix ?? "") && !isCandidateApplicable(item)) continue;
         const expectedTag = expectedTagName(item);
+        if ((/^SV21_/.test(expectedTag) && hasTagPrefix(tagKeys, "SV31_")) ||
+            (/^SV31_/.test(expectedTag) && hasTagPrefix(tagKeys, "SV21_"))) continue;
         const key = normalizeTag(`${profile?.systemPrefix ?? ""}${expectedTag}`);
         if (seen.has(key) || frameworkTagPresent(expectedTag, tagKeys)) continue;
         seen.add(key);
@@ -1340,6 +1396,7 @@
     activeSystemPrefix = "";
     selectedTagGroups = originalGroups;
     const missingTagsList = byId("missingTagsList");
+    missingFrameworkRows = missingTags;
     missingTagsList.replaceChildren();
     byId("missingTagsCount").textContent = missingTags.length;
     if (missingTags.length === 0) {
@@ -1451,8 +1508,9 @@
   }
 
   function correctedName(item) {
-    const description = String(item.description ?? "").trim();
-    if (!description || isNonFrameworkProperty(description) || isAlarmClass(description)) return description;
+    const description = String(item.description ?? "").trim() || String(item.sourceName ?? "").trim();
+    if (!description) return "";
+    if (isNonFrameworkProperty(description) || isAlarmClass(description)) return description;
     const token = (description.match(/^[^\s]+/)?.[0] ?? "").replace(/[,:;]$/, "");
     const prefix = token.match(systemPrefixPattern)?.[0] ?? "";
     const sourceTag = token.slice(prefix.length);
@@ -2239,6 +2297,8 @@
 
   async function downloadReviewedWorkbook() {
     addReviewStyles();
+    renderMissingTags();
+    await writeMissingTagsSheet();
     workbookZip.file(worksheetPath, new XMLSerializer().serializeToString(worksheetXml));
     workbookZip.file("xl/styles.xml", new XMLSerializer().serializeToString(stylesXml));
     const blob = await workbookZip.generateAsync({ type: "blob", compression: "DEFLATE" });
@@ -2247,6 +2307,62 @@
     link.download = `${sourceFile.name.replace(/\.xlsx$/i, "")}_granskad.xlsx`;
     link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  }
+
+  async function writeMissingTagsSheet() {
+    const ns = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
+    const relNs = "http://schemas.openxmlformats.org/package/2006/relationships";
+    const workbook = parseXml(await workbookZip.file("xl/workbook.xml").async("text"));
+    const relationships = parseXml(await workbookZip.file("xl/_rels/workbook.xml.rels").async("text"));
+    const types = parseXml(await workbookZip.file("[Content_Types].xml").async("text"));
+    const sheets = [...workbook.getElementsByTagNameNS(ns, "sheet")];
+    const sheetName = "Saknade ramverkstaggar";
+    let sheet = sheets.find((entry) => entry.getAttribute("name") === sheetName);
+    let target;
+    if (sheet) {
+      const id = sheet.getAttribute("r:id");
+      target = [...relationships.documentElement.children].find((entry) => entry.getAttribute("Id") === id)?.getAttribute("Target");
+    } else {
+      const id = `rIdMissingFramework${Date.now()}`;
+      target = `worksheets/missing-framework-${Date.now()}.xml`;
+      sheet = workbook.createElementNS(ns, "sheet");
+      sheet.setAttribute("name", sheetName);
+      sheet.setAttribute("sheetId", String(Math.max(0, ...sheets.map((entry) => Number(entry.getAttribute("sheetId")))) + 1));
+      sheet.setAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships", "r:id", id);
+      workbook.getElementsByTagNameNS(ns, "sheets")[0].appendChild(sheet);
+      const relation = relationships.createElementNS(relNs, "Relationship");
+      relation.setAttribute("Id", id);
+      relation.setAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet");
+      relation.setAttribute("Target", target);
+      relationships.documentElement.appendChild(relation);
+      const override = types.createElementNS(types.documentElement.namespaceURI, "Override");
+      override.setAttribute("PartName", `/xl/${target}`);
+      override.setAttribute("ContentType", "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml");
+      types.documentElement.appendChild(override);
+    }
+    if (!target) throw new Error("Kunde inte hitta bladet för saknade ramverkstaggar.");
+    const doc = parseXml(`<worksheet xmlns="${ns}"><sheetData/></worksheet>`);
+    const data = doc.getElementsByTagNameNS(ns, "sheetData")[0];
+    const records = [["Name", "Description", "Bedömning"], ...missingFrameworkRows.map((item) => [item.expectedTag, item.description, "Potentiellt saknad ramverkstagg"] )];
+    records.forEach((values, index) => {
+      const row = doc.createElementNS(ns, "row");
+      row.setAttribute("r", String(index + 1));
+      values.forEach((value, column) => {
+        const cell = doc.createElementNS(ns, "c");
+        cell.setAttribute("r", `${columnName(column)}${index + 1}`);
+        cell.setAttribute("t", "inlineStr");
+        const inline = doc.createElementNS(ns, "is");
+        const text = doc.createElementNS(ns, "t");
+        text.textContent = value ?? "";
+        inline.appendChild(text); cell.appendChild(inline); row.appendChild(cell);
+      });
+      data.appendChild(row);
+    });
+    const serializer = new XMLSerializer();
+    workbookZip.file(target.startsWith("/") ? target.slice(1) : `xl/${target}`, serializer.serializeToString(doc));
+    workbookZip.file("xl/workbook.xml", serializer.serializeToString(workbook));
+    workbookZip.file("xl/_rels/workbook.xml.rels", serializer.serializeToString(relationships));
+    workbookZip.file("[Content_Types].xml", serializer.serializeToString(types));
   }
 
   function mapBindingRoot(root) {
@@ -2631,9 +2747,12 @@
     let added = 0;
     for (const name of selected) {
       const item = catalog.get(name);
-      const bindings = item?.objectsetBindings ?? [];
+      if (!item) throw new Error(`Komponenten ${name} saknas i biblioteket.`);
+      const bindings = getObjectsetBindings(item);
+      const piXmlEntries = getComponentXmlEntries(item, "piXml");
+      const propertyReferenceEntries = getComponentXmlEntries(item, "propertyReferenceXml");
       const hasVerifiedObjectSetData = bindings.length > 0 &&
-        item.piXml?.length === bindings.length && item.propertyReferenceXml?.length === bindings.length;
+        piXmlEntries.length === bindings.length && propertyReferenceEntries.length === bindings.length;
       const tagTarget = bindings.map((binding) => resolveTemplateBinding(binding, rows)).find(Boolean) ?? null;
       if (!item || !item.safeToAdd || !hasVerifiedObjectSetData || !tagTarget) {
         throw new Error(`Komponenten ${name} kan inte bindas säkert till tagglistan för ${systemPrefix}.`);
@@ -2641,7 +2760,7 @@
       for (let index = 0; index < bindings.length; index++) {
         const binding = bindings[index];
         if (!existingPiNames.has(binding)) {
-          const piDocument = parseXml(item.piXml[index]);
+          const piDocument = parseXml(piXmlEntries[index]);
           if (xmlHasParseError(piDocument) || piDocument.documentElement?.localName !== "PI") {
             throw new Error(`EBO-bindningen ${binding} för komponenten ${name} är ogiltig.`);
           }
@@ -2649,7 +2768,7 @@
           existingPiNames.add(binding);
         }
         if (!existingPropertyNames.has(binding)) {
-          const propertyDocument = parseXml(item.propertyReferenceXml[index]);
+          const propertyDocument = parseXml(propertyReferenceEntries[index]);
           if (xmlHasParseError(propertyDocument) || propertyDocument.documentElement?.localName !== "PropertyReference") {
             throw new Error(`PropertyReference ${binding} för komponenten ${name} är ogiltig.`);
           }
@@ -2948,11 +3067,11 @@
     if (event.target.checked) {
       const list = event.target.closest(".component-library-choices");
       const current = (window.ECO_COMPONENT_LIBRARY ?? []).find((item) => item.name === event.target.value);
-      const currentBindings = new Set(current?.objectsetBindings ?? []);
+      const currentBindings = new Set(getObjectsetBindings(current));
       for (const other of list.querySelectorAll("[data-library-component]:checked")) {
         if (other === event.target) continue;
         const otherItem = (window.ECO_COMPONENT_LIBRARY ?? []).find((item) => item.name === other.value);
-        if ((otherItem?.objectsetBindings ?? []).some((binding) => currentBindings.has(binding))) other.checked = false;
+        if (getObjectsetBindings(otherItem).some((binding) => currentBindings.has(binding))) other.checked = false;
       }
     }
     generatedObjectSetForPreview = null;
