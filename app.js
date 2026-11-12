@@ -19,7 +19,7 @@
     ["DRAGSKÅP OCH GIFTSKÅP", "Dragskåp och giftskåp"],
     ["SVETS/LÖDSUG", "Svets-/lödsug"],
   ];
-  const systemPrefixPattern = /^(?:LB[A-Z0-9]{1,3}|AS[_-][A-Z]\d{2,4}|AS\d{1,3}|BEL_[A-Z0-9]+|(?:VV|VP|VS)\d{1,3}_MQ\d{1,3}|KA\d{1,3}_(?:B\d{1,3}|A\d{3,5})|(?:VS|MV|VV|KV|FA|MQ|KB|VPU)\d{1,3})[-_]/i;
+  const systemPrefixPattern = /^(?:LB[A-Z0-9]{1,3}|AS[_-][A-Z]\d{2,4}|AS\d{1,3}|BEL_[A-Z0-9]+|(?:VV|VP|VS)\d{1,3}_MQ\d{1,3}|KA\d{1,3}_(?:B\d{1,3}|A\d{3,5})|(?:UC|VS|MV|VV|KV|FA|MQ|KB|VPU)\d{1,3})[-_]/i;
   const projectQuestions = [
     { id: "ducName", label: "Vad heter DUC:en i BACnet/IP Network?", type: "text", placeholder: "DUCNAMN", hint: "Namnet direkt under BACnet/IP Network i EBO sökvägen." },
     { id: "schoolName", label: "Skolans namn", type: "text", placeholder: "Exempelskolan" },
@@ -125,10 +125,12 @@
   }
 
   function supportsXmlProfiles() {
-    return ["airTreatment", "separateFans"].includes(selectedFrameworkSystemId);
+    return ["airTreatment", "separateFans", "heating", "heatPump"].includes(selectedFrameworkSystemId);
   }
 
   function getSystemIdForPrefix(systemPrefix = "") {
+    if (/^UC/i.test(systemPrefix)) return "heating";
+    if (/^VPU/i.test(systemPrefix)) return "heatPump";
     return /^FA/i.test(systemPrefix) ? "separateFans" : /^LB/i.test(systemPrefix) ? "airTreatment" : selectedFrameworkSystemId;
   }
 
@@ -151,6 +153,8 @@
     });
     if (prefixes.some((prefix) => /^LB/i.test(prefix))) return "airTreatment";
     if (prefixes.some((prefix) => /^FA/i.test(prefix))) return "separateFans";
+    if (prefixes.some((prefix) => /^UC/i.test(prefix))) return "heating";
+    if (prefixes.some((prefix) => /^VPU/i.test(prefix))) return "heatPump";
     if (prefixes.some((prefix) => /^KA/i.test(prefix))) return "cooling";
     if (prefixes.some((prefix) => /_MQ\d+$/i.test(prefix)) || prefixes.some((prefix) => /^MQ/i.test(prefix))) return "meters";
     if (hasApparatusPrefix) return "";
@@ -190,14 +194,17 @@
   function updateSystemSelectionView() {
     const reviewOnly = workflowMode === "review";
     const workflowVisible = reviewOnly || airTreatmentStarted;
-    byId("systemSelectionTitle").textContent = reviewOnly ? "Granska tagglista" : selectedFrameworkSystemId === "separateFans" ? "Frånluftsfläktar" : "Luftbehandling";
+    byId("systemSelectionTitle").textContent = reviewOnly ? "Granska tagglista" : selectedFrameworkSystemId === "heating" ? "Undercentral" : selectedFrameworkSystemId === "heatPump" ? "Värmepump" : selectedFrameworkSystemId === "separateFans" ? "Frånluftsfläktar" : "Luftbehandling";
     byId("systemSelectionDescription").textContent = reviewOnly
       ? "Tagglistan jämförs mot ramverket."
       : "Ange antal system/driftkort för XML-exporten.";
     byId("workflow").classList.toggle("hidden", !workflowVisible);
-    byId("airTreatmentSetup").classList.toggle("hidden", reviewOnly || airTreatmentStarted);
+    byId("airTreatmentSetup").classList.toggle("hidden", reviewOnly || activeWorkflowStep !== 1);
+    byId("continueAirTreatment").classList.toggle("hidden", airTreatmentStarted);
     byId("selectedSystemTitle").classList.toggle("hidden", reviewOnly);
-    byId("systemProfilesPanel").classList.toggle("hidden", reviewOnly || !reviewedRows.length);
+    byId("systemProfilesPanel").classList.toggle("hidden", reviewOnly || !airTreatmentStarted || activeWorkflowStep !== 1);
+    byId("systemSelectionTitle").classList.toggle("hidden", !reviewOnly);
+    byId("systemSelectionDescription").classList.toggle("hidden", !reviewOnly);
     byId("tagListFormatControl").classList.toggle("hidden", !reviewOnly);
     byId("fsNameControl").classList.toggle("hidden", reviewOnly);
     byId("workflowDescription").classList.toggle("hidden", reviewOnly);
@@ -207,12 +214,12 @@
         ? 'Ladda upp tagglistan som Excelfil. Programmet använder FAXX-mallen för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.'
         : 'Ladda upp tagglistan som Excelfil. Programmet använder en gemensam ventilationsmall för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.';
     const sourceFrame = byId("objectSetSource");
-    if (sourceFrame) sourceFrame.src = selectedFrameworkSystemId === "separateFans" ? "templates/faxx/objectset.xml" : "templates/tgml/LBXX_MALL.xml";
+    if (sourceFrame) sourceFrame.src = ({ UCXX: "templates/ucxx/objectset.xml", VPUXX: "templates/vpuxx/objectset.xml", FAXX: "templates/faxx/objectset.xml" })[getAirTreatmentTemplateId()] ?? "templates/tgml/LBXX_MALL.xml";
     byId("step2Button").disabled = reviewOnly || !airTreatmentStarted;
     updateTopTabState();
     byId("continueAirTreatment").disabled = !getRequestedSystemCount();
     byId("airTemplateStatus").textContent = getRequestedSystemCount()
-      ? `${getRequestedSystemCount()} system/driftkort väljs efter uppladdning av tagglistan.`
+      ? `${getRequestedSystemCount()} XML-filer.`
       : "Ange ett giltigt antal system/driftkort."
   }
 
@@ -224,7 +231,9 @@
 
   function getSystemProfileSelections() {
     return [...document.querySelectorAll(".system-profile-row")].map((row) => ({
-      systemPrefix: row.querySelector("[data-profile-prefix]").value,
+      type: row.querySelector("[data-profile-type]")?.value ?? "",
+      systemPrefix: row.querySelector("[data-profile-prefix]").value.trim().toUpperCase(),
+      subsystems: [...row.querySelectorAll("[data-subsystem]")].filter(item => item.querySelector("input[type=checkbox]").checked).map(item => ({ templatePrefix: item.dataset.subsystem, prefix: item.querySelector("input[type=text]").value.trim().toUpperCase() })),
       serviceArea: row.querySelector("[data-profile-service-area]")?.value ?? "",
       components: [...(document.querySelector(`[data-component-profile="${CSS.escape(row.querySelector("[data-profile-prefix]").value)}"]`)?.querySelectorAll("[data-library-component]:checked") ?? [])]
         .map((input) => input.value),
@@ -236,64 +245,50 @@
   }
 
   function renderSystemProfiles() {
-    const panel = byId("systemProfilesPanel");
-    const container = byId("systemProfiles");
     const previous = getSystemProfileSelections();
-    const prefixes = getSystemPrefixes();
-    const count = getRequestedSystemCount();
+    const container = byId("systemProfiles");
     container.replaceChildren();
-    panel.classList.toggle("hidden", workflowMode === "review" || !reviewedRows.length || !supportsXmlProfiles());
-    if (workflowMode === "review" || !reviewedRows.length || !supportsXmlProfiles()) return;
-
-    for (let index = 0; index < count; index++) {
+    byId("systemProfilesPanel").classList.toggle("hidden", workflowMode === "review" || !airTreatmentStarted);
+    if (workflowMode === "review") return;
+    const types = [["LBXX", "LB · Luftbehandling"], ["UCXX", "Undercentral"], ["VPUXX", "Värmepump"], ["FAXX", "FA · Separata fläktar"]];
+    const slots = [["VP01", "Inkommande fjärrvärme"], ["VS01", "Radiatorkrets / ventilationskrets"], ["VS02", "Radiatorkrets / ventilationskrets"], ["VV01", "Tappvarmvatten"], ["KV01", "Kallvatten"]];
+    for (let index = 0; index < getRequestedSystemCount(); index++) {
+      const saved = previous[index] ?? {};
       const row = document.createElement("div");
-      row.className = "system-profile-row";
-      const number = document.createElement("strong");
-      number.textContent = `XML ${index + 1}`;
-
-      const prefixLabel = document.createElement("label");
-      prefixLabel.textContent = "Systemnamn";
-      const prefixSelect = document.createElement("select");
-      prefixSelect.dataset.profilePrefix = "";
-      const prefixPlaceholder = document.createElement("option");
-      prefixPlaceholder.value = "";
-      prefixPlaceholder.textContent = "Välj system";
-      prefixSelect.appendChild(prefixPlaceholder);
-      for (const prefix of prefixes) {
-        const option = document.createElement("option");
-        option.value = prefix;
-        option.textContent = prefix;
-        prefixSelect.appendChild(option);
+      row.className = "system-profile-row xml-profile-card";
+      const title = document.createElement("strong"); title.textContent = "XML " + (index + 1); row.append(title);
+      const field = (text, control) => { const label = document.createElement("label"); label.append(document.createTextNode(text), control); row.append(label); return label; };
+      const type = document.createElement("select"); type.dataset.profileType = "";
+      type.add(new Option("Välj systemtyp", ""));
+      types.forEach(([value,label]) => type.add(new Option(label,value)));
+      type.value = saved.type ?? ""; field("Systemtyp",type);
+      const prefix = document.createElement("input"); prefix.type = "text"; prefix.dataset.profilePrefix = "";
+      prefix.value = saved.systemPrefix ?? ""; prefix.placeholder = ({LBXX:"LB11",UCXX:"UC01",VPUXX:"VPU01",FAXX:"FA11"})[type.value] ?? "Systemnamn";
+      prefix.setAttribute("list", "profile-prefixes-" + index); field("Systemnamn",prefix);
+      const list = document.createElement("datalist"); list.id = "profile-prefixes-" + index;
+      getSystemPrefixes().filter(value => value.startsWith(type.value.replace("XX",""))).forEach(value => list.append(new Option(value,value))); row.append(list);
+      if (type.value === "FAXX") {
+        const area = document.createElement("select");
+        area.dataset.profileServiceArea = "";
+        area.add(new Option("Välj betjäningsområde", ""));
+        separateFanServiceAreas.forEach(([value, label]) => area.add(new Option(label, value)));
+        area.value = saved.serviceArea ?? "";
+        field("Betjäningsområde", area).className = "system-profile-service-area";
       }
-      prefixSelect.value = prefixes.includes(previous[index]?.systemPrefix) ? previous[index].systemPrefix : "";
-      prefixLabel.appendChild(prefixSelect);
-      const serviceLabel = document.createElement("label");
-      serviceLabel.className = "system-profile-service-area";
-      serviceLabel.textContent = "Betjäningsområde";
-      serviceLabel.classList.toggle("hidden", !/^FA/i.test(prefixSelect.value));
-      const serviceSelect = document.createElement("select");
-      serviceSelect.dataset.profileServiceArea = "";
-      const servicePlaceholder = document.createElement("option");
-      servicePlaceholder.value = "";
-      servicePlaceholder.textContent = "Välj betjäningsområde";
-      serviceSelect.appendChild(servicePlaceholder);
-      for (const [section, label] of separateFanServiceAreas) {
-        const option = document.createElement("option");
-        option.value = section;
-        option.textContent = label;
-        serviceSelect.appendChild(option);
+      const children = document.createElement("fieldset"); children.className = "profile-subsystems"; children.classList.toggle("hidden", !["UCXX","VPUXX"].includes(type.value));
+      const legend = document.createElement("legend"); legend.textContent = "Delsystem som ska ingå"; children.append(legend);
+      for (const [slot,label] of (type.value === "VPUXX" ? [...slots, ["KB01", "Köldbärarkrets"]] : slots)) {
+        const choice = document.createElement("label"); choice.dataset.subsystem = slot;
+        const selected = saved.subsystems?.find(item => item.templatePrefix === slot);
+        const check = document.createElement("input"); check.type = "checkbox"; check.checked = Boolean(selected);
+        const name = document.createElement("input"); name.type = "text"; name.value = selected?.prefix ?? slot; name.setAttribute("aria-label", "Systemnamn för " + slot);
+        const caption = document.createElement("span"); caption.textContent = label;
+        choice.append(check,caption,name); children.append(choice);
       }
-      const savedArea = previous[index]?.serviceArea;
-      serviceSelect.value = separateFanServiceAreas.some(([section]) => section === savedArea) ? savedArea : "";
-      serviceLabel.appendChild(serviceSelect);
-      row.append(number, prefixLabel, serviceLabel);
-      container.appendChild(row);
+      row.append(children); container.append(row);
     }
-    renderComponentLibraryPanel();
-    renderBindingOverview();
-    syncPrimarySystemPrefix();
-    updateSystemProfilesStatus();
-    renderTgmlPreview();
+    updateSystemPrefixOptions();
+    renderComponentLibraryPanel(); renderBindingOverview(); syncPrimarySystemPrefix(); updateSystemProfilesStatus();
   }
 
   function renderComponentLibraryPanel() {
@@ -352,7 +347,7 @@
           : verifiedBindings.filter((_binding, index) => Boolean(piXmlEntries[index] && propertyReferenceEntries[index]));
         const bindingStatuses = availableBindings.map((binding) => ({
           binding,
-          target: resolveTemplateBinding(binding, tagRows),
+          target: resolveTemplateBinding(binding, tagRows, profile.systemPrefix),
         }));
         const matchedBindings = bindingStatuses.filter((entry) => entry.target);
         const missingBindings = bindingStatuses.filter((entry) => !entry.target);
@@ -415,7 +410,7 @@
     const objectSet = parseXml(source);
     if (xmlHasParseError(objectSet)) return [];
     const graphicOi = [...objectSet.getElementsByTagNameNS("*", "OI")]
-      .find((oi) => ["LBXX BILD", `${templateId} BILD`].includes(oi.getAttribute("NAME")));
+      .find((oi) => [`${templateId} BILD`, ...(["UCXX", "VPUXX"].includes(templateId) ? ["UNDERCENTRAL BILD"] : [])].includes(oi.getAttribute("NAME")));
     const graphicType = [...objectSet.getElementsByTagNameNS("*", "ObjectType")]
       .find((type) => type.getAttribute("Name") === graphicOi?.getAttribute("TYPE"));
     if (!graphicOi || !graphicType) return [];
@@ -424,7 +419,7 @@
     const candidates = [...graphicOi.getElementsByTagNameNS("*", "PI")].flatMap((pi) => {
       const binding = pi.getAttribute("Name");
       const hasApplicationReference = [...pi.getElementsByTagNameNS("*", "Reference")]
-        .some((reference) => /\/Application\/LBXX(?:-[^/]+)?(?:\/|$)/i.test(reference.getAttribute("Object") ?? ""));
+        .some((reference) => new RegExp(`/Application/${templateId === "VPUXX" ? "(?:VPUXX|UCXX)" : templateId}(?:-[^/]+)?(?:/|$)`, "i").test(reference.getAttribute("Object") ?? ""));
       if (!binding || (templateId !== "FAXX" && !hasApplicationReference) || !propertyNames.has(binding)) return [];
       return [{ binding, component: binding.split(".")[0], source: "mall", active: true }];
     });
@@ -503,8 +498,8 @@
       const unmatchedActive = [];
       for (const candidate of candidates) {
         if (candidate.source === "library" && !candidate.variantAllowed) continue;
-        const tagTarget = resolveTemplateBinding(candidate.binding, rows);
-        const exportTarget = resolveTemplateBinding(candidate.binding, exportRows);
+        const tagTarget = resolveTemplateBinding(candidate.binding, rows, profile.systemPrefix);
+        const exportTarget = resolveTemplateBinding(candidate.binding, exportRows, profile.systemPrefix);
         if (!tagTarget) {
           if (candidate.active) unmatchedActive.push(candidate);
           continue;
@@ -648,7 +643,9 @@
     const count = getRequestedSystemCount();
     const prefixes = profiles.map((profile) => profile.systemPrefix);
     return count > 0 && profiles.length === count && profiles.every((profile) =>
-      profile.systemPrefix && (!/^FA/i.test(profile.systemPrefix) || Boolean(profile.serviceArea)),
+      profile.type && new RegExp("^" + profile.type.replace("XX", "") + "[A-Z0-9]+$").test(profile.systemPrefix) &&
+      (profile.type !== "FAXX" || Boolean(profile.serviceArea)) &&
+      (!["UCXX", "VPUXX"].includes(profile.type) || (profile.subsystems.length > 0 && profile.subsystems.every(item => new RegExp("^" + item.templatePrefix.replace(/\d+$/, "") + "\\d+$").test(item.prefix)) && new Set(profile.subsystems.map(item => item.prefix)).size === profile.subsystems.length)),
     ) && new Set(prefixes).size === prefixes.length;
   }
 
@@ -657,24 +654,26 @@
     const prefixes = getSystemPrefixes();
     const profiles = getSystemProfileSelections();
     const duplicate = new Set(profiles.map((profile) => profile.systemPrefix).filter(Boolean)).size !== profiles.filter((profile) => profile.systemPrefix).length;
-    byId("systemProfilesStatus").textContent = !count
-      ? "Ange först antal system/driftkort."
-      : prefixes.length < count
-        ? `Tagglistan innehåller ${prefixes.length} identifierade systemprefix, men ${count} valdes. Minska antalet eller kontrollera tagglistan.`
-        : duplicate
-          ? "Varje XML måste ha ett eget systemnamn."
-          : areSystemProfilesComplete()
-          ? `${count} system/driftkort har kopplats till rätt mall${profiles.some((profile) => /^FA/i.test(profile.systemPrefix)) ? " och betjäningsområde" : ""}.`
-      : `Välj systemnamn${profiles.some((profile) => /^FA/i.test(profile.systemPrefix) && !profile.serviceArea) ? " och betjäningsområde" : ""} för alla ${count} XML.`;
+    byId("systemProfilesStatus").textContent = duplicate ? "Varje XML måste ha ett eget systemnamn." : areSystemProfilesComplete() ? count + " XML-filer har konfigurerats." : "Välj systemtyp och systemnamn. För FA väljer du betjäningsområde, för UC och Värmepump väljer du delsystem.";
   }
 
   function getAirTreatmentTemplateId(systemPrefix = "") {
+    const profile = systemPrefix ? getProfileForSystemPrefix(systemPrefix) : null;
+    if (profile?.type) return profile.type;
+    if (/^LB/i.test(systemPrefix)) return "LBXX";
+    if (!systemPrefix && selectedFrameworkSystemId === "heating") return window.ECO_UCXX_OBJECTSET_TEMPLATE ? "UCXX" : "";
+    if (!systemPrefix && selectedFrameworkSystemId === "heatPump") return window.ECO_VPUXX_OBJECTSET_TEMPLATE ? "VPUXX" : "";
+    if (/^UC/i.test(systemPrefix)) return window.ECO_UCXX_OBJECTSET_TEMPLATE ? "UCXX" : "";
+    if (/^VPU/i.test(systemPrefix)) return window.ECO_VPUXX_OBJECTSET_TEMPLATE ? "VPUXX" : "";
+    if (systemPrefix && !/^(?:LB|FA)/i.test(systemPrefix)) return "";
     const isSeparateFan = /^FA/i.test(systemPrefix) || selectedFrameworkSystemId === "separateFans";
     if (isSeparateFan) return window.ECO_FAXX_OBJECTSET_TEMPLATE ? "FAXX" : "";
     return selectedFrameworkSystemId === "airTreatment" && window.ECO_EBO_OBJECTSET_TEMPLATE ? "LBXX" : "";
   }
 
   function getSelectedObjectSetTemplate(templateId = getAirTreatmentTemplateId()) {
+    if (templateId === "UCXX") return window.ECO_UCXX_OBJECTSET_TEMPLATE ?? "";
+    if (templateId === "VPUXX") return window.ECO_VPUXX_OBJECTSET_TEMPLATE ?? "";
     if (templateId === "FAXX") return window.ECO_FAXX_OBJECTSET_TEMPLATE ?? "";
     return templateId === "LBXX" ? window.ECO_EBO_OBJECTSET_TEMPLATE ?? "" : "";
   }
@@ -844,6 +843,34 @@
       label: "Saknas i ramverket",
       reason: `Ingen match för ${tag || text}`,
     };
+  }
+
+  // Description is checked independently; source text is never rewritten.
+  const descriptionRulesCache = new Map();
+  function checkRowDescription(item, tagResult) {
+    const reviewValue = getTagListReviewValue(item);
+    if (tagResult.kind !== "good" || isAlarmClass(reviewValue) || isNonFrameworkProperty(reviewValue)) return tagResult;
+    const token = String(item.editedTag ?? reviewValue).trim().split(/\s+/)[0].replace(/[,:;]$/, "");
+    const prefix = token.match(systemPrefixPattern)?.[0] ?? "";
+    const tag = token.slice(prefix.length);
+    const systemId = /^LB/i.test(prefix) ? "airTreatment" : /^FA/i.test(prefix) ? "separateFans" : /^KA/i.test(prefix) ? "cooling" : /^VPU/i.test(prefix) ? "heatPump" : /^(?:UC|VS|VP|MV|VV|KV)/i.test(prefix) ? "heating" : /^AS/i.test(prefix) ? "apparatus" : "";
+    const key = systemId + ":" + tag;
+    let expected = descriptionRulesCache.get(key);
+    if (!expected) {
+      const items = systemId ? getSystemItems(systemId) : frameworkSystems.flatMap(system => system.items ?? []);
+      const equivalent = tag.replace(/^TF1_TF2_/i,"TF1_").replace(/^FF1_FF2_/i,"FF1_").replace(/^ST21_ST22_/i,"ST21_").replace(/^GX71_GX72_/i,"GX71_");
+      expected = [...new Set(items.filter(rule => frameworkPatternMatches(rule.tag, tag) || frameworkPatternMatches(rule.tag, equivalent)).map(rule => String(rule.description ?? "").trim()).filter(Boolean))];
+      descriptionRulesCache.set(key, expected);
+    }
+    let actual = String(item.description ?? "").trim();
+    const first = actual.split(/\s+/)[0];
+    // Kieback descriptions contain the tag first; standard lists usually do not.
+    if (first && (systemPrefixPattern.test(first) || normalizeTag(first) === normalizeTag(tag))) actual = actual.slice(first.length).trim();
+    const comparable = text => normalize(text.replace(/\s+/g," "));
+    const descriptionMatches = expected.some(text => comparable(actual) === comparable(text) || (/(?:_L|_SL)$/i.test(tag) && comparable(actual.replace(/\s+[ABC]$/i,"")) === comparable(text)));
+    if (descriptionMatches) return { ...tagResult, reason: tagResult.reason + " · Description stämmer" };
+    const reason = !expected.length ? "Description kan inte kontrolleras: beskrivning saknas för taggen i regelunderlaget" : !actual ? "Description saknar beskrivande text. Förväntat: " + expected.join(" / ") : "Description avviker. Förväntat: " + expected.join(" / ");
+    return { kind: "typo", label: "Kontrollera Description", reason: tagResult.reason + " · " + reason };
   }
 
   function parseXml(xml) {
@@ -1026,7 +1053,7 @@
           if (value === null || !value.trim()) return;
           item.editedTag = value.trim();
           item.name = item.editedTag;
-          item.result = reviewDescription(item.editedTag);
+          item.result = checkRowDescription(item, reviewDescription(item.editedTag));
           item.autoResult = { ...item.result };
           systemTagKeysCache.clear();
           relevantFrameworkTagsCache.clear();
@@ -1075,7 +1102,7 @@
         const item = reviewedRows[index];
         if (item.editedTag !== undefined) {
           item.name = item.editedTag;
-          item.result = reviewDescription(item.editedTag);
+          item.result = checkRowDescription(item, reviewDescription(item.editedTag));
           continue;
         }
         if (workflowMode === "review") {
@@ -1117,7 +1144,8 @@
           }
           item.result = reviewDescription(item.description);
         }
-        if (!item.autoResult) item.autoResult = { ...item.result };
+        item.result = checkRowDescription(item, item.result);
+        item.autoResult = { ...item.result };
         if ((index + 1) % 25 === 0 && index + 1 < total) {
           runButton.textContent = `Granskar ${index + 1} av ${total}…`;
           await new Promise((resolve) => requestAnimationFrame(resolve));
@@ -1562,7 +1590,7 @@
     const select = byId("systemPrefix");
     if (!select) return;
     const previous = select.value;
-    const prefixes = getSystemPrefixes();
+    const prefixes = [...new Set(getSystemProfileSelections().map(profile => profile.systemPrefix).filter(Boolean))];
     select.replaceChildren();
     const placeholder = document.createElement("option");
     placeholder.value = "";
@@ -2387,6 +2415,7 @@
   }
 
   function getSystemTagRows(systemPrefix) {
+    if (/^(?:UC|VPU)/i.test(systemPrefix)) return getFrameworkTagRowsForSystem(systemPrefix);
     return reviewedRows.filter((item) => {
       if (item.result.kind === "included" || isAlarmClass(item.description) || isNonFrameworkProperty(item.description)) return false;
       const sourceToken = item.description.trim().split(/\s+/)[0];
@@ -2396,6 +2425,11 @@
   }
 
   function getFrameworkTagRowsForSystem(systemPrefix) {
+    if (/^(?:UC|VPU)/i.test(systemPrefix)) {
+      return reviewedRows.filter((row) => !isAlarmClass(row.description) &&
+        !isNonFrameworkProperty(getTagListReviewValue(row)) &&
+        [systemPrefix, ...(getProfileForSystemPrefix(systemPrefix)?.subsystems ?? []).map(item => item.prefix)].some(prefix => (row.editedTag ?? row.name ?? getTagListReviewValue(row)).toUpperCase().startsWith(prefix.toUpperCase() + "-") || (row.editedTag ?? row.name ?? getTagListReviewValue(row)).toUpperCase().startsWith(prefix.toUpperCase() + "_")));
+    }
     const frameworkTags = /^FA/i.test(systemPrefix)
       ? getSystemItems("separateFans").map((item) => item.tag)
       : getRelevantFrameworkTags();
@@ -2443,7 +2477,21 @@
     return { candidates, isAlarm, isLink };
   }
 
-  function resolveTemplateBinding(bindingName, rows) {
+  function resolveTemplateBinding(bindingName, rows, systemPrefix = activeSystemPrefix) {
+    if (/^(?:UC|VPU)/i.test(systemPrefix)) {
+      const isLink = /\.Link$/i.test(bindingName);
+      const stem = String(bindingName).replace(/\.(?:Value|AlarmState|Link)$/i, "").replace(/^Driftval\s+/i, "");
+      const mapping = getAggregateSubsystemPlan(systemPrefix).retained;
+      const mappedStem = stem.replace(/(?:VPU|VP|VS|VV|KV|KB)\d+(?=[._-])/gi, prefix => mapping.find(item => item.templatePrefix === prefix.toUpperCase())?.prefix ?? prefix);
+      const templateCircuit = stem.match(/(?:VPU|VP|VS|VV|KV|KB)\d+(?=[._-])/i)?.[0]?.toUpperCase();
+      if (templateCircuit && !mapping.some(item => item.templatePrefix === templateCircuit)) return null;
+      const parts = mappedStem.split(".");
+      const keys = parts.map((_part, index) => normalize(parts.slice(index).join("_")));
+      const matches = rows.filter((row) => keys.includes(normalize(row.editedTag ?? row.name)));
+      if (matches.length !== 1) return null;
+      const objectName = matches[0].editedTag ?? matches[0].name;
+      return { objectName, isLink, property: isLink ? "" : /_L$|\.AlarmState$/i.test(objectName) || /\.AlarmState$/i.test(bindingName) ? "AlarmState" : "Value" };
+    }
     const { candidates, isAlarm, isLink } = bindingTagCandidates(bindingName);
     const tagByKey = new Map();
     for (const item of rows) {
@@ -2482,6 +2530,7 @@
   }
 
   function rewriteTemplateReferences(objectSet, ducName, rows, templateId = "LBXX", systemPrefix = "") {
+    const referenceTemplateId = templateId === "VPUXX" ? "(?:VPUXX|UCXX)" : templateId;
     if (templateId === "FAXX") {
       const graphicOi = [...objectSet.getElementsByTagNameNS("*", "OI")]
         .find((oi) => oi.getAttribute("NAME") === `${systemPrefix} BILD`)
@@ -2534,7 +2583,7 @@
       }
       path = path.replace(/\/!BACnet Interface(?=\/)/gi, "/!BACnet");
       reference.setAttribute("Object", path);
-      if (!new RegExp(`/Application/${templateId}(?:-[^/]+)?(?:/|$)`, "i").test(path)) continue;
+      if (!new RegExp(`/Application/${referenceTemplateId}(?:-[^/]+)?(?:/|$)`, "i").test(path)) continue;
       const pi = reference.parentElement;
       const bindingName = pi?.localName === "PI" ? pi.getAttribute("Name") : "";
       const target = resolveTemplateBinding(bindingName, rows);
@@ -2546,7 +2595,7 @@
         }
         continue;
       }
-      path = path.replace(new RegExp(`(\\/Application\\/)${templateId}(?:-[^/]+)?(?=\\/|$)`, "i"), (_match, prefix) => `${prefix}${target.objectName}`);
+      path = path.replace(new RegExp(`(\\/Application\\/)${referenceTemplateId}(?:-[^/]+)?(?=\\/|$)`, "i"), (_match, prefix) => `${prefix}${target.objectName}`);
       if (target.isLink) path = path.replace(/\/Value$/i, "");
       reference.setAttribute("Object", path);
       if (target.property) reference.setAttribute("Property", target.property);
@@ -2565,6 +2614,7 @@
     const newGraphicName = `${systemPrefix} BILD`;
     for (const object of objectSet.getElementsByTagNameNS("*", "OI")) {
       const name = object.getAttribute("NAME");
+      if (["UCXX", "VPUXX"].includes(templateId) && name === "UNDERCENTRAL BILD") object.setAttribute("NAME", newGraphicName);
       if (name === templateId || name === `${templateId} BILD`) {
         object.setAttribute("NAME", name === templateId ? systemPrefix : newGraphicName);
       } else if (/^(?:LBXX|FAXX) BILD$/i.test(name)) {
@@ -2575,7 +2625,7 @@
     }
     for (const reference of objectSet.getElementsByTagNameNS("*", "Reference")) {
       const object = reference.getAttribute("Object");
-      if (object === `../${templateId} BILD` || object === "../LBXX BILD" || object === "../FAXX BILD") {
+      if (object === `../${templateId} BILD` || object === "../LBXX BILD" || object === "../FAXX BILD" || (["UCXX", "VPUXX"].includes(templateId) && object === "../UNDERCENTRAL BILD")) {
         reference.setAttribute("Object", `../${newGraphicName}`);
       }
     }
@@ -2597,8 +2647,8 @@
       ...objectSet.getElementsByTagNameNS("*", "PI"),
     ]) {
       for (const attribute of [...reference.attributes]) {
-        if (["Name", "DisplayName"].includes(attribute.name) && /^LBXX(?=\.|$)/i.test(attribute.value)) {
-          attribute.value = attribute.value.replace(/^LBXX/i, systemPrefix);
+        if (["Name", "DisplayName"].includes(attribute.name) && /^(?:LBXX|UCXX|VPUXX)(?=\.|$)/i.test(attribute.value)) {
+          attribute.value = attribute.value.replace(/^(?:LBXX|UCXX|VPUXX)/i, systemPrefix);
         }
       }
     }
@@ -2653,7 +2703,88 @@
     return documentXml.getElementsByTagNameNS("*", "parsererror").length > 0;
   }
 
+  function getAggregateSubsystemPlan(systemPrefix) {
+    const rows = getFrameworkTagRowsForSystem(systemPrefix);
+    const selected = [...(getProfileForSystemPrefix(systemPrefix)?.subsystems ?? [])];
+    if (/^VPU/i.test(systemPrefix)) selected.push({ templatePrefix: "VPU01", prefix: systemPrefix });
+    // A selected circuit still needs at least one tag; selecting it does not create it.
+    const retained = selected.filter(item => rows.some(row => {
+      const name = String(row.editedTag ?? row.name ?? "").toUpperCase();
+      return name.startsWith(item.prefix.toUpperCase() + "-") || name.startsWith(item.prefix.toUpperCase() + "_");
+    }));
+    const names = rows.map(row => String(row.editedTag ?? row.name ?? "").toUpperCase().replace(/[.-]/g, "_"));
+    return {
+      retained,
+      has: slot => retained.some(item => item.templatePrefix === slot.toUpperCase()),
+      hasComponent: (slot, component) => {
+        const mapping = retained.find(item => item.templatePrefix === slot.toUpperCase());
+        if (!mapping) return false;
+        const root = mapping.prefix.toUpperCase() + "_" + component.toUpperCase();
+        return names.some(name => name === root || name.startsWith(root + "_"));
+      },
+    };
+  }
+
+  function aggregateCircuitNames(value) {
+    return [...String(value ?? "").matchAll(/(?:^|[^A-Z0-9])((?:VPU|VP|VS|VV|KV|KB)\d+)(?=$|[^A-Z0-9])/gi)].map(match => match[1].toUpperCase());
+  }
+
+  function aggregateComponentIdentity(value) {
+    // Match a complete circuit/component identity, never an unscoped suffix.
+    const match = String(value ?? "").match(/(?:^|[^A-Z0-9])((?:VPU|VP|VS|VV|KV|KB)\d+)[._-]([A-ZÅÄÖ]+\d+(?:_[A-ZÅÄÖ]+\d+)*|TKMO|TKLE|MS)(?=$|[._\s-])/i);
+    return match ? { slot: match[1], component: match[2] } : null;
+  }
+
+  function isExcludedAggregateItem(value, plan) {
+    if (aggregateCircuitNames(value).some(slot => !plan.has(slot))) return true;
+    const identity = aggregateComponentIdentity(value);
+    return Boolean(identity && !plan.hasComponent(identity.slot, identity.component));
+  }
+
+  function pruneAggregateObjectSet(objectSet, systemPrefix) {
+    const plan = getAggregateSubsystemPlan(systemPrefix);
+    const excluded = value => isExcludedAggregateItem(value, plan);
+    const removedTypes = new Set();
+    for (const oi of [...objectSet.getElementsByTagNameNS("*", "OI")]) {
+      if (!excluded(oi.getAttribute("NAME"))) continue;
+      removedTypes.add(oi.getAttribute("TYPE"));
+      oi.remove();
+    }
+    for (const pi of [...objectSet.getElementsByTagNameNS("*", "PI")]) {
+      const references = [...pi.getElementsByTagNameNS("*", "Reference")];
+      if (!excluded(pi.getAttribute("Name")) && !references.some(ref => excluded(ref.getAttribute("Object")))) continue;
+      // Navigation names such as MI4 have no circuit prefix. Remove their declarations too.
+      const ownerType = pi.parentElement?.getAttribute("TYPE");
+      const name = pi.getAttribute("Name");
+      const type = [...objectSet.getElementsByTagNameNS("*", "ObjectType")].find(node => node.getAttribute("Name") === ownerType);
+      if (type) for (const node of [...type.getElementsByTagName("*")]) {
+        if ([name, name + "_Icon"].includes(node.getAttribute("Name"))) node.remove();
+      }
+      pi.remove();
+    }
+    for (const property of [...objectSet.getElementsByTagNameNS("*", "PropertyReference")]) {
+      if (excluded(property.getAttribute("Name"))) property.remove();
+    }
+    for (const type of [...objectSet.getElementsByTagNameNS("*", "ObjectType")]) {
+      const id = type.getAttribute("Name");
+      if (removedTypes.has(id) && ![...objectSet.getElementsByTagName("*")].some(node => node.getAttribute("TYPE") === id || node.getAttribute("Base") === id)) type.remove();
+    }
+  }
+
+  function pruneAggregateGraphic(tgml, systemPrefix) {
+    const plan = getAggregateSubsystemPlan(systemPrefix);
+    let removed = 0;
+    for (const node of [...tgml.getElementsByTagName("*")]) {
+      if (!tgml.documentElement.contains(node)) continue;
+      // Named components include their labels, scripts and context menus.
+      // Anonymous pipe geometry cannot safely be assigned to a circuit.
+      if (isExcludedAggregateItem(node.getAttribute("Name"), plan)) { node.remove(); removed++; }
+    }
+    return removed;
+  }
+
   async function transformTgmlTypes(objectSet, systemPrefix, tagKeys) {
+    const aggregateTemplate = /^(?:UC|VPU)/i.test(systemPrefix);
     const types = [...objectSet.getElementsByTagNameNS("*", "ObjectType")];
     const mainGraphicName = `${systemPrefix} BILD`;
     const mainGraphicTypeName = [...objectSet.getElementsByTagNameNS("*", "OI")]
@@ -2668,13 +2799,14 @@
       if (!fileContents) continue;
       const tgml = parseXml(await decompressBase64Gzip(fileContents.textContent));
       if (xmlHasParseError(tgml)) throw new Error(`Kunde inte läsa TGML-grafiken ${type.getAttribute("DisplayName")}.`);
+      if (aggregateTemplate) hiddenComponents += pruneAggregateGraphic(tgml, systemPrefix);
       if (tgmlPositionOverrides.size && type.getAttribute("Name") === mainGraphicTypeName) {
         applyTgmlPositionOverrides(tgml.documentElement);
       }
       for (const component of [...tgml.getElementsByTagNameNS("*", "Component")]) {
         const originalName = component.getAttribute("Name");
         if (!originalName) continue;
-        if (isExcludedGt11Variant(originalName, tagKeys) || isExcludedGt31Variant(originalName)) {
+        if (!aggregateTemplate && (isExcludedGt11Variant(originalName, tagKeys) || isExcludedGt31Variant(originalName))) {
           if (type.getAttribute("Name") === mainGraphicTypeName) {
             removedMainGraphicComponents.add(originalName);
           }
@@ -2683,7 +2815,7 @@
           continue;
         }
         const componentName = mapGraphicComponentName(originalName);
-        if (isEquipmentName(componentName) && !componentExists(componentName, tagKeys) && !componentExists(originalName, tagKeys)) {
+        if (!aggregateTemplate && isEquipmentName(componentName) && !componentExists(componentName, tagKeys) && !componentExists(originalName, tagKeys)) {
           if (type.getAttribute("Name") === mainGraphicTypeName) {
             removedMainGraphicComponents.add(originalName);
           }
@@ -2875,6 +3007,7 @@
           }).filter(Boolean),
           ...getRawGfComponentTagKeys(systemPrefix),
         ]);
+        if (templateId === "UCXX" || templateId === "VPUXX") pruneAggregateObjectSet(objectSet, systemPrefix);
         const addedComponents = await appendSelectedLibraryComponents(objectSet, systemPrefix, profile.components, tagRows);
         const bindingSummary = rewriteTemplateReferences(objectSet, ducName, tagRows, templateId, systemPrefix);
         updateSystemPrefixReferences(objectSet, systemPrefix);
@@ -2976,7 +3109,7 @@
     byId("step1Panel").classList.toggle("hidden", !isStepOne);
     byId("step2Panel").classList.toggle("hidden", isStepOne);
     byId("step1Panel").setAttribute("aria-labelledby", workflowMode === "review" ? "reviewModeButton" : "step1Button");
-    updateTopTabState();
+    updateSystemSelectionView();
   }
 
   function setWorkflowMode(mode) {
@@ -3019,6 +3152,7 @@
   byId("continueAirTreatment").addEventListener("click", () => {
     if (!supportsXmlProfiles() || !getRequestedSystemCount()) return;
     airTreatmentStarted = true;
+    renderSystemProfiles();
     updateSystemSelectionView();
     showStep(1);
   });
@@ -3040,16 +3174,15 @@
     updateStep2Availability();
   });
   byId("systemProfiles").addEventListener("change", (event) => {
-    if (event.target.matches("[data-profile-prefix]")) {
+    if (event.target.matches("[data-profile-type]")) {
       const row = event.target.closest(".system-profile-row");
-      const serviceLabel = row?.querySelector(".system-profile-service-area");
-      const serviceSelect = row?.querySelector("[data-profile-service-area]");
-      const isSeparateFan = /^FA/i.test(event.target.value);
-      serviceLabel?.classList.toggle("hidden", !isSeparateFan);
-      if (!isSeparateFan && serviceSelect) serviceSelect.value = "";
-    } else if (!event.target.matches("[data-profile-service-area]")) {
-      return;
+      row.querySelector("[data-profile-prefix]").value = "";
+      const serviceArea = row.querySelector("[data-profile-service-area]");
+      if (serviceArea) serviceArea.value = "";
+      row.querySelectorAll("[data-subsystem] input[type=checkbox]").forEach(input => input.checked = false);
+      renderSystemProfiles();
     }
+    updateSystemPrefixOptions();
     selectedTagGroups = new Set();
     reviewCompleted = false;
     generatedObjectSetForPreview = null;
@@ -3085,10 +3218,8 @@
     invalidateEboDownload();
     byId("reviewContent").classList.add("hidden");
     updateSystemSelectionView();
-    if (reviewedRows.length) {
-      renderSystemProfiles();
-      renderTagGroupQuestions();
-    }
+    renderSystemProfiles();
+    if (reviewedRows.length) renderTagGroupQuestions();
     updateStep2Availability();
   });
   byId("fsName").addEventListener("input", () => {
