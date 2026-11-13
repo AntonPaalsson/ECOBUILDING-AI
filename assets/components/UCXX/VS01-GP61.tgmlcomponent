@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="15.0" ContentWidth="34.0"
+    Height="15.0" Left="797.0005469322205" Name="VS01-GP61" Top="115.0" Width="34.0">
+    <Component Clip="False" ContentHeight="85.0" ContentWidth="39.01"
+        Height="85.0" Id="Givare" Left="-5.01" Top="0.0" Width="39.01">
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="34.0"
+            Height="15.0" Id="Tryckmanometer" Left="0" Name="" Top="0.0" Width="34.0">
+            <Image Height="20" Left="-5" Top="-4" Width="20"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAI9SURBVFiF7ZfrbtswDEaP4zhpki4NCuz9n3CXdl3j3Jz9ML+ZkqW4dbuuBUqAcCBI1BH56RL4tNaKVx57fguIwn1zEGf3+1UhCuclMLGv2jT5CWjseyaEehFE4SatgJl55UAEcAD25gcHdRFkCGJiXgFXwNJ8AcytXRAHYAdsgUfz2tob86RNBwBK2lWvgLX5tYFc0c9EbZM/AHfAL+A3bWbIgeQgVIK5TboBbu27MoDK+giisVXXiT4P1p7USApCADNb8Qb4ahBfLPjUAXhhzgx8br9LlwGJtaeRHERpgdY2+S1wE63O91fQkm73qM8JONIJtZeNGEIrqywLa8uEMuBLEI+TScgQlmhLq41TBB6sSCYxLm3ylAYumcqpHbWiE/MsNWfc4PWwoNsFU/KnZA6ksHHa2gs6nQRx4tpKD1qFzoKnZCAFoozM6Wfzb7xUOQQypb8LngshEMWSaANLlSPnY8yDZOPFEOcLPsY0tuFCvFQ5dAQfzX2AMQDxOdE7uieZQXvave0voDEQjQHszPckFpUqR2OddRvWFug52VDfI92l5g+rIE4ZDZZg/A2qbSplDwnVX2Zb2tv0B/DTYA5DEB5EWzXervGZERzBhEf1PfDd/N7aeqVNQfgVySakAXxf3ZTKgAC+0WVBZQ1sCELBG9JbTRNL/TXtI+YuAtDDJinw3KNGE+wIa6xJlrRa0Z0iEe7Iv6yyO+xdvDE/xGvb94v/d3iheu38k/8dqf7/5R/YU8eOveg+DYA/SfHxTzzdPi4AAAAASUVORK5CYII=]]></Image>
+            <Component Clip="False" ContentHeight="15.0"
+                ContentWidth="34.0" Height="15.0" Left="0.0" Name="Form"
+                Top="0.0" Width="34.0">
+                <Polyline Fill="None" Opacity="1.0"
+                    Points="24.0,18.0 24.0,-2.0" Stroke="#808080"
+                    StrokeDashArray="0.0" StrokeWidth="1.0">
+                    <Rotate Angle="-90.0" Center="0.0,0.5"/>
+                </Polyline>
+                <Ellipse Fill="#FFFFFF" Height="15.0" Left="0.0"
+                    Opacity="1.0" Stroke="#808080" StrokeDashArray="0.0"
+                    StrokeWidth="1.0" Top="0.0" Width="15.0"/>
+                <Component Clip="False" ContentHeight="9.0"
+                    ContentWidth="6.0" Height="9.0"
+                    Left="4.302999496459961" Top="2.802999973297119" Width="6.0">
+                    <Polyline Opacity="1.0" Points="3.0,0.0 3.0,8.0"
+                        Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"/>
+                    <Polyline Opacity="1.0"
+                        Points="0.0,6.0 3.0,9.0 6.0,6.0"
+                        Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"/>
+                    <Rotate Angle="45"/>
+                </Component>
+            </Component>
+            <Ellipse Fill="#FFFFFF" Height="4.0" Left="32" Name="Ring"
+                Stroke="#808080" StrokeWidth="0.5" Top="6" Width="4.0"/>
+            <Rotate Angle="180"/>
+        </Component>
+        <TargetArea Height="15" Left="5" Name="TargetArea ContextMenu"
+            Tooltip="Givare" Top="0" Width="34"/>
+        <Rotate/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="25" Name="Id" Stroke="#304760" TextDecoration="None"
+            Top="-15" Visibility="Hidden"><![CDATA[GP61]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="LL_L.AlarmState" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="1.549041748046875"
+        Top="2.24029541015625" Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu, #vs1_gt11"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Rotate Angle="0.0" Center="0.5,0.5"/>
+    <Metadata Name="Name" Value="VS01-GP61"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAHoSURBVFhH7ZTNqwFRGMb96bIgRZHPBZIsLBTZUooVIlJYsVAonxHy+dyeU0fjzKQ749bdzK8mmq/39z7vmePAl9Trdfh8PgQCAaTTaSQSCTidTuTzeRwOB/V2HQ71xG/ZbreiWKVSMSzU7/cRDofR6/XwfD7Vyy8sCdxuN8TjcUynU/XSG+fzGalUCqPRCI/HQ70ssCTArhm9FhabTCavQ8oxqWAwiPV6jfv9/vYMMS3AuDlzleFwKNaAXAdut/slUS6XUSgUcDwedeMwLcBCuVxOPf2CHUsJJkH4TCwWw2w206Xg4Io1c7hcLl38Ellc/koBpubxeDAYDMSotJhOwGj+RFucaAV4zuv1otVqCRntGEwLGI1ALS7vk93yP/eJRqOB/X7/nQA74Mv4KRKj4irFYhHRaBTdble3EE0LkGq1Kg4yn88/Fl8ul+KrKZVKYiSXy+XtuiUBds9Vzmg/wbQikYhIqN1uY7fb6TYkSwKEL89msyJedqmFs+e82Xkmk0Gz2cRiscD1en27j1gWkHQ6HYRCIfGZJZNJ+P1+sQkxoVqtJrbh1Wololc3IfK1AOGLmQhHMh6Pxbpgx5vNBqfTSbf5aPkTAQlFOGMW5MH/Rl1r+VMBK9gCtoAtYAvYAraALfDvAj/Au4S44KvPPQAAAABJRU5ErkJggg==-->

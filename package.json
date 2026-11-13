@@ -1,0 +1,31 @@
+{
+  "name": "ecobuilding-ai",
+  "version": "1.0.0",
+  "description": "Lokal webapp för granskning av BACnet-tagglistor och skapande av EBO ObjectSet-exporter. Excel-filer behandlas i webbläsaren och originalarbetsboken ändras inte.",
+  "main": "app.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --minify",
+    "watch:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonPaalsson/ECOBUILDING-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonPaalsson/ECOBUILDING-AI/issues"
+  },
+  "homepage": "https://github.com/AntonPaalsson/ECOBUILDING-AI#readme",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/cli": "^4.3.5",
+    "daisyui": "^5.8.0",
+    "tailwindcss": "^4.3.5"
+  }
+}

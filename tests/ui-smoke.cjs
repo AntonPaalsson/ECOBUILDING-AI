@@ -1,0 +1,23 @@
+const { chromium } = require('@playwright/test');
+const { pathToFileURL } = require('url');
+const path = require('path');
+(async () => {
+ const browser = await chromium.launch({channel:'msedge',headless:true});
+ const page = await browser.newPage({viewport:{width:1440,height:1000}});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(pathToFileURL(path.resolve('index.html')).href);
+ await page.screenshot({path:'tests/ui-desktop.png',fullPage:true});
+ console.log('initial',await page.locator('#continueAirTreatment').isVisible());
+ await page.locator('#continueAirTreatment').click();
+ await page.locator('[data-profile-type]').selectOption('LBXX');
+ await page.locator('[data-profile-prefix]').fill('LB12');
+ await page.locator('[data-profile-prefix]').blur();
+ await page.screenshot({path:'tests/ui-profile.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});
+ await page.screenshot({path:'tests/ui-mobile.png',fullPage:true});
+ console.log('overflow',await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
+ await page.locator('#reviewModeButton').click();
+ console.log('review',await page.locator('#pick').isVisible(),'profiles hidden',!await page.locator('#systemProfilesPanel').isVisible());
+ console.log('errors',JSON.stringify(errors));
+ await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});

@@ -23,3 +23,22 @@ Lokal webapp för granskning av BACnet-tagglistor och skapande av EBO ObjectSet-
 - `examples/` – exempelmaterial, inte nödvändigt för appens körning.
 
 Komponentkatalogen byggs från de TGML-komponentfiler som finns i `assets/components/`. Poster utan verifierade ObjectSet-definitioner visas i katalogen men exporteras inte som nya komponenter.
+
+## UI-utveckling
+
+Gränssnittet använder Tailwind CSS 4 och daisyUI 5 med temat `init`.
+Redigera `styles/app.css` och kör:
+
+```sh
+npm ci
+npm run build:css
+```
+
+`assets/app.css` är den kompilerade filen som levereras med appen. Sidan behöver ingen CDN eller Node-server vid användning. `npm run watch:css` bygger om vid ändringar.
+
+Webbläsarkontroller (kräver installerad Microsoft Edge):
+
+```sh
+node tests/ui-smoke.cjs
+node tests/review-smoke.cjs
+```

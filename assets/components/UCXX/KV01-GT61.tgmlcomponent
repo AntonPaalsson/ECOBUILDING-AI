@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="50.0" ContentWidth="45.0"
+    Height="50.0" Id="" Left="365.0" Name="KV01-GT61" Top="420.0"
+    Version="1.0.0-rc1" Width="45.0">
+    <Component Clip="False" ContentHeight="45.0" ContentWidth="45.0"
+        Height="45.0" Id="Givare" Left="0.0" Top="0.0" Width="45.0">
+        <Component Clip="False" ContentHeight="20.0" ContentWidth="45.0"
+            Height="20.0" Left="0.0" Name="Givarsymbol" Top="27.5"
+            Version="1.0.0-rc1" Width="45.0">
+            <Image Height="28.0" Left="-4" Top="-2" Width="33.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAACEAAAAcCAYAAADvANYcAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIbSURBVEiJ1ZdRd5pAEIU/wGhs2qaa/v9f2NPGEI0pGPOw9x6mCAjGPHTPmSPK7M43d3cGzBg/snB9nDBv0sJDPrY4jsE+FSIDcqAIBnAI9vZRkGLgXqb7c2AJfJXdAjeMU/FDEAa4Ae6AH8AaWAWQmfyswsVqdEF4/w2wAn7KDLHU/YIrKNIHMSNle98C+CaAhcwgXuciVbogci3+hUYFK+DA0eaCLjR38mhDuBrmCroGHkgKLBQsp6mYCGJVcpotisr0blsfxEKB16QtuVMQB7BfhDFIhPEY7CddEEWAWAniltNDGGFmsghj1c522iGI76TS9FnoqoTYTQ1jEJ8VK2I13toQs55F85aN7ayxw7bPSx4gKoIqbYiuDMf2gbZ/PJw18Aq86LOOEy8qqWuPPiWOTH9Kxj2vSBk/A09ACWyBv6SH3j9rtiHiQtHOgXjOQYFeBPAo2+j7nrQVgxBxwVpmiK6G085+D+yU/UYApX57lc9JUucgqjBxyM/ZlwJ41Kezj9twomofhGX1AhXNozv61PLZhuCbVvZ++fG8k9F3Jg5aYKcAy+CbBcidsrX0MftqKPs4hl5q3D3dkl3ONY30f4BfwG9dlx0AZ0dfiTrTZ5pudyApclSgkqTAE0mtSdmfg/DkmiR3RjqAe9KDzBBbQe4EHCtp0hhqyfE9cyGAuYK4HN2CJ2c/FsL3P/2V/7/489Pne9W/ge8/dc83siqSOAAAAABJRU5ErkJggg==]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="M 8,0 C 5,1.5 3,3 3,10 3,17 5,18.5 8,20 L 22.5,10.5 H 41.05 C 41.5,12.75 45,12.5 45,10 45,7.5 41.5,7.25 41.05,9.5 H 22.5 Z"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+            <Rotate Angle="270"/>
+        </Component>
+        <TargetArea Height="60.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Givare" Top="28.0" Width="45.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="25" Name="Id" Stroke="#304760" TextDecoration="None" Top="60">
+            <Expose ExposedAttribute="Content"
+                Name="Id"/><![CDATA[GT61]]><Bind Attribute="Stroke"
+                Name="LL_L.AlarmState" PreventDefault="True"/>
+            <Bind Attribute="Stroke" Name="GF_L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Left="25"
+            Name="Mätvärde" Stroke="#0087CD" TextDecoration="None"
+            Tooltip="Mätvärde" Top="75">
+            <Bind Attribute="Content" Name="MV.Value"/><![CDATA[0]]></Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Larmparametrar" Left="30.0"
+            Top="30.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #larmparametrar"/>
+            <Metadata Name="Icon" Value="AlarmSettings"/>
+            <Metadata Name="Text" Value="Larmparametrar"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LG.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="LL_LT.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID Givare"/>
+    <Metadata Name="Name" Value="KV01-GT61"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAF1SURBVFhH7ZbPi4JAGIb7/0PqUJZe6lB06tYlyTyFiOBJ8Rb9gsqCKKKg0nf5Bja2YauZWnZZmOckfjDfM+83g+bwx+T4F7+NElACSuD/CaxWK5RKJRSLRcznc74sjbRAp9OB67qI4xiNRoMvSyMtQI2r1SprTiLvIi1A1Ot1NoKfQAkoASWgBN4SOJ/PSNOUL0shLZBlGWq1GgqFAvsw7ff7tySkBKj58XiEruvQNI19CyaTCQ6HA6u9gpTA5XJBt9uFbdsIgoCJeJ6H5XKJ0+n0koSwAC0+Ho9hmiabPUHPzWYTYRhiu92+NAphAWpaLpdvfkI2mw3y+Twsy8JoNGLjkU1BSIB2RrFTI57BYMDEaBRJklzTEeWpAO1oNpuxed9bnGqtVgtRFGG327GzIspTAWpqGAam0ylfukLXkW5Fr9djt0JmFA8FKPp+v/9t9DyO46BSqcD3fazX67tp8TwUWCwWD6P/yuchbbfbGA6Hwil8AFo3pRmqW/6ZAAAAAElFTkSuQmCC-->

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="390.56" ContentWidth="40.0"
+    Height="390.56" Left="405.0" Name="VP01-MQ4x" Top="145.0" Width="40.0">
+    <Component Clip="False" ContentHeight="390.56" ContentWidth="25.0"
+        Height="390.55999999999995" Left="0.0" Top="0.0" Width="25.0">
+        <Ellipse Fill="#FFFFFF" Height="4.0" Left="6.0" Name="Ring"
+            Stroke="#808080" StrokeWidth="0.5" Top="0.0" Width="4.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="8.0" Y1="306.43744564056396" Y2="342.0"/>
+        <Ellipse Fill="#FFFFFF" Height="4.0" Left="21.0" Name="Ring"
+            Stroke="#808080" StrokeWidth="0.5" Top="376.0" Width="4.0"/>
+        <Line Stroke="#808080" StrokeWidth="1" Visibility="Visible"
+            X1="23.0" X2="23.0" Y1="354.0" Y2="375.0"/>
+        <Group Name="Energimätare">
+            <Ellipse Fill="#FFFFFF" Height="15.0" Left="0.0"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="375.5499999821186" Visibility="Visible" Width="15.0"/>
+            <Line Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="1.0" X1="7.5" X2="7.5"
+                Y1="375.0228698551655" Y2="350.0499999821186"/>
+            <Line Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="1.0" X1="7.781226634979248" X2="14.0"
+                Y1="350.0499999821186" Y2="350.0499999821186"/>
+        </Group>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="2.0" X2="12.0" Y1="378.0" Y2="388.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="2.0" X2="12.0" Y1="388.0" Y2="378.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="8.0" Y1="5.0" Y2="118.53216195106506"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="8.0" X2="14.0" Y1="342.0" Y2="342.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="20.0" ContentWidth="20.0"
+        Height="20.0" Left="-2.0" Name="Givare tillopp" Top="4.0" Width="20.0">
+        <Path Fill="#FFFFFF"
+            PathData="M-6.53496012E-4,15.002449062939455 L9.99934578,0.002450962939452239 19.9993439,15.002449062939455 M-6.53496012E-4,15.002449062939455 C1.33734656,19.02044686293945 5.28534604,20.002449062939455 9.99934578,20.002449062939455 14.7133437,20.002449062939455 18.5133439,18.961448762939455 19.9993439,15.002449062939455"
+            Stroke="#808080" StrokeDashArray="0" StrokeWidth="1"/>
+        <Scale ScaleX="0.4" ScaleY="0.4"/>
+    </Component>
+    <Component Clip="False" ContentHeight="20.0" ContentWidth="20.0"
+        Height="20.0" Left="13.0" Name="Givare retur" Top="356.0" Width="20.0">
+        <Path Fill="#FFFFFF"
+            PathData="M4.82421927E-9,5.0 L10.0000003,20.0 20.0000003,5.0 M4.82421927E-9,5.0 C1.3380001,0.8920002 5.2859998,0.0 10.0000003,0.0 14.714,0.0 18.5140003,1.0410002 20.0000003,5.0"
+            Stroke="#808080" StrokeDashArray="0" StrokeWidth="1"/>
+        <Scale ScaleX="0.4" ScaleY="0.4"/>
+    </Component>
+    <Text AntalDecimaler="1" FontFamily="Arial" FontSize="12"
+        FontStyle="Normal" FontWeight="Normal" HorizontalAlign="Left"
+        Left="15.0" Name="TempT" Stroke="#0087CD" TextDecoration="None" Top="7.0">
+        <Bind Attribute="Content" Name="FramledningTemp.Value"/>0</Text>
+    <Text AntalDecimaler="1" FontFamily="Arial" FontSize="12"
+        FontStyle="Normal" FontWeight="Normal" HorizontalAlign="Left"
+        Left="30.0" Name="TempR" Stroke="#0087CD" TextDecoration="None" Top="357.0">
+        <Bind Attribute="Content" Id="" Name="ReturTemp.Value"/>0</Text>
+    <Component Clip="False" ContentHeight="35.0" ContentWidth="30.0"
+        Height="35.0" Id="Mätare" Left="10.0" Top="325.0" Width="30.0">
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="12.0"
+            Height="15.0" Left="4.0" Name="Symbol Mätare" Top="15.0" Width="12.0">
+            <Image Height="23.0" Left="-4" Top="-2" Width="20.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEESURBVDiN7ZVRb8IwDIS/lHQaCGkP/P8fOWmDqoNkD5yZ8Zp204bEA5ZOlhP7co1qJ3FtKfglq8FfFSagE5JDi8hQhBoVrYAMPAG94jnCE/ABjMBRcc1OWQY2wFa+d2ojWRHZHniTr0DJSuqkbAvsgBfguaHS1A3Aq9ZM4YUwSdFGZDtgvUB4UHwA3nUA9sl2h72UrUU+R4hy/X0nr9DuchUwRYjb938FOSSnBqI197uJ5D/Zg/AOCeNvUycQbTYnh6TCuQsM0O4UQ3H1ZBfYOBr46tOlXh5UczIer9DGkU2Qn06bvWovCpHskfNsQ6f/Zh6OWvv/iX2zN8WTTq237Nur9wmXDXD/OMK5CAAAAABJRU5ErkJggg==]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 2.5625,2 h 6.875 C 9.749125,2 10,2.223 10,2.5 v 4 C 10,6.777 9.749125,7 9.4375,7 H 2.5625 C 2.250875,7 2,6.777 2,6.5 v -4 C 2,2.223 2.250875,2 2.5625,2 Z M 1,0 h 10 c 0.554,0 1,0.446 1,1 v 13 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,15 0,14.554 0,14 V 1 C 0,0.446 0.446,0 1,0 Z"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="15.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Energimätare"
+            Top="15.0" Width="20.0"/>
+        <Text AET_FlowDiagramOption="Keep" FontFamily="Arial"
+            FontSize="12" HorizontalAlign="Left" Id="Larm" Left="3.0"
+            Name="Id" Stroke="#304760" Top="0.0"><![CDATA[MQ4x]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" HorizontalAlign="Left"
+            Left="20.0" Name="Mätvärde" Stroke="#0087CD"
+                Top="15.0"><![CDATA[0]]><Bind Attribute="Content"
+                DynamicUpdates="Enable" Name="Effekt.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0.0" Name="" Top="0.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu, #vp_MQ41"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Förbrukning" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #övrigaparametrar, #förbrukning"/>
+            <Metadata Name="Icon" Value="MiscSettings"/>
+            <Metadata Name="Text" Value="Förbrukning"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Effekt.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Energi.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Flöde.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="TempDiff.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Volym.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VP01-MQ4x"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7ZehCsMwFEXfp7euCYUGKksgMBYKyypGYDAzNTU1VVpTVRj0I+5g8n3Ai3lHnmsOMUmo6zrM84xSUNM0uD2e3ItBIQRs28a9GBqgARpAKSUcx8G9GMSFNBqgARqgARqgAeUDcs5lr+PiDxLvPU7jFa/3B/tX/iSobVtUVQU/3fkmAhljYK3FcL7wTYT/37DvewzjxDcRqK5rOOewLAvfRKAYI9Z15V6MHzoCy5Gg7ERDAAAAAElFTkSuQmCC-->

@@ -100,7 +100,7 @@ window.ECO_AIR_TREATMENT_TAGS = [
   },
   {
     "tag": "Helgdrift_DHC",
-    "description": "Startar upp aggregat i drift när aktiv.",
+    "description": "Startar upp aggregat i drift när aktiv",
     "configuredAccordingTo": "3.11 ÖVERORDNAD MANÖVER",
     "note": "",
     "sections": [
@@ -2481,24 +2481,6 @@ window.ECO_AIR_TREATMENT_TAGS = [
     "note": "Fast larmtid 5 min",
     "sections": [
       "Vid enhetsaggtegat programmeras förutom relevanta taggar i förhållande till komponent bestyckning, även nedan taggar"
-    ]
-  },
-  {
-    "tag": "GX7x_SL",
-    "description": "GX7x_SL",
-    "configuredAccordingTo": "",
-    "note": "",
-    "sections": [
-      "Komponent GX7x"
-    ]
-  },
-  {
-    "tag": "GX7x_L",
-    "description": "GX7x_L",
-    "configuredAccordingTo": "",
-    "note": "",
-    "sections": [
-      "Komponent GX7x"
     ]
   }
 ];

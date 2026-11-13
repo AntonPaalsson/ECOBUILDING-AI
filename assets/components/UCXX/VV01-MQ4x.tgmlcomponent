@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="277.33" ContentWidth="103.58"
+    Height="277.33" Left="230.62" Name="VV01-MQ4x" Top="201.23" Width="103.58">
+    <Component Clip="False" ContentHeight="257.55" ContentWidth="89.77"
+        Height="257.55" Left="2.140004882812491" Top="19.78000427246093" Width="89.76999999999998">
+        <Ellipse Fill="#FFFFFF" Height="4.0" Left="-0.001510620117188"
+            Name="Ring" Stroke="#808080" StrokeWidth="0.5"
+            Top="55.021270751953125" Width="4.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="5.854141235351562" X2="5.854141235351562"
+            Y1="4.506110191345215" Y2="40.06866455078125"/>
+        <Ellipse Fill="#FFFFFF" Height="4.0" Left="85.76496887207031"
+            Name="Ring" Stroke="#808080" StrokeWidth="0.5"
+            Top="204.81375122070312" Width="4.0"/>
+        <Line Stroke="#808080" StrokeWidth="1" Visibility="Visible"
+            X1="87.76496887207031" X2="87.76496887207031"
+            Y1="182.81375122070312" Y2="203.81375122070312"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="6.085810740360898" X2="9.306071220453816"
+            Y1="4.588088989257812" Y2="4.588088989257812"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="18.419143676757812" X2="18.419143676757812"
+            Y1="10.79702152409999" Y2="33.47068961488367"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="5.9102210589717" X2="42.57135296198976"
+            Y1="40.5421142578125" Y2="40.5421142578125"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="87.75079345703125" X2="87.75079345703125"
+            Y1="125.19053712899347" Y2="182.50242203203925"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="87.62559509277344" X2="87.62559509277344"
+            Y1="97.08947248165543" Y2="117.67747562686122"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="78.73817443847656" X2="87.27437183052297" Y1="97.0" Y2="97.0"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="52.866124007358394" X2="71.07007319416505"
+            Y1="97.19715881347656" Y2="97.19715881347656"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="51.93070983886719" X2="51.93070983886719"
+            Y1="64.92475117529415" Y2="97.22561385322712"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="18.503952782086117" X2="51.330704117252765"
+            Y1="33.812469482421875" Y2="33.812469482421875"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="51.81510925292969" X2="51.81510925292969"
+            Y1="33.94368872009335" Y2="58.26023943708674"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="42.47245788574219" X2="42.47245788574219"
+            Y1="64.7108884634905" Y2="103.26685119644577"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="42.58641052246094" X2="42.58641052246094"
+            Y1="40.79527424600093" Y2="58.38254441482604"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="42.633580062045894" X2="60.83752924885255"
+            Y1="113.07978820800781" Y2="113.07978820800781"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="60.89646911621094" X2="60.89646911621094"
+            Y1="113.17114419787845" Y2="118.01824348284686"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="60.91358947753906" X2="60.91358947753906"
+            Y1="125.16640649918253" Y2="250.25373657513046"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="61.114453676652374" X2="67.23502827229981"
+            Y1="250.37864685058594" Y2="250.37864685058594"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="42.54646301269531" X2="42.54646301269531"
+            Y1="110.02113187675076" Y2="112.86820076966791"/>
+        <Component Clip="False" ContentHeight="40.5" ContentWidth="15.0"
+            Height="40.5" Left="67.33934020996094"
+            Top="217.05528259277344" Width="15.0">
+            <Ellipse Fill="#FFFFFF" Height="15.0" Left="-0.02978515625"
+                Stroke="#808080" StrokeDashArray="0" StrokeWidth="0.5"
+                Top="25.47726133465767" Visibility="Visible" Width="15.0"/>
+            <Line Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="1.0" X1="1.97021484375" X2="11.97021484375"
+                Y1="27.927261352539062" Y2="37.92726135253906"/>
+            <Line Stroke="#808080" StrokeDashArray="0.0"
+                StrokeWidth="1.0" X1="1.97021484375" X2="11.97021484375"
+                Y1="37.92726135253906" Y2="27.927261352539062"/>
+        </Component>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="1.841903686523438" X2="1.841903686523438"
+            Y1="0.002993913491537" Y2="54.30128514194405"/>
+        <Line Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="1.0"
+            X1="2.516600070084678" X2="9.166593728150474"
+            Y1="0.054229736328125" Y2="0.054229736328125"/>
+    </Component>
+    <Component Clip="False" ContentHeight="20.0" ContentWidth="20.0"
+        Height="20.0" Left="-6.003814697265625" Name="Givare tilopp"
+        Top="57.672637939453125" Width="20.0">
+        <Path Fill="#FFFFFF"
+            PathData="M4.82421927E-9,5.0 L10.0000003,20.0 20.0000003,5.0 M4.82421927E-9,5.0 C1.3380001,0.8920002 5.2859998,0.0 10.0000003,0.0 14.714,0.0 18.5140003,1.0410002 20.0000003,5.0"
+            Stroke="#808080" StrokeDashArray="0" StrokeWidth="1"/>
+        <Scale ScaleX="0.4" ScaleY="0.4"/>
+    </Component>
+    <Component Clip="False" ContentHeight="20.0" ContentWidth="20.0"
+        Height="20.0" Left="79.90496826171875" Name="Givare retur"
+        Top="204.59375" Width="20.0">
+        <Path Fill="#FFFFFF"
+            PathData="M4.82421927E-9,5.0 L10.0000003,20.0 20.0000003,5.0 M4.82421927E-9,5.0 C1.3380001,0.8920002 5.2859998,0.0 10.0000003,0.0 14.714,0.0 18.5140003,1.0410002 20.0000003,5.0"
+            Stroke="#808080" StrokeDashArray="0" StrokeWidth="1"/>
+        <Scale ScaleX="0.4" ScaleY="0.4"/>
+    </Component>
+    <Text AntalDecimaler="1" FontFamily="Arial" FontSize="12"
+        FontStyle="Normal" FontWeight="Normal" HorizontalAlign="Left"
+        Left="10.854110717773438" Name="TempT" Stroke="#0087CD"
+        TextDecoration="None" Top="61.35626220703125">
+        <Bind Attribute="Content" Name="FramledningTemp.Value"/>0</Text>
+    <Text AntalDecimaler="1" FontFamily="Arial" FontSize="12"
+        FontStyle="Normal" FontWeight="Normal" HorizontalAlign="Left"
+        Left="96.90496826171875" Name="TempR" Stroke="#0087CD"
+        TextDecoration="None" Top="205.59375">
+        <Bind Attribute="Content" Id="" Name="ReturTemp.Value"/>0</Text>
+    <Component Clip="False" ContentHeight="35.0" ContentWidth="30.0"
+        Height="35.0" Id="Mätare" Left="7.62310791015625" Top="0.0" Width="30.0">
+        <Component Clip="False" ContentHeight="15.0" ContentWidth="12.0"
+            Height="15.0" Left="4.0" Name="Symbol Mätare" Top="15.0" Width="12.0">
+            <Image Height="23.0" Left="-4" Top="-2" Width="20.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEESURBVDiN7ZVRb8IwDIS/lHQaCGkP/P8fOWmDqoNkD5yZ8Zp204bEA5ZOlhP7co1qJ3FtKfglq8FfFSagE5JDi8hQhBoVrYAMPAG94jnCE/ABjMBRcc1OWQY2wFa+d2ojWRHZHniTr0DJSuqkbAvsgBfguaHS1A3Aq9ZM4YUwSdFGZDtgvUB4UHwA3nUA9sl2h72UrUU+R4hy/X0nr9DuchUwRYjb938FOSSnBqI197uJ5D/Zg/AOCeNvUycQbTYnh6TCuQsM0O4UQ3H1ZBfYOBr46tOlXh5UczIer9DGkU2Qn06bvWovCpHskfNsQ6f/Zh6OWvv/iX2zN8WTTq237Nur9wmXDXD/OMK5CAAAAABJRU5ErkJggg==]]></Image>
+            <Path Fill="#FFFFFF"
+                PathData="m 2.5625,2 h 6.875 C 9.749125,2 10,2.223 10,2.5 v 4 C 10,6.777 9.749125,7 9.4375,7 H 2.5625 C 2.250875,7 2,6.777 2,6.5 v -4 C 2,2.223 2.250875,2 2.5625,2 Z M 1,0 h 10 c 0.554,0 1,0.446 1,1 v 13 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,15 0,14.554 0,14 V 1 C 0,0.446 0.446,0 1,0 Z"
+                Stroke="#808080" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="15.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Energimätare"
+            Top="15.0" Width="20.0"/>
+        <Text AET_FlowDiagramOption="Keep" FontFamily="Arial"
+            FontSize="12" HorizontalAlign="Left" Id="Larm" Left="3.0"
+            Name="Id" Stroke="#304760" Top="0.0"><![CDATA[MQ4x]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" HorizontalAlign="Left"
+            Left="20.0" Name="Mätvärde" Stroke="#0087CD"
+                Top="15.0"><![CDATA[0]]><Bind Attribute="Content"
+                DynamicUpdates="Enable" Name="Effekt.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="30.008453369140625" Name=""
+        Top="13.9918212890625" Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu, #vp_MQ41"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Förbrukning" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #övrigaparametrar, #förbrukning"/>
+            <Metadata Name="Icon" Value="MiscSettings"/>
+            <Metadata Name="Text" Value="Förbrukning"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Effekt.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Energi.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Flöde.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="TempDiff.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable"
+                Name="Volym.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VV01-MQ4x"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAGvSURBVFhH7ZdNa8JAEIbz0wUVv0AFsQoGK0FNURTRgIKKYLz05EGrrRSkh5bQCgkNJRQKb9kpiq4VAmaDBx8YlJmBfdyvRAkAXo0PPD6/UHzaXyzlG5JpmpBvFah3NRjvG/8FQqEQAoEAhXq/4uvCkdjA4XAYwWAQT28bvi4cEuh2u0in03zNF3YC8Xgco9GIYjgcwrIsvlcIJJBKpZBIJGgWkskkcrkcarUa3ysEErjRdKzXa4p+v49CoYBWq8X3CkGKRqN4eDN3iel0imKx6J8A+9X7zOdzDAYDTCaTg7woJD7BNqGqqv7NAJ+4GIFKpUKb0rZt+hR1LP8VaLfbdBRLpRLG4zGy2SzK5TLf6glHAmwTVqtVOo6r1d+zgZ0MUUtyJGAYBt2M9XodnU6HcsvlkmZGBEcCW9igvV7v6LvXnBTYn3Zfl2DLVeAqsD+orut0M4rAlYCmacjn81hb33zb2bgSaDabyGQyMJ0fvu1sXAmwJVAUhW/xBFcCDMdxDupe4VpAFJctIMsyIpEIbUJRnBSYzWaIxWL0l42FKE4KMNhrWKPRwGKx4Eue8QsG+XwieK/sAgAAAABJRU5ErkJggg==-->

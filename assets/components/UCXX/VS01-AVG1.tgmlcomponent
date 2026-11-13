@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Component Clip="False" ContentHeight="60.0" ContentWidth="40.0"
+    Height="60.0" Left="890.0" Name="VS01-AVG1" Top="190.0" Width="40.0">
+    <Component Clip="False" ContentHeight="60.0" ContentWidth="40.0"
+        Height="60.0" Left="0.0" Top="0.0" Width="40.0">
+        <Rectangle Fill="#F1CD45" Height="25.0" Left="5.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="35.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Rectangle>
+        <Rectangle Fill="#F1CD45" Height="25.0" Left="30.0" Name=""
+            Opacity="1.0" RadiusX="0.0" RadiusY="0.0" Stroke="None"
+            StrokeDashArray="0.0" StrokeWidth="0.0" Top="35.0" Width="5.0">
+            <Expose ExposedAttribute="Fill" Name="Rörfärg Värme"/>
+        </Rectangle>
+        <Rectangle Fill="#FFFFFF" Height="20.0" Left="0.0" Opacity="1.0"
+            RadiusX="0.0" RadiusY="0.0" Stroke="#808080"
+            StrokeDashArray="0.0" StrokeWidth="1.0" Top="15.0" Width="40.0"/>
+        <Text FontFamily="Arial" FontSize="12" FontStyle="Normal"
+            FontWeight="Normal" HorizontalAlign="Center" Id="Larm"
+            Left="21.008000016212463" Name="Id" Stroke="#304760"
+            TextDecoration="None" Top="0.0"><![CDATA[AVG1]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+            <Bind Attribute="Stroke" DynamicUpdates="Enable"
+                Name="L.AlarmState" PreventDefault="True"/>
+        </Text>
+        <TargetArea Height="18.0" Left="2.0"
+            Name="TargetArea ContextMenu" Tooltip="Pump" Top="16.0" Width="37.0"/>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="10.0" Name="" Top="5.0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+    </Component>
+    <Metadata Name="Name" Value="VS01-AVG1"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFRSURBVFhH7ZXBSsNAEIb35Xwgb54ED+pBTxFsCm0SNUigoBF6qYfmIJ6koF7qoRAULAWLaIPEKDLyD+xitgaiBqOwHwxTtpOZb7dhK6hmhL5gOR2a3j/Q0fEJZ3A5HNHZxZCuRtfkBF1q7B3yZzBLnqjT7WtdypMTwEAI+Ac9im/GnMGGvU9Z9kLLmy1VK4ei/uP6V8kJYHeQkA3RHIORbyd3vHOALOVAZQJL6w1ujob90wH/DPK4IbK4YqlaKQMqEcAOMRRgGHaIvGrtqGK8BzgNBOQkOLnvMvcS/jbC8zyqMoIgoDRN9TmFiDAMKY7jysK2bc5lEVEU6Ws/AqdgBIyAEfhfArVfRPIKddvb5DTXOFynOXfFfhZua0s947ltXvN9n5Ik0ecUov6MsmmPHgcLHK+z83xVAc/jXfXMWzbRvy6FETACRsAIGIG/I1AX72BHMXUuifcYAAAAAElFTkSuQmCC-->

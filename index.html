@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" data-theme="init">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,7 +16,7 @@
 <button type="button" class="step-button review-tab" id="reviewModeButton" role="tab" aria-controls="step1Panel" aria-selected="false">Granska tagglista</button>
 </nav>
 </header>
-<section class="hero" id="systemSelectionHero">
+<section class="page-heading" id="systemSelectionHero">
 <h2 id="systemSelectionTitle">Luftbehandling</h2>
 <p id="systemSelectionDescription">Ange antal system/driftkort för XML-exporten.</p>
 <select id="frameworkSystem" class="system-select-hidden" aria-hidden="true" tabindex="-1"><option value="">Välj systemtyp</option></select>
@@ -36,11 +36,12 @@
 </section>
 </section>
 <div id="workflow" class="hidden">
-<section class="hero workflow-hero">
+<section class="page-heading workflow-hero">
 <h2 id="selectedSystemTitle">Integrations Verktyg</h2>
 <p id="workflowDescription">Ladda upp tagglistan som Excelfil. Programmet använder en gemensam ventilationsmall och jämför innehållet mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.</p>
 </section>
 <section class="panel" id="step1Panel" role="tabpanel" aria-labelledby="step1Button">
+<label class="rule-question" id="tagListFormatControl"><span>Format på tagglistan</span><select id="tagListFormat"><option value="kieback">Kiebackstandard</option><option value="standard">Vanlig tagglista</option></select><small></small></label>
 <div class="drop" id="drop">
 <h2>Välj tagglista</h2>
 <p>Excel(.xlsx). Originalfilen ändras inte.</p>
@@ -52,11 +53,12 @@
 </div>
 </div>
 
+<details class="paste-taglist"><summary>Klistra in tagglista från Excel</summary><label for="pastedTagList">Kopiera cellerna inklusive rubrikerna Name och Description med Ctrl+C och klistra in här med Ctrl+V.</label><textarea id="pastedTagList" rows="6" placeholder="Name&#9;Description" spellcheck="false"></textarea><button type="button" class="button primary" id="importPastedTagList">Läs in tagglista</button></details>
 <div id="results" class="hidden">
 <section class="tag-group-questions" aria-labelledby="tagGroupQuestionsTitle">
 <h3 id="tagGroupQuestionsTitle">Projektuppgifter</h3>
 <p>Komponenter och bindningar väljs automatiskt utifrån taggarna i listan.</p>
-<label class="rule-question" id="tagListFormatControl"><span>Format på tagglistan</span><select id="tagListFormat"><option value="kieback">Kiebackstandard</option><option value="standard">Vanlig tagglista</option></select><small></small></label>
+
 <label class="rule-question" id="fsNameControl"><span>FS-namn / fastighetsnummer</span><input id="fsName" type="text" placeholder="Exempel: FS3090" autocomplete="off" pattern="[A-Za-z0-9_-]+" required></label>
 <div id="ruleQuestions" class="rule-questions"></div>
 <div id="missingComponentQuestion" class="missing-component-question"></div>

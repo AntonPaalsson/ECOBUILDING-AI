@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Component Clip="False" ComponentVersion="Flödesmätare-1.0.0"
+    ContentHeight="45.0" ContentWidth="20.0" Height="45.0" Left="255.0"
+    Name="KV01-MF4x" Top="450.0" Width="20.0">
+    <Component Clip="False" ContentHeight="45.0" ContentWidth="20.0"
+        Height="45.0" Id="Mätare" Left="0.0" Top="0.0" Width="20.0">
+        <Component Clip="False" ContentHeight="20.0" ContentWidth="20.0"
+            Height="15.0" Left="2.5" Name="Flödesmätare"
+            SymbolVersion="Flödesmätare-1.0.0" Top="30.0" Width="15.0">
+            <Image Height="28.0" Left="-4" Top="-2" Width="28.0"><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIbSURBVEiJvZbrktowDEZPQmAptHvp9v3fsO1uW2BZLukP9JHPKgFCO9WMJ07s6EiyLLvieqkujLf/QkllT7U6zdkHTO0svLkAq4CRtSaAgu6jbYGdtV5on4cCNcAEmAJ30R8n4AZ4B9bAW/RlwB/QU8A6YBPgAzAHPgGzAE8S8D1AS+AnsABW8X0Xc46SQyrP7gL0ADzGU8DGDG3DGwFnwAvwGuA15doWQMEmAfsMPANPwEeDjRJwFyCPwMjGNad1oBKkiTA+BOwZuA9FvnYObGKsoUsqKJNIYW3dQ/fuMTy7D8ulKK953jZ5bdd0a7kVhJg4DtgT8CWeM/Ps3J6tUhNUwE28tzVlOJUsc8owXioQgsrwaRg7D51KtEoh8K0wtUnXwjJUxnsS1QJJZJ0SIJewIdKry7NOJUvW+HoMEV9LlcRjpP7Gi5tEwJZDFvm+KSrEANF/p/QVHqrqb+JZ1MCB0qvLN+qOrhCvbeIQL+XZlvL0OFabmi4EmrSI9oZt2AGwTfwrPTK+BdqR/eCZNeawf7xYn8ta92wF/AC+Ad+BX+HlHrrSVpkXfSntBdtB7pnDvkZ/FYbgwGytK61OjHkWbsODZYK9cAhpsSxNUqbEWcQ3TySdd8cyZVAdwK+UB/CGdNXIJ76g69TXaa6Crsjs6JLErxjLU7Acrvz9v12ifOzWa2JvlbrlIpwzNjc4s2+HnnXn5KqK9BtnROIWMnUr3wAAAABJRU5ErkJggg==]]></Image>
+            <Ellipse Fill="#FFFFFF" Height="20.0" Left="0.0" Name=""
+                Stroke="None" StrokeWidth="0.5" Top="0.0"
+                Visibility="Visible" Width="20.0"/>
+            <Path EffectsFillOff="None" EffectsFillOn="#15009530"
+                Fill="None" Name=""
+                PathData="M 20,10 C 20,15.5 15.5,20 10,20 4.5,20 0,15.5 0,10 0,4.5 4.5,0 10,0 15.5,0 20,4.5 20,10 Z M 2.934,17.066 17.066,2.934 m -14.132,0 14.132,14.132"
+                Stroke="#808080" StrokeDashArray="0.0" StrokeWidth="0.5"/>
+        </Component>
+        <TargetArea Height="20.0" Left="0.0"
+            Name="TargetArea ContextMenu" Tooltip="Flödesmätare"
+            Top="27.0" Width="20.0"/>
+        <Text FontFamily="Arial" FontSize="12" HorizontalAlign="Center"
+            Id="Larm" Left="10.0" Name="Id" Stroke="#304760"
+                Top="15.0"><![CDATA[MF41]]><Expose
+                ExposedAttribute="Content" Name="ID"/>
+        </Text>
+        <Text FontFamily="Arial" FontSize="14" HorizontalAlign="Center"
+            Left="10.0" Name="Mätvärde" Stroke="#0087CD"
+                Top="0.0"><![CDATA[0]]><Bind Attribute="Content"
+                DynamicUpdates="Enable" Name="F.Value" PreventDefault="True"/>
+        </Text>
+    </Component>
+    <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+        Height="1.0" Id="ContextMenu" Left="0" Name="" Top="0"
+        Visibility="Hidden" Width="1.0">
+        <Metadata Name="Tag" Value="#menu, #vp_mq11"/>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Head" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Text" Value=""/>
+        </Component>
+        <Component Clip="False" ContentHeight="1.0" ContentWidth="1.0"
+            Height="1.0" Id="MenuRow_Förbrukning" Left="0.0" Top="0.0" Width="1.0">
+            <Metadata Name="Tag" Value="#menurow, #övrigaparametrar, #förbrukning"/>
+            <Metadata Name="Icon" Value="MiscSettings"/>
+            <Metadata Name="Text" Value="Förbrukning"/>
+            <Metadata Name="Action" Value="OpenBindsDefault"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="F.Value" PreventDefault="True"/>
+            <Bind Attribute="" DynamicUpdates="Disable" Name="V.Value" PreventDefault="True"/>
+        </Component>
+    </Component>
+    <Expose ExposedAttribute="Name" Name="ID"/>
+    <Metadata Name="Name" Value="KV01-MF4x"/>
+    <Metadata Name="Description" Value=""/>
+</Component>
+<!--[Thumbnail]
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAKOSURBVFhH7ZXPqxJRFMfnz2nZsk3QMtq2aPdo0eq1iKAgCB6GQkEq6MaIeBmiqCnPQAlClIc8RCQ0QTQtTKUUFCzz1/jrxPfEnXTGgmczzxZ94TD3nnu55zPnnDsj0Y4lqR1nrY0AzwtduvCiTOcPS/T64zf1sq7SAPTGczr3tMjj8WyhjI2SBiDXHtL16CdlfslbodpXeW2PntIAJOv93QJsygDKYpQ0AKg7GhBPBEYjGikNAHT0vkeXA1UGQUmM1EaAs9R/AAZwHr6kA+szdly8uk837j5STKjW+EI379uUuSxPae+WWZlvKwZAIAGwGlQIwe49dClr/e9Duv3ASVf27qi3nlpSofRhLQM41OU5Ysu++3kFsY4MCAAAQZtgTyvp8RMfAUIAXNs/4MCwz+0OJU7e8ttjjjX4hHQBQGAc+rsSAEBkBNkRWdm0dxtJr96k/giwKvWaer6N/o1ruEutASyXSxoMBpTL5SgWi7Hl83kaDoe8ZoQUAAQoFovkdDopGAxSOp1mwxi+SqViCAQD4OBCoUAmk4mazaZ6D1WrVbJYLFQul3WHkHBgv98nm83Gwd1uN/V6PWVDq9ViH54Oh0P3ckjz+ZyOj48pHA6zA8EFhAg+Ho95LRAIUCaT0RdAlmU+GPUWEhCrwaFUKkWRSIRms5ni+1tJCODz+dYAxJurywEAZEpXgMlkwtctFAqxYzXtq+WA/H4/JRIJfQGm0yl3udVqpVKppEm7gKjVakqjom/0krRYLKjb7XJtcQ07nV9/OyEAms1misfjfGN0bUIchjLU63X+6CAT6IlkMsmGsd1up2g0yuXRM/2Q8iEajUbUaDS40TweD7lcLjav10vZbJba7TaD6q0fM6xN89NIsHMAAAAASUVORK5CYII=-->
