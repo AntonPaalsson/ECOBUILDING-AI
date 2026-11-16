@@ -211,6 +211,8 @@
     byId("systemSelectionDescription").classList.toggle("hidden", !reviewOnly);
     byId("tagListFormatControl").classList.remove("hidden");
     byId("fsNameControl").classList.toggle("hidden", reviewOnly);
+    byId("sharedGraphicProperties").classList.toggle("hidden", reviewOnly);
+    byId("nextStepControl").classList.toggle("hidden", reviewOnly || activeWorkflowStep !== 1);
     byId("workflowDescription").classList.toggle("hidden", reviewOnly);
     byId("workflowDescription").innerHTML = reviewOnly
       ? 'Ladda upp en tagglista som Excel-fil för granskning mot ramverket. <b>"Name"</b> korrigeras där en matchning finns och <b>"Description"</b> bevaras.'
@@ -218,7 +220,7 @@
         ? 'Ladda upp tagglistan som Excelfil. Programmet använder FAXX-mallen för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.'
         : 'Ladda upp tagglistan som Excelfil. Programmet använder en gemensam ventilationsmall för jämförelsen mot ramverket. <b>"Name"</b> korrigeras till ramverkets taggbeteckning där en matchning finns, en bedömning läggs till och <b>"Description"</b> samt larmklasser bevaras.';
     const sourceFrame = byId("objectSetSource");
-    if (sourceFrame) sourceFrame.src = ({ UCXX: "templates/ucxx/objectset.xml", VPUXX: "templates/vpuxx/objectset.xml", FAXX: "templates/faxx/objectset.xml" })[getAirTreatmentTemplateId()] ?? "templates/tgml/LBXX_MALL.xml";
+    if (sourceFrame) sourceFrame.src = ({ VSXX: "templates/vsxx/objectset.xml", UCXX: "templates/ucxx/objectset.xml", VPUXX: "templates/vpuxx/objectset.xml", FAXX: "templates/faxx/objectset.xml" })[getAirTreatmentTemplateId()] ?? "templates/tgml/LBXX_MALL.xml";
     byId("step2Button").disabled = reviewOnly || !airTreatmentStarted;
     updateTopTabState();
     byId("continueAirTreatment").disabled = !getRequestedSystemCount();
@@ -255,7 +257,7 @@
     container.replaceChildren();
     byId("systemProfilesPanel").classList.toggle("hidden", workflowMode === "review" || !airTreatmentStarted);
     if (workflowMode === "review") return;
-    const types = [["LBXX", "LB · Luftbehandling"], ["UCXX", "Undercentral"], ["VPUXX", "Värmepump"], ["FAXX", "FA · Separata fläktar"]];
+    const types = [["LBXX", "LB · Luftbehandling"], ["UCXX", "Undercentral"], ["VSXX", "Värmeshunt"], ["VPUXX", "Värmepump"], ["FAXX", "FA · Separata fläktar"]];
     const slots = [["VP01", "Inkommande fjärrvärme"], ["VS01", "Radiatorkrets / ventilationskrets"], ["VS02", "Radiatorkrets / ventilationskrets"], ["VV01", "Tappvarmvatten"], ["KV01", "Kallvatten"]];
     for (let index = 0; index < getRequestedSystemCount(); index++) {
       const saved = previous[index] ?? {};
@@ -268,7 +270,7 @@
       types.forEach(([value,label]) => type.add(new Option(label,value)));
       type.value = saved.type ?? ""; field("Systemtyp",type);
       const prefix = document.createElement("input"); prefix.type = "text"; prefix.dataset.profilePrefix = "";
-      prefix.value = saved.systemPrefix ?? ""; prefix.placeholder = ({LBXX:"LB11",UCXX:"UC01",VPUXX:"VPU01",FAXX:"FA11"})[type.value] ?? "Systemnamn";
+      prefix.value = saved.systemPrefix ?? ""; prefix.placeholder = ({VSXX:"VS11",LBXX:"LB11",UCXX:"UC01",VPUXX:"VPU01",FAXX:"FA11"})[type.value] ?? "Systemnamn";
       prefix.setAttribute("list", "profile-prefixes-" + index); field("Systemnamn",prefix);
       const list = document.createElement("datalist"); list.id = "profile-prefixes-" + index;
       getSystemPrefixes().filter(value => value.startsWith(type.value.replace("XX",""))).forEach(value => list.append(new Option(value,value))); row.append(list);
@@ -293,7 +295,7 @@
       row.append(children);
       const properties = document.createElement("fieldset"); properties.className = "profile-graphic-properties";
       const propertiesTitle = document.createElement("legend"); propertiesTitle.textContent = "Bildegenskaper"; properties.append(propertiesTitle);
-      for (const name of ["System ID", "Betjänar/Placering", "Apparatskåp", "DUC", "Fabrikat", "Produkt ID"]) {
+      for (const name of ["System ID", "Betjänar/Placering"]) {
         const label = document.createElement("label");
         const input = document.createElement("input"); input.type = "text"; input.dataset.graphicProperty = name;
         input.value = saved.graphicProperties?.[name] ?? "";
@@ -434,7 +436,7 @@
     const candidates = [...graphicOi.getElementsByTagNameNS("*", "PI")].flatMap((pi) => {
       const binding = pi.getAttribute("Name");
       const hasApplicationReference = [...pi.getElementsByTagNameNS("*", "Reference")]
-        .some((reference) => new RegExp(`/Application/${templateId === "VPUXX" ? "(?:VPUXX|UCXX)" : templateId}(?:-[^/]+)?(?:/|$)`, "i").test(reference.getAttribute("Object") ?? ""));
+        .some((reference) => new RegExp(`/Application/${templateId === "VSXX" ? "(?:VSXX|UCXX)" : templateId === "VPUXX" ? "(?:VPUXX|UCXX)" : templateId}(?:-[^/]+)?(?:/|$)`, "i").test(reference.getAttribute("Object") ?? ""));
       if (!binding || (templateId !== "FAXX" && !hasApplicationReference) || !propertyNames.has(binding)) return [];
       return [{ binding, component: binding.split(".")[0], source: "mall", active: true }];
     });
@@ -675,6 +677,7 @@
   function getAirTreatmentTemplateId(systemPrefix = "") {
     const profile = systemPrefix ? getProfileForSystemPrefix(systemPrefix) : null;
     if (profile?.type) return profile.type;
+    if (/^VS/i.test(systemPrefix)) return "VSXX";
     if (/^LB/i.test(systemPrefix)) return "LBXX";
     if (!systemPrefix && selectedFrameworkSystemId === "heating") return window.ECO_UCXX_OBJECTSET_TEMPLATE ? "UCXX" : "";
     if (!systemPrefix && selectedFrameworkSystemId === "heatPump") return window.ECO_VPUXX_OBJECTSET_TEMPLATE ? "VPUXX" : "";
@@ -687,6 +690,7 @@
   }
 
   function getSelectedObjectSetTemplate(templateId = getAirTreatmentTemplateId()) {
+    if (templateId === "VSXX") return window.ECO_VSXX_OBJECTSET_TEMPLATE ?? "";
     if (templateId === "UCXX") return window.ECO_UCXX_OBJECTSET_TEMPLATE ?? "";
     if (templateId === "VPUXX") return window.ECO_VPUXX_OBJECTSET_TEMPLATE ?? "";
     if (templateId === "FAXX") return window.ECO_FAXX_OBJECTSET_TEMPLATE ?? "";
@@ -2620,7 +2624,7 @@
   }
 
   function rewriteTemplateReferences(objectSet, ducName, rows, templateId = "LBXX", systemPrefix = "") {
-    const referenceTemplateId = templateId === "VPUXX" ? "(?:VPUXX|UCXX)" : templateId;
+    const referenceTemplateId = templateId === "VSXX" ? "(?:VSXX|UCXX)" : templateId === "VPUXX" ? "(?:VPUXX|UCXX)" : templateId;
     if (templateId === "FAXX") {
       const graphicOi = [...objectSet.getElementsByTagNameNS("*", "OI")]
         .find((oi) => oi.getAttribute("NAME") === `${systemPrefix} BILD`)
@@ -2707,9 +2711,9 @@
       if (["UCXX", "VPUXX"].includes(templateId) && name === "UNDERCENTRAL BILD") object.setAttribute("NAME", newGraphicName);
       if (name === templateId || name === `${templateId} BILD`) {
         object.setAttribute("NAME", name === templateId ? systemPrefix : newGraphicName);
-      } else if (/^(?:LBXX|FAXX) BILD$/i.test(name)) {
+      } else if (/^(?:LBXX|FAXX|VSXX) BILD$/i.test(name)) {
         object.setAttribute("NAME", newGraphicName);
-      } else if (/^(?:LBXX|FAXX)$/i.test(name)) {
+      } else if (/^(?:LBXX|FAXX|VSXX)$/i.test(name)) {
         object.setAttribute("NAME", systemPrefix);
       }
     }
@@ -2737,8 +2741,8 @@
       ...objectSet.getElementsByTagNameNS("*", "PI"),
     ]) {
       for (const attribute of [...reference.attributes]) {
-        if (["Name", "DisplayName"].includes(attribute.name) && /^(?:LBXX|UCXX|VPUXX)(?=\.|$)/i.test(attribute.value)) {
-          attribute.value = attribute.value.replace(/^(?:LBXX|UCXX|VPUXX)/i, systemPrefix);
+        if (["Name", "DisplayName"].includes(attribute.name) && /^(?:LBXX|UCXX|VPUXX|VSXX)(?=\.|$)/i.test(attribute.value)) {
+          attribute.value = attribute.value.replace(/^(?:LBXX|UCXX|VPUXX|VSXX)/i, systemPrefix);
         }
       }
     }
@@ -2875,7 +2879,7 @@
 
   function applyGraphicProperties(tgml, systemPrefix) {
     const supplied = getProfileForSystemPrefix(systemPrefix)?.graphicProperties ?? {};
-    const values = { ...supplied, "System ID": supplied["System ID"] || systemPrefix, DUC: supplied.DUC || String(questionAnswers.ducName ?? "").trim() };
+    const values = { ...supplied, "Apparatskåp": byId("sharedCabinet").value.trim(), Fabrikat: byId("sharedManufacturer").value, "Produkt ID": byId("sharedProduct").value, "System ID": supplied["System ID"] || systemPrefix, DUC: supplied.DUC || String(questionAnswers.ducName ?? "").trim() };
     for (const expose of tgml.getElementsByTagNameNS("*", "Expose")) {
       const value = values[expose.getAttribute("Name")];
       if (!value) continue;
@@ -3201,14 +3205,10 @@
 
   function updateTopTabState() {
     const reviewOnly = workflowMode === "review";
-    const stepOneActive = !reviewOnly && activeWorkflowStep === 1;
-    const stepTwoActive = !reviewOnly && activeWorkflowStep === 2;
     const reviewActive = reviewOnly;
-    byId("step1Button").classList.toggle("active", stepOneActive);
-    byId("step2Button").classList.toggle("active", stepTwoActive);
-    byId("reviewModeButton").classList.toggle("active", reviewActive);
-    byId("step1Button").setAttribute("aria-selected", String(stepOneActive));
-    byId("step2Button").setAttribute("aria-selected", String(stepTwoActive));
+    byId("integrationButton").classList.toggle("active", !reviewOnly);
+    byId("integrationButton").setAttribute("aria-selected", String(!reviewOnly));
+    byId("reviewModeButton").classList.toggle("active", reviewOnly);
     byId("reviewModeButton").setAttribute("aria-selected", String(reviewActive));
   }
 
@@ -3217,7 +3217,7 @@
     const isStepOne = stepNumber === 1 || workflowMode === "review";
     byId("step1Panel").classList.toggle("hidden", !isStepOne);
     byId("step2Panel").classList.toggle("hidden", isStepOne);
-    byId("step1Panel").setAttribute("aria-labelledby", workflowMode === "review" ? "reviewModeButton" : "step1Button");
+    byId("step1Panel").setAttribute("aria-labelledby", workflowMode === "review" ? "reviewModeButton" : "integrationButton");
     updateSystemSelectionView();
   }
 
@@ -3241,6 +3241,12 @@
     showStep(1);
   }
 
+  byId("integrationButton").addEventListener("click", () => {
+    if (workflowMode !== "xml") setWorkflowMode("xml"); else showStep(activeWorkflowStep);
+  });
+  for (const id of ["sharedCabinet", "sharedManufacturer", "sharedProduct"]) {
+    byId(id).addEventListener("change", () => { generatedObjectSetForPreview = null; invalidateEboDownload(); });
+  }
   byId("step1Button").addEventListener("click", () => {
     if (workflowMode !== "xml") setWorkflowMode("xml");
     else showStep(1);
@@ -3346,10 +3352,32 @@
     updateStep2Availability();
     renderTgmlPreview();
   });
-  byId("buildEboXml").addEventListener("click", () => {
-    buildEboObjectSet().catch((error) => {
-      byId("step2Status").textContent = `Kunde inte skapa XML: ${error.message}`;
+  byId("navMenuButton").addEventListener("click", () => {
+    const hidden = byId("workflowNavigation").classList.toggle("hidden");
+    byId("navMenuButton").setAttribute("aria-expanded", String(!hidden));
+  });
+  for (const [shortcut, target] of [["navReviewShortcut", "reviewModeButton"], ["navStep1Shortcut", "integrationButton"]]) {
+    byId(shortcut).addEventListener("click", () => {
+      byId(target).click();
+      byId(shortcut).closest("details").open = false;
     });
+  }
+  byId("buildEboXml").addEventListener("click", async () => {
+    const button = byId("buildEboXml");
+    if (button.getAttribute("aria-busy") === "true") return;
+    button.disabled = true;
+    button.setAttribute("aria-busy", "true");
+    byId("xmlLoading").classList.remove("hidden");
+    try {
+      await new Promise(resolve => requestAnimationFrame(() => setTimeout(resolve, 0)));
+      await buildEboObjectSet();
+    } catch (error) {
+      byId("step2Status").textContent = `Kunde inte skapa XML: ${error.message}`;
+    } finally {
+      byId("xmlLoading").classList.add("hidden");
+      button.removeAttribute("aria-busy");
+      button.disabled = false;
+    }
   });
   byId("runReview").addEventListener("click", () => {
     startReview().catch((error) => {
