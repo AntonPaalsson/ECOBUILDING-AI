@@ -1,6 +1,8 @@
 @import "tailwindcss" source(none);
 @source "../index.html";
 @source "../app.js";
+@source "../io-review.js";
+@source inline("badge badge-info badge-success badge-warning badge-error");
 @plugin "daisyui" { themes: dark --default; logs: false; }
 @plugin "daisyui/theme" {
  name: "init";
@@ -229,6 +231,12 @@
 .io-card .io-check summary { display:flex; align-items:center; padding:9px 0; gap:8px; }
 .io-card .io-check summary strong { font-size:12px; font-weight:500; flex:1; min-width:0; overflow-wrap:anywhere; }
 .io-card .io-check dl { padding:4px 0 12px; }
+.io-controls-toggle { cursor:pointer; padding:8px 0; font-size:13px; }
+.io-card-controls:not([open]) .io-hide-controls { display:none; }
+.io-card-controls[open] .io-show-controls { display:none; }
+.io-card { position:relative; overflow:visible; }
+.io-card:has(.io-card-controls[open]) { z-index:20; }
+.io-controls-overlay { position:absolute; top:calc(100% - 1px); left:-1px; right:-1px; padding:0 16px 16px; background:#191c20; border:1px solid #41464d; border-top:0; border-radius:0 0 12px 12px; box-shadow:0 16px 24px #0008; max-height:60vh; overflow-y:auto; }
 @media(max-width:700px) {
   #ioPanel { margin-top:24px; }
   #ioPanel .review-toolbar { grid-template-columns:minmax(0,1fr); }

@@ -64,7 +64,32 @@
     const checks = [];
     const add = (check, actual, expected, kind, message) => checks.push({ ...entry, name, check, actual: String(actual ?? ''), expected: String(expected ?? ''), kind, message });
     const compare = (check, actual, expected) => add(check, actual, expected, norm(actual) === norm(expected) ? 'good' : 'bad', norm(actual) === norm(expected) ? 'Stämmer' : 'Avviker');
-    if (/NotificationClass|bacnet\.File/i.test(d.TYPE) || api.isNonFrameworkProperty(name)) {
+    if (/NotificationClass/i.test(d.TYPE)) {
+      const categories = window.ECO_FRAMEWORK?.notificationClasses ?? {};
+      const unused = new Set(['28','34','35','36','37','39','44','47','48','49','59','67','68','69']);
+      const parsed = name.match(/^(\d{2})\s+(.+)$/);
+      if (!parsed) {
+        add('Larmkategori', name, 'Nummer + kategorinamn, exempelvis 11 Ventilation', 'bad', 'Larmkategorins namn ska innehålla nummer och kategorinamn');
+        return checks;
+      }
+      const [, number, title] = parsed;
+      const expected = categories[number];
+      if (unused.has(number)) {
+        add('Larmkategori', name, number + ' Används ej', 'bad', 'Kategorin anges som Används ej i ramverket');
+      } else if (!expected) {
+        add('Larmkategori', name, '', 'bad', 'Larmkategorins nummer saknas i ramverket');
+      } else {
+        const same = norm(title) === norm(expected);
+        const likelyTypo = !same && api.similarity(title.toLocaleLowerCase('sv-SE'), expected.toLocaleLowerCase('sv-SE')) >= 0.75;
+        add('Larmkategori', name, number + ' ' + expected, same ? 'good' : likelyTypo ? 'typo' : 'bad', same ? 'Stämmer med ramverkets larmkategori' : likelyTypo ? 'Kontrollera stavning i kategorinamnet' : 'Kategorinamnet stämmer inte med numret');
+      }
+      if (norm(d.VALUE)) {
+        const valueNumber = norm(d.VALUE).match(/^\d+/)?.[0];
+        add('Larmkategorins Value', d.VALUE, number, valueNumber === number ? 'good' : 'bad', valueNumber === number ? 'Kategorinumret stämmer' : 'Value ska motsvara kategorinumret');
+      }
+      return checks;
+    }
+    if (/bacnet\.File/i.test(d.TYPE) || api.isNonFrameworkProperty(name)) {
       add('Ramverk', d.TYPE, '', 'included', 'Ingår * Metadata'); return checks;
     }
     compare('BACnetName = Name', bac, name);
@@ -144,18 +169,34 @@
       if (warning) statuses.append(badge('typo', warning + ' att kontrollera'));
       if (!bad && !warning) statuses.append(checks.every(r => r.kind === 'included') ? badge('included', 'Metadata') : badge('good', 'Stämmer'));
       card.append(heading, statuses);
+      const content = document.createElement('details'); content.className = 'io-card-controls';
+      const toggle = document.createElement('summary'); toggle.className = 'io-controls-toggle';
+      toggle.append(node('span', 'Visa kontroller', 'io-show-controls'), node('span', 'Dölj kontroller', 'io-hide-controls'));
+      content.append(toggle);
+      const overlay = document.createElement('div'); overlay.className = 'io-controls-overlay';
       const ordered = [...checks].sort((a,b) => ({bad:0,typo:1,good:2,included:3}[a.kind] - {bad:0,typo:1,good:2,included:3}[b.kind]));
       for (const r of ordered) {
         const detail = document.createElement('details'); detail.className = 'io-check io-' + r.kind;
         const summary = document.createElement('summary'); summary.append(node('strong', r.check), badge(r.kind, { good: 'Stämmer', bad: 'Fel', typo: 'Kontrollera', included: 'Info' }[r.kind])); detail.append(summary);
         const values = document.createElement('dl');
         values.append(node('dt','Bedömning'), node('dd',r.message), node('dt','Aktuellt'), node('dd',r.actual || '—'), node('dt','Förväntat'), node('dd',r.expected || '—'));
-        detail.append(values); card.append(detail);
+        detail.append(values); overlay.append(detail);
       }
+      content.append(overlay);
+      content.addEventListener('toggle', () => {
+        if (content.open) el('ioRows').querySelectorAll('.io-card-controls[open]').forEach(other => { if (other !== content) other.open = false; });
+      });
+      card.append(content);
       fragment.append(card);
     }
     el('ioRows').replaceChildren(fragment);
   }
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.io-card')) el('ioRows').querySelectorAll('.io-card-controls[open]').forEach(detail => { detail.open = false; });
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') el('ioRows').querySelectorAll('.io-card-controls[open]').forEach(detail => { detail.open = false; });
+  });
   el('ioModeButton').addEventListener('click', () => {
     active = true;
     el('systemSelectionHero').classList.add('hidden'); el('workflow').classList.add('hidden'); el('ioPanel').classList.remove('hidden');
