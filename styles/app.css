@@ -166,3 +166,46 @@
 
 .step-footer { display:flex; justify-content:flex-end; padding:24px 0; }
 #sharedGraphicProperties { margin:20px 0; }
+.io-table-wrap { overflow:auto; max-height:70vh; margin-top:20px; }
+.io-table { width:100%; min-width:1000px; table-layout:fixed; border-collapse:collapse; font-size:13px; }
+.io-table th,.io-table td { padding:12px; text-align:left; vertical-align:top; }
+.io-table th:first-child { width:9%; }
+.io-table th:nth-child(2) { width:19%; }
+.io-table th:nth-child(3) { width:17%; }
+.io-table th:nth-child(4) { width:18%; }
+.io-table th:nth-child(5) { width:22%; }
+.io-table th:nth-child(6) { width:15%; }
+.io-pagination { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:16px; }
+.io-cards { display:grid; gap:20px; margin-top:24px; }
+.io-card { border:1px solid #41464d; border-radius:12px; padding:20px; background:#191c20; min-width:0; }
+.io-card header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:12px; }
+.io-card h3 { margin:0; overflow-wrap:anywhere; }
+.io-card-error { color:#ff9a9a; }
+.io-card-warning { color:#f5cf76; }
+.io-card-success { color:#92d6a3; }
+.io-check { margin-top:6px; border-radius:6px; }
+.io-check summary { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 20px; padding:12px; cursor:pointer; }
+.io-check summary span { font-size:13px; }
+.io-check dl { display:grid; grid-template-columns:90px minmax(0,1fr); gap:8px; padding:0 12px 12px; margin:0; font-size:13px; }
+.io-check dd { margin:0; overflow-wrap:anywhere; }
+.navbar-dial.fab { position:relative; inset:auto; margin-left:0; margin-right:auto; width:48px; height:48px; flex-direction:column; z-index:50; }
+.navbar-dial.fab .fab-close { top:0; bottom:auto; }
+.navbar-dial.fab .dial-option { position:absolute; left:0; right:auto; top:60px; padding-left:14px; background:#17191c; border:1px solid #34383d; border-radius:28px; box-shadow:0 6px 20px #0006; }
+.navbar-dial.fab .dial-option:nth-child(4) { top:116px; }
+.navbar-dial.fab .dial-option:nth-child(5) { top:172px; }
+.io-table-wrap th { position:sticky; top:0; background:#2d3238; z-index:1; }
+.io-table-wrap td { white-space:normal; overflow-wrap:anywhere; min-width:140px; }
+.io-good { background:#203424; }
+.io-bad { background:#3b2327; }
+.io-typo { background:#3c341d; }
+.io-included { color:#adb7c4; }
+#ioPanel .review-toolbar { display:flex; gap:20px; flex-wrap:wrap; margin-top:24px; }
+
+.navbar-dial .dial-black { background:#000; border-color:#454545; color:#fff; }
+.navbar-dial .dial-black:hover { background:#222; }
+
+.navbar-dial.fab .dial-option:has(#navStep1Shortcut) { background:#f58a00; border-color:#f58a00; color:#111; }
+.navbar-dial.fab .dial-option:has(#navReviewShortcut) { background:#50af27; border-color:#50af27; color:#fff; }
+.navbar-dial.fab .dial-option:has(#navIoShortcut) { background:#000; border-color:#454545; color:#fff; }
+.navbar-dial.fab .dial-option .btn { background:transparent; border-color:transparent; box-shadow:none; color:inherit; }
+.navbar-dial.fab .dial-option:hover { filter:brightness(1.1); }

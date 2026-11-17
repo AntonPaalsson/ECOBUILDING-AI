@@ -908,8 +908,15 @@
       : description;
     const descriptionMatches = expected.some(text => actual === text);
     if (descriptionMatches) return { ...tagResult, reason: tagResult.reason + " · Description stämmer" };
-    const reason = !expected.length ? "Description kan inte kontrolleras: beskrivning saknas för taggen i regelunderlaget" : !actual ? "Description saknar beskrivande text. Förväntat: " + expected.join(" / ") : "Description avviker. Förväntat: " + expected.join(" / ");
-    return { kind: "typo", label: "Kontrollera Description", reason: tagResult.reason + " · " + reason };
+    // Alternative wording is allowed; only flag close spelling variants.
+    const normalizedActual = actual.trim().toLocaleLowerCase("sv-SE");
+    const spellingCandidate = expected.find(text => {
+      const candidate = text.trim().toLocaleLowerCase("sv-SE");
+      return normalizedActual.length >= 5 && candidate !== normalizedActual &&
+        Math.abs(candidate.length - normalizedActual.length) <= 2 && similarity(candidate, normalizedActual) >= 0.88;
+    });
+    if (!spellingCandidate) return tagResult;
+    return { kind: "typo", label: "Kontrollera stavning i Description", reason: tagResult.reason + " · Möjligt stavfel. Liknar: " + spellingCandidate };
   }
 
   function parseXml(xml) {
@@ -1572,6 +1579,11 @@
     if (hasTagPrefix(currentTagKeys, "ST7XX_") && /^ST7pn_/i.test(tag) && /fler än ett tryck/i.test(item.note ?? "")) {
       tag = tag.replace(/^ST7pn_/i, "ST7xx_");
     }
+    if (/^ST7pn_/i.test(tag)) {
+      const roots = [...currentTagKeys].map(normalizeTag).map(value => value.match(/^(ST7\d+(?:_ST7\d+)*|ST7XX)_/)).filter(Boolean).map(match => match[1]);
+      const serialRoot = roots.find(root => root.includes("_")) ?? roots[0];
+      if (serialRoot) tag = tag.replace(/^ST7pn/i, serialRoot);
+    }
     return tag;
   }
 
@@ -1832,7 +1844,7 @@
     const normalizedInput = normalizeTag(value);
     if (isInvalidGnTag(normalizedInput)) return false;
     if (/^GX[A-Z0-9]*(?:_|$)/.test(normalizedInput) || /^GX[A-Z0-9]*(?:_|$)/.test(normalizedPattern)) return false;
-    if (normalizedPattern === "ST7PN_TKMO" && /^ST7\d+_ST7\d+_TKMO$/.test(normalizedInput)) {
+    if (/^ST7PN_(M|IÖ_LT|IS_LT|TKMO)$/.test(normalizedPattern) && new RegExp("^ST7\\d+(?:_ST7\\d+)+_" + normalizedPattern.slice(6) + "$").test(normalizedInput)) {
       return true;
     }
     // Serial presence sensors retain their actual numbers but use GN3x signal rules.
@@ -3352,16 +3364,23 @@
     updateStep2Availability();
     renderTgmlPreview();
   });
-  byId("navMenuButton").addEventListener("click", () => {
-    const hidden = byId("workflowNavigation").classList.toggle("hidden");
-    byId("navMenuButton").setAttribute("aria-expanded", String(!hidden));
-  });
-  for (const [shortcut, target] of [["navReviewShortcut", "reviewModeButton"], ["navStep1Shortcut", "integrationButton"]]) {
+  for (const [id, target] of [["rightNavReview", "reviewModeButton"], ["rightNavIntegration", "integrationButton"]]) {
+    byId(id).addEventListener("click", () => { byId(target).click(); byId(id).closest("details").open = false; });
+  }
+  for (const [shortcut, target] of [["navReviewShortcut", "reviewModeButton"], ["navStep1Shortcut", "integrationButton"], ["navIoShortcut", "ioModeButton"]]) {
     byId(shortcut).addEventListener("click", () => {
       byId(target).click();
-      byId(shortcut).closest("details").open = false;
+      byId(shortcut).blur();
     });
   }
+  const dial = byId("navDial"), dialTrigger = byId("navDialTrigger");
+  dial.addEventListener("focusin", () => dialTrigger.setAttribute("aria-expanded", "true"));
+  dial.addEventListener("focusout", () => setTimeout(() => dialTrigger.setAttribute("aria-expanded", String(dial.contains(document.activeElement))), 0));
+  dial.addEventListener("keydown", event => {
+    if (event.key === "Escape") { document.activeElement.blur(); }
+    if (event.target === dialTrigger && ["Enter", " "].includes(event.key)) { event.preventDefault(); byId("navStep1Shortcut").focus(); }
+  });
+  dial.querySelector(".fab-close").addEventListener("mousedown", event => { event.preventDefault(); document.activeElement.blur(); });
   byId("buildEboXml").addEventListener("click", async () => {
     const button = byId("buildEboXml");
     if (button.getAttribute("aria-busy") === "true") return;
@@ -3451,6 +3470,7 @@
     const file = event.dataTransfer.files[0];
     if (file) parseWorkbook(file).catch(showError);
   });
+  window.ECO_IO_RULES = { frameworkPatternMatches, reviewDescription, isNonFrameworkProperty, similarity };
 })();
 
 
