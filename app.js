@@ -3364,9 +3364,6 @@
     updateStep2Availability();
     renderTgmlPreview();
   });
-  for (const [id, target] of [["rightNavReview", "reviewModeButton"], ["rightNavIntegration", "integrationButton"]]) {
-    byId(id).addEventListener("click", () => { byId(target).click(); byId(id).closest("details").open = false; });
-  }
   for (const [shortcut, target] of [["navReviewShortcut", "reviewModeButton"], ["navStep1Shortcut", "integrationButton"], ["navIoShortcut", "ioModeButton"]]) {
     byId(shortcut).addEventListener("click", () => {
       byId(target).click();

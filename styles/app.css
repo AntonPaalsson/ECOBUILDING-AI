@@ -204,8 +204,42 @@
 .navbar-dial .dial-black { background:#000; border-color:#454545; color:#fff; }
 .navbar-dial .dial-black:hover { background:#222; }
 
-.navbar-dial.fab .dial-option:has(#navStep1Shortcut) { background:#f58a00; border-color:#f58a00; color:#111; }
-.navbar-dial.fab .dial-option:has(#navReviewShortcut) { background:#50af27; border-color:#50af27; color:#fff; }
-.navbar-dial.fab .dial-option:has(#navIoShortcut) { background:#000; border-color:#454545; color:#fff; }
+.navbar-dial.fab .dial-option#navStep1Shortcut { background:#f58a00; border-color:#f58a00; color:#111; }
+.navbar-dial.fab .dial-option#navReviewShortcut { background:#50af27; border-color:#50af27; color:#fff; }
+.navbar-dial.fab .dial-option#navIoShortcut { background:#000; border-color:#454545; color:#fff; }
 .navbar-dial.fab .dial-option .btn { background:transparent; border-color:transparent; box-shadow:none; color:inherit; }
 .navbar-dial.fab .dial-option:hover { filter:brightness(1.1); }
+
+/* IO review uses compact cards, independently of the tag-list table layout. */
+#ioPanel { margin-top:32px; }
+#ioPanel > h2 { margin-top:0; }
+#ioPanel .review-toolbar { display:grid; grid-template-columns:minmax(200px,1fr) 180px auto; align-items:end; gap:16px; }
+#ioPanel .review-toolbar label { display:flex; flex-direction:column; gap:8px; min-width:0; }
+#ioPanel .review-toolbar input,#ioPanel .review-toolbar select { width:100%; }
+#ioPanel #ioCopy { align-self:end; margin:0; }
+.io-cards { grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); align-items:start; gap:16px; }
+.io-card { padding:16px; }
+.io-card header { padding:0; margin:0; min-height:0; background:none; }
+.io-card h3 { font-size:16px; line-height:1.4; }
+.io-card .small { font-size:11px; }
+.io-badges { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0; }
+.io-card .badge { display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-size:11px; height:24px; padding:0 8px; }
+.io-card .badge svg { width:1em; height:1em; flex-shrink:0; }
+.io-card .io-check { background:transparent; margin:0; border-radius:0; border-top:1px solid #34383d; }
+.io-card .io-check summary { display:flex; align-items:center; padding:9px 0; gap:8px; }
+.io-card .io-check summary strong { font-size:12px; font-weight:500; flex:1; min-width:0; overflow-wrap:anywhere; }
+.io-card .io-check dl { padding:4px 0 12px; }
+@media(max-width:700px) {
+  #ioPanel { margin-top:24px; }
+  #ioPanel .review-toolbar { grid-template-columns:minmax(0,1fr); }
+  #ioPanel #ioCopy { justify-self:start; }
+}
+
+.app-navbar .brand { position:static; transform:none; margin-right:auto; }
+.navbar-dots { color:#ddd; letter-spacing:4px; margin:0 18px; user-select:none; }
+.navbar-dial.fab { margin-left:0; margin-right:0; }
+.navbar-dial.fab .dial-option { left:auto; right:0; }
+
+.navbar-dial.fab button.dial-option { cursor:pointer; padding:0 16px 0 20px; min-height:48px; gap:20px; font:inherit; }
+.navbar-dial .dial-symbol { display:grid; place-items:center; min-width:28px; font-weight:700; }
+.navbar-dial button.dial-option:focus-visible { outline:2px solid white; outline-offset:3px; }

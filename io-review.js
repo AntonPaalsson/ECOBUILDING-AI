@@ -7,6 +7,20 @@
   const pageSize = 20;
   const xml = text => { const doc = new DOMParser().parseFromString(text, 'application/xml'); if (doc.querySelector('parsererror')) throw Error('Ogiltig XML i Excel-filen.'); return doc; };
   const nodes = (doc, name) => [...doc.getElementsByTagNameNS('*', name)];
+  function badge(kind, text) {
+    const styles = { good: 'success', bad: 'error', typo: 'warning', included: 'info' };
+    const icons = {
+      good: '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><polyline points="7 13 10 16 17 8" fill="none" stroke="currentColor" stroke-width="2"/>',
+      bad: '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 19 19 5" stroke="currentColor" stroke-width="2"/>',
+      typo: '<path d="M12 3 2 21h20L12 3Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 9v5m0 3v1" stroke="currentColor" stroke-width="2"/>',
+      included: '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6m0-11v2" stroke="currentColor" stroke-width="2"/>'
+    };
+    const result = document.createElement('span');
+    result.className = 'badge badge-' + styles[kind];
+    result.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24">' + icons[kind] + '</svg>';
+    result.append(document.createTextNode(text));
+    return result;
+  }
   function cellValue(cell, strings) {
     if (cell.getAttribute('t') === 's') return strings[Number(nodes(cell, 'v')[0]?.textContent)] ?? '';
     return cell.getAttribute('t') === 'inlineStr' ? nodes(cell, 't').map(n => n.textContent).join('') : nodes(cell, 'v')[0]?.textContent ?? '';
@@ -125,13 +139,17 @@
       const card = document.createElement('article'); card.className = 'io-card';
       const heading = document.createElement('header');
       heading.append(node('h3', first.name), node('span', first.sheet + ' · Rad ' + first.row, 'small'));
-      card.append(heading, node('p', bad || warning ? bad + ' fel · ' + warning + ' att kontrollera' : checks.every(r => r.kind === 'included') ? 'Metadata' : 'Alla kontroller stämmer', bad ? 'io-card-error' : warning ? 'io-card-warning' : 'io-card-success'));
+      const statuses = document.createElement('div'); statuses.className = 'io-badges';
+      if (bad) statuses.append(badge('bad', bad + ' fel'));
+      if (warning) statuses.append(badge('typo', warning + ' att kontrollera'));
+      if (!bad && !warning) statuses.append(checks.every(r => r.kind === 'included') ? badge('included', 'Metadata') : badge('good', 'Stämmer'));
+      card.append(heading, statuses);
       const ordered = [...checks].sort((a,b) => ({bad:0,typo:1,good:2,included:3}[a.kind] - {bad:0,typo:1,good:2,included:3}[b.kind]));
       for (const r of ordered) {
         const detail = document.createElement('details'); detail.className = 'io-check io-' + r.kind;
-        const summary = document.createElement('summary'); summary.append(node('strong', r.check), node('span', r.message)); detail.append(summary);
+        const summary = document.createElement('summary'); summary.append(node('strong', r.check), badge(r.kind, { good: 'Stämmer', bad: 'Fel', typo: 'Kontrollera', included: 'Info' }[r.kind])); detail.append(summary);
         const values = document.createElement('dl');
-        values.append(node('dt','Aktuellt'), node('dd',r.actual || '—'), node('dt','Förväntat'), node('dd',r.expected || '—'));
+        values.append(node('dt','Bedömning'), node('dd',r.message), node('dt','Aktuellt'), node('dd',r.actual || '—'), node('dt','Förväntat'), node('dd',r.expected || '—'));
         detail.append(values); card.append(detail);
       }
       fragment.append(card);
@@ -147,6 +165,7 @@
   for (const id of ['integrationButton', 'reviewModeButton']) el(id).addEventListener('click', () => {
     if (!active) return; active = false; el('ioPanel').classList.add('hidden'); el('systemSelectionHero').classList.remove('hidden'); el('ioModeButton').classList.remove('active'); el('ioModeButton').setAttribute('aria-selected', 'false');
   });
+  el('ioPick').addEventListener('click', () => el('ioFile').click());
   el('ioFile').addEventListener('change', async () => {
     sheets = []; results = []; render(); el('ioRun').disabled = true; el('ioCopy').disabled = true;
     const file = el('ioFile').files[0]; if (!file) return;

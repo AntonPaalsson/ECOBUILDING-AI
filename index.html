@@ -4,20 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Integrations Verktyg</title>
-<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/app.css?v=20261117-io-layout">
 </head>
 <body>
 <header class="top">
 <div class="navbar bg-black shadow-sm app-navbar">
+<a class="brand" href="index.html" aria-label="Init – startsida"><img src="assets/init-logo.svg" alt="Init"></a>
+
+
+<span class="navbar-dots" aria-hidden="true">•••</span>
 <div class="fab navbar-dial" id="navDial">
 <div tabindex="0" role="button" class="btn btn-circle btn-primary" aria-label="Öppna snabbmeny" id="navDialTrigger" aria-expanded="false">☰</div>
 <div class="fab-close" aria-hidden="true"><span class="btn btn-circle dial-black">✕</span></div>
-<div class="dial-option">Fullständig Integration<button type="button" class="btn btn-circle btn-primary" id="navStep1Shortcut" aria-label="Fullständig Integration">FI</button></div>
-<div class="dial-option">Granska tagglista<button type="button" class="btn btn-circle btn-success" id="navReviewShortcut" aria-label="Granska tagglista">TG</button></div>
-<div class="dial-option">IO Granskning<button type="button" class="btn btn-circle dial-black" id="navIoShortcut" aria-label="IO Granskning">IO</button></div>
+<button type="button" class="dial-option btn-primary" id="navStep1Shortcut"><span>Fullständig Integration</span><span class="dial-symbol" aria-hidden="true">FI</span></button>
+<button type="button" class="dial-option btn-success" id="navReviewShortcut"><span>Granska tagglista</span><span class="dial-symbol" aria-hidden="true">TG</span></button>
+<button type="button" class="dial-option dial-black" id="navIoShortcut"><span>IO Granskning</span><span class="dial-symbol" aria-hidden="true">IO</span></button>
 </div>
-<a class="brand" href="index.html" aria-label="Init – startsida"><img src="assets/init-logo.svg" alt="Init"></a>
-<details class="dropdown dropdown-end navbar-more"><summary class="btn btn-square btn-ghost" aria-label="Fler alternativ"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-5 w-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg></summary><ul class="dropdown-content menu bg-base-100 rounded-box shadow-sm w-56 border border-base-300"><li><button type="button" id="rightNavReview">Granska tagglista</button></li><li><button type="button" id="rightNavIntegration">Fullständig Integration</button></li></ul></details>
 </div>
 <nav id="workflowNavigation" class="step-navigation top-tabs hidden" role="tablist" aria-label="Arbetsflöde">
 <button type="button" class="step-button active" id="integrationButton" role="tab" aria-controls="step1Panel step2Panel" aria-selected="true">Fullständig Integration</button>
@@ -29,7 +31,7 @@
 <section id="ioPanel" class="panel hidden" role="tabpanel" aria-labelledby="ioModeButton">
 <h2>IO Granskning</h2><p>Kontrollera BACnet-objekt mot ramverket.</p>
 <div class="profile-graphic-properties"><label>DUC-namn<input id="ioDuc" type="text"></label><label>Skolnamn<input id="ioSchool" type="text"></label></div>
-<div class="drop"><label>Välj tagglista (.xlsx)<input id="ioFile" type="file" accept=".xlsx"></label><p id="ioFilename"></p></div>
+<div class="drop" id="ioDrop"><h2>Välj tagglista</h2><p>Excel(.xlsx). Originalfilen ändras inte.</p><input id="ioFile" type="file" accept=".xlsx" hidden><button type="button" class="button primary" id="ioPick">Ladda upp fil</button><div id="ioFilename" class="filename"></div></div>
 <button id="ioRun" class="button primary" disabled>Starta IO-granskning</button>
 <p id="ioStatus" role="status"></p>
 <div class="review-toolbar"><label>Sök i IO-granskningen<input id="ioSearch" type="search" placeholder="Tagg, kontroll eller bedömning"></label><label>Visa<select id="ioFilter"><option value="all">Alla</option><option value="bad">Fel</option><option value="typo">Kontrollera</option><option value="good">Stämmer</option><option value="included">Metadata</option></select></label><button id="ioCopy" class="button" disabled>Kopiera resultat</button></div>
