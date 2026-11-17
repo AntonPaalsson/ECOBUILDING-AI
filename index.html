@@ -19,7 +19,7 @@
 <button type="button" class="dial-option btn-primary" id="navStep1Shortcut"><span>Fullständig Integration</span><span class="dial-symbol" aria-hidden="true">FI</span></button>
 <button type="button" class="dial-option btn-success" id="navReviewShortcut"><span>Granska tagglista</span><span class="dial-symbol" aria-hidden="true">TG</span></button>
 <button type="button" class="dial-option dial-black" id="navIoShortcut"><span>IO Granskning</span><span class="dial-symbol" aria-hidden="true">IO</span></button>
-<button type="button" class="dial-option dial-black" id="navPdfShortcut"><span>PDF-test · Driftkort</span><span class="dial-symbol" aria-hidden="true">PDF</span></button>
+<button type="button" class="dial-option dial-black" id="navPdfShortcut"><span>Driftkorts Granskning</span><span class="dial-symbol" aria-hidden="true">PDF</span></button>
 </div>
 </div>
 <nav id="workflowNavigation" class="step-navigation top-tabs hidden" role="tablist" aria-label="Arbetsflöde">
@@ -31,8 +31,7 @@
 </header>
 <div class="wrap">
 <section id="pdfTestPanel" class="panel hidden" role="tabpanel" aria-labelledby="pdfModeButton">
-<div class="pdf-test-heading"><div><h2>PDF-test · Driftkort</h2><p>Testa textläsning av komponenter och larm från ett driftkort.</p></div><span class="badge badge-warning">Testfunktion</span></div>
-<p class="small">PDF-filen behandlas lokalt i webbläsaren. Fynden är förslag från PDF-texten och ändrar inte tagglistan eller XML-exporten. Symboler utan text och skannade sidor kräver OCR/bildtolkning och identifieras inte i denna version.</p>
+<div class="pdf-test-heading"><div><h2>Driftkorsanalys</h2><p>Test textläsning av komponenter och larm från ett driftkort.</p></div><span class="badge badge-warning">Testfunktion</span></div>
 <div class="drop" id="pdfDrop"><h2>Välj driftkort</h2><p>PDF (.pdf)</p><input id="pdfFile" type="file" accept=".pdf,application/pdf" hidden><button type="button" id="pdfPick" class="button primary">Ladda upp PDF</button><div id="pdfFilename" class="filename"></div></div>
 <p id="pdfStatus" role="status" aria-live="polite"></p><progress id="pdfProgress" class="progress progress-success hidden" value="0" max="100" aria-label="Läser PDF"></progress>
 <div id="pdfWorkspace" class="pdf-workspace hidden">
@@ -45,7 +44,7 @@
 </section>
 <section id="ioPanel" class="panel hidden" role="tabpanel" aria-labelledby="ioModeButton">
 <h2>IO Granskning</h2><p>Kontrollera BACnet-objekt mot ramverket.</p>
-<div class="profile-graphic-properties"><label>DUC-namn<input id="ioDuc" type="text"></label><label>Skolnamn<input id="ioSchool" type="text"></label></div>
+<div class="profile-graphic-properties"><label>DUC namn<input id="ioDuc" type="text"></label><label>Skolnamn<input id="ioSchool" type="text"></label></div>
 <div class="drop" id="ioDrop"><h2>Välj tagglista</h2><p>Excel(.xlsx). Originalfilen ändras inte.</p><input id="ioFile" type="file" accept=".xlsx" hidden><button type="button" class="button primary" id="ioPick">Ladda upp fil</button><div id="ioFilename" class="filename"></div></div>
 <button id="ioRun" class="button primary" disabled>Starta IO-granskning</button>
 <p id="ioStatus" role="status"></p>
@@ -54,7 +53,7 @@
 </section>
 <section class="page-heading" id="systemSelectionHero">
 <h2 id="systemSelectionTitle">Luftbehandling</h2>
-<p id="systemSelectionDescription">Ange antal system/driftkort för XML-exporten.</p>
+<p id="systemSelectionDescription">Ange antal system/driftkort för XML exporten.</p>
 <select id="frameworkSystem" class="system-select-hidden" aria-hidden="true" tabindex="-1"><option value="">Välj systemtyp</option></select>
 <section id="airTreatmentSetup" class="air-treatment-setup hidden" aria-labelledby="airTreatmentSetupTitle">
 <div class="setup-heading"><h3 id="airTreatmentSetupTitle">Antal system</h3></div>
@@ -65,7 +64,7 @@
 <p id="airTemplateStatus" class="small" aria-live="polite"></p>
 </section>
 <section id="systemProfilesPanel" class="system-profiles-panel hidden" aria-labelledby="systemProfilesTitle">
-<h3 id="systemProfilesTitle">System för XML-export</h3>
+<h3 id="systemProfilesTitle">System för XML export</h3>
 <p>Välj typ och systemnamn för varje XML.</p>
 <div id="systemProfiles" class="system-profiles"></div>
 <p id="systemProfilesStatus" class="small" aria-live="polite"></p>
@@ -163,7 +162,7 @@
 </div>
 </div>
 </section>
-<div class="step-footer" id="nextStepControl"><button type="button" class="button primary" id="step2Button" disabled>Till XML-export →</button></div>
+<div class="step-footer" id="nextStepControl"><button type="button" class="button primary" id="step2Button" disabled>Till XML export →</button></div>
 <section class="panel hidden" id="step2Panel" role="tabpanel" aria-labelledby="integrationButton">
 <div class="step2-heading">
 <div>
