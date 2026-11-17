@@ -53,7 +53,11 @@
   }
   function suggestedName(point,system) {
     const base=point.description.normalize('NFC').replace(/[^\p{L}\p{N}_-]+/gu,'_').replace(/^_+|_+$/g,'').slice(0,75)||'Register';
-    return (system?system+'-':'')+base+'_'+point.group+'x'+String(point.register).padStart(4,'0');
+    return (system?system+'-':'')+base;
+  }
+  function assignNames(system) {
+    const used=new Set(points.filter(p=>p.customName).map(p=>p.name.toUpperCase()));
+    for(const p of points)if(!p.customName){const base=suggestedName(p,system);let name=base,index=2;while(used.has(name.toUpperCase()))name=base+'_'+index++;p.name=name;used.add(name.toUpperCase());}
   }
   function gain(point) {
     return el('modbusScale').value==='divide'?1/point.factor:el('modbusScale').value==='multiply'?point.factor:1;
@@ -134,7 +138,7 @@
         }
       }
       if(!points.length)throw Error('Inga stödda register hittades. Rubrikerna Description, Adress/Address, Type och Remarks förväntas.');
-      el('modbusSystem').value=sourceSystem;for(const p of points)p.name=suggestedName(p,sourceSystem);
+      el('modbusSystem').value=sourceSystem;assignNames(sourceSystem);
       page=0;el('modbusFilename').textContent=file.name;
       el('modbusStatus').textContent=`${points.length} punkter inlästa · ${excluded.length} rader kunde inte mappas.`;
       el('modbusExcluded').textContent=excluded.join('\n');el('modbusExcludedPanel').classList.toggle('hidden',!excluded.length);
@@ -168,22 +172,33 @@
       for(const cell of nodes(row,'c'))cell.setAttribute('r',cell.getAttribute('r').replace(/\d/g,'')+(index+1));
       const values={type:'Modbus '+p.pointType+' Point',name:p.name,description:p.description,address:register(p),format:p.format,read:Number(p.read),write:p.write===''?'':Number(p.write),gain:gain(p),offset:p.offset,unit:p.unit,note:p.remarks};
       for(const [role,col]of Object.entries(map))setCell(doc,row,col,values[role]);
+      for(const cell of nodes(row,'c')) {
+        const column=cell.getAttribute('r').replace(/\d/g,'');
+        if(column==='B')cell.remove();
+        else if(column>'B')cell.setAttribute('r',String.fromCharCode(column.charCodeAt(0)-1)+(index+1));
+      }
+      row.setAttribute('spans','1:14');
       // Spreadsheet cell order must follow A..O, even when a formerly blank cell is added.
       [...row.children].sort((a,b)=>a.getAttribute('r').replace(/\d/g,'').localeCompare(b.getAttribute('r').replace(/\d/g,''))).forEach(c=>row.append(c));data.append(row);
     });
-    nodes(doc,'dimension')[0]?.setAttribute('ref','A1:O'+selectedPoints.length);
+    nodes(doc,'dimension')[0]?.setAttribute('ref','A1:N'+selectedPoints.length);
+    for(const col of nodes(doc,'col')) {
+      const min=Number(col.getAttribute('min')),max=Number(col.getAttribute('max'));
+      if(min===2&&max===2)col.remove();
+      else {if(min>2)col.setAttribute('min',String(min-1));if(max>2)col.setAttribute('max',String(max-1));}
+    }
     for(const selection of nodes(doc,'selection')){selection.setAttribute('activeCell','A1');selection.setAttribute('sqref','A1');}
     zip.file(sheet.path,new XMLSerializer().serializeToString(doc));
     return zip.generateAsync({type:'blob',compression:'DEFLATE'});
   }
   for(const [role,label,value]of roles) {
     const wrapper=node('label',label),select=document.createElement('select');select.id='modbusColumn-'+role;
-    select.add(new Option('Välj kolumn',''));for(const c of 'ABCDEFGHIJKLMNO')select.add(new Option(c,c));select.value=value;
+    select.add(new Option('Välj kolumn',''));for(const c of 'ACDEFGHIJKLMNO')select.add(new Option(c,c));select.value=value;
     select.addEventListener('change',invalidate);wrapper.append(select);el('modbusColumnMapping').append(wrapper);
   }
   el('modbusPick').addEventListener('click',()=>el('modbusFile').click());
   el('modbusFile').addEventListener('change',()=>{if(el('modbusFile').files[0])load(el('modbusFile').files[0]);});
-  el('modbusSystem').addEventListener('change',()=>{const system=text(el('modbusSystem').value);for(const p of points)if(!p.customName)p.name=suggestedName(p,system);render();invalidate();});
+  el('modbusSystem').addEventListener('change',()=>{assignNames(text(el('modbusSystem').value));render();invalidate();});
   for(const id of ['modbusScale','modbusAddressOffset'])el(id).addEventListener('change',()=>{render();invalidate();});
   el('modbusSearch').addEventListener('input',()=>{page=0;render();});
   el('modbusPrevious').addEventListener('click',()=>{page--;render();});el('modbusNext').addEventListener('click',()=>{page++;render();});

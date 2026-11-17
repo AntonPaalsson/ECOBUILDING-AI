@@ -28,15 +28,15 @@ if (!file) throw Error('Usage: node tests/modbus-smoke.cjs <registerlista.xlsx>'
       }
       return{rows,preserved,dimension:doc.getElementsByTagNameNS('*','dimension')[0].getAttribute('ref'),parseErrors:doc.querySelectorAll('parsererror').length};
     });
-    assert.equal(workbook.rows.length,count);assert.equal(workbook.dimension,'A1:O'+count);assert.equal(workbook.parseErrors,0);assert.equal(workbook.preserved,true);
+    assert.equal(workbook.rows.length,count);assert.equal(workbook.dimension,'A1:N'+count);assert.equal(workbook.parseErrors,0);assert.equal(workbook.preserved,true);
     const names=new Set();
     for(const row of workbook.rows) {
-      assert.equal(row.B,'Use device default');assert.equal(row.O,'None');assert.equal(names.has(row.C),false);names.add(row.C);
-      assert.ok(Number.isInteger(Number(row.F)));assert.ok(Number.isFinite(Number(row.K)) || row.A.includes('Digital'));
-      if(row.A.includes('Input'))assert.ok(!row.I);
-      if(row.A.includes('Output') && row.G.startsWith('32'))assert.equal(row.I,'16');
-      const address=row.C.match(/_([0134])x(\d+)$/);assert.ok(address);
-      assert.equal(Number(row.F),Number(address[2]));assert.equal(Number(row.H),{0:1,1:2,3:4,4:3}[address[1]]);
+      assert.equal(row.N,'None');assert.equal(row.O,undefined);assert.equal(names.has(row.B),false);names.add(row.B);
+      assert.ok(!/_[0134]x\d+$/i.test(row.B));
+      assert.ok(Number.isInteger(Number(row.E)));assert.ok(Number.isFinite(Number(row.J)) || row.A.includes('Digital'));
+      if(row.A.includes('Input'))assert.ok(!row.H);
+      if(row.A.includes('Output') && row.F.startsWith('32'))assert.equal(row.H,'16');
+      assert.ok([1,2,3,4].includes(Number(row.G)));
     }
     await page.locator('#modbusScale').selectOption('none');assert.equal(await page.locator('#modbusDownload').isVisible(),false);
     await page.locator('#navDialTrigger').click();await page.locator('#navPdfShortcut').click();
