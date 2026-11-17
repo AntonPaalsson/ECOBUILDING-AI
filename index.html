@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Integrations Verktyg</title>
-<link rel="stylesheet" href="assets/app.css?v=20261117-io-badges">
+<link rel="stylesheet" href="assets/app.css?v=20261117-pdf-test">
 </head>
 <body>
 <header class="top">
@@ -19,15 +19,30 @@
 <button type="button" class="dial-option btn-primary" id="navStep1Shortcut"><span>Fullständig Integration</span><span class="dial-symbol" aria-hidden="true">FI</span></button>
 <button type="button" class="dial-option btn-success" id="navReviewShortcut"><span>Granska tagglista</span><span class="dial-symbol" aria-hidden="true">TG</span></button>
 <button type="button" class="dial-option dial-black" id="navIoShortcut"><span>IO Granskning</span><span class="dial-symbol" aria-hidden="true">IO</span></button>
+<button type="button" class="dial-option dial-black" id="navPdfShortcut"><span>PDF-test · Driftkort</span><span class="dial-symbol" aria-hidden="true">PDF</span></button>
 </div>
 </div>
 <nav id="workflowNavigation" class="step-navigation top-tabs hidden" role="tablist" aria-label="Arbetsflöde">
 <button type="button" class="step-button active" id="integrationButton" role="tab" aria-controls="step1Panel step2Panel" aria-selected="true">Fullständig Integration</button>
 <button type="button" class="step-button review-tab" id="reviewModeButton" role="tab" aria-controls="step1Panel" aria-selected="false">Granska tagglista</button>
 <button type="button" class="step-button" id="ioModeButton" role="tab" aria-controls="ioPanel" aria-selected="false">IO Granskning</button>
+<button type="button" class="step-button" id="pdfModeButton" role="tab" aria-controls="pdfTestPanel" aria-selected="false">PDF-test · Driftkort</button>
 </nav>
 </header>
 <div class="wrap">
+<section id="pdfTestPanel" class="panel hidden" role="tabpanel" aria-labelledby="pdfModeButton">
+<div class="pdf-test-heading"><div><h2>PDF-test · Driftkort</h2><p>Testa textläsning av komponenter och larm från ett driftkort.</p></div><span class="badge badge-warning">Testfunktion</span></div>
+<p class="small">PDF-filen behandlas lokalt i webbläsaren. Fynden är förslag från PDF-texten och ändrar inte tagglistan eller XML-exporten. Symboler utan text och skannade sidor kräver OCR/bildtolkning och identifieras inte i denna version.</p>
+<div class="drop" id="pdfDrop"><h2>Välj driftkort</h2><p>PDF (.pdf)</p><input id="pdfFile" type="file" accept=".pdf,application/pdf" hidden><button type="button" id="pdfPick" class="button primary">Ladda upp PDF</button><div id="pdfFilename" class="filename"></div></div>
+<p id="pdfStatus" role="status" aria-live="polite"></p><progress id="pdfProgress" class="progress progress-success hidden" value="0" max="100" aria-label="Läser PDF"></progress>
+<div id="pdfWorkspace" class="pdf-workspace hidden">
+<section class="pdf-preview-panel"><div class="pdf-view-controls"><button type="button" class="button" id="pdfPrevious" aria-label="Föregående PDF-sida">←</button><label>Sida <select id="pdfPage"></select></label><button type="button" class="button" id="pdfNext" aria-label="Nästa PDF-sida">→</button><label>Zoom<select id="pdfZoom"><option value="1">100 %</option><option value="1.5">150 %</option><option value="2">200 %</option></select></label></div><div id="pdfCanvasWrap" class="pdf-canvas-wrap"><canvas id="pdfCanvas" aria-label="Förhandsvisning av driftkort"></canvas></div><p id="pdfPageStatus" class="small" role="status"></p></section>
+<section class="pdf-findings-panel"><div class="pdf-result-tabs" role="tablist" aria-label="PDF-fynd"><button type="button" class="button" id="pdfComponentsTab" role="tab" aria-selected="true" aria-controls="pdfComponents">Komponenter</button><button type="button" class="button" id="pdfAlarmsTab" role="tab" aria-selected="false" aria-controls="pdfAlarms">Larmförslag</button><button type="button" class="button" id="pdfTextTab" role="tab" aria-selected="false" aria-controls="pdfText">Läst text</button></div>
+<div id="pdfComponents" role="tabpanel" aria-labelledby="pdfComponentsTab"><label>Sök komponent<input id="pdfComponentSearch" type="search" placeholder="Exempel: GT11, TF1"></label><p id="pdfComponentCount" class="small"></p><div id="pdfComponentList" class="pdf-findings-list"></div><button type="button" id="pdfCopyComponents" class="button" disabled>Kopiera komponentlista</button></div>
+<div id="pdfAlarms" class="hidden" role="tabpanel" aria-labelledby="pdfAlarmsTab"><p class="small">Förslag från textens rad- och kolumnpositioner. Kontrollera klass och kategori mot PDF-sidan. Ofullständiga rader visas för manuell kontroll.</p><p id="pdfAlarmCount" class="small"></p><div id="pdfAlarmList" class="pdf-findings-list"></div><button type="button" id="pdfCopyAlarms" class="button" disabled>Kopiera larmförslag</button></div>
+<div id="pdfText" class="hidden" role="tabpanel" aria-labelledby="pdfTextTab"><label>Text från vald sida<textarea id="pdfPageText" rows="18" readonly></textarea></label></div>
+</section></div>
+</section>
 <section id="ioPanel" class="panel hidden" role="tabpanel" aria-labelledby="ioModeButton">
 <h2>IO Granskning</h2><p>Kontrollera BACnet-objekt mot ramverket.</p>
 <div class="profile-graphic-properties"><label>DUC-namn<input id="ioDuc" type="text"></label><label>Skolnamn<input id="ioSchool" type="text"></label></div>
@@ -55,6 +70,13 @@
 <div id="systemProfiles" class="system-profiles"></div>
 <p id="systemProfilesStatus" class="small" aria-live="polite"></p>
 </section>
+</section>
+<section id="dkAlarmPanel" class="panel wizard-hidden">
+<h2>DK Larmkontroll</h2><p>Klistra in larmlistan från driftkortet. Både tabellkopiering och en uppgift per rad stöds.</p>
+<label>System för DK-larmlistan<select id="dkSystem"><option value="">Välj system</option></select></label>
+<p id="dkSystemProgress" class="small" aria-live="polite"></p><p class="small">Välj ett system och klistra in dess larmlista. Byt sedan system för nästa lista. Inmatningen sparas per system under denna omgång.</p>
+<label for="dkAlarmText">Larmlista från DK</label><textarea id="dkAlarmText" rows="12" placeholder="TF1_DS_L&#10;B&#10;21&#10;x&#10;x&#10;5 min.&#10;Driftstopp tilluftsfläkt, AS_B710 SOFIASKOLAN"></textarea>
+<p id="dkParseStatus" role="status"></p><p class="small">Tom lista hoppar över DK-kontrollen. Endast larmets förekomst i tagglistan och klass/kategori enligt larmkategoritabellen kontrolleras.</p>
 </section>
 <div id="workflow" class="hidden">
 <section class="page-heading workflow-hero">
@@ -90,7 +112,7 @@
 <div id="tagGroupChoices" class="tag-group-choices hidden"></div>
 <button type="button" class="button primary" id="runReview" disabled>Starta granskning</button>
 </section>
-<div id="reviewContent" class="hidden">
+<div id="reviewContent" class="hidden"><section id="dkAlarmResults" class="hidden"><h3>DK Larmkontroll</h3><p id="dkAlarmSummary"></p><div id="dkAlarmCards" class="dk-results-scroll"></div></section>
 <div class="summary">
 <div class="stat">
 <span>Stämmer med ramverket</span>
@@ -194,5 +216,8 @@
 <script src="app.js">
 </script>
 <script src="io-review.js"></script>
+<script src="dk-alarm-review.js"></script>
+<script src="workflow-pages.js"></script>
+<script src="pdf-test.js"></script>
 </body>
 </html>

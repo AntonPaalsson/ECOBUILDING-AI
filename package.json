@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --minify",
-    "watch:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --watch"
+    "watch:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --watch",
+    "build:pdf": "node scripts/build-pdf.cjs"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,10 @@
     "@playwright/test": "^1.65.0",
     "@tailwindcss/cli": "^4.3.5",
     "daisyui": "^5.8.0",
+    "esbuild": "^0.28.2",
     "tailwindcss": "^4.3.5"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.5.438"
   }
 }

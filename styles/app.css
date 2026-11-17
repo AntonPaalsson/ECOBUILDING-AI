@@ -2,6 +2,7 @@
 @source "../index.html";
 @source "../app.js";
 @source "../io-review.js";
+@source "../pdf-test.js";
 @source inline("badge badge-info badge-success badge-warning badge-error");
 @plugin "daisyui" { themes: dark --default; logs: false; }
 @plugin "daisyui/theme" {
@@ -58,7 +59,8 @@
  input:not([type=checkbox]):not([type=radio]):not([type=file]), .component-library-search,.binding-overview-search { @apply input bg-base-200; width:100%;min-width:0; }
  select { @apply select bg-base-200; width:100%;min-width:0; }
  textarea { @apply textarea bg-base-200; width:100%; }
- input[type=checkbox] { @apply checkbox checkbox-primary checkbox-sm; }
+ input[type=checkbox]:not(.toggle) { @apply checkbox checkbox-primary checkbox-sm; }
+ input.toggle { @apply toggle; }
  input[type=radio] { @apply radio radio-primary radio-sm; }
  label {font-size:14px;}
  .button { @apply btn; text-decoration:none; }
@@ -251,3 +253,46 @@
 .navbar-dial.fab button.dial-option { cursor:pointer; padding:0 16px 0 20px; min-height:48px; gap:20px; font:inherit; }
 .navbar-dial .dial-symbol { display:grid; place-items:center; min-width:28px; font-weight:700; }
 .navbar-dial button.dial-option:focus-visible { outline:2px solid white; outline-offset:3px; }
+
+.wizard-hidden { display:none!important; }
+.workflow-page-navigation { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:24px 0; }
+
+input.toggle { border-color:#616974; background-color:#30343c; color:#aab4c5; }
+input.toggle:checked { border-color:#50af27; background-color:#50af27; color:#fff; }
+input.toggle:focus-visible { outline:2px solid #8edb9e; outline-offset:3px; }
+
+#dkAlarmPanel { margin-top:32px; }
+#dkAlarmPanel label { display:block; margin:16px 0 8px; }
+#dkAlarmText { width:100%; min-height:260px; }
+#dkAlarmResults { margin-bottom:28px; }
+.dk-results-scroll { max-height:60vh; overflow:auto; border:1px solid #41464d; border-radius:10px; }
+.dk-results-table { width:100%; min-width:800px; border-collapse:collapse; font-size:13px; }
+.dk-results-table th { position:sticky; top:0; background:#30343c; z-index:1; text-align:left; }
+.dk-results-table th,.dk-results-table td { padding:12px; vertical-align:top; border-bottom:1px solid #34383d; }
+.dk-results-table td p { margin:6px 0 0; }
+
+.navbar-dial.fab .dial-option#navPdfShortcut { top:228px; background:#252b32; color:#fff; border-color:#505964; }
+#pdfTestPanel { margin-top:32px; }
+.pdf-test-heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px; }
+.pdf-test-heading h2 { margin-top:0; }
+.pdf-workspace { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:24px; margin-top:24px; }
+.pdf-preview-panel,.pdf-findings-panel { min-width:0; }
+.pdf-view-controls,.pdf-result-tabs { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:16px; }
+.pdf-view-controls label { display:flex; align-items:center; gap:8px; }
+.pdf-view-controls select { width:auto; min-width:70px; }
+.pdf-canvas-wrap { overflow:auto; max-height:75vh; padding:12px; border:1px solid #41464d; border-radius:10px; background:#30343c; }
+.pdf-canvas-wrap canvas { display:block; background:white; }
+.pdf-result-tabs .button { font-size:12px; padding:8px 12px; min-height:38px; }
+.pdf-result-tabs [aria-selected=true] { border-color:#f58a08; color:#f58a08; }
+.pdf-findings-list { max-height:65vh; overflow:auto; margin:16px 0; display:grid; gap:12px; }
+.pdf-component { padding:14px; border:1px solid #41464d; border-radius:10px; background:#191c20; min-width:0; }
+.pdf-component-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.pdf-component-heading strong { overflow-wrap:anywhere; }
+.pdf-component-heading label { font-size:12px; display:flex; align-items:center; gap:6px; }
+.pdf-page-links { display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
+.pdf-component .button { font-size:12px; min-height:30px; padding:4px 8px; }
+.pdf-component pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:12px; }
+.pdf-alarm-fields { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr); gap:8px; margin-top:12px; }
+.pdf-alarm-fields label { font-size:12px; min-width:0; }
+#pdfPageText { width:100%; font-size:12px; }
+@media(max-width:1000px) { .pdf-workspace { grid-template-columns:minmax(0,1fr); } }

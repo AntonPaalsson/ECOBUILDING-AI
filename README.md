@@ -42,3 +42,17 @@ Webbläsarkontroller (kräver installerad Microsoft Edge):
 node tests/ui-smoke.cjs
 node tests/review-smoke.cjs
 ```
+
+## PDF-test av driftkort
+
+Välj **PDF-test · Driftkort** i snabbmenyn. Funktionen behandlar PDF-filen lokalt och visar PDF-sidor, komponentbeteckningar från textlagret och preliminära larmrader med sidreferenser. Komponentfynd kan bekräftas och larmförslagens tagg, klass och kategori kan korrigeras före kopiering till Excel. Testet ändrar inte tagglistan, DK-kontrollen eller XML-exporten.
+
+Textträffar bevisar inte att en symbol eller fysisk komponent finns i schemat. Skannade sidor och symboler utan läsbara beteckningar kräver OCR/bildtolkning, vilket inte ingår i denna första testversion. Läs gärna textunderlaget och jämför med PDF-förhandsvisningen.
+
+PDF.js och dess resurser ligger lokalt i `vendor/pdfjs/`, inklusive licens. Vid uppdatering av PDF.js byggs webbläsarfilerna med `npm run build:pdf`. HTTP använder en worker; öppning via `file:` använder PDF.js fallback i samma process.
+
+Testa med ett lokalt, textbaserat driftkort utan att kopiera det till projektet:
+
+```sh
+node tests/pdf-smoke.cjs "C:/sökväg/driftkort.pdf"
+```

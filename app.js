@@ -240,6 +240,7 @@
       type: row.querySelector("[data-profile-type]")?.value ?? "",
       systemPrefix: row.querySelector("[data-profile-prefix]").value.trim().toUpperCase(),
       subsystems: [...row.querySelectorAll("[data-subsystem]")].filter(item => item.querySelector("input[type=checkbox]").checked).map(item => ({ templatePrefix: item.dataset.subsystem, prefix: item.querySelector("input[type=text]").value.trim().toUpperCase() })),
+      kitchen: row.querySelector("[data-profile-kitchen]")?.checked ?? false,
       serviceArea: row.querySelector("[data-profile-service-area]")?.value ?? "",
       graphicProperties: Object.fromEntries([...row.querySelectorAll("[data-graphic-property]")].map(input => [input.dataset.graphicProperty, input.value.trim()])),
       components: [...(document.querySelector(`[data-component-profile="${CSS.escape(row.querySelector("[data-profile-prefix]").value)}"]`)?.querySelectorAll("[data-library-component]:checked") ?? [])]
@@ -274,6 +275,10 @@
       prefix.setAttribute("list", "profile-prefixes-" + index); field("Systemnamn",prefix);
       const list = document.createElement("datalist"); list.id = "profile-prefixes-" + index;
       getSystemPrefixes().filter(value => value.startsWith(type.value.replace("XX",""))).forEach(value => list.append(new Option(value,value))); row.append(list);
+      if (type.value === "LBXX") {
+        const kitchen = document.createElement("input"); kitchen.type = "checkbox"; kitchen.className = "toggle"; kitchen.dataset.profileKitchen = ""; kitchen.checked = saved.kitchen ?? false;
+        field("Betjänar aggregatet kök?", kitchen);
+      }
       if (type.value === "FAXX") {
         const area = document.createElement("select");
         area.dataset.profileServiceArea = "";
@@ -287,7 +292,7 @@
       for (const [slot,label] of (type.value === "VPUXX" ? [...slots, ["KB01", "Köldbärarkrets"]] : slots)) {
         const choice = document.createElement("label"); choice.dataset.subsystem = slot;
         const selected = saved.subsystems?.find(item => item.templatePrefix === slot);
-        const check = document.createElement("input"); check.type = "checkbox"; check.checked = Boolean(selected);
+        const check = document.createElement("input"); check.type = "checkbox"; check.className = "toggle"; check.checked = Boolean(selected);
         const name = document.createElement("input"); name.type = "text"; name.value = selected?.prefix ?? slot; name.setAttribute("aria-label", "Systemnamn för " + slot);
         const caption = document.createElement("span"); caption.textContent = label;
         choice.append(check,caption,name); children.append(choice);
@@ -698,6 +703,8 @@
   }
 
   function applyTagListAnswers(tagKeys = getTagKeys()) {
+    const profile = activeSystemPrefix ? getProfileForSystemPrefix(activeSystemPrefix) : null;
+    if (profile?.type === "LBXX") questionAnswers.kitchen = profile.kitchen ? "yes" : "no";
     if (selectedFrameworkSystemId !== "airTreatment") return;
     const xmlFields = new Set(["ducName", "schoolName", "missingComponents"]);
     for (const question of projectQuestions) {
@@ -1027,6 +1034,7 @@
         row,
         cells,
         sourceName,
+        ioFields: Object.fromEntries([...headers].map(([key, column]) => [key.replace(/[\s_-]/g, ""), values.get(column) ?? ""])),
         description,
         name: standardReview
           ? sourceName
@@ -1062,6 +1070,7 @@
     updateStep2Availability();
     byId("results").classList.remove("hidden");
     byId("reviewContent").classList.add("hidden");
+    document.dispatchEvent(new CustomEvent("workflow-uploaded"));
   }
 
   function renderResults() {
@@ -1151,7 +1160,7 @@
     try {
       for (const profile of profiles) {
         activeSystemPrefix = profile.systemPrefix;
-        questionAnswers = { ...originalAnswers };
+        questionAnswers = { ...originalAnswers, ...(profile.type === "LBXX" ? { kitchen: profile.kitchen ? "yes" : "no" } : {}) };
         applyTagListAnswers(getTagKeysForSystem(profile.systemPrefix));
         const groups = resolveActiveTagGroups(profile.systemPrefix);
         activeGroupsByPrefix.set(profile.systemPrefix, groups);
@@ -1225,6 +1234,7 @@
     renderResults();
     byId("reviewContent").classList.remove("hidden");
     reviewCompleted = true;
+    document.dispatchEvent(new CustomEvent("workflow-reviewed"));
     renderBindingOverview();
     updateStep2Availability();
   }
@@ -1265,6 +1275,8 @@
         control.step = "1";
         control.placeholder = "Ange antal, även 0";
         control.value = suggested ?? "";
+      } else if (question.type === "yesNo") {
+        control = document.createElement("input"); control.type = "checkbox"; control.className = "toggle"; control.checked = suggested === "yes"; questionAnswers[question.id] = control.checked ? "yes" : "no";
       } else {
         control = document.createElement("select");
         const placeholder = document.createElement("option");
@@ -1285,7 +1297,7 @@
 
       control.dataset.questionId = question.id;
       control.addEventListener("change", () => {
-        questionAnswers[question.id] = question.type === "text" ? control.value.trim() : control.value;
+        questionAnswers[question.id] = question.type === "yesNo" ? (control.checked ? "yes" : "no") : question.type === "text" ? control.value.trim() : control.value;
         byId("reviewContent").classList.add("hidden");
         reviewCompleted = false;
         invalidateEboDownload();
@@ -1454,6 +1466,8 @@
     const allSections = [...new Set(getSystemItems(getSystemIdForPrefix(systemPrefix)).flatMap((item) => item.sections ?? (item.section ? [item.section] : [])))];
     for (const section of allSections) {
       if (isFrameworkSectionForSystem(section, systemPrefix) && (/^generella taggar/i.test(section) || /^MARKVÄRME\.\s*Generella taggar/i.test(section))) sections.add(section);
+      if (/^LB/i.test(systemPrefix) && questionAnswers.kitchen === "yes" &&
+          (/betjänar kök/i.test(section) || /^Komponent GT31\b/i.test(section))) sections.add(section);
     }
     return sections;
   }
@@ -1540,6 +1554,11 @@
   }
 
   function isCandidateApplicable(item) {
+    const kitchen = questionAnswers.kitchen === "yes";
+    const sections = (item.sections ?? (item.section ? [item.section] : [])).join(" ");
+    const note = String(item.note ?? "");
+    if (/programmeras ej om aggregat betjänar kök/i.test(note)) return !kitchen;
+    if (/betjänar kök/i.test(sections) || /programmeras om aggregat betjänar kök/i.test(note) || /^GT31_GT71_/i.test(item.tag)) return kitchen;
     return true;
   }
 
@@ -1555,7 +1574,7 @@
     const inSection = (needle) => (item.sections ?? []).some((section) =>
       normalize(section).includes(normalize(needle)),
     );
-    if (hasTagPrefix(currentTagKeys, "GT31_GT71_") && inSection("Komponent GT31") && /^GT31_/i.test(tag)) {
+    if ((questionAnswers.kitchen === "yes" || hasTagPrefix(currentTagKeys, "GT31_GT71_")) && inSection("Komponent GT31") && /^GT31_/i.test(tag)) {
       tag = tag.replace(/^GT31_/i, "GT31_GT71_");
     }
     if (hasTagPrefix(currentTagKeys, "GF11_") && inSection("Komponent GF41") && /^GF41_(?!MV(?:_|$))/i.test(tag)) {
@@ -2424,6 +2443,7 @@
     addReviewStyles();
     renderMissingTags();
     await writeMissingTagsSheet();
+    await writeMissingTagsSheet(true);
     workbookZip.file(worksheetPath, new XMLSerializer().serializeToString(worksheetXml));
     workbookZip.file("xl/styles.xml", new XMLSerializer().serializeToString(stylesXml));
     const blob = await workbookZip.generateAsync({ type: "blob", compression: "DEFLATE" });
@@ -2434,14 +2454,14 @@
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
   }
 
-  async function writeMissingTagsSheet() {
+  async function writeMissingTagsSheet(information = false) {
     const ns = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
     const relNs = "http://schemas.openxmlformats.org/package/2006/relationships";
     const workbook = parseXml(await workbookZip.file("xl/workbook.xml").async("text"));
     const relationships = parseXml(await workbookZip.file("xl/_rels/workbook.xml.rels").async("text"));
     const types = parseXml(await workbookZip.file("[Content_Types].xml").async("text"));
     const sheets = [...workbook.getElementsByTagNameNS(ns, "sheet")];
-    const sheetName = "Saknade ramverkstaggar";
+    const sheetName = information ? "Information" : "Saknade ramverkstaggar";
     let sheet = sheets.find((entry) => entry.getAttribute("name") === sheetName);
     let target;
     if (sheet) {
@@ -2449,7 +2469,7 @@
       target = [...relationships.documentElement.children].find((entry) => entry.getAttribute("Id") === id)?.getAttribute("Target");
     } else {
       const id = `rIdMissingFramework${Date.now()}`;
-      target = `worksheets/missing-framework-${Date.now()}.xml`;
+      target = `worksheets/${information ? "review-information" : "missing-framework"}-${Date.now()}.xml`;
       sheet = workbook.createElementNS(ns, "sheet");
       sheet.setAttribute("name", sheetName);
       sheet.setAttribute("sheetId", String(Math.max(0, ...sheets.map((entry) => Number(entry.getAttribute("sheetId")))) + 1));
@@ -2468,7 +2488,11 @@
     if (!target) throw new Error("Kunde inte hitta bladet för saknade ramverkstaggar.");
     const doc = parseXml(`<worksheet xmlns="${ns}"><sheetData/></worksheet>`);
     const data = doc.getElementsByTagNameNS(ns, "sheetData")[0];
-    const records = [["Name", "Description", "Bedömning"], ...missingFrameworkRows.map((item) => [item.expectedTag, item.description, "Potentiellt saknad ramverkstagg"] )];
+    if (information) {
+      const parent = sheet.parentNode; parent.insertBefore(sheet, parent.firstChild);
+      for (const view of workbook.getElementsByTagNameNS(ns, "workbookView")) view.setAttribute("activeTab", "0");
+    }
+    const records = information ? [["Avvikelser från ramverket"], ["Avvikelser från ramverket ska anmärkas i driftkortet."]] : [["Name", "Description", "Bedömning"], ...missingFrameworkRows.map((item) => [item.expectedTag, item.description, "Potentiellt saknad ramverkstagg"] )];
     records.forEach((values, index) => {
       const row = doc.createElementNS(ns, "row");
       row.setAttribute("r", String(index + 1));
@@ -3468,6 +3492,7 @@
     if (file) parseWorkbook(file).catch(showError);
   });
   window.ECO_IO_RULES = { frameworkPatternMatches, reviewDescription, isNonFrameworkProperty, similarity };
+  window.ECO_DK_DATA = () => ({ rows: reviewedRows, prefixes: getSystemPrefixes() });
 })();
 
 
