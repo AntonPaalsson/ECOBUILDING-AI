@@ -34,6 +34,8 @@ const server = http.createServer((req, res) => {
       if(total>1) { await page.locator('#pdfNext').click(); await page.waitForFunction(()=>document.getElementById('pdfPageStatus').textContent.startsWith('Sida 2 ')); }
       await page.locator('#pdfComponents .pdf-page-links button').first().click();
       await page.locator('#pdfAlarmsTab').click(); assert.equal(await page.locator('#pdfAlarms').isVisible(),true);
+      await page.locator('#pdfChecksTab').click(); assert.equal(await page.locator('#pdfChecks').isVisible(),true);
+      assert.ok((await page.locator('#pdfCheckCount').innerText()).includes('förslag'));
       await page.locator('#pdfTextTab').click(); assert.ok((await page.locator('#pdfPageText').inputValue()).length);
       await page.locator('#navDialTrigger').click(); await page.locator('#navReviewShortcut').click();
       assert.equal(await page.locator('#pick').isVisible(),true);

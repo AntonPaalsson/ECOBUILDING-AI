@@ -3,6 +3,7 @@
 @source "../app.js";
 @source "../io-review.js";
 @source "../pdf-test.js";
+@source "../modbus-integration.js";
 @source inline("badge badge-info badge-success badge-warning badge-error");
 @plugin "daisyui" { themes: dark --default; logs: false; }
 @plugin "daisyui/theme" {
@@ -59,8 +60,7 @@
  input:not([type=checkbox]):not([type=radio]):not([type=file]), .component-library-search,.binding-overview-search { @apply input bg-base-200; width:100%;min-width:0; }
  select { @apply select bg-base-200; width:100%;min-width:0; }
  textarea { @apply textarea bg-base-200; width:100%; }
- input[type=checkbox]:not(.toggle) { @apply checkbox checkbox-primary checkbox-sm; }
- input.toggle { @apply toggle; }
+ input[type=checkbox] { @apply checkbox checkbox-success checkbox-sm; }
  input[type=radio] { @apply radio radio-primary radio-sm; }
  label {font-size:14px;}
  .button { @apply btn; text-decoration:none; }
@@ -257,9 +257,8 @@
 .wizard-hidden { display:none!important; }
 .workflow-page-navigation { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:24px 0; }
 
-input.toggle { border-color:#616974; background-color:#30343c; color:#aab4c5; }
-input.toggle:checked { border-color:#50af27; background-color:#50af27; color:#fff; }
-input.toggle:focus-visible { outline:2px solid #8edb9e; outline-offset:3px; }
+input[type=checkbox]:checked { border-color:#50af27; background-color:#50af27; color:#fff; }
+input[type=checkbox]:focus-visible { outline:2px solid #8edb9e; outline-offset:3px; }
 
 #dkAlarmPanel { margin-top:32px; }
 #dkAlarmPanel label { display:block; margin:16px 0 8px; }
@@ -291,8 +290,26 @@ input.toggle:focus-visible { outline:2px solid #8edb9e; outline-offset:3px; }
 .pdf-component-heading label { font-size:12px; display:flex; align-items:center; gap:6px; }
 .pdf-page-links { display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
 .pdf-component .button { font-size:12px; min-height:30px; padding:4px 8px; }
+.pdf-component .button[aria-pressed=true] { border-color:#f58a08; color:#f58a08; }
 .pdf-component pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:12px; }
 .pdf-alarm-fields { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr); gap:8px; margin-top:12px; }
 .pdf-alarm-fields label { font-size:12px; min-width:0; }
+.navbar-dial.fab .dial-option#navModbusShortcut { top:284px; background:#25372a; color:#fff; border-color:#58785e; }
+#modbusPanel { margin-top:32px; }
+.modbus-settings { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin:20px 0; }
+.modbus-settings label,.modbus-toolbar > label:first-child { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.modbus-settings select { width:100%; }
+.modbus-toolbar { display:flex; flex-wrap:wrap; align-items:end; gap:24px; margin:24px 0 16px; }
+.modbus-toolbar > label:first-child { flex:1; }
+.modbus-table-wrap { max-height:65vh; overflow:auto; border:1px solid #41464d; border-radius:10px; }
+.modbus-table { width:100%; min-width:1600px; border-collapse:collapse; font-size:12px; }
+.modbus-table th,.modbus-table td { padding:10px; vertical-align:top; text-align:left; border-bottom:1px solid #34383d; }
+.modbus-table th { position:sticky; top:0; background:#30343c; z-index:1; }
+.modbus-table td:nth-child(3) { min-width:230px; }
+.modbus-table td:nth-child(4) { min-width:200px; }
+.modbus-table input[type=text] { min-width:180px; }
+.modbus-table select { min-width:110px; }
+.modbus-table td p { margin:6px 0 0; white-space:normal; }
+#modbusExcluded { white-space:pre-wrap; }
 #pdfPageText { width:100%; font-size:12px; }
 @media(max-width:1000px) { .pdf-workspace { grid-template-columns:minmax(0,1fr); } }

@@ -276,7 +276,7 @@
       const list = document.createElement("datalist"); list.id = "profile-prefixes-" + index;
       getSystemPrefixes().filter(value => value.startsWith(type.value.replace("XX",""))).forEach(value => list.append(new Option(value,value))); row.append(list);
       if (type.value === "LBXX") {
-        const kitchen = document.createElement("input"); kitchen.type = "checkbox"; kitchen.className = "toggle"; kitchen.dataset.profileKitchen = ""; kitchen.checked = saved.kitchen ?? false;
+        const kitchen = document.createElement("input"); kitchen.type = "checkbox"; kitchen.className = "checkbox checkbox-success"; kitchen.dataset.profileKitchen = ""; kitchen.checked = saved.kitchen ?? false;
         field("Betjänar aggregatet kök?", kitchen);
       }
       if (type.value === "FAXX") {
@@ -292,7 +292,7 @@
       for (const [slot,label] of (type.value === "VPUXX" ? [...slots, ["KB01", "Köldbärarkrets"]] : slots)) {
         const choice = document.createElement("label"); choice.dataset.subsystem = slot;
         const selected = saved.subsystems?.find(item => item.templatePrefix === slot);
-        const check = document.createElement("input"); check.type = "checkbox"; check.className = "toggle"; check.checked = Boolean(selected);
+        const check = document.createElement("input"); check.type = "checkbox"; check.className = "checkbox checkbox-success"; check.checked = Boolean(selected);
         const name = document.createElement("input"); name.type = "text"; name.value = selected?.prefix ?? slot; name.setAttribute("aria-label", "Systemnamn för " + slot);
         const caption = document.createElement("span"); caption.textContent = label;
         choice.append(check,caption,name); children.append(choice);
@@ -1276,7 +1276,7 @@
         control.placeholder = "Ange antal, även 0";
         control.value = suggested ?? "";
       } else if (question.type === "yesNo") {
-        control = document.createElement("input"); control.type = "checkbox"; control.className = "toggle"; control.checked = suggested === "yes"; questionAnswers[question.id] = control.checked ? "yes" : "no";
+        control = document.createElement("input"); control.type = "checkbox"; control.className = "checkbox checkbox-success"; control.checked = suggested === "yes"; questionAnswers[question.id] = control.checked ? "yes" : "no";
       } else {
         control = document.createElement("select");
         const placeholder = document.createElement("option");

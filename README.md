@@ -49,10 +49,26 @@ Välj **PDF-test · Driftkort** i snabbmenyn. Funktionen behandlar PDF-filen lok
 
 Textträffar bevisar inte att en symbol eller fysisk komponent finns i schemat. Skannade sidor och symboler utan läsbara beteckningar kräver OCR/bildtolkning, vilket inte ingår i denna första testversion. Läs gärna textunderlaget och jämför med PDF-förhandsvisningen.
 
+Fliken **Textkontroll** letar efter en begränsad uppsättning vanliga svenska fackstavfel, dubbla ord i samma textrad och misstänkta kombinationer av larmklass/kategori. Varje förslag har sidreferens, textunderlag och val för att bekräfta eller avfärda fyndet. Resultaten kan kopieras till Excel; PDF-filen ändras inte. Detta är en regelbaserad hjälp, inte ett fullständigt stavningslexikon eller en teknisk funktionskontroll. Test av reglerna: `node tests/pdf-text-check.cjs`.
+
 PDF.js och dess resurser ligger lokalt i `vendor/pdfjs/`, inklusive licens. Vid uppdatering av PDF.js byggs webbläsarfilerna med `npm run build:pdf`. HTTP använder en worker; öppning via `file:` använder PDF.js fallback i samma process.
 
 Testa med ett lokalt, textbaserat driftkort utan att kopiera det till projektet:
 
 ```sh
 node tests/pdf-smoke.cjs "C:/sökväg/driftkort.pdf"
+```
+
+## Modbus integration – testfunktion
+
+Välj **Modbus integration** i snabbmenyn och ladda upp en registerlista i samma format som IV Produkt-exemplet (Description, Adress, Type, Remarks). Systemnamnet hämtas från källans metadata och kan ändras. Punkten får ett unikt föreslaget namn från system, beskrivning och registeradress; detta är inte en automatisk mappning till SISAB-taggbeteckningar.
+
+Förhandsgranskningen låter användaren välja punkter och ändra namn, punkttyp, registertyp och funktionskoder. Adressdelen efter `0x/1x/3x/4x` läses som decimalt registertal; områdesprefixet är inte en hexadecimalsiffra. Registernumret behålls som standard, med val att dra av 1. `factor 10` tolkas som Gain 0,1 som standard; skalningsriktning kan ändras. Note 1 får enhet där sådan kan läsas ut, och Note 2 behåller Remarks.
+
+Exporten klonar motsvarande punkttypsrad i `templates/modbus/Modbusmall.xlsx` och bevarar 15 kolumner utan rubrikrad. Poll interval, Value, Bit mask och Validation behåller mallradens standardvärden. 32-bitars Output får skrivfunktion 16. Dubbla registeradresser visas för kontroll; källadresser rättas inte automatiskt. Ord-/byteordning och faktisk kommunikation med enheten behöver verifieras i EBO.
+
+Vid byte av Excel-mall: ersätt filen i `templates/modbus/` och kör `npm run build:modbus-template`. Bundlen gör att appen även kan läsa mallen via lokal `file:`-URL.
+
+```sh
+node tests/modbus-smoke.cjs "C:/sökväg/registerlista.xlsx"
 ```

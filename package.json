@@ -9,7 +9,8 @@
   "scripts": {
     "build:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --minify",
     "watch:css": "tailwindcss -i ./styles/app.css -o ./assets/app.css --watch",
-    "build:pdf": "node scripts/build-pdf.cjs"
+    "build:pdf": "node scripts/build-pdf.cjs",
+    "build:modbus-template": "node scripts/build-modbus-template.cjs"
   },
   "repository": {
     "type": "git",
