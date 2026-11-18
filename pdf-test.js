@@ -1,12 +1,12 @@
 (() => {
   const el = id => document.getElementById(id);
   const clean = value => String(value ?? '').trim().normalize('NFC');
-  const root = '(?:TF|FF|GT|GF|GP|GQ|GX|GN|GM|SV|ST|SO|LV|P)\\d+[A-Z]?';
+  const root = '(?:TF|FF|GT|GF|GP|GQ|GX|GN|GM|SV|ST|SO|SN|LV|P)\\d+[A-Z]?';
   const componentPattern = new RegExp('(?<![A-ZÅÄÖ0-9_])(?:(?<system>(?:LB|TA|FA|VS|VV|VP|VPU|UC|KA|MV|KB|KV)\\d+)[-–])?(?<component>' + root + '(?:_' + root + ')*|RVÅ|PVÅ|VÅ|VVX|FFX)(?<suffix>(?:_[A-ZÅÄÖ0-9]+)*)(?![A-ZÅÄÖ0-9_])', 'gi');
   let pdf = null, task = null, pageData = [], components = [], alarms = [], selected = null, renderTask = null, version = 0, renderVersion = 0;
   let library, textChecks = [];
   const node = (tag, text, className) => { const n = document.createElement(tag); n.textContent = text; if (className) n.className = className; return n; };
-  const loadScript = src => new Promise((resolve, reject) => { const script = document.createElement('script'); script.src = src; script.onload = resolve; script.onerror = () => { script.remove(); reject(Error('Kunde inte ladda det lokala PDF-biblioteket.')); }; document.head.append(script); });
+  const loadScript = src => new Promise((resolve, reject) => { const script = document.createElement('script'); script.src = src; script.onload = resolve; script.onerror = () => { script.remove(); reject(Error('Kunde inte ladda det lokala PDF biblioteket.')); }; document.head.append(script); });
   function getLibrary() {
     if (!library) library = (async () => {
       await loadScript('vendor/pdfjs/pdf.js');
@@ -71,6 +71,23 @@
     }
     return { components:[...map.values()].sort((a,b) => a.name.localeCompare(b.name,'sv',{numeric:true})), alarms:[...alarmMap.values()] };
   }
+  // Shared, side-effect-free reader for Fullständig Integration. The caller
+  // owns its extracted data; the PDF test panel and its document stay intact.
+  async function readDriftkort(file, onProgress = () => {}) {
+    const lib = await getLibrary();
+    const loading = lib.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false,cMapUrl:new URL('vendor/pdfjs/cmaps/',document.baseURI).href,cMapPacked:true,standardFontDataUrl:new URL('vendor/pdfjs/standard_fonts/',document.baseURI).href,wasmUrl:new URL('vendor/pdfjs/wasm/',document.baseURI).href});
+    loading.onPassword = () => loading.destroy();
+    try {
+      const document = await loading.promise, pages = [];
+      for(let number=1;number<=document.numPages;number++) {
+        const page=await document.getPage(number),content=await page.getTextContent();
+        pages.push({number,lines:linesFromItems(content.items,page.getViewport({scale:1}),lib)});
+        onProgress(number,document.numPages); await new Promise(resolve=>setTimeout(resolve,0));
+      }
+      return {pages,...extract(pages)};
+    } finally { await loading.destroy(); }
+  }
+  window.ECO_PDF_READER = { read:readDriftkort };
   function renderComponents() {
     const query = el('pdfComponentSearch').value.toLocaleUpperCase('sv-SE');
     const filtered = components.filter(c => c.name.includes(query));
@@ -88,7 +105,7 @@
       row.append(node('p',component.occurrences.length + ' textträffar · ingen symbol-/kopplingsverifiering', 'small'),refs);
       const context = node('details',''); context.append(node('summary','Visa textunderlag'),node('pre',component.occurrences[0].line.text)); row.append(context); fragment.append(row);
     }
-    if (!filtered.length) fragment.append(node('p',components.length ? 'Inga komponenter matchar sökningen.' : 'Inga komponentbeteckningar hittades i PDF-texten. Kontrollera sidan visuellt.'));
+    if (!filtered.length) fragment.append(node('p',components.length ? 'Inga komponenter matchar sökningen.' : 'Inga komponentbeteckningar hittades i PDF texten. Kontrollera sidan visuellt.'));
     el('pdfComponentList').replaceChildren(fragment);
     el('pdfComponentCount').textContent = components.length + ' unika komponentbeteckningar hittade.';
     el('pdfCopyComponents').disabled = !components.length;
@@ -103,14 +120,15 @@
       for (const [key,title] of [['tag','Larmtagg'],['priority','Klass'],['category','Kategori']]) {
         const label = node('label',title); const input = document.createElement('input'); input.type='text'; input.value=alarm[key]; input.addEventListener('input', () => { alarm[key]=clean(input.value); }); label.append(input); fields.append(label);
       }
-      row.append(fields,node('p',alarm.priority && alarm.category ? 'Klass/kategori föreslagen från text. Bekräfta mot PDF-sidan.' : 'Ofullständig larmrad – klass eller kategori kunde inte läsas säkert.', 'small'));
+      row.append(fields,node('p',alarm.priority && alarm.category ? 'Klass/kategori föreslagen från text. Bekräfta mot PDF sidan.' : 'Ofullständig larmrad: klass eller kategori kunde inte läsas säkert.', 'small'));
       const context = node('details',''); context.append(node('summary','Visa textunderlag'),node('pre',alarm.source)); row.append(context); fragment.append(row);
     }
-    if (!alarms.length) fragment.append(node('p','Inga larmrader hittades i PDF-texten. Det betyder inte att driftkortet saknar larm.'));
+    if (!alarms.length) fragment.append(node('p','Inga larmrader hittades i PDF texten. Det betyder inte att driftkortet saknar larm.'));
     el('pdfAlarmList').replaceChildren(fragment); el('pdfAlarmCount').textContent=alarms.length + ' larmförslag. Fälten kan justeras före kopiering.';
     el('pdfCopyAlarms').disabled = !alarms.length;
   }
   function renderTextChecks() {
+    el('pdfExportReview').disabled=!pdf;
     const scrollTop = el('pdfCheckList').scrollTop;
     const fragment = document.createDocumentFragment();
     for (const finding of textChecks) {
@@ -171,14 +189,14 @@
     const request=++version; ++renderVersion;
     if(renderTask) { renderTask.cancel(); try {await renderTask.promise;}catch{} }
     if(task) { try { await task.destroy(); } catch {} }
-    task=null;pdf=null;pageData=[];components=[];alarms=[];selected=null;textChecks=[];
+    el('pdfExportReview').disabled=true;task=null;pdf=null;pageData=[];components=[];alarms=[];selected=null;textChecks=[];
     el('pdfWorkspace').classList.add('hidden'); el('pdfProgress').classList.remove('hidden');el('pdfProgress').value=0;
     el('pdfFilename').textContent=file.name;el('pdfStatus').textContent='Läser PDF…';
     try {
-      if(!/\.pdf$/i.test(file.name)) throw Error('Välj en PDF-fil.');
+      if(!/\.pdf$/i.test(file.name)) throw Error('Välj en PDF fil.');
       const lib=await getLibrary(); if(request!==version)return;
       task=lib.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false,cMapUrl:new URL('vendor/pdfjs/cmaps/',document.baseURI).href,cMapPacked:true,standardFontDataUrl:new URL('vendor/pdfjs/standard_fonts/',document.baseURI).href,wasmUrl:new URL('vendor/pdfjs/wasm/',document.baseURI).href});
-      task.onPassword=(_update,reason)=> { el('pdfStatus').textContent='PDF-filen är lösenordsskyddad. Välj en olåst kopia.'; task.destroy(); };
+      task.onPassword=(_update,reason)=> { el('pdfStatus').textContent='PDF filen är lösenordsskyddad. Välj en olåst kopia.'; task.destroy(); };
       pdf=await task.promise;
       for(let number=1;number<=pdf.numPages;number++) {
         if(request!==version)return;
@@ -233,4 +251,17 @@
   el('pdfCopyComponents').addEventListener('click',()=>copy([['Komponent','Sidor','Bekräftad','Textunderlag'],...components.map(c=>[c.name,[...new Set(c.occurrences.map(o=>o.page))].join(', '),c.confirmed?'Ja':'Nej',c.occurrences[0].line.text])]));
   el('pdfCopyAlarms').addEventListener('click',()=>copy([['Tagg','Klass','Kategori','Sida','Textunderlag'],...alarms.map(a=>[a.tag,a.priority,a.category,a.page,a.source])]));
   el('pdfCopyChecks').addEventListener('click',()=>copy([['Typ','Hittat','Förslag','Sida','Beslut','Textunderlag'],...textChecks.map(f=>[f.type,f.actual,f.suggestion,f.page,{pending:'Kontrollera',confirmed:'Bekräftat fel',dismissed:'Avfärdat'}[f.decision],f.line.text])]));
+  el('pdfExportReview').addEventListener('click',async()=>{
+    const button=el('pdfExportReview');button.disabled=true;
+    try {
+      const decisions={pending:'Kontrollera',confirmed:'Bekräftat fel',dismissed:'Avfärdat'};
+      await window.ECO_PDF_EXPORT(el('pdfFilename').textContent.replace(/\.pdf$/i,'')+'_granskad.xlsx',[
+        {name:'Information',headers:['Uppgift','Värde'],rows:[['Driftkort',el('pdfFilename').textContent],['Omfattning','Textkontroll, identifierade komponenter och larmförslag.'],['Observera','Avvikelser från ramverket ska anmärkas i driftkortet. Automatisk textläsning behöver kontrolleras manuellt.'],['Textkontroll',textChecks.length+' förslag']],widths:[25,100]},
+        {name:'Textkontroll',headers:['Typ','Hittat','Förslag','Sida','Bedömning','Förklaring','Textunderlag'],rows:textChecks.map(f=>[f.type,f.actual,f.suggestion,f.page,decisions[f.decision],f.explanation,f.line.text]),styles:textChecks.map(f=>f.decision==='confirmed'?3:f.decision==='dismissed'?4:2),widths:[28,28,45,10,22,65,90]},
+        {name:'Komponenter',headers:['Komponent','Bekräftad','Sidor','Textunderlag'],rows:components.map(c=>[c.name,c.confirmed?'Ja':'Nej',[...new Set(c.occurrences.map(o=>o.page))].join(', '),c.occurrences[0]?.line.text??'']),widths:[28,18,15,100]},
+        {name:'Larm',headers:['Tagg','Klass','Kategori','Sida','Textunderlag'],rows:alarms.map(a=>[a.tag,a.priority,a.category,a.page,a.source]),styles:alarms.map(a=>a.priority&&a.category?0:2),widths:[35,12,12,10,100]}
+      ]);
+    }catch(error){el('pdfStatus').textContent='Kunde inte skapa Excel: '+error.message;}
+    finally{button.disabled=!pdf;}
+  });
 })();

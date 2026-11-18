@@ -19,7 +19,7 @@
     ["DRAGSKÅP OCH GIFTSKÅP", "Dragskåp och giftskåp"],
     ["SVETS/LÖDSUG", "Svets-/lödsug"],
   ];
-  const systemPrefixPattern = /^(?:LB[A-Z0-9]{1,3}|AS[_-][A-Z]\d{2,4}|AS\d{1,3}|BEL_[A-Z0-9]+|(?:VV|VP|VS)\d{1,3}_MQ\d{1,3}|KA\d{1,3}_(?:B\d{1,3}|A\d{3,5})|(?:UC|VS|MV|VV|KV|FA|MQ|KB|VPU)\d{1,3})[-_]/i;
+  const systemPrefixPattern = /^(?:(?:LB|TA)[A-Z0-9]{1,3}|AS[_-][A-Z]\d{2,4}|AS\d{1,3}|BEL_[A-Z0-9]+|(?:VV|VP|VS)\d{1,3}_MQ\d{1,3}|KA\d{1,3}_(?:B\d{1,3}|A\d{3,5})|(?:UC|VS|MV|VV|KV|FA|MQ|KB|VPU)\d{1,3})[-_]/i;
   const projectQuestions = [
     { id: "ducName", label: "Vad heter DUC:en i BACnet/IP Network?", type: "text", placeholder: "DUCNAMN", hint: "Namnet direkt under BACnet/IP Network i EBO sökvägen." },
     { id: "schoolName", label: "Skolans namn", type: "text", placeholder: "Exempelskolan" },
@@ -71,6 +71,7 @@
   let missingFrameworkRows = [];
   const dismissedMissingTags = new Set();
   let resultFilter = "";
+  let resultKindFilter = "";
   let resultSort = { key: "rowNumber", direction: "asc" };
   let reviewCompleted = false;
   let selectedTagGroups = new Set();
@@ -135,7 +136,7 @@
     if (/^(?:VV|KV)/i.test(systemPrefix)) return "hotWater";
     if (/^(?:VS|VP|MV|KB)/i.test(systemPrefix)) return "heating";
     if (/^KA/i.test(systemPrefix)) return "cooling";
-    return /^FA/i.test(systemPrefix) ? "separateFans" : /^LB/i.test(systemPrefix) ? "airTreatment" : selectedFrameworkSystemId;
+    return /^FA/i.test(systemPrefix) ? "separateFans" : /^(?:LB|TA)/i.test(systemPrefix) ? "airTreatment" : selectedFrameworkSystemId;
   }
 
   function getQuestionsForSystem() {
@@ -143,7 +144,7 @@
     if (supportsXmlProfiles()) {
       return workflowMode === "review"
         ? []
-        : projectQuestions.filter((question) => question.id === "ducName" || question.id === "schoolName");
+        : projectQuestions.filter((question) => (question.id === "ducName" && !getSystemProfileSelections().every(p => p.ducName)) || question.id === "schoolName");
     }
     return [];
   }
@@ -155,7 +156,7 @@
       const token = item.description.trim().split(/\s+/)[0];
       return /^AS[_-][A-Z]\d{2,4}-/i.test(token) || /^AS\d{1,3}-/i.test(token);
     });
-    if (prefixes.some((prefix) => /^LB/i.test(prefix))) return "airTreatment";
+    if (prefixes.some((prefix) => /^(?:LB|TA)/i.test(prefix))) return "airTreatment";
     if (prefixes.some((prefix) => /^FA/i.test(prefix))) return "separateFans";
     if (prefixes.some((prefix) => /^UC/i.test(prefix))) return "heating";
     if (prefixes.some((prefix) => /^VPU/i.test(prefix))) return "heatPump";
@@ -240,9 +241,10 @@
       type: row.querySelector("[data-profile-type]")?.value ?? "",
       systemPrefix: row.querySelector("[data-profile-prefix]").value.trim().toUpperCase(),
       subsystems: [...row.querySelectorAll("[data-subsystem]")].filter(item => item.querySelector("input[type=checkbox]").checked).map(item => ({ templatePrefix: item.dataset.subsystem, prefix: item.querySelector("input[type=text]").value.trim().toUpperCase() })),
+      ducName: row.querySelector("[data-profile-duc]")?.value.trim() ?? "",
       kitchen: row.querySelector("[data-profile-kitchen]")?.checked ?? false,
       serviceArea: row.querySelector("[data-profile-service-area]")?.value ?? "",
-      graphicProperties: Object.fromEntries([...row.querySelectorAll("[data-graphic-property]")].map(input => [input.dataset.graphicProperty, input.value.trim()])),
+      graphicProperties: { ...(row.dataset.graphicCabinet ? { "Apparatskåp": row.dataset.graphicCabinet } : {}), ...Object.fromEntries([...row.querySelectorAll("[data-graphic-property]")].map(input => [input.dataset.graphicProperty, input.value.trim()])) },
       components: [...(document.querySelector(`[data-component-profile="${CSS.escape(row.querySelector("[data-profile-prefix]").value)}"]`)?.querySelectorAll("[data-library-component]:checked") ?? [])]
         .map((input) => input.value),
     }));
@@ -252,8 +254,8 @@
     return getSystemProfileSelections().find((profile) => profile.systemPrefix === systemPrefix) ?? null;
   }
 
-  function renderSystemProfiles() {
-    const previous = getSystemProfileSelections();
+  function renderSystemProfiles(seed = null) {
+    const previous = seed ?? getSystemProfileSelections();
     const container = byId("systemProfiles");
     container.replaceChildren();
     byId("systemProfilesPanel").classList.toggle("hidden", workflowMode === "review" || !airTreatmentStarted);
@@ -264,6 +266,7 @@
       const saved = previous[index] ?? {};
       const row = document.createElement("div");
       row.className = "system-profile-row xml-profile-card";
+      row.dataset.graphicCabinet = saved.graphicProperties?.["Apparatskåp"] ?? "";
       const title = document.createElement("strong"); title.textContent = "XML " + (index + 1); row.append(title);
       const field = (text, control) => { const label = document.createElement("label"); label.append(document.createTextNode(text), control); row.append(label); return label; };
       const type = document.createElement("select"); type.dataset.profileType = "";
@@ -273,6 +276,7 @@
       const prefix = document.createElement("input"); prefix.type = "text"; prefix.dataset.profilePrefix = "";
       prefix.value = saved.systemPrefix ?? ""; prefix.placeholder = ({VSXX:"VS11",LBXX:"LB11",UCXX:"UC01",VPUXX:"VPU01",FAXX:"FA11"})[type.value] ?? "Systemnamn";
       prefix.setAttribute("list", "profile-prefixes-" + index); field("Systemnamn",prefix);
+      const duc = document.createElement("input"); duc.type = "text"; duc.dataset.profileDuc = ""; duc.value = saved.ducName ?? ""; duc.placeholder = "Gemensamt DUC-namn om tomt"; field("DUC för systemet", duc);
       const list = document.createElement("datalist"); list.id = "profile-prefixes-" + index;
       getSystemPrefixes().filter(value => value.startsWith(type.value.replace("XX",""))).forEach(value => list.append(new Option(value,value))); row.append(list);
       if (type.value === "LBXX") {
@@ -665,7 +669,7 @@
     const count = getRequestedSystemCount();
     const prefixes = profiles.map((profile) => profile.systemPrefix);
     return count > 0 && profiles.length === count && profiles.every((profile) =>
-      profile.type && new RegExp("^" + profile.type.replace("XX", "") + "[A-Z0-9]+$").test(profile.systemPrefix) &&
+      profile.type && new RegExp("^" + (profile.type === "LBXX" ? "(?:LB|TA)" : profile.type.replace("XX", "")) + "[A-Z0-9]+$").test(profile.systemPrefix) &&
       (profile.type !== "FAXX" || Boolean(profile.serviceArea)) &&
       (!["UCXX", "VPUXX"].includes(profile.type) || (profile.subsystems.length > 0 && profile.subsystems.every(item => new RegExp("^" + item.templatePrefix.replace(/\d+$/, "") + "\\d+$").test(item.prefix)) && new Set(profile.subsystems.map(item => item.prefix)).size === profile.subsystems.length)),
     ) && new Set(prefixes).size === prefixes.length;
@@ -683,7 +687,7 @@
     const profile = systemPrefix ? getProfileForSystemPrefix(systemPrefix) : null;
     if (profile?.type) return profile.type;
     if (/^VS/i.test(systemPrefix)) return "VSXX";
-    if (/^LB/i.test(systemPrefix)) return "LBXX";
+    if (/^(?:LB|TA)/i.test(systemPrefix)) return "LBXX";
     if (!systemPrefix && selectedFrameworkSystemId === "heating") return window.ECO_UCXX_OBJECTSET_TEMPLATE ? "UCXX" : "";
     if (!systemPrefix && selectedFrameworkSystemId === "heatPump") return window.ECO_VPUXX_OBJECTSET_TEMPLATE ? "VPUXX" : "";
     if (/^UC/i.test(systemPrefix)) return window.ECO_UCXX_OBJECTSET_TEMPLATE ? "UCXX" : "";
@@ -893,7 +897,7 @@
     const token = String(item.editedTag ?? reviewValue).trim().split(/\s+/)[0].replace(/[,:;]$/, "");
     const prefix = token.match(systemPrefixPattern)?.[0] ?? "";
     const tag = token.slice(prefix.length);
-    const systemId = /^LB/i.test(prefix) ? "airTreatment" : /^FA/i.test(prefix) ? "separateFans" : /^KA/i.test(prefix) ? "cooling" : /^VPU/i.test(prefix) ? "heatPump" : /^(?:VV|KV)/i.test(prefix) ? "hotWater" : /^(?:UC|VS|VP|MV)/i.test(prefix) ? "heating" : /^AS/i.test(prefix) ? "apparatus" : "";
+    const systemId = /^(?:LB|TA)/i.test(prefix) ? "airTreatment" : /^FA/i.test(prefix) ? "separateFans" : /^KA/i.test(prefix) ? "cooling" : /^VPU/i.test(prefix) ? "heatPump" : /^(?:VV|KV)/i.test(prefix) ? "hotWater" : /^(?:UC|VS|VP|MV)/i.test(prefix) ? "heating" : /^AS/i.test(prefix) ? "apparatus" : "";
     const key = systemId + ":" + tag;
     let expected = descriptionRulesCache.get(key);
     if (!expected) {
@@ -1053,6 +1057,7 @@
     });
     dismissedMissingTags.clear();
     resultFilter = "";
+    resultKindFilter = "";
     resultSort = { key: "rowNumber", direction: "asc" };
     byId("resultSearch").value = "";
     systemTagKeysCache.clear();
@@ -1081,7 +1086,9 @@
     renderMissingTags();
 
     const query = normalize(resultFilter);
+    for (const item of reviewedRows) counts[item.result.kind]++;
     const visibleRows = reviewedRows
+      .filter((item) => !resultKindFilter || item.result.kind === resultKindFilter)
       .filter((item) => !query || normalize(`${item.rowNumber} ${item.name} ${item.description} ${item.result.label} ${item.result.reason}`).includes(query))
       .sort((left, right) => {
         const leftValue = resultSort.key === "rowNumber" ? left.rowNumber
@@ -1094,7 +1101,6 @@
         return comparison * (resultSort.direction === "asc" ? 1 : -1);
       });
     for (const item of visibleRows) {
-      counts[item.result.kind]++;
       const row = document.createElement("tr");
       row.className = item.result.kind;
       const values = [
@@ -1115,9 +1121,9 @@
         const decision = document.createElement("div");
         decision.className = "review-decisions";
         const actions = [
-          ["approve", "Grön", "good"],
-          ["keep", "Gul", "typo"],
-          ["flag", "Röd", "bad"],
+          ["approve", "Godkänd", "good"],
+          ["keep", "Kontrollera", "typo"],
+          ["flag", "Avvikelse", "bad"],
         ];
         for (const [value, label, kind] of actions) {
           const button = document.createElement("button");
@@ -1125,7 +1131,8 @@
           button.className = "review-decision-button";
           button.dataset.row = String(item.rowNumber);
           button.dataset.decision = value;
-          button.textContent = label;
+          button.textContent = item.manualDecision === value ? `${label} · Valt` : label;
+          button.prepend(window.ECO_ICONS.create(kind));
           button.setAttribute("aria-pressed", String(item.manualDecision === value));
           if (item.manualDecision === value) button.classList.add(`selected-${kind}`);
           decision.appendChild(button);
@@ -1140,6 +1147,14 @@
     byId("yellowCount").textContent = counts.typo;
     byId("redCount").textContent = counts.bad;
     byId("includedCount").textContent = counts.included;
+    for (const button of document.querySelectorAll('[data-review-filter]')) {
+      button.setAttribute('aria-pressed', String(button.dataset.reviewFilter === resultKindFilter));
+    }
+    const missing = Number(byId('missingTagsCount').textContent) || 0;
+    byId('reviewActionSummary').textContent = `${missing} saknade ramverkstaggar · ${counts.bad} ${counts.bad === 1 ? 'avvikelse' : 'avvikelser'} · ${counts.typo} taggar att kontrollera. Välj en bedömning för att filtrera tagglistan. Exporten innehåller alla taggar.`;
+    const filterLabels = { good: 'Godkända', typo: 'Kontrollera', bad: 'Avvikelser', included: 'Metadata' };
+    byId('reviewVisibleCount').textContent = `Visar ${visibleRows.length} av ${reviewedRows.length} taggar${resultKindFilter ? ` · ${filterLabels[resultKindFilter]}` : ''}${query ? ' · Sökning aktiv' : ''}${!visibleRows.length ? '. Inga taggar matchar filtren.' : ''}`;
+    byId('clearReviewFilters').disabled = !resultKindFilter && !resultFilter;
     byId("results").classList.remove("hidden");
     if (workflowMode !== "review") renderTgmlPreview();
   }
@@ -1246,6 +1261,12 @@
     questions.replaceChildren();
     byId("tagListFormatControl").classList.remove("hidden");
     const tagKeys = getTagKeys();
+    const project = workflowMode === "xml" ? window.ECO_FI_DOCUMENTS?.getProject?.() : null;
+    if (project) {
+      if (!questionAnswers.schoolName && project.schoolName) questionAnswers.schoolName = project.schoolName;
+      if (!questionAnswers.ducName && project.ducName) questionAnswers.ducName = project.ducName;
+      if (!byId("fsName").value && project.fsName) byId("fsName").value = project.fsName;
+    }
     applyTagListAnswers(tagKeys);
 
     for (const question of getQuestionsForSystem()) {
@@ -1298,6 +1319,11 @@
       control.dataset.questionId = question.id;
       control.addEventListener("change", () => {
         questionAnswers[question.id] = question.type === "yesNo" ? (control.checked ? "yes" : "no") : question.type === "text" ? control.value.trim() : control.value;
+        if (question.id === "schoolName") {
+          const name = control.value.trim().toLocaleLowerCase("sv-SE");
+          control.value = name.charAt(0).toLocaleUpperCase("sv-SE") + name.slice(1);
+          questionAnswers.schoolName = control.value;
+        }
         byId("reviewContent").classList.add("hidden");
         reviewCompleted = false;
         invalidateEboDownload();
@@ -1453,6 +1479,12 @@
         }
       }
     }
+    const dk = window.ECO_FI_DOCUMENTS?.getSystem(systemPrefix);
+    if (dk) for (const item of getSystemItems(getSystemIdForPrefix(systemPrefix))) {
+      if (!window.ECO_FI_DOCUMENTS.allowsItem(item, systemPrefix)) continue;
+      if (!(window.ECO_FI_CORE?.itemComponent(item).length)) continue;
+      for (const section of item.sections ?? (item.section ? [item.section] : [])) if (isFrameworkSectionForSystem(section, systemPrefix)) sections.add(section);
+    }
     return sections;
   }
 
@@ -1466,7 +1498,7 @@
     const allSections = [...new Set(getSystemItems(getSystemIdForPrefix(systemPrefix)).flatMap((item) => item.sections ?? (item.section ? [item.section] : [])))];
     for (const section of allSections) {
       if (isFrameworkSectionForSystem(section, systemPrefix) && (/^generella taggar/i.test(section) || /^MARKVÄRME\.\s*Generella taggar/i.test(section))) sections.add(section);
-      if (/^LB/i.test(systemPrefix) && questionAnswers.kitchen === "yes" &&
+      if (/^(?:LB|TA)/i.test(systemPrefix) && questionAnswers.kitchen === "yes" &&
           (/betjänar kök/i.test(section) || /^Komponent GT31\b/i.test(section))) sections.add(section);
     }
     return sections;
@@ -1485,7 +1517,7 @@
         ? [profile, ...(profile.subsystems ?? []).map(item => ({ systemPrefix: item.prefix }))]
         : [profile]);
     const profiles = requestedProfiles.filter((profile, index, all) =>
-      presentPrefixes.has(profile.systemPrefix) && all.findIndex(other => other.systemPrefix === profile.systemPrefix) === index);
+      (presentPrefixes.has(profile.systemPrefix) || window.ECO_FI_DOCUMENTS?.getSystem(profile.systemPrefix)) && all.findIndex(other => other.systemPrefix === profile.systemPrefix) === index);
     for (const profile of profiles) {
       activeSystemPrefix = profile?.systemPrefix ?? "";
       if (profile) {
@@ -1500,8 +1532,10 @@
         const isSelected = sections.some((section) => selectedTagGroups.has(section));
         const isAlwaysApplicable = sections.some((section) => /^generella taggar/i.test(section));
         if (!(isAlwaysApplicable || isSelected)) continue;
-        if (/^LB/i.test(profile?.systemPrefix ?? "") && !isCandidateApplicable(item)) continue;
-        const expectedTag = expectedTagName(item);
+        if (window.ECO_FI_DOCUMENTS?.getSystem(profile.systemPrefix) && !window.ECO_FI_DOCUMENTS.allowsItem(item, profile.systemPrefix)) continue;
+        if (/^(?:LB|TA)/i.test(profile?.systemPrefix ?? "") && !isCandidateApplicable(item)) continue;
+        const candidates = window.ECO_FI_DOCUMENTS?.expandTag(item, expectedTagName(item), profile.systemPrefix) ?? [expectedTagName(item)];
+        for (const expectedTag of candidates) {
         if ((/^SV21_/.test(expectedTag) && hasTagPrefix(tagKeys, "SV31_")) ||
             (/^SV31_/.test(expectedTag) && hasTagPrefix(tagKeys, "SV21_"))) continue;
         const key = normalizeTag(`${profile?.systemPrefix ?? ""}${expectedTag}`);
@@ -1509,6 +1543,7 @@
         seen.add(key);
         const proposedTag = profile ? `${profile.systemPrefix}-${expectedTag}` : expectedTag;
         if (!dismissedMissingTags.has(proposedTag.toUpperCase())) missingTags.push({ ...item, expectedTag: proposedTag });
+        }
       }
     }
     questionAnswers = originalAnswers;
@@ -1545,7 +1580,7 @@
         dismiss.setAttribute("aria-label", `Ta bort förslaget ${item.expectedTag}`);
         dismiss.addEventListener("click", () => {
           dismissedMissingTags.add(item.expectedTag.toUpperCase());
-          renderMissingTags();
+          renderResults();
         });
         listItem.appendChild(dismiss);
         missingTagsList.appendChild(listItem);
@@ -1558,8 +1593,8 @@
     const sections = (item.sections ?? (item.section ? [item.section] : [])).join(" ");
     const note = String(item.note ?? "");
     if (/programmeras ej om aggregat betjänar kök/i.test(note)) return !kitchen;
-    if (/betjänar kök/i.test(sections) || /programmeras om aggregat betjänar kök/i.test(note) || /^GT31_GT71_/i.test(item.tag)) return kitchen;
-    return true;
+    if ((/betjänar kök/i.test(sections) || /programmeras om aggregat betjänar kök/i.test(note) || /^GT31_GT71_/i.test(item.tag)) && !kitchen) return false;
+    return window.ECO_FI_DOCUMENTS?.allowsItem(item, activeSystemPrefix) ?? true;
   }
 
   function expectedTagName(item) {
@@ -1729,7 +1764,7 @@
     const schoolName = String(questionAnswers.schoolName ?? "").trim();
     const profiles = getSystemProfileSelections();
     const allProfilesHaveTemplates = profiles.length > 0 && profiles.every((profile) => Boolean(getAirTreatmentTemplateId(profile.systemPrefix)));
-    const ready = supportsXmlProfiles() && areSystemProfilesComplete() && allProfilesHaveTemplates && reviewCompleted && Boolean(ducName) && Boolean(fsName) && Boolean(schoolName) && Boolean(systemPrefix) &&
+    const ready = supportsXmlProfiles() && areSystemProfilesComplete() && allProfilesHaveTemplates && reviewCompleted && profiles.every(p => Boolean(p.ducName || ducName)) && Boolean(fsName) && Boolean(schoolName) && Boolean(systemPrefix) &&
       /^[A-Za-z0-9_-]+$/.test(fsName) && byId("fsName").checkValidity();
     button.disabled = !ready;
     byId("step2Status").textContent = selectedFrameworkSystemId && !supportsXmlProfiles()
@@ -1738,7 +1773,7 @@
       ? "Ladda upp tagglistan och starta granskningen i steg 1."
       : !reviewCompleted
         ? "Komplettera uppgifterna och starta granskningen i steg 1."
-        : !ducName
+        : !profiles.every(p => p.ducName || ducName)
           ? "Ange DUC-namnet i steg 1."
           : !schoolName
               ? "Ange skolans namn i steg 1."
@@ -2625,7 +2660,7 @@
     const { candidates, isAlarm, isLink } = bindingTagCandidates(bindingName);
     const tagByKey = new Map();
     for (const item of rows) {
-      const sourceName = (item.description.trim().split(/\s+/)[0] ?? "").replace(/[,:;]$/, "");
+      const sourceName = String(item.editedTag ?? item.name ?? item.description.trim().split(/\s+/)[0] ?? "").trim().split(/\s+/)[0].replace(/[,:;]$/, "");
       const reviewedName = item.name || sourceName;
       for (const alias of new Set([sourceName, reviewedName])) {
         const key = normalizeTag(alias.replace(systemPrefixPattern, ""));
@@ -2762,6 +2797,8 @@
   }
 
   function updateSiteDescriptions(objectSet, fsName, schoolName, systemPrefix) {
+    const name = String(schoolName).trim().toLocaleLowerCase("sv-SE");
+    schoolName = name.charAt(0).toLocaleUpperCase("sv-SE") + name.slice(1);
     const description = `${fsName} ${schoolName} ${systemPrefix}`;
     for (const object of objectSet.getElementsByTagNameNS("*", "OI")) {
       const value = object.getAttribute("DESCR") ?? "";
@@ -2915,7 +2952,7 @@
 
   function applyGraphicProperties(tgml, systemPrefix) {
     const supplied = getProfileForSystemPrefix(systemPrefix)?.graphicProperties ?? {};
-    const values = { ...supplied, "Apparatskåp": byId("sharedCabinet").value.trim(), Fabrikat: byId("sharedManufacturer").value, "Produkt ID": byId("sharedProduct").value, "System ID": supplied["System ID"] || systemPrefix, DUC: supplied.DUC || String(questionAnswers.ducName ?? "").trim() };
+    const values = { ...supplied, "Apparatskåp": supplied["Apparatskåp"] || byId("sharedCabinet").value.trim(), Fabrikat: byId("sharedManufacturer").value, "Produkt ID": byId("sharedProduct").value, "System ID": supplied["System ID"] || systemPrefix, DUC: getProfileForSystemPrefix(systemPrefix)?.ducName || supplied.DUC || String(questionAnswers.ducName ?? "").trim() };
     for (const expose of tgml.getElementsByTagNameNS("*", "Expose")) {
       const value = values[expose.getAttribute("Name")];
       if (!value) continue;
@@ -3120,7 +3157,7 @@
     const fsName = byId("fsName").value.trim();
     const ducName = String(questionAnswers.ducName ?? "").trim();
     const schoolName = String(questionAnswers.schoolName ?? "").trim();
-    if (!areSystemProfilesComplete() || !fsName || !ducName || !schoolName || !reviewCompleted) {
+    if (!areSystemProfilesComplete() || !fsName || !getSystemProfileSelections().every(p => p.ducName || ducName) || !schoolName || !reviewCompleted) {
       throw new Error("Fyll i uppgifterna och starta granskningen i steg 1.");
     }
     const originalAnswers = { ...questionAnswers };
@@ -3158,7 +3195,7 @@
         ]);
         if (templateId === "UCXX" || templateId === "VPUXX") pruneAggregateObjectSet(objectSet, systemPrefix);
         const addedComponents = await appendSelectedLibraryComponents(objectSet, systemPrefix, profile.components, tagRows);
-        const bindingSummary = rewriteTemplateReferences(objectSet, ducName, tagRows, templateId, systemPrefix);
+        const bindingSummary = rewriteTemplateReferences(objectSet, profile.ducName || ducName, tagRows, templateId, systemPrefix);
         updateSystemPrefixReferences(objectSet, systemPrefix);
         if (!bindingSummary.bindings) {
           throw new Error(`Inga bindningar i mallen för ${systemPrefix} matchade tagglistan. Kontrollera systemprefix och taggnamn.`);
@@ -3194,6 +3231,7 @@
     link.download = downloadName;
     link.classList.remove("hidden");
     link.textContent = outputs.length === 1 ? "Hämta skapad XML" : `Hämta ${outputs.length} XML-filer (ZIP)`;
+    link.prepend(window.ECO_ICONS.create('download'));
     byId("step2Status").textContent = outputs.map(({ profile, bindingSummary, hiddenComponents, addedComponents }) =>
       `${profile.systemPrefix}: ${bindingSummary.bindings} bindningar uppdaterade, ${bindingSummary.removedBindings} bindningar och ${hiddenComponents} komponenter borttagna; ${addedComponents} bibliotekskomponenter tillagda.`,
     ).join(" ");
@@ -3203,6 +3241,7 @@
     const link = byId("downloadEboXml");
     if (!link) return;
     link.textContent = "Hämta skapad XML";
+    link.prepend(window.ECO_ICONS.create('download'));
     if (link.dataset.objectUrl) URL.revokeObjectURL(link.dataset.objectUrl);
     delete link.dataset.objectUrl;
     link.removeAttribute("href");
@@ -3429,6 +3468,15 @@
     resultFilter = event.target.value;
     renderResults();
   });
+  for (const button of document.querySelectorAll('[data-review-filter]')) {
+    button.addEventListener('click', () => {
+      resultKindFilter = resultKindFilter === button.dataset.reviewFilter ? '' : button.dataset.reviewFilter;
+      renderResults();
+    });
+  }
+  byId('clearReviewFilters').addEventListener('click', () => {
+    resultKindFilter = ''; resultFilter = ''; byId('resultSearch').value = ''; renderResults();
+  });
   document.querySelectorAll(".sort-button[data-sort]").forEach((button) => {
     button.addEventListener("click", () => {
       const key = button.dataset.sort;
@@ -3457,6 +3505,9 @@
       item.result = { kind: "typo", label: "Kontrollera manuellt", reason: item.autoResult.reason ?? "" };
     }
     renderResults();
+    const updatedButton = [...byId('rows').querySelectorAll('[data-decision][data-row]')]
+      .find(candidate => candidate.dataset.row === button.dataset.row && candidate.dataset.decision === button.dataset.decision);
+    (updatedButton ?? document.querySelector(`[data-review-filter="${resultKindFilter}"]`) ?? byId('clearReviewFilters')).focus({ preventScroll: true });
   });
   byId("pick").addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", async () => {
@@ -3493,6 +3544,24 @@
   });
   window.ECO_IO_RULES = { frameworkPatternMatches, reviewDescription, isNonFrameworkProperty, similarity };
   window.ECO_DK_DATA = () => ({ rows: reviewedRows, prefixes: getSystemPrefixes() });
+  window.ECO_FI_APP = {
+    applyProfiles(profiles) {
+      if (workflowMode !== "xml" || !profiles.length) return;
+      byId("systemCount").value = profiles.length;
+      selectedFrameworkSystemId = ({UCXX:"heating",VSXX:"heating",VPUXX:"heatPump",FAXX:"separateFans"})[profiles[0].type] ?? "airTreatment";
+      byId("frameworkSystem").value = selectedFrameworkSystemId; airTreatmentStarted = true;
+      renderSystemProfiles(profiles); selectedTagGroups = new Set(); relevantFrameworkTagsCache.clear(); systemTagKeysCache.clear();
+      reviewCompleted = false; invalidateEboDownload();
+      if (reviewedRows.length) renderTagGroupQuestions();
+      updateSystemSelectionView(); updateQuestionGate();
+    },
+    getRows: () => reviewedRows,
+    getPrefixes: getSystemPrefixes,
+    getMissing: () => missingFrameworkRows,
+    getItems: getSystemItems,
+    getFanAreas: () => separateFanServiceAreas,
+    isXmlMode: () => workflowMode === "xml"
+  };
 })();
 
 

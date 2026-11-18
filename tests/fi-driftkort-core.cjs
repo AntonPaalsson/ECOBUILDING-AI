@@ -1,0 +1,18 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
+const context={window:{}};vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../fi-driftkort-core.js'),'utf8'),context);const core=context.window.ECO_FI_CORE;
+const line=text=>({text,items:[],y:10});
+const pages=[{number:1,lines:[line('SYSTEM 1234-LB11'),line('DUC/PLC:\tDUC_A\tVid drift aktiveras fläkt.'),line('Apparatskåp:\tAS_A001'),line('Betjänar:\tKÖK\tAnnan funktionsbeskrivning.'),line('Skola:\tTestskolan')]},{number:2,lines:[line('SYSTEM 1234-LB12'),line('DUC/PLC:\tDUC_B'),line('Apparatskåp:\tAS_B001'),line('Betjänar:\tAula')]}];
+const components=[{name:'GT11',occurrences:[{page:1,line:line('GT11')}]},{name:'GT31',occurrences:[{page:2,line:line('GT31')}]}];
+const systems=core.infer('1234-DK-LB11.pdf',{pages,components,alarms:[]});
+assert.equal(systems.length,2);assert.equal(systems[0].duc,'DUC_A');assert.equal(systems[1].duc,'DUC_B');assert.equal(systems[0].serves,'KÖK');assert.equal(systems[0].kitchen,true);assert.equal(systems[1].kitchen,false);
+assert.equal(systems[0].components.length,1);assert.equal(systems[1].components[0].name,'GT31');
+assert.equal(core.matches('ST7pn','ST731'),true);assert.equal(core.matches('SN1x','SN11'),true);assert.equal(core.matches('SN1x','SN21'),false);assert.equal(core.matches('GF41','GF11'),true);
+assert.equal(core.root('LB12-TF1_TF2_DS_L'),'TF1_TF2');assert.equal(core.root('LB12-GT11_GT71_MV'),'GT11_GT71');
+assert.equal(core.infer('Skannat.pdf',{pages:[{number:1,lines:[]}],components:[],alarms:[]})[0].name,'');
+assert.equal(systems[0].fsName,'FS1234');
+assert.equal(core.formatFs('fs 1234'),'FS1234');
+assert.equal(core.formatSchool('SOFIASKOLAN I STOCKHOLM'),'Sofiaskolan i stockholm');
+assert.equal(core.inferUsage('',[{occurrences:[{line:line('GT31 Kombigivare kök')}]}]).kitchen,true);
+assert.equal(core.inferUsage('',[{occurrences:[{line:line('FF1 Frånluftsfläkt keramikugn')}]}]).serviceArea,'KERAMIKUGN');
+assert.equal(core.inferUsage('Soprum och keramikugn',[]).serviceArea,'');
+console.log('PASS: multiple systems in one PDF, per-page DUC/serves, evidence cells, component scope and serial/wildcard roots.');

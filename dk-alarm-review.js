@@ -7,7 +7,7 @@
   function saveCurrent() { if (currentSystem) lists.set(currentSystem, el('dkAlarmText').value); }
   const tagPattern = /^(?:[A-ZÅÄÖ]+\d+[-_])?[A-ZÅÄÖ][A-ZÅÄÖ0-9]*(?:_[A-ZÅÄÖ0-9]+)+(?:_L|_SL|_BL)$/i;
   const isTag = text => tagPattern.test(text) || /^(?:[A-ZÅÄÖ]+\d+-)?[A-ZÅÄÖ0-9]+_(?:L|SL|BL)$/i.test(text);
-  const withPrefix = tag => /^(?:LB|FA|VS|VV|VP|VPU|UC|KA|MV|KB|KV)\d+[-_]/i.test(tag);
+  const withPrefix = tag => /^(?:LB|TA|FA|VS|VV|VP|VPU|UC|KA|MV|KB|KV)\d+[-_]/i.test(tag);
   function parse(text) {
     const tokens = text.split(/\r?\n|\t/).map(clean).filter(Boolean);
     const blocks = []; let current;
@@ -95,6 +95,10 @@
     lists.clear(); currentSystem = ''; el('dkAlarmText').value = ''; refresh();
   });
   el('dkAlarmText').addEventListener('input', refresh);
-  window.ECO_DK_REVIEW = { ready, refresh, parse };
+  function setLists(entries) {
+    lists.clear();for(const [system,text]of entries)if(text.trim())lists.set(system,text);
+    currentSystem='';el('dkAlarmText').value='';refresh();
+  }
+  window.ECO_DK_REVIEW = { ready, refresh, parse, setLists };
   document.addEventListener('workflow-reviewed', render);
 })();

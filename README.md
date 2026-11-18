@@ -43,6 +43,20 @@ node tests/ui-smoke.cjs
 node tests/review-smoke.cjs
 ```
 
+## Fullständig Integration med driftkort
+
+FI börjar med uppladdning av flera driftkort i PDF-format. Därefter visas ett redigerbart systemträd med relationerna fastighet/skola → DUC → system → komponenter och larm. Varje läst uppgift har dokument- och sidreferenser. Fynden kommer från PDF-text, inte från verifierad tolkning av grafiska symboler; skannade sidor behöver kompletteras manuellt. Användaren bekräftar varje system och kan välja bort fynd eller lägga till komponenter.
+
+Efter tagglistans import visas en mappningssida: komponenter i båda underlagen, DK-komponenter utan taggar och komponenter som bara finns i tagglistan. Ett DK-system kan uttryckligen kopplas till ett annat taggprefix. Bekräftade DK-komponenter aktiverar relevanta komponentavsnitt även när komponentens taggar saknas helt; oanvända DK-komponentavsnitt föreslås inte. Köksvillkor och övriga befintliga regler tillämpas också. Granskningen bedömer fortfarande om en befintlig tagg finns i ramverket oberoende av om komponenten valts i DK.
+
+Valda PDF-larm överförs till den befintliga DK-kontrollen, som kontrollerar taggförekomst samt klass/kategori. Efter projektuppgifter och granskning följer XML-exporten. Varje system kan ha en egen DUC; både BACnet-referenser och bildens DUC-egenskap använder systemets DUC före det gemensamma reservvärdet. Det går att välja **Fortsätt utan driftkort** för att använda det tidigare manuella flödet.
+
+```sh
+node tests/fi-driftkort-core.cjs
+node tests/fi-flow.cjs
+node tests/fi-pdf-smoke.cjs "C:/sökväg/driftkort.pdf"
+```
+
 ## PDF-test av driftkort
 
 Välj **PDF-test · Driftkort** i snabbmenyn. Funktionen behandlar PDF-filen lokalt och visar PDF-sidor, komponentbeteckningar från textlagret och preliminära larmrader med sidreferenser. Komponentfynd kan bekräftas och larmförslagens tagg, klass och kategori kan korrigeras före kopiering till Excel. Testet ändrar inte tagglistan, DK-kontrollen eller XML-exporten.
